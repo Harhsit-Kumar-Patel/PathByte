@@ -1,5 +1,5 @@
-# Use Node.js 18 Alpine image
-FROM node:18-alpine
+# Use Node.js 20 Alpine image (updated from 18)
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY backend/ ./
 RUN npm run build
 
 # Remove dev dependencies to reduce image size
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 # Expose port
 EXPOSE 5000
