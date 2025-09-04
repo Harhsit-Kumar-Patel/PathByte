@@ -1,11 +1,30 @@
 import knex from 'knex'
-import knexConfig from '../../knexfile'
+import knexConfig from '../knexfile'
 import { logger } from '../utils/logger'
 
 const environment = process.env['NODE_ENV'] || 'development'
-const config = knexConfig[environment]
-if (!config) {
-  throw new Error(`Database configuration not found for environment: ${environment}`)
+
+// Support both individual credentials and DATABASE_URL
+let config
+if (process.env.DATABASE_URL) {
+  // Use DATABASE_URL (Render, Heroku, etc.)
+  config = {
+    client: 'postgresql',
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
+  }
+} else {
+  // Use individual credentials (Railway, etc.)
+  config = knexConfig[environment]
+  if (!config) {
+    throw new Error(`Database configuration not found for environment: ${environment}`)
+  }
 }
 
 export const db = knex(config)
