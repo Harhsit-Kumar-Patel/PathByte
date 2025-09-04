@@ -112,6 +112,7 @@ app.use(notFound)
 app.use(errorHandler)
 
 // Start server
+console.log('🔧 About to start server...')
 app.listen(PORT, '0.0.0.0', async () => {
   console.log(`🚀 PathByte API server running on port ${PORT}`)
   console.log(`📊 Environment: ${process.env['NODE_ENV'] || 'development'}`)
@@ -123,15 +124,23 @@ app.listen(PORT, '0.0.0.0', async () => {
   logger.info(`🔗 Health check: http://0.0.0.0:${PORT}/health`)
   logger.info(`🌐 Railway PORT: ${process.env.PORT}`)
   
+  console.log('🔧 Server started successfully, about to initialize database...')
+  
   // Initialize database
   try {
+    console.log('🔧 Testing database connection...')
     await testConnection()
+    console.log('🔧 Database connection successful, running migrations...')
     await initializeDatabase()
+    console.log('🔧 Database initialization complete!')
   } catch (error) {
+    console.error('❌ Database initialization failed:', error)
     logger.error('Failed to initialize database:', error)
     logger.warn('Continuing without database - some features may not work')
     // Don't exit - let the server start and handle database errors gracefully
   }
+  
+  console.log('🔧 Server fully initialized and ready!')
 })
 
 // Add error handling for server startup
