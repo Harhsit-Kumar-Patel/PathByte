@@ -348,10 +348,10 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between animate-fade-in-up">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Welcome back, {user.firstName}! 👋</h1>
-          <p className="text-gray-600 mt-2">Here's what's happening with your learning journey</p>
+          <h1 className="text-3xl font-bold text-gray-900 animate-fade-in-scale">Welcome back, {user.firstName}! 👋</h1>
+          <p className="text-gray-600 mt-2 animate-fade-in-up animate-delay-200">Here's what's happening with your learning journey</p>
         </div>
         <div className="flex items-center space-x-3">
           <button
@@ -365,7 +365,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Roadmap Integration */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden animate-fade-in-up animate-delay-300">
         <div className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-4">
           <h2 className="text-xl font-semibold text-white flex items-center gap-2">
             <Briefcase className="h-5 w-5" />

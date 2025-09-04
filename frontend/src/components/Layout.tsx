@@ -70,13 +70,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="flex h-20 items-center justify-between px-6 border-b border-slate-200/50">
               <Link 
                 to="/" 
-                className="flex items-center space-x-3 group hover-lift transition-all duration-300"
+                className="flex items-center space-x-3 group transition-all duration-300"
               >
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-soft">
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-soft">
                     <Sparkles className="h-6 w-6 text-white" />
                   </div>
-                  <div className="absolute -inset-1 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl opacity-20 blur-sm group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl opacity-20 blur-sm group-hover:opacity-30 transition-opacity duration-300"></div>
                 </div>
                 <div className="flex flex-col">
                                    <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">PathByte</span>
@@ -157,13 +157,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex h-24 shrink-0 items-center">
             <Link 
               to="/" 
-              className="flex items-center space-x-4 group hover-lift transition-all duration-300"
+              className="flex items-center space-x-4 group transition-all duration-300"
             >
               <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-xl">
                   <Sparkles className="h-8 w-8 text-white" />
                 </div>
-                <div className="absolute -inset-2 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-300"></div>
+                <div className="absolute -inset-2 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl opacity-20 blur-lg group-hover:opacity-30 transition-opacity duration-300"></div>
               </div>
               <div className="flex flex-col">
                                  <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">PathByte</span>
@@ -173,19 +173,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-1 flex-col space-y-3">
-            {navigation.map((item) => {
+          <nav className="flex flex-1 flex-col space-y-3 stagger-animation">
+            {navigation.map((item, index) => {
               const Icon = item.icon
               const isActive = location.pathname === item.href
               return (
                 <Link
                   key={item.name}
                   to={item.href}
-                                     className={`group flex items-center px-5 py-4 text-sm font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg ${
+                                     className={`group flex items-center px-5 py-4 text-sm font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg animate-fade-in-up ${
                      isActive
                        ? `bg-gradient-to-r ${item.color} text-white shadow-xl shadow-${item.color.split('-')[1]}/25`
                        : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                    }`}
+                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className={`mr-4 p-2.5 rounded-xl transition-all duration-300 ${
                     isActive 

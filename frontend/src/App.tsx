@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react'
 import Layout from './components/Layout'
 import ProtectedRoute from './components/ProtectedRoute'
 import { ProgressProvider } from './context/ProgressContext'
+import { EnhancedPageTransition } from './components/ui/PageTransition'
 const LoginPage = lazy(() => import('./pages/LoginPage'))
 import LoadingSpinner from './components/ui/LoadingSpinner'
 
@@ -25,21 +26,23 @@ function App() {
     <ProgressProvider>
       <Layout>
         <Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/onboarding" element={<OnboardingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
-            <Route path="/roadmap" element={<ProtectedRoute><RoadmapPage /></ProtectedRoute>} />
-            <Route path="/roadmap/:skill" element={<SkillRoadmapPage />} />
-            <Route path="/roles" element={<ProtectedRoute><RoleSelectionPage /></ProtectedRoute>} />
-            <Route path="/career-guide" element={<CareerGuidePage />} />
-            <Route path="/career-assessment" element={<CareerAssessmentPage />} />
+          <EnhancedPageTransition>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/onboarding" element={<OnboardingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+              <Route path="/roadmap" element={<ProtectedRoute><RoadmapPage /></ProtectedRoute>} />
+              <Route path="/roadmap/:skill" element={<SkillRoadmapPage />} />
+              <Route path="/roles" element={<ProtectedRoute><RoleSelectionPage /></ProtectedRoute>} />
+              <Route path="/career-guide" element={<CareerGuidePage />} />
+              <Route path="/career-assessment" element={<CareerAssessmentPage />} />
 
-            <Route path="/market-insights" element={<ProtectedRoute><MarketInsightsPage /></ProtectedRoute>} />
-            <Route path="/community" element={<ProtectedRoute><CommunityPage /></ProtectedRoute>} />
-            <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-          </Routes>
+              <Route path="/market-insights" element={<ProtectedRoute><MarketInsightsPage /></ProtectedRoute>} />
+              <Route path="/community" element={<ProtectedRoute><CommunityPage /></ProtectedRoute>} />
+              <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+            </Routes>
+          </EnhancedPageTransition>
         </Suspense>
       </Layout>
     </ProgressProvider>
