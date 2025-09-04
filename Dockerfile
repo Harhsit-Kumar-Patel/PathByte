@@ -5,17 +5,19 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
-COPY backend/package*.json ./backend/
+COPY backend/package*.json ./
 
-# Install dependencies
-RUN cd backend && npm ci --only=production
+# Install all dependencies (including dev dependencies for building)
+RUN npm ci
 
 # Copy source code
-COPY backend/ ./backend/
+COPY backend/ ./
 
 # Build the application
-RUN cd backend && npm run build
+RUN npm run build
+
+# Remove dev dependencies to reduce image size
+RUN npm ci --only=production && npm cache clean --force
 
 # Expose port
 EXPOSE 5000
@@ -25,5 +27,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:5000/health || exit 1
 
 # Start the application
-WORKDIR /app/backend
 CMD ["npm", "start"]
