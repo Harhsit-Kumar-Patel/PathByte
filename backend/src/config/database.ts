@@ -43,14 +43,20 @@ export const testConnection = async () => {
 // Initialize database tables
 export const initializeDatabase = async () => {
   try {
+    console.log('🔧 Starting database initialization...')
+    
     // Check if tables exist
     const hasUsers = await db.schema.hasTable('users')
+    console.log('🔧 Users table exists:', hasUsers)
     
     if (!hasUsers) {
+      console.log('📊 Initializing database tables...')
       logger.info('📊 Initializing database tables...')
       
       // Run migrations
+      console.log('🔧 Running migrations...')
       await db.migrate.latest()
+      console.log('✅ Database migrations completed')
       logger.info('✅ Database migrations completed')
       
       // Run seeds if in development
@@ -58,10 +64,14 @@ export const initializeDatabase = async () => {
         await db.seed.run()
         logger.info('✅ Database seeds completed')
       }
+    } else {
+      console.log('🔧 Users table already exists, skipping migrations')
     }
     
+    console.log('✅ Database initialization completed')
     logger.info('✅ Database initialization completed')
   } catch (error) {
+    console.error('❌ Database initialization failed:', error)
     logger.error('❌ Database initialization failed:', error)
     throw error
   }
