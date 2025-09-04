@@ -4595,24 +4595,8 @@ export const skillsData: { [key: string]: SkillData } = {
     demand: 'High',
     salary: 'Very High',
     companies: ['Ethereum Foundation', 'ConsenSys', 'Chainlink', 'Polygon', 'Solana Labs', 'OpenSea', 'Uniswap Labs', 'Aave', 'Compound'],
-    certifications: [
-      'Certified Blockchain Developer (CBD)',
-      'Ethereum Developer Certification',
-      'Solidity Developer Certification',
-      'Web3 Security Certification'
-    ],
-    youtubePlaylists: [
-      {
-        title: 'Web3 Development Tutorials',
-        url: 'https://www.youtube.com/playlist?list=PLgPmWS2dQ8BjX1l0LdKz7jqjqjqjqjqjqj',
-        description: 'Complete Web3 development course'
-      },
-      {
-        title: 'Smart Contract Development',
-        url: 'https://www.youtube.com/playlist?list=PLgPmWS2dQ8BjX1l0LdKz7jqjqjqjqjqjqj',
-        description: 'Learn Solidity and smart contract best practices'
-      }
-    ],
+    certifications: [],
+    youtubePlaylists: [],
     roadmap: {
       '0-1': {
         title: 'Year 0–1 (Beginner – Entry Level)',
@@ -4704,9 +4688,7 @@ export const skillsData: { [key: string]: SkillData } = {
             description: 'Coursera course on decentralized finance'
           }
         ],
-        certifications: [
-          'Certified Blockchain Developer (CBD)'
-        ],
+        certifications: [],
         youtubePlaylists: []
       },
       '3-5': {
@@ -4750,10 +4732,7 @@ export const skillsData: { [key: string]: SkillData } = {
             description: 'Advanced blockchain development course'
           }
         ],
-        certifications: [
-          'Ethereum Developer Certification',
-          'Solidity Developer Certification'
-        ],
+        certifications: [],
         youtubePlaylists: []
       },
       '5+': {
@@ -4797,10 +4776,7 @@ export const skillsData: { [key: string]: SkillData } = {
             description: 'MIT executive program on blockchain'
           }
         ],
-        certifications: [
-          'Web3 Security Certification',
-          'Blockchain Architecture Certification'
-        ],
+        certifications: [],
         youtubePlaylists: []
       }
     }
