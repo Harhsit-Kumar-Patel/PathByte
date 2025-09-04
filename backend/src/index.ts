@@ -29,6 +29,10 @@ console.log('🔧 Process starting...')
 const app = express()
 console.log('🔧 Express app created')
 
+// Trust proxy for Railway deployment
+app.set('trust proxy', 1)
+console.log('🔧 Trust proxy configured for Railway')
+
 // Railway provides PORT environment variable
 const PORT = parseInt(process.env.PORT || '5000', 10)
 
