@@ -25,7 +25,7 @@ dotenv.config()
 
 const app = express()
 // Railway provides PORT environment variable
-const PORT = process.env.PORT || 5000
+const PORT = parseInt(process.env.PORT || '5000', 10)
 
 // Security middleware
 app.use(helmet())

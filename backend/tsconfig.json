@@ -2,11 +2,12 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "lib": ["ES2020"],
+    "lib": ["ES2020", "DOM"],
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
@@ -22,11 +23,14 @@
     "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": false,
     "noUncheckedIndexedAccess": false,
+    "moduleResolution": "node",
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"]
   },
   "include": [
     "src/**/*"
