@@ -3569,5 +3569,386 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  datavisualization: {
+    title: 'Data Visualization Engineer',
+    icon: BarChart3,
+    color: 'from-pink-500 to-rose-500',
+    description: 'Create compelling visual representations of data and insights',
+    demand: 'High',
+    salary: 'High',
+    companies: ['Tableau', 'Microsoft', 'Google', 'Amazon', 'Salesforce'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn data visualization fundamentals',
+        skills: [
+          'Data Analysis',
+          'Visualization Tools (Tableau, Power BI)',
+          'Programming (Python/R)',
+          'Design Principles',
+          'Color Theory',
+          'Chart Types & Best Practices',
+          'Data Cleaning',
+          'Statistical Concepts',
+          'Version Control',
+          'Storytelling'
+        ],
+        projects: [
+          'Interactive Dashboard',
+          'Data Story Project',
+          'Chart Library',
+          'Data Cleaning Pipeline',
+          'Visualization Portfolio'
+        ],
+        freeResources: [
+          {
+            title: 'Tableau Public',
+            url: 'https://public.tableau.com/',
+            description: 'Free data visualization platform'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced visualization techniques',
+        skills: [
+          'Advanced Programming',
+          'Web Visualization (D3.js)',
+          'Interactive Dashboards',
+          'Real-time Visualization',
+          'Big Data Visualization',
+          'Mobile Visualization',
+          'Accessibility',
+          'Team Collaboration',
+          'Project Management',
+          'User Experience'
+        ],
+        projects: [
+          'Real-time Dashboard',
+          'Interactive Web Visualization',
+          'Mobile Visualization App',
+          'Big Data Visualization',
+          'Accessibility Framework'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead data visualization initiatives',
+        skills: [
+          'Visualization Strategy',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Visualization Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive data visualization strategy and innovation',
+        skills: [
+          'Visualization Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Visualization Strategy Implementation',
+          'Advanced Visualization Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  quantumcomputing: {
+    title: 'Quantum Computing Engineer',
+    icon: Brain,
+    color: 'from-indigo-500 to-purple-500',
+    description: 'Develop quantum algorithms and quantum computing systems',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['IBM', 'Google', 'Microsoft', 'Rigetti', 'IonQ'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn quantum computing fundamentals',
+        skills: [
+          'Linear Algebra',
+          'Quantum Mechanics Basics',
+          'Quantum Gates',
+          'Quantum Circuits',
+          'Programming (Python)',
+          'Quantum Algorithms',
+          'Quantum Simulators',
+          'Mathematical Foundations',
+          'Version Control',
+          'Research Skills'
+        ],
+        projects: [
+          'Quantum Circuit Implementation',
+          'Quantum Algorithm Simulation',
+          'Quantum State Visualization',
+          'Basic Quantum Application',
+          'Research Paper Analysis'
+        ],
+        freeResources: [
+          {
+            title: 'IBM Quantum Experience',
+            url: 'https://quantum-computing.ibm.com/',
+            description: 'Free quantum computing platform'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced quantum computing techniques',
+        skills: [
+          'Advanced Quantum Algorithms',
+          'Quantum Error Correction',
+          'Quantum Machine Learning',
+          'Quantum Optimization',
+          'Quantum Cryptography',
+          'Hardware Implementation',
+          'Team Collaboration',
+          'Project Management',
+          'Research & Development',
+          'Industry Applications'
+        ],
+        projects: [
+          'Quantum Algorithm Development',
+          'Error Correction Implementation',
+          'Quantum ML Model',
+          'Optimization Problem Solving',
+          'Hardware Integration'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead quantum computing initiatives',
+        skills: [
+          'Quantum Strategy & Planning',
+          'Team Leadership',
+          'Advanced Research',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Quantum Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive quantum computing strategy and innovation',
+        skills: [
+          'Quantum Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Quantum Strategy Implementation',
+          'Advanced Quantum Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  fintech: {
+    title: 'FinTech Engineer',
+    icon: Code,
+    color: 'from-green-500 to-emerald-500',
+    description: 'Build financial technology solutions and digital banking systems',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['Stripe', 'Square', 'PayPal', 'Goldman Sachs', 'JPMorgan'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn FinTech fundamentals',
+        skills: [
+          'Financial Systems',
+          'Payment Processing',
+          'Banking APIs',
+          'Security & Compliance',
+          'Blockchain Basics',
+          'Programming (Python/Java)',
+          'Database Design',
+          'API Development',
+          'Version Control',
+          'Financial Regulations'
+        ],
+        projects: [
+          'Payment Gateway Integration',
+          'Banking API Client',
+          'Security Implementation',
+          'Financial Dashboard',
+          'Compliance Framework'
+        ],
+        freeResources: [
+          {
+            title: 'Stripe Documentation',
+            url: 'https://stripe.com/docs',
+            description: 'Comprehensive payment processing documentation'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master FinTech development practices',
+        skills: [
+          'Advanced Payment Systems',
+          'Cryptocurrency Integration',
+          'Risk Management',
+          'Fraud Detection',
+          'Regulatory Compliance',
+          'Microservices Architecture',
+          'Team Collaboration',
+          'Project Management',
+          'Security Best Practices',
+          'Financial Modeling'
+        ],
+        projects: [
+          'Cryptocurrency Exchange',
+          'Fraud Detection System',
+          'Risk Management Platform',
+          'Compliance Automation',
+          'Financial Analytics'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead FinTech initiatives and teams',
+        skills: [
+          'FinTech Strategy & Planning',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'FinTech Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive FinTech strategy and innovation',
+        skills: [
+          'FinTech Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'FinTech Strategy Implementation',
+          'Advanced FinTech Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
