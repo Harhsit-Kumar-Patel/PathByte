@@ -1,10 +1,10 @@
 version: '3.8'
 
 services:
-  # PostgreSQL Database
   postgres:
     image: postgres:15-alpine
     container_name: pathbyte-postgres
+    restart: unless-stopped
     environment:
       POSTGRES_DB: pathbyte_dev
       POSTGRES_USER: postgres
@@ -13,50 +13,21 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./backend/database/migrations:/docker-entrypoint-initdb.d
+      - ./backend/database/init:/docker-entrypoint-initdb.d
     networks:
       - pathbyte-network
 
-  # Backend API
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: pathbyte-backend
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pathbyte-pgadmin
+    restart: unless-stopped
     environment:
-      NODE_ENV: development
-      PORT: 5000
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: pathbyte_dev
-      DB_USER: postgres
-      DB_PASSWORD: password
-      JWT_SECRET: your-super-secret-jwt-key-change-this-in-production
+      PGADMIN_DEFAULT_EMAIL: admin@pathbyte.com
+      PGADMIN_DEFAULT_PASSWORD: admin
     ports:
-      - "5000:5000"
+      - "5050:80"
     depends_on:
       - postgres
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    networks:
-      - pathbyte-network
-
-  # Frontend
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: pathbyte-frontend
-    environment:
-      VITE_API_URL: http://localhost:5000/api
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     networks:
       - pathbyte-network
 

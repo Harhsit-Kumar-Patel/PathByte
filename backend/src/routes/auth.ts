@@ -2,6 +2,7 @@ import express from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import Joi from 'joi'
+import { v4 as uuidv4 } from 'uuid'
 import { db } from '../config/database'
 import { logger } from '../utils/logger'
 import { authenticateToken } from '../middleware/auth'
@@ -64,7 +65,9 @@ router.post('/register', async (req, res) => {
     const passwordHash = await bcrypt.hash(password, saltRounds)
 
     // Create user
+    const userId = uuidv4()
     const [user] = await db('users').insert({
+      id: userId,
       first_name: firstName,
       last_name: lastName,
       email,
