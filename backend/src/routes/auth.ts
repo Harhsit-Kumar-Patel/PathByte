@@ -231,14 +231,14 @@ router.post('/create-users-table', async (_, res) => {
     
     console.log('✅ Users table created successfully')
     
-    res.json({
+    return res.json({
       success: true,
       message: 'Users table created successfully'
     })
   } catch (error) {
     console.error('❌ Error creating users table:', error)
     logger.error('Error creating users table:', error)
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: 'Failed to create users table',
       details: error instanceof Error ? error.message : 'Unknown error'
