@@ -1,6 +1,8 @@
-import type { Knex } from 'knex'
-
-export async function up(knex: Knex): Promise<void> {
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.up = async function(knex) {
   // Roadmap progress table for tracking overall progress per role/year
   await knex.schema.createTable('roadmap_progress', (table) => {
     table.string('id', 36).primary()
@@ -36,7 +38,11 @@ export async function up(knex: Knex): Promise<void> {
   `)
 }
 
-export async function down(knex: Knex): Promise<void> {
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.down = async function(knex) {
   // Drop tables
   await knex.schema.dropTable('roadmap_item_progress')
   await knex.schema.dropTable('roadmap_progress')
