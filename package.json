@@ -1,13 +1,14 @@
 {
   "name": "pathbyte",
   "version": "1.0.0",
-  "description": "PathByte - Tech Stack Recommendation Engine",
-  "private": true,
+  "description": "PathByte - Career Development Platform",
   "scripts": {
-    "build": "cd backend && npm install && npm run build",
-    "start": "cd backend && npm start"
+    "build": "cd frontend && npm install && npm run build",
+    "dev": "cd frontend && npm run dev",
+    "start": "cd frontend && npm run preview"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
