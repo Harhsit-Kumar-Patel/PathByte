@@ -5,7 +5,6 @@ import {
   X, 
   LogOut, 
   Settings, 
-  Bell, 
   ChevronDown,
   Home,
   Map,
@@ -30,7 +29,6 @@ const navigation = [
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [userDropdownOpen, setUserDropdownOpen] = useState(false)
-  const [notificationDropdownOpen, setNotificationDropdownOpen] = useState(false)
   const { user, logout } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
@@ -260,17 +258,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Right side */}
           <div className="flex items-center justify-end gap-x-4">
-            {/* Notification button */}
-            <button
-              type="button"
-              className="relative p-3 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-all duration-300 hover:scale-105 group"
-              onClick={() => setNotificationDropdownOpen(!notificationDropdownOpen)}
-            >
-              <Bell className="h-5 w-5" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></div>
-              <div className="absolute inset-0 bg-blue-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-
             {/* User dropdown */}
             {user && (
               <div className="relative">
