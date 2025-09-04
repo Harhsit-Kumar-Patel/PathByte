@@ -46,5 +46,9 @@
     "vitest": "^0.34.3",
     "@testing-library/react": "^13.4.0",
     "@testing-library/jest-dom": "^5.16.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
