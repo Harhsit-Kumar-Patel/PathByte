@@ -1,6 +1,8 @@
 import { 
   Code, 
-  Server
+  Server,
+  BarChart3,
+  Brain
 } from 'lucide-react'
 import { industryCertifications, youtubePlaylists } from './certificationsData'
 
