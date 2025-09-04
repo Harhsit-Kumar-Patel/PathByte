@@ -1,11 +1,11 @@
-import knex from 'knex'
+import knex, { Knex } from 'knex'
 import knexConfig from '../knexfile'
 import { logger } from '../utils/logger'
 
-const environment = process.env['NODE_ENV'] || 'development'
+const environment = process.env.NODE_ENV || 'development'
 
 // Support both individual credentials and DATABASE_URL
-let config
+let config: Knex.Config
 if (process.env.DATABASE_URL) {
   // Use DATABASE_URL (Render, Heroku, etc.)
   config = {
