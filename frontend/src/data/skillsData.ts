@@ -3950,5 +3950,386 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  compilerengineer: {
+    title: 'Compiler Engineer',
+    icon: Code,
+    color: 'from-slate-500 to-gray-500',
+    description: 'Design and implement programming language compilers and interpreters',
+    demand: 'Medium',
+    salary: 'Very High',
+    companies: ['Google', 'Microsoft', 'Apple', 'Intel', 'NVIDIA'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn compiler fundamentals',
+        skills: [
+          'Programming Languages Theory',
+          'Lexical Analysis',
+          'Parsing Techniques',
+          'Syntax Trees',
+          'Semantic Analysis',
+          'Code Generation',
+          'Optimization Basics',
+          'Assembly Language',
+          'Version Control',
+          'Mathematical Foundations'
+        ],
+        projects: [
+          'Simple Interpreter',
+          'Basic Parser',
+          'Lexical Analyzer',
+          'Code Generator',
+          'Optimization Pass'
+        ],
+        freeResources: [
+          {
+            title: 'Crafting Interpreters',
+            url: 'https://craftinginterpreters.com/',
+            description: 'Free book on building interpreters'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced compiler techniques',
+        skills: [
+          'Advanced Parsing',
+          'Type Systems',
+          'Code Optimization',
+          'Register Allocation',
+          'Memory Management',
+          'JIT Compilation',
+          'Parallel Compilation',
+          'Team Collaboration',
+          'Project Management',
+          'Performance Analysis'
+        ],
+        projects: [
+          'Advanced Compiler',
+          'JIT Compiler',
+          'Optimization Framework',
+          'Parallel Compiler',
+          'Performance Profiler'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead compiler engineering initiatives',
+        skills: [
+          'Compiler Architecture',
+          'Team Leadership',
+          'Advanced Research',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Compiler Architecture Design',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive compiler strategy and innovation',
+        skills: [
+          'Compiler Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Compiler Strategy Implementation',
+          'Advanced Compiler Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  aiops: {
+    title: 'AIOps Engineer',
+    icon: Brain,
+    color: 'from-cyan-500 to-blue-500',
+    description: 'Apply AI and machine learning to IT operations and monitoring',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['Google', 'Microsoft', 'Amazon', 'Splunk', 'Datadog'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn AIOps fundamentals',
+        skills: [
+          'IT Operations',
+          'Machine Learning Basics',
+          'Monitoring & Alerting',
+          'Data Analysis',
+          'Anomaly Detection',
+          'Incident Response',
+          'Automation & Scripting',
+          'Cloud Platforms',
+          'Version Control',
+          'Statistical Analysis'
+        ],
+        projects: [
+          'Anomaly Detection System',
+          'Automated Alerting',
+          'Incident Prediction Model',
+          'Monitoring Dashboard',
+          'Automation Script'
+        ],
+        freeResources: [
+          {
+            title: 'AIOps Resources',
+            url: 'https://www.aiops.org/',
+            description: 'Free AIOps learning resources'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced AIOps techniques',
+        skills: [
+          'Advanced ML Models',
+          'Time Series Analysis',
+          'Root Cause Analysis',
+          'Predictive Analytics',
+          'Automated Remediation',
+          'Performance Optimization',
+          'Team Collaboration',
+          'Project Management',
+          'Security & Compliance',
+          'Scalability'
+        ],
+        projects: [
+          'Predictive Maintenance System',
+          'Root Cause Analysis Tool',
+          'Automated Remediation',
+          'Performance Optimization',
+          'Security Monitoring'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead AIOps initiatives and teams',
+        skills: [
+          'AIOps Strategy & Planning',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'AIOps Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive AIOps strategy and innovation',
+        skills: [
+          'AIOps Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'AIOps Strategy Implementation',
+          'Advanced AIOps Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  healthcare: {
+    title: 'Healthcare Technology Engineer',
+    icon: Code,
+    color: 'from-red-500 to-pink-500',
+    description: 'Develop technology solutions for healthcare and medical applications',
+    demand: 'Very High',
+    salary: 'High',
+    companies: ['Epic', 'Cerner', 'Google Health', 'Microsoft Health', 'Amazon Health'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn healthcare technology fundamentals',
+        skills: [
+          'Healthcare Systems',
+          'Medical Data Standards (HL7, FHIR)',
+          'HIPAA Compliance',
+          'Electronic Health Records',
+          'Medical Imaging',
+          'Programming (Python/Java)',
+          'Database Design',
+          'Security & Privacy',
+          'Version Control',
+          'Regulatory Knowledge'
+        ],
+        projects: [
+          'EHR Integration',
+          'Medical Data Dashboard',
+          'HIPAA Compliance Tool',
+          'Medical Imaging Viewer',
+          'Patient Portal'
+        ],
+        freeResources: [
+          {
+            title: 'HL7 FHIR',
+            url: 'https://www.hl7.org/fhir/',
+            description: 'Free healthcare data standards documentation'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master healthcare technology development',
+        skills: [
+          'Advanced Medical Systems',
+          'Telemedicine Platforms',
+          'Medical AI & ML',
+          'Interoperability',
+          'Clinical Workflows',
+          'Team Collaboration',
+          'Project Management',
+          'Quality Assurance',
+          'Regulatory Compliance',
+          'Patient Safety'
+        ],
+        projects: [
+          'Telemedicine Platform',
+          'Medical AI Application',
+          'Interoperability Solution',
+          'Clinical Workflow System',
+          'Quality Assurance Framework'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead healthcare technology initiatives',
+        skills: [
+          'Healthcare Strategy & Planning',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Healthcare Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive healthcare technology strategy and innovation',
+        skills: [
+          'Healthcare Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Healthcare Strategy Implementation',
+          'Advanced Healthcare Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
