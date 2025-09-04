@@ -55,9 +55,16 @@ export const initializeDatabase = async () => {
       
       // Run migrations
       console.log('🔧 Running migrations...')
-      await db.migrate.latest()
-      console.log('✅ Database migrations completed')
-      logger.info('✅ Database migrations completed')
+      try {
+        const migrationResult = await db.migrate.latest()
+        console.log('🔧 Migration result:', migrationResult)
+        console.log('✅ Database migrations completed')
+        logger.info('✅ Database migrations completed')
+      } catch (migrationError) {
+        console.error('❌ Migration failed:', migrationError)
+        logger.error('❌ Migration failed:', migrationError)
+        throw migrationError
+      }
       
       // Run seeds if in development
       if (environment === 'development') {
