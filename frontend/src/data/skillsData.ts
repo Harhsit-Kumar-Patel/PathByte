@@ -2299,5 +2299,259 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  generativeai: {
+    title: 'Generative AI Engineer',
+    icon: Brain,
+    color: 'from-pink-500 to-purple-500',
+    description: 'Build and deploy generative AI models and applications',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['OpenAI', 'Anthropic', 'Google', 'Microsoft', 'Stability AI'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn generative AI fundamentals',
+        skills: [
+          'Python Programming',
+          'Deep Learning Basics',
+          'Transformer Architecture',
+          'Large Language Models',
+          'Text Generation',
+          'Image Generation',
+          'API Integration',
+          'Prompt Engineering',
+          'Version Control',
+          'Cloud Platforms'
+        ],
+        projects: [
+          'Text Generation App',
+          'Image Generation Tool',
+          'Chatbot Implementation',
+          'Content Creation System',
+          'API Integration Project'
+        ],
+        freeResources: [
+          {
+            title: 'Hugging Face Course',
+            url: 'https://huggingface.co/course',
+            description: 'Free course on transformers and NLP'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced generative AI techniques',
+        skills: [
+          'Advanced LLMs',
+          'Fine-tuning Techniques',
+          'Multimodal Models',
+          'Vector Databases',
+          'RAG Systems',
+          'Model Optimization',
+          'Deployment & Scaling',
+          'Evaluation Metrics',
+          'Team Collaboration',
+          'Research Skills'
+        ],
+        projects: [
+          'Custom LLM Fine-tuning',
+          'Multimodal Application',
+          'RAG System Implementation',
+          'Production AI Service',
+          'Research Experiment'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead generative AI initiatives and teams',
+        skills: [
+          'AI Strategy & Planning',
+          'Team Leadership',
+          'Advanced Research',
+          'Model Architecture Design',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'Generative AI Product',
+          'Research Publication',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'AI Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive generative AI strategy and innovation',
+        skills: [
+          'AI Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'AI Strategy Implementation',
+          'Advanced AI Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  computervision: {
+    title: 'Computer Vision Engineer',
+    icon: Brain,
+    color: 'from-cyan-500 to-blue-500',
+    description: 'Build AI systems that can see and understand visual information',
+    demand: 'High',
+    salary: 'Very High',
+    companies: ['Tesla', 'Waymo', 'OpenAI', 'Google', 'Meta'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn computer vision fundamentals',
+        skills: [
+          'Python Programming',
+          'OpenCV',
+          'Image Processing',
+          'Convolutional Neural Networks',
+          'Deep Learning Frameworks',
+          'Data Augmentation',
+          'Object Detection',
+          'Image Classification',
+          'Version Control',
+          'Mathematical Foundations'
+        ],
+        projects: [
+          'Image Classification Model',
+          'Object Detection System',
+          'Face Recognition App',
+          'Image Filtering Tool',
+          'Basic Computer Vision Pipeline'
+        ],
+        freeResources: [
+          {
+            title: 'OpenCV Documentation',
+            url: 'https://opencv.org/',
+            description: 'Comprehensive computer vision library documentation'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced computer vision techniques',
+        skills: [
+          'Advanced CNN Architectures',
+          'Object Detection & Segmentation',
+          'Image Generation',
+          'Video Analysis',
+          '3D Computer Vision',
+          'Real-time Processing',
+          'Model Optimization',
+          'Deployment & Scaling',
+          'Team Collaboration',
+          'Research Skills'
+        ],
+        projects: [
+          'Real-time Object Detection',
+          'Image Segmentation System',
+          'Video Analysis Pipeline',
+          '3D Vision Application',
+          'Production CV Service'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead computer vision initiatives and teams',
+        skills: [
+          'CV Strategy & Planning',
+          'Team Leadership',
+          'Advanced Research',
+          'Model Architecture Design',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'CV Product Development',
+          'Research Publication',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'CV Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive computer vision strategy and innovation',
+        skills: [
+          'CV Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'CV Strategy Implementation',
+          'Advanced CV Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
