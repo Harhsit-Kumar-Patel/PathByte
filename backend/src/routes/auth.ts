@@ -196,8 +196,16 @@ router.get('/test-db', async (_, res) => {
   }
 })
 
+// Test auth routes
+router.get('/test-auth', (_, res) => {
+  res.json({
+    success: true,
+    message: 'Auth routes are working!'
+  })
+})
+
 // Create users table manually
-router.post('/create-users-table', async (_, res) => {
+router.get('/create-users-table', async (_, res) => {
   try {
     console.log('🔧 Creating users table manually...')
     
