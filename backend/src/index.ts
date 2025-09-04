@@ -23,7 +23,12 @@ import roadmapProgressRoutes from './routes/roadmapProgress'
 // Load environment variables
 dotenv.config()
 
+console.log('🔧 Environment loaded')
+console.log('🔧 Process starting...')
+
 const app = express()
+console.log('🔧 Express app created')
+
 // Railway provides PORT environment variable
 const PORT = parseInt(process.env.PORT || '5000', 10)
 
@@ -66,6 +71,12 @@ app.use(morgan('combined', {
     write: (message: string) => logger.info(message.trim())
   }
 }))
+
+// Simple test endpoint
+app.get('/test', (_, res) => {
+  console.log('🧪 Test endpoint hit')
+  res.status(200).json({ message: 'Test endpoint working!' })
+})
 
 // Health check endpoint
 app.get('/health', (_, res) => {
