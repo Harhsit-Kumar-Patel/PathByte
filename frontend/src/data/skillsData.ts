@@ -1408,5 +1408,767 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  dataengineer: {
+    title: 'Data Engineer',
+    icon: Code,
+    color: 'from-teal-500 to-green-500',
+    description: 'Build and maintain data pipelines and infrastructure',
+    demand: 'Very High',
+    salary: 'High',
+    companies: ['Google', 'Meta', 'Netflix', 'Amazon', 'Microsoft'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn data engineering fundamentals',
+        skills: [
+          'Python Programming',
+          'SQL & Database Design',
+          'Data Warehousing',
+          'ETL/ELT Processes',
+          'Big Data Tools (Hadoop, Spark)',
+          'Cloud Platforms (AWS, GCP, Azure)',
+          'Data Modeling',
+          'Version Control',
+          'Linux & Command Line',
+          'Data Quality & Validation'
+        ],
+        projects: [
+          'ETL Pipeline Project',
+          'Data Warehouse Setup',
+          'Data Quality Dashboard',
+          'Cloud Data Pipeline',
+          'Data Integration Project'
+        ],
+        freeResources: [
+          {
+            title: 'Apache Spark Documentation',
+            url: 'https://spark.apache.org/docs/',
+            description: 'Official Apache Spark documentation and tutorials'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master data engineering tools and practices',
+        skills: [
+          'Advanced Big Data Tools',
+          'Stream Processing (Kafka, Flink)',
+          'Data Lake Architecture',
+          'Real-time Data Pipelines',
+          'Data Orchestration (Airflow)',
+          'Containerization (Docker)',
+          'Infrastructure as Code',
+          'Monitoring & Alerting',
+          'Data Security & Privacy',
+          'Performance Optimization'
+        ],
+        projects: [
+          'Real-time Data Pipeline',
+          'Data Lake Implementation',
+          'Stream Processing System',
+          'Data Orchestration Platform',
+          'Multi-cloud Data Architecture'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead data engineering initiatives and teams',
+        skills: [
+          'Data Architecture Design',
+          'Team Leadership',
+          'Project Management',
+          'Advanced Performance Engineering',
+          'Data Governance',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration'
+        ],
+        projects: [
+          'Enterprise Data Platform',
+          'Data Governance Framework',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'Data Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive data engineering strategy and innovation',
+        skills: [
+          'Data Engineering Strategy',
+          'Advanced Architecture',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Data Engineering Strategy',
+          'Advanced Data Platform',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  cloudengineer: {
+    title: 'Cloud Engineer',
+    icon: Code,
+    color: 'from-sky-500 to-blue-500',
+    description: 'Design and manage cloud infrastructure',
+    demand: 'Very High',
+    salary: 'High',
+    companies: ['Amazon', 'Google', 'Microsoft', 'Netflix', 'Uber'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn cloud computing fundamentals',
+        skills: [
+          'Cloud Platforms (AWS/Azure/GCP)',
+          'Linux & Command Line',
+          'Networking Basics',
+          'Virtualization',
+          'Containerization (Docker)',
+          'Infrastructure as Code',
+          'Monitoring & Logging',
+          'Security Fundamentals',
+          'Scripting (Python/Bash)',
+          'Version Control'
+        ],
+        projects: [
+          'Cloud Infrastructure Setup',
+          'Container Deployment',
+          'Monitoring Dashboard',
+          'Infrastructure as Code',
+          'Basic Security Implementation'
+        ],
+        freeResources: [
+          {
+            title: 'AWS Free Tier',
+            url: 'https://aws.amazon.com/free/',
+            description: 'Free AWS services for learning cloud computing'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master cloud services and architecture',
+        skills: [
+          'Advanced Cloud Services',
+          'Kubernetes & Orchestration',
+          'Serverless Architecture',
+          'Multi-cloud Strategies',
+          'Cost Optimization',
+          'Disaster Recovery',
+          'Security & Compliance',
+          'Performance Optimization',
+          'Automation & CI/CD',
+          'Team Collaboration'
+        ],
+        projects: [
+          'Multi-cloud Architecture',
+          'Kubernetes Cluster Setup',
+          'Serverless Application',
+          'Cost Optimization Project',
+          'Disaster Recovery Plan'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead cloud engineering initiatives and teams',
+        skills: [
+          'Cloud Architecture Design',
+          'Team Leadership',
+          'Project Management',
+          'Advanced Security',
+          'Cloud Strategy & Planning',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration'
+        ],
+        projects: [
+          'Enterprise Cloud Platform',
+          'Cloud Security Framework',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'Cloud Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive cloud strategy and innovation',
+        skills: [
+          'Cloud Strategy & Vision',
+          'Advanced Architecture',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Cloud Strategy Implementation',
+          'Advanced Cloud Architecture',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  qaengineer: {
+    title: 'QA Engineer',
+    icon: Code,
+    color: 'from-orange-500 to-red-500',
+    description: 'Ensure software quality through testing',
+    demand: 'High',
+    salary: 'Medium',
+    companies: ['Google', 'Microsoft', 'Amazon', 'Meta', 'Netflix'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn testing fundamentals',
+        skills: [
+          'Testing Principles & Methodologies',
+          'Manual Testing',
+          'Test Case Design',
+          'Bug Tracking & Reporting',
+          'Test Automation Basics',
+          'Selenium WebDriver',
+          'API Testing',
+          'Database Testing',
+          'Version Control',
+          'Agile/Scrum Methodologies'
+        ],
+        projects: [
+          'Test Case Documentation',
+          'Automated Test Suite',
+          'API Testing Project',
+          'Bug Tracking System',
+          'Test Report Dashboard'
+        ],
+        freeResources: [
+          {
+            title: 'Selenium Documentation',
+            url: 'https://selenium-python.readthedocs.io/',
+            description: 'Official Selenium Python documentation'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master test automation and advanced testing',
+        skills: [
+          'Advanced Test Automation',
+          'Performance Testing',
+          'Security Testing',
+          'Mobile Testing',
+          'CI/CD Integration',
+          'Test Framework Design',
+          'Code Quality Analysis',
+          'Test Data Management',
+          'Cross-browser Testing',
+          'Team Collaboration'
+        ],
+        projects: [
+          'Performance Test Suite',
+          'Security Testing Framework',
+          'Mobile Test Automation',
+          'CI/CD Pipeline Integration',
+          'Test Framework Development'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead QA initiatives and teams',
+        skills: [
+          'QA Strategy & Planning',
+          'Team Leadership',
+          'Project Management',
+          'Test Architecture Design',
+          'Quality Metrics & KPIs',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration'
+        ],
+        projects: [
+          'QA Strategy Implementation',
+          'Test Architecture Design',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'Quality Framework Development'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive quality strategy and innovation',
+        skills: [
+          'Quality Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Quality Strategy Implementation',
+          'Advanced Quality Framework',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  blockchain: {
+    title: 'Blockchain Developer',
+    icon: Code,
+    color: 'from-yellow-500 to-orange-500',
+    description: 'Build decentralized applications and smart contracts',
+    demand: 'High',
+    salary: 'Very High',
+    companies: ['Coinbase', 'Ethereum Foundation', 'ConsenSys', 'Chainlink', 'Polygon'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn blockchain fundamentals',
+        skills: [
+          'Blockchain Basics',
+          'Cryptocurrency Concepts',
+          'Smart Contracts (Solidity)',
+          'Web3 Development',
+          'Ethereum Platform',
+          'Decentralized Applications (DApps)',
+          'Cryptography Basics',
+          'Node.js & JavaScript',
+          'Version Control',
+          'Testing & Debugging'
+        ],
+        projects: [
+          'Simple Smart Contract',
+          'Basic DApp',
+          'Token Contract',
+          'NFT Project',
+          'DeFi Application (Basic)'
+        ],
+        freeResources: [
+          {
+            title: 'Ethereum Documentation',
+            url: 'https://ethereum.org/developers/',
+            description: 'Official Ethereum development documentation'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master blockchain development tools and practices',
+        skills: [
+          'Advanced Smart Contracts',
+          'Multiple Blockchain Platforms',
+          'DeFi Protocols',
+          'NFT Development',
+          'Cross-chain Development',
+          'Security Best Practices',
+          'Gas Optimization',
+          'Frontend Integration',
+          'Testing Frameworks',
+          'Team Collaboration'
+        ],
+        projects: [
+          'Complex DeFi Protocol',
+          'NFT Marketplace',
+          'Cross-chain Bridge',
+          'DAO Implementation',
+          'Advanced DApp'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead blockchain development initiatives and teams',
+        skills: [
+          'Blockchain Architecture Design',
+          'Team Leadership',
+          'Project Management',
+          'Advanced Security',
+          'Protocol Development',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration'
+        ],
+        projects: [
+          'Blockchain Protocol',
+          'Enterprise Blockchain Solution',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'Blockchain Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive blockchain strategy and innovation',
+        skills: [
+          'Blockchain Strategy & Vision',
+          'Advanced Architecture',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Blockchain Strategy Implementation',
+          'Advanced Blockchain Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  productmanager: {
+    title: 'Product Manager',
+    icon: Code,
+    color: 'from-indigo-500 to-purple-500',
+    description: 'Lead product strategy and development',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['Google', 'Meta', 'Amazon', 'Microsoft', 'Apple'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn product management fundamentals',
+        skills: [
+          'Product Strategy & Planning',
+          'User Research & Analysis',
+          'Market Research',
+          'Data Analysis & Metrics',
+          'Agile/Scrum Methodologies',
+          'Stakeholder Management',
+          'Communication Skills',
+          'Project Management',
+          'Business Analysis',
+          'Technical Understanding'
+        ],
+        projects: [
+          'Product Requirements Document',
+          'User Persona Development',
+          'Market Analysis Report',
+          'Feature Prioritization',
+          'Product Roadmap'
+        ],
+        freeResources: [
+          {
+            title: 'Product Management Resources',
+            url: 'https://www.productplan.com/',
+            description: 'Comprehensive product management guides and templates'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master product management tools and practices',
+        skills: [
+          'Advanced Analytics',
+          'A/B Testing & Experimentation',
+          'Cross-functional Leadership',
+          'Product Launch Management',
+          'Customer Success',
+          'Competitive Analysis',
+          'Financial Modeling',
+          'Team Management',
+          'Strategic Thinking',
+          'Innovation & Creativity'
+        ],
+        projects: [
+          'Product Launch Strategy',
+          'A/B Testing Program',
+          'Customer Success Initiative',
+          'Competitive Analysis',
+          'Product Innovation Project'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead product initiatives and teams',
+        skills: [
+          'Product Strategy & Vision',
+          'Team Leadership',
+          'Advanced Project Management',
+          'Business Strategy',
+          'Product Portfolio Management',
+          'Technical Leadership',
+          'Code Reviews & Mentoring',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'Product Strategy Implementation',
+          'Team Leadership Program',
+          'Product Portfolio Management',
+          'Technical Leadership',
+          'Business Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive product strategy and innovation',
+        skills: [
+          'Product Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Product Strategy Implementation',
+          'Advanced Product Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  technicalwriter: {
+    title: 'Technical Writer',
+    icon: Code,
+    color: 'from-green-500 to-teal-500',
+    description: 'Create clear technical documentation and content',
+    demand: 'High',
+    salary: 'Medium',
+    companies: ['Google', 'Microsoft', 'Amazon', 'Meta', 'GitHub'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn technical writing fundamentals',
+        skills: [
+          'Technical Writing Principles',
+          'Documentation Tools',
+          'API Documentation',
+          'User Guides & Manuals',
+          'Content Management Systems',
+          'Version Control',
+          'Collaboration Tools',
+          'Research & Analysis',
+          'Communication Skills',
+          'Basic Programming'
+        ],
+        projects: [
+          'API Documentation',
+          'User Manual',
+          'Technical Guide',
+          'Tutorial Series',
+          'Knowledge Base'
+        ],
+        freeResources: [
+          {
+            title: 'Technical Writing Resources',
+            url: 'https://developers.google.com/tech-writing',
+            description: 'Google\'s technical writing course and resources'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master technical writing tools and practices',
+        skills: [
+          'Advanced Documentation Tools',
+          'Content Strategy',
+          'Information Architecture',
+          'User Experience Writing',
+          'Multimedia Content',
+          'Translation & Localization',
+          'Quality Assurance',
+          'Team Collaboration',
+          'Project Management',
+          'Analytics & Metrics'
+        ],
+        projects: [
+          'Content Strategy Implementation',
+          'Multimedia Documentation',
+          'Localization Project',
+          'Quality Assurance Program',
+          'Analytics Dashboard'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead technical writing initiatives and teams',
+        skills: [
+          'Content Strategy & Planning',
+          'Team Leadership',
+          'Project Management',
+          'Advanced Information Architecture',
+          'Technical Leadership',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'Content Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Innovation Project'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive content strategy and innovation',
+        skills: [
+          'Content Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Content Strategy Implementation',
+          'Advanced Content Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
