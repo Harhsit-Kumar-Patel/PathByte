@@ -1281,5 +1281,132 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  game: {
+    title: 'Game Developer',
+    icon: Code,
+    color: 'from-red-500 to-pink-500',
+    description: 'Create engaging games and interactive experiences',
+    demand: 'Medium',
+    salary: 'Medium',
+    companies: ['Epic Games', 'Unity', 'Electronic Arts', 'Activision', 'Nintendo'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn game development fundamentals',
+        skills: [
+          'Game Engines (Unity/Unreal/Godot)',
+          'Programming (C#/C++/JavaScript)',
+          'Game Design Principles',
+          '2D/3D Graphics Basics',
+          'Game Physics',
+          'Audio Integration',
+          'User Interface Design',
+          'Version Control',
+          'Game Testing',
+          'Basic Animation'
+        ],
+        projects: [
+          'Simple 2D Game',
+          'Platformer Game',
+          'Puzzle Game',
+          'Arcade Game',
+          'Mobile Game (Basic)'
+        ],
+        freeResources: [
+          {
+            title: 'Unity Learn',
+            url: 'https://learn.unity.com/',
+            description: 'Free Unity game development tutorials'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master game development tools and techniques',
+        skills: [
+          'Advanced Game Engines',
+          '3D Modeling & Animation',
+          'Game AI & Pathfinding',
+          'Multiplayer Development',
+          'Performance Optimization',
+          'Game Analytics',
+          'Monetization Strategies',
+          'Platform Deployment',
+          'Game Architecture',
+          'Team Collaboration'
+        ],
+        projects: [
+          '3D Adventure Game',
+          'Multiplayer Game',
+          'Mobile Game (Advanced)',
+          'VR/AR Game',
+          'Indie Game Release'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead game development projects and teams',
+        skills: [
+          'Game Architecture Design',
+          'Team Leadership',
+          'Project Management',
+          'Advanced Graphics Programming',
+          'Game Engine Development',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-platform Development'
+        ],
+        projects: [
+          'AAA Game Project',
+          'Game Engine Features',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'Game Studio Setup'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive game development strategy and innovation',
+        skills: [
+          'Game Development Strategy',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Game Development Strategy',
+          'Advanced Game Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
