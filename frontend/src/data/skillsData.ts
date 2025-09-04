@@ -2172,5 +2172,132 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  aispecialist: {
+    title: 'AI Specialist',
+    icon: Brain,
+    color: 'from-purple-500 to-indigo-500',
+    description: 'Develop cutting-edge artificial intelligence solutions',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['OpenAI', 'Google', 'Microsoft', 'Meta', 'Anthropic'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn AI fundamentals and basic implementations',
+        skills: [
+          'Python Programming',
+          'Machine Learning Basics',
+          'Neural Networks',
+          'Deep Learning Frameworks (TensorFlow/PyTorch)',
+          'Data Preprocessing',
+          'Statistical Analysis',
+          'Linear Algebra & Calculus',
+          'Probability & Statistics',
+          'Version Control',
+          'Jupyter Notebooks'
+        ],
+        projects: [
+          'Image Classification Model',
+          'Text Sentiment Analysis',
+          'Basic Chatbot',
+          'Data Visualization Dashboard',
+          'Simple Recommendation System'
+        ],
+        freeResources: [
+          {
+            title: 'Fast.ai',
+            url: 'https://www.fast.ai/',
+            description: 'Free practical deep learning course'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced AI techniques and real-world applications',
+        skills: [
+          'Advanced Deep Learning',
+          'Natural Language Processing',
+          'Computer Vision',
+          'Reinforcement Learning',
+          'Model Optimization',
+          'Cloud AI Services',
+          'MLOps & Deployment',
+          'A/B Testing',
+          'Team Collaboration',
+          'Research Skills'
+        ],
+        projects: [
+          'Advanced NLP Model',
+          'Computer Vision Application',
+          'ML Pipeline System',
+          'AI-powered Web App',
+          'Research Paper Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead AI initiatives and drive innovation',
+        skills: [
+          'AI Strategy & Planning',
+          'Team Leadership',
+          'Advanced Research',
+          'Model Architecture Design',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'AI Product Development',
+          'Research Publication',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'AI Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive AI strategy and industry innovation',
+        skills: [
+          'AI Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'AI Strategy Implementation',
+          'Advanced AI Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
