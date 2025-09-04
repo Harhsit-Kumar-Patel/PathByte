@@ -2553,5 +2553,259 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  nlpengineer: {
+    title: 'NLP Engineer',
+    icon: Brain,
+    color: 'from-green-500 to-teal-500',
+    description: 'Build AI systems that understand and generate human language',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['OpenAI', 'Google', 'Microsoft', 'Meta', 'Anthropic'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn NLP fundamentals and basic implementations',
+        skills: [
+          'Python Programming',
+          'Text Processing',
+          'Regular Expressions',
+          'NLTK & spaCy',
+          'Word Embeddings',
+          'Text Classification',
+          'Sentiment Analysis',
+          'Named Entity Recognition',
+          'Version Control',
+          'Statistical Methods'
+        ],
+        projects: [
+          'Text Classification Model',
+          'Sentiment Analysis Tool',
+          'Named Entity Recognition',
+          'Text Summarization',
+          'Basic Chatbot'
+        ],
+        freeResources: [
+          {
+            title: 'NLTK Book',
+            url: 'https://www.nltk.org/book/',
+            description: 'Free comprehensive NLP textbook'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced NLP techniques and real-world applications',
+        skills: [
+          'Transformer Models',
+          'Large Language Models',
+          'Fine-tuning Techniques',
+          'Text Generation',
+          'Question Answering',
+          'Machine Translation',
+          'Model Optimization',
+          'Deployment & Scaling',
+          'Team Collaboration',
+          'Research Skills'
+        ],
+        projects: [
+          'Custom Language Model',
+          'Question Answering System',
+          'Machine Translation App',
+          'Text Generation Service',
+          'Production NLP Pipeline'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead NLP initiatives and drive innovation',
+        skills: [
+          'NLP Strategy & Planning',
+          'Team Leadership',
+          'Advanced Research',
+          'Model Architecture Design',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'NLP Product Development',
+          'Research Publication',
+          'Team Mentoring Program',
+          'Technical Leadership',
+          'NLP Strategy Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive NLP strategy and industry innovation',
+        skills: [
+          'NLP Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'NLP Strategy Implementation',
+          'Advanced NLP Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  techmanager: {
+    title: 'Tech Manager',
+    icon: Code,
+    color: 'from-indigo-500 to-purple-500',
+    description: 'Lead technical teams and drive engineering excellence',
+    demand: 'High',
+    salary: 'Very High',
+    companies: ['Google', 'Meta', 'Amazon', 'Microsoft', 'Netflix'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn technical management fundamentals',
+        skills: [
+          'Technical Leadership',
+          'Team Management',
+          'Project Management',
+          'Communication Skills',
+          'Agile/Scrum Methodologies',
+          'Code Reviews',
+          'Technical Documentation',
+          'Stakeholder Management',
+          'Performance Management',
+          'Technical Decision Making'
+        ],
+        projects: [
+          'Team Lead Project',
+          'Process Improvement Initiative',
+          'Technical Documentation',
+          'Team Mentoring Program',
+          'Cross-functional Collaboration'
+        ],
+        freeResources: [
+          {
+            title: 'Manager Tools',
+            url: 'https://www.manager-tools.com/',
+            description: 'Free management resources and podcasts'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master technical management practices',
+        skills: [
+          'Advanced Team Leadership',
+          'Strategic Planning',
+          'Budget Management',
+          'Hiring & Recruitment',
+          'Performance Reviews',
+          'Conflict Resolution',
+          'Technical Architecture',
+          'Process Optimization',
+          'Cross-team Collaboration',
+          'Executive Communication'
+        ],
+        projects: [
+          'Team Scaling Initiative',
+          'Technical Strategy Implementation',
+          'Hiring & Onboarding Program',
+          'Process Standardization',
+          'Cross-team Project'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead large technical organizations',
+        skills: [
+          'Organizational Leadership',
+          'Strategic Vision',
+          'Advanced Project Management',
+          'Business Strategy',
+          'Technical Innovation',
+          'Change Management',
+          'Executive Leadership',
+          'Industry Knowledge',
+          'Cross-functional Leadership',
+          'Board Communication'
+        ],
+        projects: [
+          'Organizational Transformation',
+          'Strategic Initiative',
+          'Technical Innovation Program',
+          'Executive Leadership',
+          'Industry Leadership'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive technical strategy and industry leadership',
+        skills: [
+          'Technical Strategy & Vision',
+          'Advanced Leadership',
+          'Organizational Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Technical Strategy Implementation',
+          'Advanced Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program',
+          'Technical Vision'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
