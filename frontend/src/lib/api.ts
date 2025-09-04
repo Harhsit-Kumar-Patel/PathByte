@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Set the API base URL to point to the backend server (without /api suffix)
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://pathbyte-production.up.railway.app'
 
 // Debug logging
 console.log('🔧 Environment variables:', import.meta.env)
