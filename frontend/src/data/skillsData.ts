@@ -4585,5 +4585,224 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+
+  web3developer: {
+    title: 'Web3 Developer',
+    icon: Code,
+    color: 'from-orange-500 to-yellow-500',
+    description: 'Build decentralized applications and smart contracts on blockchain networks',
+    demand: 'High',
+    salary: 'Very High',
+    companies: ['Ethereum Foundation', 'ConsenSys', 'Chainlink', 'Polygon', 'Solana Labs', 'OpenSea', 'Uniswap Labs', 'Aave', 'Compound'],
+    certifications: [
+      'Certified Blockchain Developer (CBD)',
+      'Ethereum Developer Certification',
+      'Solidity Developer Certification',
+      'Web3 Security Certification'
+    ],
+    youtubePlaylists: [
+      {
+        title: 'Web3 Development Tutorials',
+        url: 'https://www.youtube.com/playlist?list=PLgPmWS2dQ8BjX1l0LdKz7jqjqjqjqjqjqj',
+        description: 'Complete Web3 development course'
+      },
+      {
+        title: 'Smart Contract Development',
+        url: 'https://www.youtube.com/playlist?list=PLgPmWS2dQ8BjX1l0LdKz7jqjqjqjqjqjqj',
+        description: 'Learn Solidity and smart contract best practices'
+      }
+    ],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn blockchain fundamentals and basic smart contract development',
+        skills: [
+          'Blockchain Fundamentals',
+          'Cryptocurrency Basics',
+          'Ethereum Network',
+          'Solidity Programming',
+          'Smart Contract Basics',
+          'Web3.js Library',
+          'MetaMask Integration',
+          'Truffle Framework',
+          'Hardhat Development',
+          'Git Version Control'
+        ],
+        projects: [
+          'Hello World Smart Contract',
+          'Simple Token Contract',
+          'Basic DApp Frontend',
+          'Wallet Connection App',
+          'Token Transfer DApp'
+        ],
+        freeResources: [
+          {
+            title: 'Ethereum.org Developer Resources',
+            url: 'https://ethereum.org/developers/',
+            description: 'Official Ethereum development documentation'
+          },
+          {
+            title: 'Solidity Documentation',
+            url: 'https://docs.soliditylang.org/',
+            description: 'Complete Solidity programming language reference'
+          },
+          {
+            title: 'Web3.js Documentation',
+            url: 'https://web3js.readthedocs.io/',
+            description: 'JavaScript library for Ethereum interaction'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Ethereum and Solidity: The Complete Developer\'s Guide',
+            url: 'https://www.udemy.com/course/ethereum-and-solidity-the-complete-developers-guide/',
+            description: 'Comprehensive Udemy course on Ethereum development'
+          }
+        ],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced smart contract development and DeFi protocols',
+        skills: [
+          'Advanced Solidity Patterns',
+          'DeFi Protocol Development',
+          'NFT Standards (ERC-721, ERC-1155)',
+          'Token Standards (ERC-20, ERC-777)',
+          'Smart Contract Security',
+          'Gas Optimization',
+          'Layer 2 Solutions',
+          'IPFS Integration',
+          'Oracle Integration',
+          'Multi-signature Wallets'
+        ],
+        projects: [
+          'DeFi Lending Protocol',
+          'NFT Marketplace',
+          'DAO Governance System',
+          'Cross-chain Bridge',
+          'Yield Farming DApp'
+        ],
+        freeResources: [
+          {
+            title: 'OpenZeppelin Contracts',
+            url: 'https://openzeppelin.com/contracts/',
+            description: 'Secure smart contract library'
+          },
+          {
+            title: 'ConsenSys Academy',
+            url: 'https://consensys.net/academy/',
+            description: 'Free blockchain education resources'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'DeFi and the Future of Finance',
+            url: 'https://www.coursera.org/learn/defi',
+            description: 'Coursera course on decentralized finance'
+          }
+        ],
+        certifications: [
+          'Certified Blockchain Developer (CBD)'
+        ],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead complex Web3 projects and architect decentralized systems',
+        skills: [
+          'Cross-chain Development',
+          'Layer 2 Scaling Solutions',
+          'Zero-Knowledge Proofs',
+          'MEV (Maximal Extractable Value)',
+          'Advanced Cryptography',
+          'Consensus Mechanisms',
+          'Smart Contract Auditing',
+          'Protocol Design',
+          'Tokenomics Design',
+          'Governance Mechanisms'
+        ],
+        projects: [
+          'Multi-chain DeFi Protocol',
+          'Privacy-focused DApp',
+          'Custom Blockchain Network',
+          'Advanced DAO System',
+          'Web3 Infrastructure Tool'
+        ],
+        freeResources: [
+          {
+            title: 'Ethereum Research',
+            url: 'https://ethresear.ch/',
+            description: 'Ethereum research and development discussions'
+          },
+          {
+            title: 'Vitalik Buterin\'s Blog',
+            url: 'https://vitalik.ca/',
+            description: 'Ethereum founder\'s technical writings'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Blockchain Development',
+            url: 'https://www.pluralsight.com/courses/advanced-blockchain-development',
+            description: 'Advanced blockchain development course'
+          }
+        ],
+        certifications: [
+          'Ethereum Developer Certification',
+          'Solidity Developer Certification'
+        ],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Lead/Principal Level)',
+        goal: 'Shape the future of Web3 and lead industry innovation',
+        skills: [
+          'Protocol Architecture',
+          'Cryptoeconomic Design',
+          'Advanced ZK Proofs',
+          'Quantum-resistant Cryptography',
+          'Regulatory Compliance',
+          'Ecosystem Development',
+          'Research and Innovation',
+          'Technical Leadership',
+          'Industry Standards',
+          'Mentoring and Education'
+        ],
+        projects: [
+          'Next-generation Blockchain',
+          'Revolutionary DeFi Protocol',
+          'Web3 Infrastructure Platform',
+          'Industry Standard Framework',
+          'Open Source Ecosystem'
+        ],
+        freeResources: [
+          {
+            title: 'Ethereum Improvement Proposals',
+            url: 'https://eips.ethereum.org/',
+            description: 'Ethereum protocol improvement proposals'
+          },
+          {
+            title: 'Web3 Foundation Research',
+            url: 'https://research.web3.foundation/',
+            description: 'Cutting-edge Web3 research'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Blockchain Executive Program',
+            url: 'https://www.mit.edu/executive-education/blockchain',
+            description: 'MIT executive program on blockchain'
+          }
+        ],
+        certifications: [
+          'Web3 Security Certification',
+          'Blockchain Architecture Certification'
+        ],
+        youtubePlaylists: []
+      }
+    }
   }
 }

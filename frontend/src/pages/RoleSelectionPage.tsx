@@ -199,11 +199,11 @@ export default function RoleSelectionPage() {
       category: 'blockchain'
     },
     { 
-      key: 'web3', 
+      key: 'web3developer', 
       label: 'Web3 Developer', 
       icon: Code,
-      description: 'Develop decentralized applications and web applications',
-      color: 'from-blue-500 to-indigo-500',
+      description: 'Build decentralized applications and smart contracts on blockchain networks',
+      color: 'from-orange-500 to-yellow-500',
       category: 'blockchain'
     },
     { 
