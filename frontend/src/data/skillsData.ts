@@ -2807,5 +2807,767 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  sre: {
+    title: 'Site Reliability Engineer',
+    icon: Code,
+    color: 'from-orange-500 to-red-500',
+    description: 'Ensure system reliability and performance at scale',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['Google', 'Netflix', 'Amazon', 'Microsoft', 'Uber'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn SRE fundamentals and monitoring',
+        skills: [
+          'Linux & Command Line',
+          'Monitoring & Alerting',
+          'Incident Response',
+          'Automation & Scripting',
+          'Cloud Platforms',
+          'Containerization (Docker)',
+          'Orchestration (Kubernetes)',
+          'Infrastructure as Code',
+          'Version Control',
+          'Basic Programming'
+        ],
+        projects: [
+          'Monitoring Dashboard Setup',
+          'Automation Script',
+          'Incident Response Plan',
+          'Infrastructure as Code',
+          'Basic Alerting System'
+        ],
+        freeResources: [
+          {
+            title: 'Google SRE Book',
+            url: 'https://sre.google/sre-book/table-of-contents/',
+            description: 'Free comprehensive SRE guide from Google'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master SRE practices and tools',
+        skills: [
+          'Advanced Monitoring',
+          'Service Level Objectives',
+          'Error Budgets',
+          'Chaos Engineering',
+          'Performance Optimization',
+          'Capacity Planning',
+          'Disaster Recovery',
+          'Security & Compliance',
+          'Team Collaboration',
+          'Advanced Automation'
+        ],
+        projects: [
+          'SLO Implementation',
+          'Chaos Engineering Program',
+          'Performance Optimization',
+          'Disaster Recovery Plan',
+          'Advanced Automation System'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead SRE initiatives and teams',
+        skills: [
+          'SRE Strategy & Planning',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Leadership'
+        ],
+        projects: [
+          'SRE Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive SRE strategy and industry innovation',
+        skills: [
+          'SRE Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'SRE Strategy Implementation',
+          'Advanced SRE Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  cto: {
+    title: 'Chief Technology Officer',
+    icon: Code,
+    color: 'from-purple-500 to-indigo-500',
+    description: 'Lead technology strategy and innovation at the executive level',
+    demand: 'High',
+    salary: 'Very High',
+    companies: ['Google', 'Meta', 'Amazon', 'Microsoft', 'Apple'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn technology leadership fundamentals',
+        skills: [
+          'Technical Leadership',
+          'Strategic Thinking',
+          'Business Acumen',
+          'Communication Skills',
+          'Project Management',
+          'Team Management',
+          'Technology Trends',
+          'Financial Understanding',
+          'Stakeholder Management',
+          'Decision Making'
+        ],
+        projects: [
+          'Technology Strategy Document',
+          'Team Leadership Initiative',
+          'Technical Decision Framework',
+          'Business Case Development',
+          'Stakeholder Communication'
+        ],
+        freeResources: [
+          {
+            title: 'CTO Resources',
+            url: 'https://cto.academy/',
+            description: 'Free resources for technology leaders'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master technology leadership practices',
+        skills: [
+          'Advanced Strategic Planning',
+          'Organizational Leadership',
+          'Technology Architecture',
+          'Innovation Management',
+          'Budget & Resource Management',
+          'Hiring & Talent Development',
+          'Partnership & Vendor Management',
+          'Risk Management',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Technology Roadmap',
+          'Organizational Transformation',
+          'Innovation Program',
+          'Talent Development Initiative',
+          'Strategic Partnership'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead technology organizations',
+        skills: [
+          'Executive Leadership',
+          'Strategic Vision',
+          'Advanced Business Strategy',
+          'Technology Innovation',
+          'Change Management',
+          'Board Communication',
+          'Industry Leadership',
+          'Cross-functional Leadership',
+          'Global Perspective',
+          'Crisis Management'
+        ],
+        projects: [
+          'Technology Strategy Implementation',
+          'Organizational Leadership',
+          'Innovation Leadership',
+          'Industry Leadership',
+          'Crisis Management'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive technology strategy and industry innovation',
+        skills: [
+          'Technology Strategy & Vision',
+          'Advanced Leadership',
+          'Organizational Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Technology Strategy Implementation',
+          'Advanced Technology Leadership',
+          'Industry Innovation',
+          'Mentoring Program',
+          'Technical Vision'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  systemprogrammer: {
+    title: 'Systems Programmer',
+    icon: Code,
+    color: 'from-gray-500 to-slate-500',
+    description: 'Build low-level systems and infrastructure software',
+    demand: 'Medium',
+    salary: 'High',
+    companies: ['Google', 'Microsoft', 'Amazon', 'Intel', 'NVIDIA'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn systems programming fundamentals',
+        skills: [
+          'C/C++ Programming',
+          'Assembly Language',
+          'Operating Systems',
+          'Memory Management',
+          'Process Management',
+          'File Systems',
+          'Network Programming',
+          'Debugging Tools',
+          'Version Control',
+          'Build Systems'
+        ],
+        projects: [
+          'Custom Shell Implementation',
+          'Memory Allocator',
+          'File System Utility',
+          'Network Protocol Implementation',
+          'Basic Operating System Component'
+        ],
+        freeResources: [
+          {
+            title: 'OS Dev Wiki',
+            url: 'https://wiki.osdev.org/',
+            description: 'Free operating system development resources'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced systems programming',
+        skills: [
+          'Advanced C/C++',
+          'Kernel Development',
+          'Device Drivers',
+          'Performance Optimization',
+          'Concurrent Programming',
+          'Distributed Systems',
+          'Security Programming',
+          'Hardware Interaction',
+          'Team Collaboration',
+          'Code Optimization'
+        ],
+        projects: [
+          'Kernel Module',
+          'Device Driver',
+          'High-Performance Application',
+          'Distributed System Component',
+          'Security Tool'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead systems programming initiatives',
+        skills: [
+          'Systems Architecture',
+          'Team Leadership',
+          'Advanced Performance',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Systems Architecture Design',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive systems programming strategy and innovation',
+        skills: [
+          'Systems Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Systems Strategy Implementation',
+          'Advanced Systems Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  networkengineer: {
+    title: 'Network Engineer',
+    icon: Code,
+    color: 'from-blue-500 to-cyan-500',
+    description: 'Design and maintain network infrastructure and connectivity',
+    demand: 'High',
+    salary: 'High',
+    companies: ['Cisco', 'Juniper', 'Amazon', 'Google', 'Microsoft'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn networking fundamentals',
+        skills: [
+          'TCP/IP Protocol Suite',
+          'Network Topologies',
+          'Routing & Switching',
+          'Network Security',
+          'Wireless Technologies',
+          'Network Monitoring',
+          'Troubleshooting',
+          'Documentation',
+          'Version Control',
+          'Basic Programming'
+        ],
+        projects: [
+          'Home Network Setup',
+          'Network Monitoring Dashboard',
+          'Security Policy Implementation',
+          'Troubleshooting Guide',
+          'Network Documentation'
+        ],
+        freeResources: [
+          {
+            title: 'Cisco Learning Network',
+            url: 'https://learningnetwork.cisco.com/',
+            description: 'Free networking resources and courses'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced networking concepts',
+        skills: [
+          'Advanced Routing Protocols',
+          'Network Design',
+          'Cloud Networking',
+          'SDN & NFV',
+          'Network Automation',
+          'Performance Optimization',
+          'Security Implementation',
+          'Team Collaboration',
+          'Project Management',
+          'Vendor Management'
+        ],
+        projects: [
+          'Enterprise Network Design',
+          'Cloud Network Migration',
+          'SDN Implementation',
+          'Network Automation Script',
+          'Security Framework'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead network engineering initiatives',
+        skills: [
+          'Network Architecture',
+          'Team Leadership',
+          'Strategic Planning',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Network Architecture Design',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive network strategy and innovation',
+        skills: [
+          'Network Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Network Strategy Implementation',
+          'Advanced Network Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  databaseadmin: {
+    title: 'Database Administrator',
+    icon: Code,
+    color: 'from-green-500 to-emerald-500',
+    description: 'Manage and optimize database systems and performance',
+    demand: 'High',
+    salary: 'High',
+    companies: ['Oracle', 'Microsoft', 'Amazon', 'Google', 'MongoDB'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn database administration fundamentals',
+        skills: [
+          'SQL & Database Design',
+          'Database Installation & Configuration',
+          'Backup & Recovery',
+          'Performance Monitoring',
+          'Security & Access Control',
+          'Database Maintenance',
+          'Troubleshooting',
+          'Documentation',
+          'Version Control',
+          'Basic Programming'
+        ],
+        projects: [
+          'Database Setup & Configuration',
+          'Backup & Recovery System',
+          'Performance Monitoring Dashboard',
+          'Security Implementation',
+          'Database Documentation'
+        ],
+        freeResources: [
+          {
+            title: 'SQLBolt',
+            url: 'https://sqlbolt.com/',
+            description: 'Free interactive SQL tutorial'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced database administration',
+        skills: [
+          'Advanced SQL & Optimization',
+          'Database Clustering',
+          'Cloud Database Services',
+          'Automation & Scripting',
+          'High Availability',
+          'Disaster Recovery',
+          'Security & Compliance',
+          'Team Collaboration',
+          'Project Management',
+          'Vendor Management'
+        ],
+        projects: [
+          'Database Clustering Setup',
+          'Cloud Migration Project',
+          'Automation Scripts',
+          'High Availability Implementation',
+          'Compliance Framework'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead database administration initiatives',
+        skills: [
+          'Database Architecture',
+          'Team Leadership',
+          'Strategic Planning',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Database Architecture Design',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive database strategy and innovation',
+        skills: [
+          'Database Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Database Strategy Implementation',
+          'Advanced Database Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  embeddedengineer: {
+    title: 'Embedded Systems Engineer',
+    icon: Code,
+    color: 'from-amber-500 to-orange-500',
+    description: 'Develop software for embedded systems and IoT devices',
+    demand: 'High',
+    salary: 'High',
+    companies: ['Intel', 'ARM', 'Qualcomm', 'NVIDIA', 'Tesla'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn embedded systems fundamentals',
+        skills: [
+          'C/C++ Programming',
+          'Microcontrollers',
+          'Real-time Systems',
+          'Hardware Interfaces',
+          'Debugging Tools',
+          'Memory Management',
+          'Interrupts & Timers',
+          'Communication Protocols',
+          'Version Control',
+          'Basic Electronics'
+        ],
+        projects: [
+          'LED Control System',
+          'Sensor Interface',
+          'Communication Protocol Implementation',
+          'Real-time Task Scheduler',
+          'Basic IoT Device'
+        ],
+        freeResources: [
+          {
+            title: 'Embedded Systems Course',
+            url: 'https://www.edx.org/',
+            description: 'Free embedded systems courses'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced embedded systems development',
+        skills: [
+          'Advanced C/C++',
+          'RTOS (FreeRTOS, Zephyr)',
+          'Device Drivers',
+          'Power Management',
+          'Security Implementation',
+          'Testing & Validation',
+          'Team Collaboration',
+          'Project Management',
+          'Hardware Design',
+          'Performance Optimization'
+        ],
+        projects: [
+          'RTOS Application',
+          'Device Driver Development',
+          'Power Management System',
+          'Security Framework',
+          'Testing Suite'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead embedded systems initiatives',
+        skills: [
+          'Embedded Architecture',
+          'Team Leadership',
+          'Strategic Planning',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Embedded Architecture Design',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive embedded systems strategy and innovation',
+        skills: [
+          'Embedded Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Embedded Strategy Implementation',
+          'Advanced Embedded Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
