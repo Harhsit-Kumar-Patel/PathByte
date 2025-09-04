@@ -7,21 +7,17 @@ RUN apk add --no-cache curl
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-COPY backend/package*.json ./backend/
-
-# Install root dependencies
-RUN npm ci
+# Copy backend package files
+COPY backend/package*.json ./
 
 # Install backend dependencies
-RUN cd backend && npm ci
+RUN npm ci
 
-# Copy source code
-COPY backend/ ./backend/
+# Copy backend source code
+COPY backend/ ./
 
 # Build the application
-RUN cd backend && npm run build
+RUN npm run build
 
 # Expose port
 EXPOSE 5000
@@ -31,5 +27,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:5000/health || exit 1
 
 # Start the application
-WORKDIR /app/backend
 CMD ["npm", "start"]

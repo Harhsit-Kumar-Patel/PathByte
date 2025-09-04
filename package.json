@@ -4,9 +4,8 @@
   "description": "PathByte - Tech Stack Recommendation Engine",
   "private": true,
   "scripts": {
-    "build": "cd backend && npm ci && npm run build",
-    "start": "cd backend && npm start",
-    "postinstall": "cd backend && npm ci"
+    "build": "cd backend && npm install && npm run build",
+    "start": "cd backend && npm start"
   },
   "engines": {
     "node": ">=20.0.0"
