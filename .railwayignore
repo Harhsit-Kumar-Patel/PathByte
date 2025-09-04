@@ -1,0 +1,27 @@
+# Railway ignore file
+# This ensures Railway uses Dockerfile instead of nixpacks
+
+# Ignore frontend files
+frontend/
+frontend/**
+
+# Ignore documentation
+*.md
+docs/
+
+# Ignore development files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore development scripts
+deploy.bat
+deploy.sh
+start-database.bat
+stop-database.bat
