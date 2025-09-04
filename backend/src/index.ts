@@ -27,6 +27,14 @@ const app = express()
 // Railway provides PORT environment variable
 const PORT = parseInt(process.env.PORT || '5000', 10)
 
+// Log the port being used
+console.log('🚀 Starting server on port:', PORT)
+console.log('🌐 Environment variables:', {
+  NODE_ENV: process.env.NODE_ENV,
+  PORT: process.env.PORT,
+  DATABASE_URL: process.env.DATABASE_URL ? 'Set' : 'Not set'
+})
+
 // Security middleware
 app.use(helmet())
 
@@ -61,6 +69,7 @@ app.use(morgan('combined', {
 
 // Health check endpoint
 app.get('/health', (_, res) => {
+  console.log('🏥 Health check requested')
   // Set CORS headers explicitly for the health endpoint
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Methods', 'GET')
@@ -71,6 +80,7 @@ app.get('/health', (_, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     environment: process.env['NODE_ENV'] || 'development',
+    port: PORT,
     message: 'PathByte Backend is running successfully!'
   })
 })
@@ -92,6 +102,11 @@ app.use(errorHandler)
 
 // Start server
 app.listen(PORT, '0.0.0.0', async () => {
+  console.log(`🚀 PathByte API server running on port ${PORT}`)
+  console.log(`📊 Environment: ${process.env['NODE_ENV'] || 'development'}`)
+  console.log(`🔗 Health check: http://0.0.0.0:${PORT}/health`)
+  console.log(`🌐 Railway PORT: ${process.env.PORT}`)
+  
   logger.info(`🚀 PathByte API server running on port ${PORT}`)
   logger.info(`📊 Environment: ${process.env['NODE_ENV'] || 'development'}`)
   logger.info(`🔗 Health check: http://0.0.0.0:${PORT}/health`)
@@ -106,6 +121,22 @@ app.listen(PORT, '0.0.0.0', async () => {
     logger.warn('Continuing without database - some features may not work')
     // Don't exit - let the server start and handle database errors gracefully
   }
+})
+
+// Add error handling for server startup
+app.on('error', (error) => {
+  console.error('❌ Server error:', error)
+  logger.error('❌ Server error:', error)
+})
+
+process.on('uncaughtException', (error) => {
+  console.error('❌ Uncaught Exception:', error)
+  logger.error('❌ Uncaught Exception:', error)
+})
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason)
+  logger.error('❌ Unhandled Rejection at:', promise, 'reason:', reason)
 })
 
 // Graceful shutdown
