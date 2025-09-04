@@ -4331,5 +4331,259 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  gaming: {
+    title: 'Gaming Technology Engineer',
+    icon: Code,
+    color: 'from-purple-500 to-pink-500',
+    description: 'Develop technology solutions for gaming and entertainment platforms',
+    demand: 'High',
+    salary: 'High',
+    companies: ['Epic Games', 'Unity', 'Electronic Arts', 'Activision', 'Nintendo'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn gaming technology fundamentals',
+        skills: [
+          'Game Engines (Unity/Unreal)',
+          'Graphics Programming',
+          'Game Physics',
+          'Audio Systems',
+          'Networking for Games',
+          'Programming (C#/C++)',
+          '3D Mathematics',
+          'Performance Optimization',
+          'Version Control',
+          'Game Design'
+        ],
+        projects: [
+          'Simple Game',
+          'Graphics Demo',
+          'Physics Simulation',
+          'Audio System',
+          'Multiplayer Prototype'
+        ],
+        freeResources: [
+          {
+            title: 'Unity Learn',
+            url: 'https://learn.unity.com/',
+            description: 'Free Unity game development tutorials'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced gaming technology',
+        skills: [
+          'Advanced Graphics',
+          'Game AI',
+          'Multiplayer Systems',
+          'VR/AR Development',
+          'Mobile Gaming',
+          'Team Collaboration',
+          'Project Management',
+          'Performance Profiling',
+          'Platform Integration',
+          'User Experience'
+        ],
+        projects: [
+          'Advanced Game',
+          'VR/AR Application',
+          'Mobile Game',
+          'Multiplayer System',
+          'AI Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead gaming technology initiatives',
+        skills: [
+          'Gaming Strategy & Planning',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'Gaming Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive gaming technology strategy and innovation',
+        skills: [
+          'Gaming Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Gaming Strategy Implementation',
+          'Advanced Gaming Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  edutech: {
+    title: 'EdTech Engineer',
+    icon: Code,
+    color: 'from-blue-500 to-indigo-500',
+    description: 'Develop technology solutions for education and learning platforms',
+    demand: 'Very High',
+    salary: 'High',
+    companies: ['Coursera', 'Khan Academy', 'Udemy', 'Google Education', 'Microsoft Education'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn EdTech fundamentals',
+        skills: [
+          'Learning Management Systems',
+          'Educational Content Creation',
+          'Student Assessment Tools',
+          'Learning Analytics',
+          'Accessibility Standards',
+          'Programming (Python/JavaScript)',
+          'Database Design',
+          'User Experience',
+          'Version Control',
+          'Pedagogical Knowledge'
+        ],
+        projects: [
+          'Learning Platform',
+          'Assessment Tool',
+          'Content Management System',
+          'Analytics Dashboard',
+          'Accessibility Feature'
+        ],
+        freeResources: [
+          {
+            title: 'Khan Academy',
+            url: 'https://www.khanacademy.org/',
+            description: 'Free educational platform and resources'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master advanced EdTech development',
+        skills: [
+          'Advanced Learning Systems',
+          'Personalized Learning',
+          'Adaptive Learning',
+          'Gamification',
+          'Virtual Classrooms',
+          'Team Collaboration',
+          'Project Management',
+          'Data Privacy',
+          'Scalability',
+          'User Engagement'
+        ],
+        projects: [
+          'Personalized Learning System',
+          'Adaptive Learning Platform',
+          'Gamified Learning App',
+          'Virtual Classroom',
+          'Engagement Analytics'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead EdTech initiatives and teams',
+        skills: [
+          'EdTech Strategy & Planning',
+          'Team Leadership',
+          'Advanced Architecture',
+          'Technical Documentation',
+          'Code Reviews & Mentoring',
+          'Business Strategy',
+          'Innovation & Research',
+          'Cross-functional Collaboration',
+          'Executive Communication',
+          'Industry Knowledge'
+        ],
+        projects: [
+          'EdTech Strategy Implementation',
+          'Team Leadership Program',
+          'Technical Leadership',
+          'Business Strategy Implementation',
+          'Industry Innovation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive EdTech strategy and innovation',
+        skills: [
+          'EdTech Strategy & Vision',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'EdTech Strategy Implementation',
+          'Advanced EdTech Technology',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
