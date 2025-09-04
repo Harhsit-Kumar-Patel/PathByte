@@ -3,6 +3,11 @@ import axios from 'axios'
 // Set the API base URL to point to the backend server (without /api suffix)
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
 
+// Debug logging
+console.log('🔧 Environment variables:', import.meta.env)
+console.log('🔧 VITE_API_BASE_URL:', import.meta.env.VITE_API_BASE_URL)
+console.log('🔧 Using API_BASE_URL:', API_BASE_URL)
+
 export const api = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: false,
