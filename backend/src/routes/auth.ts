@@ -196,6 +196,56 @@ router.get('/test-db', async (_, res) => {
   }
 })
 
+// Create users table manually
+router.post('/create-users-table', async (_, res) => {
+  try {
+    console.log('🔧 Creating users table manually...')
+    
+    // Check if table exists
+    const hasUsers = await db.schema.hasTable('users')
+    if (hasUsers) {
+      return res.json({
+        success: true,
+        message: 'Users table already exists'
+      })
+    }
+    
+    // Create users table
+    await db.schema.createTable('users', (table) => {
+      table.string('id', 36).primary()
+      table.string('email', 255).unique().notNullable()
+      table.string('password_hash', 255).notNullable()
+      table.string('first_name', 100).notNullable()
+      table.string('last_name', 100).notNullable()
+      table.text('avatar_url')
+      table.string('location_city', 100).notNullable()
+      table.string('location_state', 100).notNullable()
+      table.string('location_country', 100).notNullable()
+      table.string('experience_level', 20).notNullable()
+      table.string('target_role', 100).notNullable()
+      table.string('subscription_tier', 20).defaultTo('free')
+      table.boolean('is_active').defaultTo(true)
+      table.timestamp('created_at').defaultTo(db.fn.now())
+      table.timestamp('updated_at').defaultTo(db.fn.now())
+    })
+    
+    console.log('✅ Users table created successfully')
+    
+    res.json({
+      success: true,
+      message: 'Users table created successfully'
+    })
+  } catch (error) {
+    console.error('❌ Error creating users table:', error)
+    logger.error('Error creating users table:', error)
+    res.status(500).json({
+      success: false,
+      error: 'Failed to create users table',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    })
+  }
+})
+
 // Get current user profile
 router.get('/me', authenticateToken, async (req, res): Promise<any> => {
   try {
