@@ -103,7 +103,8 @@ app.listen(PORT, '0.0.0.0', async () => {
     await initializeDatabase()
   } catch (error) {
     logger.error('Failed to initialize database:', error)
-    process.exit(1)
+    logger.warn('Continuing without database - some features may not work')
+    // Don't exit - let the server start and handle database errors gracefully
   }
 })
 
