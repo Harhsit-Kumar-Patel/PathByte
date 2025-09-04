@@ -24,7 +24,8 @@ import roadmapProgressRoutes from './routes/roadmapProgress'
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || process.env['PORT'] || 5000
+// Railway provides PORT environment variable
+const PORT = process.env.PORT || 5000
 
 // Security middleware
 app.use(helmet())
@@ -90,10 +91,11 @@ app.use(notFound)
 app.use(errorHandler)
 
 // Start server
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
   logger.info(`🚀 PathByte API server running on port ${PORT}`)
   logger.info(`📊 Environment: ${process.env['NODE_ENV'] || 'development'}`)
-  logger.info(`🔗 Health check: http://localhost:${PORT}/health`)
+  logger.info(`🔗 Health check: http://0.0.0.0:${PORT}/health`)
+  logger.info(`🌐 Railway PORT: ${process.env.PORT}`)
   
   // Initialize database
   try {
