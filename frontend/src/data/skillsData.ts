@@ -900,5 +900,386 @@ export const skillsData: { [key: string]: SkillData } = {
         youtubePlaylists: []
       }
     }
+  },
+  mle: {
+    title: 'ML Engineer',
+    icon: Brain,
+    color: 'from-indigo-500 to-purple-500',
+    description: 'Deploy and scale machine learning systems',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['Google', 'Meta', 'Netflix', 'Amazon', 'Microsoft'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn ML engineering fundamentals',
+        skills: [
+          'Python Programming',
+          'Machine Learning Basics',
+          'Data Preprocessing',
+          'Model Training & Evaluation',
+          'ML Libraries (Scikit-learn, Pandas)',
+          'Version Control (Git)',
+          'Basic Statistics',
+          'Data Visualization',
+          'Jupyter Notebooks',
+          'Cloud Basics'
+        ],
+        projects: [
+          'ML Model Pipeline',
+          'Data Preprocessing Script',
+          'Model Evaluation Dashboard',
+          'Basic ML API',
+          'Data Visualization Project'
+        ],
+        freeResources: [
+          {
+            title: 'ML Engineering Course',
+            url: 'https://www.coursera.org/',
+            description: 'Free machine learning engineering course'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master ML production and deployment',
+        skills: [
+          'MLOps & Model Deployment',
+          'Containerization (Docker)',
+          'Cloud Platforms (AWS, GCP, Azure)',
+          'Model Monitoring & Logging',
+          'CI/CD for ML',
+          'Feature Engineering',
+          'Model Versioning',
+          'A/B Testing',
+          'Performance Optimization',
+          'API Development'
+        ],
+        projects: [
+          'ML Pipeline in Production',
+          'Model Monitoring System',
+          'ML API Service',
+          'A/B Testing Framework',
+          'Feature Store Implementation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead ML engineering initiatives',
+        skills: [
+          'Advanced MLOps',
+          'Distributed ML Systems',
+          'Team Leadership',
+          'Architecture Design',
+          'Performance Engineering',
+          'Security & Compliance',
+          'Technical Documentation',
+          'Project Management',
+          'Code Reviews & Mentoring',
+          'Innovation & Research'
+        ],
+        projects: [
+          'Large-scale ML Platform',
+          'Distributed Training System',
+          'ML Security Framework',
+          'Team Mentoring Program',
+          'Technical Leadership'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive ML engineering strategy',
+        skills: [
+          'ML Strategy & Vision',
+          'Advanced Architecture',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Technical Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'ML Strategy Implementation',
+          'Advanced ML Platform',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  uidesigner: {
+    title: 'UI/UX Designer',
+    icon: Code,
+    color: 'from-pink-500 to-purple-500',
+    description: 'Design intuitive and beautiful user experiences',
+    demand: 'High',
+    salary: 'High',
+    companies: ['Google', 'Apple', 'Meta', 'Airbnb', 'Figma'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn design fundamentals',
+        skills: [
+          'Design Principles',
+          'Figma / Sketch / Adobe XD',
+          'User Research Basics',
+          'Wireframing & Prototyping',
+          'Color Theory & Typography',
+          'Design Systems',
+          'Accessibility (WCAG)',
+          'User Testing',
+          'Design Thinking',
+          'Visual Design'
+        ],
+        projects: [
+          'Portfolio Website Design',
+          'Mobile App Wireframes',
+          'User Research Report',
+          'Design System (Basic)',
+          'Prototype Project'
+        ],
+        freeResources: [
+          {
+            title: 'Figma Academy',
+            url: 'https://www.figma.com/',
+            description: 'Free Figma design tutorials and resources'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master design tools and processes',
+        skills: [
+          'Advanced Prototyping',
+          'User Research & Analytics',
+          'Design Systems (Advanced)',
+          'Interaction Design',
+          'Motion Design',
+          'Design Collaboration',
+          'A/B Testing',
+          'Design Handoff',
+          'Frontend Basics',
+          'Project Management'
+        ],
+        projects: [
+          'Complete App Design',
+          'Design System Implementation',
+          'User Research Study',
+          'A/B Testing Project',
+          'Cross-platform Design'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead design initiatives and teams',
+        skills: [
+          'Design Strategy',
+          'Team Leadership',
+          'Design Operations',
+          'Advanced User Research',
+          'Design Systems Architecture',
+          'Cross-functional Collaboration',
+          'Technical Documentation',
+          'Mentoring & Coaching',
+          'Business Strategy',
+          'Innovation & Research'
+        ],
+        projects: [
+          'Design Strategy Implementation',
+          'Team Mentoring Program',
+          'Design Operations Setup',
+          'Advanced Research Project',
+          'Technical Leadership'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive design strategy and innovation',
+        skills: [
+          'Design Vision & Strategy',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Design Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Design Vision Implementation',
+          'Advanced Design Strategy',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
+  },
+  cybersecurity: {
+    title: 'Cybersecurity Engineer',
+    icon: Code,
+    color: 'from-red-500 to-pink-500',
+    description: 'Protect systems and data from security threats',
+    demand: 'Very High',
+    salary: 'Very High',
+    companies: ['Google', 'Microsoft', 'Amazon', 'CrowdStrike', 'Palo Alto Networks'],
+    certifications: [],
+    youtubePlaylists: [],
+    roadmap: {
+      '0-1': {
+        title: 'Year 0–1 (Beginner – Entry Level)',
+        goal: 'Learn cybersecurity fundamentals',
+        skills: [
+          'Network Security Basics',
+          'Operating Systems Security',
+          'Cryptography Fundamentals',
+          'Security Tools (Nmap, Wireshark)',
+          'Vulnerability Assessment',
+          'Incident Response Basics',
+          'Security Policies & Compliance',
+          'Risk Assessment',
+          'Security Awareness',
+          'Basic Programming'
+        ],
+        projects: [
+          'Security Assessment Report',
+          'Vulnerability Scan Setup',
+          'Security Policy Review',
+          'Incident Response Plan',
+          'Security Awareness Training'
+        ],
+        freeResources: [
+          {
+            title: 'Cybersecurity Fundamentals',
+            url: 'https://www.coursera.org/',
+            description: 'Free cybersecurity fundamentals course'
+          }
+        ],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '1-3': {
+        title: 'Year 1–3 (Intermediate – Mid Level)',
+        goal: 'Master security tools and practices',
+        skills: [
+          'Advanced Security Tools',
+          'Penetration Testing',
+          'Security Architecture',
+          'Threat Intelligence',
+          'Security Monitoring',
+          'Incident Response',
+          'Security Automation',
+          'Compliance & Auditing',
+          'Security Operations',
+          'Cloud Security'
+        ],
+        projects: [
+          'Penetration Testing Report',
+          'Security Architecture Design',
+          'Threat Intelligence System',
+          'Security Monitoring Setup',
+          'Incident Response Automation'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '3-5': {
+        title: 'Year 3–5 (Advanced – Senior Level)',
+        goal: 'Lead security initiatives and teams',
+        skills: [
+          'Security Strategy & Planning',
+          'Team Leadership',
+          'Advanced Threat Analysis',
+          'Security Architecture Design',
+          'Risk Management',
+          'Compliance & Governance',
+          'Technical Documentation',
+          'Mentoring & Coaching',
+          'Business Strategy',
+          'Innovation & Research'
+        ],
+        projects: [
+          'Security Strategy Implementation',
+          'Team Mentoring Program',
+          'Advanced Security Architecture',
+          'Risk Management Framework',
+          'Technical Leadership'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      },
+      '5+': {
+        title: 'Year 5+ (Expert – Principal/Staff Level)',
+        goal: 'Drive security strategy and innovation',
+        skills: [
+          'Security Vision & Strategy',
+          'Advanced Leadership',
+          'Team Management',
+          'Cross-functional Leadership',
+          'Security Standards',
+          'Innovation & Research',
+          'Mentoring & Development',
+          'Industry Leadership',
+          'Business Strategy',
+          'Technical Vision'
+        ],
+        projects: [
+          'Security Vision Implementation',
+          'Advanced Security Strategy',
+          'Technical Leadership',
+          'Industry Innovation',
+          'Mentoring Program'
+        ],
+        freeResources: [],
+        paidResources: [],
+        certifications: [],
+        youtubePlaylists: []
+      }
+    }
   }
 }
