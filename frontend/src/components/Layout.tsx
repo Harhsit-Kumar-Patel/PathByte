@@ -60,25 +60,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         />
         
         {/* Sidebar */}
-        <div className={`absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white/95 backdrop-blur-xl shadow-2xl transition-transform duration-500 ease-out transform ${
+        <div className={`absolute left-0 top-0 h-full w-72 sm:w-80 max-w-[90vw] bg-white/95 backdrop-blur-xl shadow-2xl transition-transform duration-500 ease-out transform ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
           <div className="flex h-full flex-col">
             {/* Header */}
-            <div className="flex h-20 items-center justify-between px-6 border-b border-slate-200/50">
+            <div className="flex h-16 sm:h-20 items-center justify-between px-4 sm:px-6 border-b border-slate-200/50">
               <Link 
                 to="/" 
-                className="flex items-center space-x-3 group transition-all duration-300"
+                className="flex items-center space-x-2 sm:space-x-3 group transition-all duration-300"
               >
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-soft">
-                    <Sparkles className="h-6 w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-soft">
+                    <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div className="absolute -inset-1 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl opacity-20 blur-sm group-hover:opacity-30 transition-opacity duration-300"></div>
                 </div>
                 <div className="flex flex-col">
-                                   <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">PathByte</span>
-                 <span className="text-xs text-slate-600 font-medium">AI Career Platform</span>
+                  <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">PathByte</span>
+                  <span className="text-xs text-slate-600 font-medium hidden sm:block">AI Career Platform</span>
                 </div>
               </Link>
               <button
@@ -90,7 +90,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             {/* Navigation */}
-            <nav className="flex-1 px-6 py-8 space-y-3">
+            <nav className="flex-1 px-4 sm:px-6 py-6 sm:py-8 space-y-2 sm:space-y-3">
               {navigation.map((item) => {
                 const Icon = item.icon
                 const isActive = location.pathname === item.href
@@ -98,22 +98,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <Link
                     key={item.name}
                     to={item.href}
-                                         className={`group flex items-center px-4 py-4 text-sm font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
-                       isActive
-                         ? `bg-gradient-to-r ${item.color} text-white shadow-lg shadow-${item.color.split('-')[1]}/25`
-                         : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900 hover:shadow-md'
-                     }`}
+                    className={`group flex items-center px-3 sm:px-4 py-3 sm:py-4 text-sm font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
+                      isActive
+                        ? `bg-gradient-to-r ${item.color} text-white shadow-lg shadow-${item.color.split('-')[1]}/25`
+                        : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900 hover:shadow-md'
+                    }`}
                   >
-                    <div className={`mr-4 p-2 rounded-xl transition-all duration-300 ${
+                    <div className={`mr-3 sm:mr-4 p-2 rounded-xl transition-all duration-300 ${
                       isActive 
                         ? 'bg-white/20 text-white' 
                         : `bg-gradient-to-br ${item.color} text-white opacity-80 group-hover:opacity-100`
                     }`}>
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     </div>
-                    {item.name}
+                    <span className="truncate">{item.name}</span>
                     {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                      <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse flex-shrink-0"></div>
                     )}
                   </Link>
                 )
@@ -122,18 +122,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* User section */}
             {user && (
-              <div className="border-t border-slate-200/50 p-6">
+              <div className="border-t border-slate-200/50 p-4 sm:p-6">
                 <div className="flex items-center space-x-3 p-3 rounded-2xl hover:bg-slate-50 transition-all duration-300">
                   <div className="relative">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white font-semibold text-lg hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white font-semibold text-sm sm:text-lg hover:scale-110 transition-transform duration-300 shadow-lg">
                       {user.email?.charAt(0).toUpperCase()}
                     </div>
                     <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl opacity-20 blur-sm"></div>
                   </div>
-                                  <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-slate-900 truncate">{user.email}</p>
-                  <p className="text-xs text-slate-600">Premium Member</p>
-                </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-slate-900 truncate">{user.email}</p>
+                    <p className="text-xs text-slate-600 hidden sm:block">Premium Member</p>
+                  </div>
                 </div>
                 <button
                   onClick={handleLogout}
@@ -231,68 +231,68 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main content */}
       <div className="lg:pl-80">
         {/* Top bar */}
-        <div className="sticky top-0 z-40 flex h-20 shrink-0 items-center gap-x-4 border-b border-slate-200/50 bg-white/80 backdrop-blur-xl px-6 shadow-sm">
+        <div className="sticky top-0 z-40 flex h-16 sm:h-20 shrink-0 items-center gap-x-2 sm:gap-x-4 border-b border-slate-200/50 bg-white/80 backdrop-blur-xl px-4 sm:px-6 shadow-sm">
           {/* Mobile menu button */}
           <button
             type="button"
             className="-m-2.5 p-2.5 text-slate-700 lg:hidden hover:bg-slate-100 rounded-xl transition-all duration-300 hover:scale-105"
             onClick={() => setSidebarOpen(true)}
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
 
           {/* Separator */}
-          <div className="h-8 w-px bg-slate-200 lg:hidden" />
+          <div className="h-6 sm:h-8 w-px bg-slate-200 lg:hidden" />
 
           {/* Search bar */}
           <div className="flex-1 max-w-md lg:max-w-lg">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
-                             <input
-                 type="text"
-                 placeholder="Search skills, careers, or resources..."
-                 className="w-full pl-12 pr-4 py-3 bg-white border-2 border-slate-300 rounded-2xl text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-300 hover:border-slate-400"
-               />
+              <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search skills, careers..."
+                className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 bg-white border-2 border-slate-300 rounded-xl sm:rounded-2xl text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-300 hover:border-slate-400"
+              />
             </div>
           </div>
 
           {/* Right side */}
-          <div className="flex items-center justify-end gap-x-4">
+          <div className="flex items-center justify-end gap-x-2 sm:gap-x-4">
             {/* User dropdown */}
             {user && (
               <div className="relative">
                 <button
                   type="button"
-                  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-slate-100 transition-all duration-300 hover:scale-105 group"
+                  className="flex items-center space-x-2 sm:space-x-3 p-2 rounded-xl hover:bg-slate-100 transition-all duration-300 hover:scale-105 group"
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                 >
                   <div className="relative">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-sm font-semibold group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-xs sm:text-sm font-semibold group-hover:scale-110 transition-transform duration-300 shadow-lg">
                       {user.email?.charAt(0).toUpperCase()}
                     </div>
-                    <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl opacity-20 blur-sm"></div>
+                    <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-xl sm:rounded-2xl opacity-20 blur-sm"></div>
                   </div>
-                                     <span className="hidden sm:block text-sm font-medium text-slate-900 group-hover:text-blue-700 transition-colors duration-300">
-                     {user.email}
-                   </span>
-                  <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform duration-300 ${
+                  <span className="hidden md:block text-sm font-medium text-slate-900 group-hover:text-blue-700 transition-colors duration-300 truncate max-w-32">
+                    {user.email}
+                  </span>
+                  <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform duration-300 hidden sm:block ${
                     userDropdownOpen ? 'rotate-180' : ''
                   }`} />
                 </button>
 
                 {/* Dropdown menu */}
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-3 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/50 py-3 animate-fade-in-up z-50">
+                  <div className="absolute right-0 mt-3 w-56 sm:w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/50 py-3 animate-fade-in-up z-50">
                     <div className="px-4 py-3 border-b border-slate-100">
-                      <p className="text-sm font-semibold text-slate-900">{user.email}</p>
+                      <p className="text-sm font-semibold text-slate-900 truncate">{user.email}</p>
                       <p className="text-xs text-slate-500 mt-1">Premium Member</p>
                     </div>
                     <div className="py-2">
-                                               <Link
-                           to="/profile"
-                           className="flex items-center px-4 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-blue-700 transition-all duration-300 hover:translate-x-1"
-                           onClick={() => setUserDropdownOpen(false)}
-                         >
+                      <Link
+                        to="/profile"
+                        className="flex items-center px-4 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-blue-700 transition-all duration-300 hover:translate-x-1"
+                        onClick={() => setUserDropdownOpen(false)}
+                      >
                         <Settings className="h-4 w-4 mr-3" />
                         Settings
                       </Link>
@@ -312,8 +312,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Page content */}
-        <main className="py-8">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+        <main className="py-4 sm:py-6 lg:py-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {children}
           </div>
         </main>

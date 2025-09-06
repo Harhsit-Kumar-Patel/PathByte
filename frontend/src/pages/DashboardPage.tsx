@@ -346,53 +346,54 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between animate-fade-in-up">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fade-in-up">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 animate-fade-in-scale">Welcome back, {user.firstName}! 👋</h1>
-          <p className="text-gray-600 mt-2 animate-fade-in-up animate-delay-200">Here's what's happening with your learning journey</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 animate-fade-in-scale">Welcome back, {user.firstName}! 👋</h1>
+          <p className="text-gray-600 mt-2 animate-fade-in-up animate-delay-200 text-sm sm:text-base">Here's what's happening with your learning journey</p>
         </div>
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setIsEditing(!isEditing)}
-            className="btn-secondary flex items-center gap-2"
+            className="btn-secondary flex items-center gap-2 text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3"
           >
             <Edit className="h-4 w-4" />
-            {isEditing ? 'Cancel' : 'Edit Profile'}
+            <span className="hidden sm:inline">{isEditing ? 'Cancel' : 'Edit Profile'}</span>
+            <span className="sm:hidden">{isEditing ? 'Cancel' : 'Edit'}</span>
           </button>
         </div>
       </div>
 
       {/* Roadmap Integration */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden animate-fade-in-up animate-delay-300">
-        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-4">
-          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-            <Briefcase className="h-5 w-5" />
+        <div className="bg-gradient-to-r from-indigo-500 to-purple-500 px-4 sm:px-6 py-3 sm:py-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+            <Briefcase className="h-4 w-4 sm:h-5 sm:w-5" />
             Your Learning Roadmap
           </h2>
         </div>
         
-        <div className="p-6">
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 sm:p-6">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
-                  <Target className="h-6 w-6 text-white" />
+                <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <Target className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Target Role</p>
-                  <p className="font-semibold text-gray-900">{user?.targetRole || 'Not set'}</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-500">Target Role</p>
+                  <p className="text-sm sm:text-base font-semibold text-gray-900 truncate">{user?.targetRole || 'Not set'}</p>
                 </div>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
-                  <TrendingUp className="h-6 w-6 text-white" />
+                <div className="h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Experience Level</p>
-                  <p className="font-semibold text-gray-900">
+                  <p className="text-xs sm:text-sm font-medium text-gray-500">Experience Level</p>
+                  <p className="text-sm sm:text-base font-semibold text-gray-900">
                     {user?.experienceLevel ? 
                       user.experienceLevel.charAt(0).toUpperCase() + user.experienceLevel.slice(1) : 
                       'Not set'
@@ -404,10 +405,10 @@ export default function DashboardPage() {
 
             {user?.targetRole && (
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <h3 className="font-semibold text-blue-900 mb-2">Ready to follow your roadmap?</h3>
-                    <p className="text-blue-700 text-sm">
+                    <h3 className="font-semibold text-blue-900 mb-2 text-sm sm:text-base">Ready to follow your roadmap?</h3>
+                    <p className="text-blue-700 text-xs sm:text-sm">
                       Get detailed learning paths, resources, and milestone projects for your {user.targetRole} journey
                     </p>
                   </div>
@@ -428,10 +429,11 @@ export default function DashboardPage() {
                                  user.targetRole?.toLowerCase().includes('cyber') || user.targetRole?.toLowerCase().includes('security') ? 'cybersecurity' : 'frontend'
                       navigate(`/roadmap?role=${role}`)
                     }}
-                    className="btn-primary flex items-center gap-2 whitespace-nowrap"
+                    className="btn-primary flex items-center gap-2 whitespace-nowrap text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3"
                   >
                     <Briefcase className="h-4 w-4" />
-                    View Roadmap
+                    <span className="hidden sm:inline">View Roadmap</span>
+                    <span className="sm:hidden">View</span>
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
@@ -564,82 +566,82 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Hours</p>
-              <p className="text-2xl font-bold text-gray-900">{userStats.totalHours}</p>
+              <p className="text-xs sm:text-sm font-medium text-gray-600">Total Hours</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{userStats.totalHours}</p>
               {userStats.totalHours === 0 && (
-                <p className="text-xs text-gray-500 mt-1">Start learning today!</p>
+                <p className="text-xs text-gray-500 mt-1 hidden sm:block">Start learning today!</p>
               )}
             </div>
-            <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Clock className="h-6 w-6 text-blue-600" />
+            <div className="h-8 w-8 sm:h-12 sm:w-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <Clock className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Lessons Completed</p>
-              <p className="text-2xl font-bold text-gray-900">{userStats.completedLessons}</p>
+              <p className="text-xs sm:text-sm font-medium text-gray-600">Lessons Completed</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{userStats.completedLessons}</p>
               {userStats.completedLessons === 0 && (
-                <p className="text-xs text-gray-500 mt-1">Your first lesson awaits!</p>
+                <p className="text-xs text-gray-500 mt-1 hidden sm:block">Your first lesson awaits!</p>
               )}
             </div>
-            <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <CheckCircle className="h-6 w-6 text-green-600" />
+            <div className="h-8 w-8 sm:h-12 sm:w-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <CheckCircle className="h-4 w-4 sm:h-6 sm:w-6 text-green-600" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Current Streak</p>
-              <p className="text-2xl font-bold text-gray-900">{userStats.currentStreak} days</p>
+              <p className="text-xs sm:text-sm font-medium text-gray-600">Current Streak</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{userStats.currentStreak} days</p>
               {userStats.currentStreak === 0 && (
-                <p className="text-xs text-gray-500 mt-1">Build your streak!</p>
+                <p className="text-xs text-gray-500 mt-1 hidden sm:block">Build your streak!</p>
               )}
             </div>
-            <div className="h-12 w-12 bg-orange-100 rounded-lg flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-orange-600" />
+            <div className="h-8 w-8 sm:h-12 sm:w-12 bg-orange-100 rounded-lg flex items-center justify-center">
+              <TrendingUp className="h-4 w-4 sm:h-6 sm:w-6 text-orange-600" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Progress</p>
-              <p className="text-2xl font-bold text-gray-900">{userStats.progressPercentage}%</p>
+              <p className="text-xs sm:text-sm font-medium text-gray-600">Progress</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{userStats.progressPercentage}%</p>
               {userStats.progressPercentage === 0 && (
-                <p className="text-xs text-gray-500 mt-1">Ready to begin!</p>
+                <p className="text-xs text-gray-500 mt-1 hidden sm:block">Ready to begin!</p>
               )}
             </div>
-            <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Activity className="h-6 w-6 text-purple-600" />
+            <div className="h-8 w-8 sm:h-12 sm:w-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <Activity className="h-4 w-4 sm:h-6 sm:w-6 text-purple-600" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Profile Information */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           {/* Profile Card */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-gradient-to-r from-primary-500 to-accent-500 px-6 py-4">
-              <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-                <User className="h-5 w-5" />
+            <div className="bg-gradient-to-r from-primary-500 to-accent-500 px-4 sm:px-6 py-3 sm:py-4">
+              <h2 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                <User className="h-4 w-4 sm:h-5 sm:w-5" />
                 Profile Information
               </h2>
             </div>
             
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {isEditing ? (
                                     <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -918,17 +920,17 @@ export default function DashboardPage() {
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Progress Overview */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-4">
-              <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
+            <div className="bg-gradient-to-r from-blue-500 to-indigo-500 px-4 sm:px-6 py-3 sm:py-4">
+              <h2 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5" />
                 Progress Overview
               </h2>
             </div>
             
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between text-sm mb-2">

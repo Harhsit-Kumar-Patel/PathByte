@@ -5,6 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'xs': '475px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         primary: {
@@ -308,7 +316,91 @@ export default {
         'gradient-light': 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%)',
         'gradient-soft': 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
       },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
+      minHeight: {
+        'screen-75': '75vh',
+        'screen-90': '90vh',
+      },
+      fontSize: {
+        '2xs': ['0.625rem', { lineHeight: '0.75rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
+      },
+      zIndex: {
+        '60': '60',
+        '70': '70',
+        '80': '80',
+        '90': '90',
+        '100': '100',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.touch-manipulation': {
+          'touch-action': 'manipulation',
+        },
+        '.touch-pan-x': {
+          'touch-action': 'pan-x',
+        },
+        '.touch-pan-y': {
+          'touch-action': 'pan-y',
+        },
+        '.touch-pinch-zoom': {
+          'touch-action': 'pinch-zoom',
+        },
+        '.touch-auto': {
+          'touch-action': 'auto',
+        },
+        '.scroll-smooth': {
+          'scroll-behavior': 'smooth',
+        },
+        '.scroll-auto': {
+          'scroll-behavior': 'auto',
+        },
+        '.overscroll-contain': {
+          'overscroll-behavior': 'contain',
+        },
+        '.overscroll-auto': {
+          'overscroll-behavior': 'auto',
+        },
+        '.overscroll-none': {
+          'overscroll-behavior': 'none',
+        },
+        '.overscroll-y-contain': {
+          'overscroll-behavior-y': 'contain',
+        },
+        '.overscroll-y-auto': {
+          'overscroll-behavior-y': 'auto',
+        },
+        '.overscroll-y-none': {
+          'overscroll-behavior-y': 'none',
+        },
+        '.overscroll-x-contain': {
+          'overscroll-behavior-x': 'contain',
+        },
+        '.overscroll-x-auto': {
+          'overscroll-behavior-x': 'auto',
+        },
+        '.overscroll-x-none': {
+          'overscroll-behavior-x': 'none',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 }
