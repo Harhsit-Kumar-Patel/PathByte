@@ -470,7 +470,7 @@ export default function RoleSelectionPage() {
         </div>
 
         {/* Role Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {sortedRoles.map((role) => {
             const roleData = (skillsData as any)[role.key]
             const isCurrentRole = role.key === user?.targetRole
@@ -486,18 +486,18 @@ export default function RoleSelectionPage() {
                 )}
                 onClick={() => handleRoleSelect(role.key)}
               >
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   {/* Role Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3">
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="flex items-center space-x-2 sm:space-x-3">
                       <div className={cn(
                         "p-2 rounded-lg bg-gradient-to-r",
                         role.color
                       )}>
-                        <role.icon className="h-6 w-6 text-white" />
+                        <role.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 text-lg">
+                        <h3 className="font-semibold text-gray-900 text-base sm:text-lg">
                           {role.label}
                         </h3>
                         {isCurrentRole && (
@@ -510,14 +510,14 @@ export default function RoleSelectionPage() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                  <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">
                     {role.description}
                   </p>
 
                   {/* Stats */}
                   {roleData && (
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center justify-between text-sm">
+                    <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-4">
+                      <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-gray-500">Demand:</span>
                         <span className={cn(
                           "font-medium",
@@ -528,7 +528,7 @@ export default function RoleSelectionPage() {
                           {roleData.demand}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-gray-500">Salary:</span>
                         <span className={cn(
                           "font-medium",
@@ -544,7 +544,7 @@ export default function RoleSelectionPage() {
 
                   {/* Companies */}
                   {roleData?.companies && (
-                    <div className="mb-4">
+                    <div className="mb-3 sm:mb-4">
                       <p className="text-xs text-gray-500 mb-2">Top Companies:</p>
                       <div className="flex flex-wrap gap-1">
                         {roleData.companies.slice(0, 3).map((company: string, index: number) => (
@@ -566,12 +566,12 @@ export default function RoleSelectionPage() {
 
                   {/* Action Button */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs sm:text-sm text-gray-500">
                       {roleData?.roadmap ? Object.keys(roleData.roadmap).length : 0} learning phases
                     </span>
-                    <button className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 font-medium text-sm">
+                    <button className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 font-medium text-xs sm:text-sm">
                       <span>View Roadmap</span>
-                      <ExternalLink className="h-4 w-4" />
+                      <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
                   </div>
                 </div>

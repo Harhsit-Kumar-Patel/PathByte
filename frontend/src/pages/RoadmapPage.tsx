@@ -474,15 +474,15 @@ export default function RoadmapPage() {
         </div>
 
         {/* Year Selection */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 mb-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <h3 className="text-lg font-semibold text-slate-800 mb-4">Select Experience Level</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-3 sm:mb-4">Select Experience Level</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             {yearOptions.map((year) => (
               <button
                 key={year.key}
                 onClick={() => setActiveYear(year.key)}
                 className={cn(
-                  "p-4 rounded-xl border-2 transition-all duration-300 text-center group",
+                  "p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 text-center group",
                   activeYear === year.key
                     ? "border-primary-500 bg-primary-50 shadow-lg scale-105"
                     : "border-gray-200 bg-white hover:border-primary-300 hover:shadow-md hover:scale-102"
@@ -490,17 +490,17 @@ export default function RoadmapPage() {
               >
                 <div className="flex items-center justify-center mb-2">
                   <div className={cn(
-                    "h-10 w-10 rounded-full flex items-center justify-center transition-colors",
+                    "h-8 w-8 sm:h-10 sm:w-10 rounded-full flex items-center justify-center transition-colors",
                     activeYear === year.key ? "bg-primary-500" : "bg-gray-100 group-hover:bg-primary-100"
                   )}>
                     <year.icon className={cn(
-                      "h-5 w-5 transition-colors",
+                      "h-4 w-4 sm:h-5 sm:w-5 transition-colors",
                       activeYear === year.key ? "text-white" : "text-gray-600 group-hover:text-primary-600"
                     )} />
                   </div>
                 </div>
                 <span className={cn(
-                  "font-medium text-sm transition-colors",
+                  "font-medium text-xs sm:text-sm transition-colors",
                   activeYear === year.key ? "text-primary-700" : "text-gray-900"
                 )}>
                   {year.label}
@@ -513,7 +513,7 @@ export default function RoadmapPage() {
 
 
         {/* Progress Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
           <ProgressStats
             totalItems={currentData?.skills?.length || 0}
             completedItems={currentData?.skills?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'skills', index)).length || 0}

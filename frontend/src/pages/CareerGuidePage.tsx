@@ -893,7 +893,7 @@ export default function CareerGuidePage() {
         </div>
 
         {/* Roadmap Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredRoadmaps.map((roadmap) => (
             <div
               key={roadmap.key}
@@ -901,10 +901,10 @@ export default function CareerGuidePage() {
               onClick={() => navigate(`/roadmap?role=${roadmap.key}`)}
             >
               {/* Header */}
-              <div className={`bg-gradient-to-r ${roadmap.color} px-6 py-4 rounded-t-xl`}>
+              <div className={`bg-gradient-to-r ${roadmap.color} px-4 sm:px-6 py-3 sm:py-4 rounded-t-xl`}>
                 <div className="flex items-center justify-between">
-                  <roadmap.icon className="h-8 w-8 text-white" />
-                  <div className="flex gap-2">
+                  <roadmap.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                  <div className="flex gap-1 sm:gap-2">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(roadmap.difficulty)}`}>
                       {roadmap.difficulty.charAt(0).toUpperCase() + roadmap.difficulty.slice(1)}
                     </span>
@@ -913,19 +913,19 @@ export default function CareerGuidePage() {
                     </span>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mt-3">{roadmap.title}</h3>
-                <p className="text-white/90 text-sm mt-1">{roadmap.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-white mt-2 sm:mt-3">{roadmap.title}</h3>
+                <p className="text-white/90 text-xs sm:text-sm mt-1">{roadmap.description}</p>
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Key Skills */}
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Zap className="h-4 w-4 text-blue-500" />
+                <div className="mb-3 sm:mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
+                    <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
                     Key Skills
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
                     {roadmap.skills.slice(0, 3).map((skill, index) => (
                       <span key={index} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full">
                         {skill}
@@ -940,12 +940,12 @@ export default function CareerGuidePage() {
                 </div>
 
                 {/* Tools */}
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Code className="h-4 w-4 text-green-500" />
+                <div className="mb-3 sm:mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
+                    <Code className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
                     Tools & Technologies
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
                     {roadmap.tools.slice(0, 3).map((tool, index) => (
                       <span key={index} className="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
                         {tool}
@@ -960,12 +960,12 @@ export default function CareerGuidePage() {
                 </div>
 
                 {/* Companies */}
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Users className="h-4 w-4 text-purple-500" />
+                <div className="mb-3 sm:mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
+                    <Users className="h-3 w-3 sm:h-4 sm:w-4 text-purple-500" />
                     Top Companies
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
                     {roadmap.companies.slice(0, 3).map((company, index) => (
                       <span key={index} className="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full">
                         {company}
@@ -980,30 +980,30 @@ export default function CareerGuidePage() {
                 </div>
 
                 {/* Salary */}
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Star className="h-4 w-4 text-yellow-500" />
+                <div className="mb-3 sm:mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
+                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500" />
                     Salary Range
                   </h4>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getSalaryColor(roadmap.salary)}`}>
+                  <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getSalaryColor(roadmap.salary)}`}>
                     {roadmap.salary === 'very-high' ? 'Very High' : roadmap.salary.charAt(0).toUpperCase() + roadmap.salary.slice(1)} Salary
                   </span>
                 </div>
 
                 {/* Roadmap Preview */}
-                <div className="border-t border-gray-200 pt-4">
-                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                    <Target className="h-4 w-4 text-indigo-500" />
+                <div className="border-t border-gray-200 pt-3 sm:pt-4">
+                  <h4 className="font-semibold text-gray-900 mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
+                    <Target className="h-3 w-3 sm:h-4 sm:w-4 text-indigo-500" />
                     Learning Roadmap
                   </h4>
-                  <div className="space-y-2">
+                  <div className="space-y-1 sm:space-y-2">
                     {Object.entries(roadmap.roadmap).map(([year, data]) => (
-                      <div key={year} className="flex items-center gap-3">
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-gray-400" />
-                          <span className="text-sm font-medium text-gray-600">{year} Years</span>
+                      <div key={year} className="flex items-center gap-2 sm:gap-3">
+                        <div className="flex items-center gap-1 sm:gap-2">
+                          <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+                          <span className="text-xs sm:text-sm font-medium text-gray-600">{year} Years</span>
                         </div>
-                        <span className="text-sm text-gray-500">{data.focus}</span>
+                        <span className="text-xs sm:text-sm text-gray-500">{data.focus}</span>
                       </div>
                     ))}
                   </div>
@@ -1012,9 +1012,9 @@ export default function CareerGuidePage() {
                 {/* CTA Button */}
                 <button 
                   onClick={() => window.location.href = `/roadmap/${roadmap.key}`}
-                  className="w-full mt-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 flex items-center justify-center gap-2"
+                  className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold py-2.5 sm:py-3 px-4 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
-                  <BookOpen className="h-4 w-4" />
+                  <BookOpen className="h-3 w-3 sm:h-4 sm:w-4" />
                   View Full Roadmap
                 </button>
               </div>

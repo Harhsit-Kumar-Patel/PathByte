@@ -245,13 +245,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="h-6 sm:h-8 w-px bg-slate-200 lg:hidden" />
 
           {/* Search bar */}
-          <div className="flex-1 max-w-md lg:max-w-lg">
+          <div className="flex-1 max-w-sm sm:max-w-md lg:max-w-lg">
             <div className="relative">
-              <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search skills, careers..."
-                className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 bg-white border-2 border-slate-300 rounded-xl sm:rounded-2xl text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-300 hover:border-slate-400"
+                className="w-full pl-10 pr-3 py-2.5 bg-white border border-slate-200 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm"
               />
             </div>
           </div>
