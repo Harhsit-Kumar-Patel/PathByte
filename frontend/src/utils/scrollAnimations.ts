@@ -151,7 +151,7 @@ export function createParallax(element: Element, speed: number = 0.5) {
   const handleScroll = () => {
     const scrolled = window.pageYOffset;
     const rate = scrolled * -speed;
-    element.style.transform = `translateY(${rate}px)`;
+    (element as HTMLElement).style.transform = `translateY(${rate}px)`;
   };
 
   window.addEventListener('scroll', handleScroll, { passive: true });
