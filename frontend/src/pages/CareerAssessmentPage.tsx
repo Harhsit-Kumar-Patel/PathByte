@@ -268,7 +268,7 @@ export default function CareerAssessmentPage() {
       setCurrentQuestion(prev => prev + 1)
     } else {
       // Check if all questions are answered
-      const unansweredQuestions = questions.filter(q => answers[q.id] === undefined || answers[q.id] === null)
+      const unansweredQuestions = questions.filter(q => typeof answers[q.id] === 'undefined' || answers[q.id] === null)
       if (unansweredQuestions.length > 0) {
         alert('Please answer all questions before getting results.')
         return
@@ -829,10 +829,10 @@ export default function CareerAssessmentPage() {
           
           <button
             onClick={nextQuestion}
-            disabled={answers[question.id] === undefined || answers[question.id] === null}
+            disabled={typeof answers[question.id] === 'undefined' || answers[question.id] === null}
             className={cn(
               'flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200',
-              answers[question.id] === undefined || answers[question.id] === null
+              typeof answers[question.id] === 'undefined' || answers[question.id] === null
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 : 'bg-blue-600 hover:bg-blue-700 text-white'
             )}
