@@ -1,341 +1,353 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
 import { 
   ArrowRight, 
-  TrendingUp, 
+  Play, 
+  Users, 
+  Target, 
   Zap,
-  Shield,
   Rocket,
-  Sparkles,
-  Star,
-  Users,
-  Target,
-  Play,
-  BookOpen,
-  Award,
+  Brain,
+  TrendingUp,
+  Shield,
   Globe,
-  Clock,
-  BarChart3
+  Sparkles
 } from 'lucide-react'
-import EnhancedSearchBar from '../components/ui/EnhancedSearchBar'
-import { initAllScrollAnimations } from '../utils/scrollAnimations'
 
 export default function HomePage() {
-  const handleSearch = (query: string) => {
-    console.log('Search query:', query)
-    // Handle search functionality
-  }
-
-  useEffect(() => {
-    // Initialize scroll animations when component mounts
-    initAllScrollAnimations()
-  }, [])
-
-  // Removed mock stats - will be populated with real data from backend
 
   const features = [
     {
-      icon: Rocket,
-      title: 'AI-Powered Guidance',
-      description: 'Get personalized learning recommendations based on your goals, experience, and market demand.',
-      color: 'from-cyan-500 to-blue-500',
-      gradient: 'from-cyan-50 to-blue-50',
-      glow: 'glow-cyan',
-      bgGradient: 'bg-gradient-to-br from-cyan-500/10 to-blue-500/10'
-    },
-    {
-      icon: Shield,
-      title: 'Industry-Validated Paths',
-      description: 'Learn from real-world experts and follow proven career trajectories that lead to success.',
-      color: 'from-purple-500 to-pink-500',
-      gradient: 'from-purple-50 to-pink-50',
-      glow: 'glow-purple',
-      bgGradient: 'bg-gradient-to-br from-purple-500/10 to-pink-500/10'
-    },
-    {
-      icon: Zap,
-      title: 'Accelerated Learning',
-      description: 'Optimize your learning with our structured approach and focus on high-impact skills first.',
-      color: 'from-emerald-500 to-teal-500',
-      gradient: 'from-emerald-50 to-teal-50',
-      glow: 'glow-green',
-      bgGradient: 'bg-gradient-to-br from-emerald-500/10 to-teal-500/10'
+      icon: Brain,
+      title: 'AI-Powered Career Assessment',
+      description: 'Discover your ideal tech role through our advanced assessment that analyzes your skills, interests, and goals.',
+      glow: 'neon-purple',
+      bgGradient: 'liquid-primary'
     },
     {
       icon: Target,
-      title: 'Market-Driven Skills',
-      description: 'Focus on skills that are in high demand and will accelerate your career growth.',
-      color: 'from-orange-500 to-red-500',
-      gradient: 'from-orange-50 to-red-50',
-      glow: 'glow-orange',
-      bgGradient: 'bg-gradient-to-br from-orange-500/10 to-red-500/10'
+      title: 'Personalized Learning Paths',
+      description: 'Get custom roadmaps tailored to your career goals with step-by-step guidance and real-world projects.',
+      glow: 'neon-green',
+      bgGradient: 'liquid-secondary'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Skill Progress Tracking',
+      description: 'Monitor your growth with detailed analytics, certifications, and milestone achievements.',
+      glow: 'neon-blue',
+      bgGradient: 'neon-gradient'
     },
     {
       icon: Users,
-      title: 'Community Support',
-      description: 'Connect with peers, mentors, and industry professionals in our thriving community.',
-      color: 'from-indigo-500 to-blue-500',
-      gradient: 'from-indigo-50 to-blue-50',
-      glow: 'glow',
-      bgGradient: 'bg-gradient-to-br from-indigo-500/10 to-blue-500/10'
+      title: 'Expert Community',
+      description: 'Connect with industry professionals, mentors, and peers on your career journey.',
+      glow: 'neon-pink',
+      bgGradient: 'metallic-gradient'
     },
     {
-      icon: Award,
-      title: 'Certification Ready',
-      description: 'Earn industry-recognized certifications and build a portfolio that stands out.',
-      color: 'from-violet-500 to-purple-500',
-      gradient: 'from-violet-50 to-purple-50',
-      glow: 'glow-purple',
-      bgGradient: 'bg-gradient-to-br from-violet-500/10 to-purple-500/10'
+      icon: Shield,
+      title: 'Industry Insights',
+      description: 'Stay ahead with real-time market trends, salary data, and emerging technologies.',
+      glow: 'neon-cyan',
+      bgGradient: 'holographic'
+    },
+    {
+      icon: Globe,
+      title: 'Global Opportunities',
+      description: 'Access worldwide job opportunities and remote work possibilities in tech.',
+      glow: 'neon-orange',
+      bgGradient: 'animated-liquid'
     }
   ]
 
-  // Removed mock testimonials - will be populated with real user testimonials from backend
+  const stats = [
+    { number: '50K+', label: 'Active Learners', icon: Users },
+    { number: '200+', label: 'Career Paths', icon: Target },
+    { number: '95%', label: 'Success Rate', icon: TrendingUp },
+    { number: '24/7', label: 'Support', icon: Shield }
+  ]
 
   return (
-    <div className="min-h-screen page-transition">
+    <div className="min-h-screen bg-neutral-950 text-white overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 bg-career-mesh animate-gradient-shift opacity-20" />
+      <div className="fixed inset-0 bg-animated-liquid animate-liquid-morph opacity-10" />
+      
+      {/* Floating Particles */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary-400 rounded-full animate-particle-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 6}s`,
+              animationDuration: `${6 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-glass-dark backdrop-blur-xl border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
+                <Rocket className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-futuristic font-bold text-gradient">PathByte</span>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-neutral-300 hover:text-white transition-colors">Features</a>
+              <a href="#how-it-works" className="text-neutral-300 hover:text-white transition-colors">How It Works</a>
+              <a href="#community" className="text-neutral-300 hover:text-white transition-colors">Community</a>
+              <a href="#pricing" className="text-neutral-300 hover:text-white transition-colors">Pricing</a>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/login"
+                className="text-neutral-300 hover:text-white transition-colors"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="capsule bg-gradient-to-r from-primary-500 to-secondary-500 px-6 py-2 text-white font-medium hover:shadow-neon transition-all duration-300"
+              >
+                Get Started
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50 to-purple-50 py-12 sm:py-16 lg:py-24 px-4" data-animate="fade" data-animate-delay="0">
-        {/* Modern Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 sm:top-20 left-4 sm:left-10 w-48 sm:w-96 h-48 sm:h-96 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full animate-float blur-3xl"></div>
-          <div className="absolute top-20 sm:top-40 right-4 sm:right-20 w-64 sm:w-[500px] h-64 sm:h-[500px] bg-gradient-to-r from-purple-400/20 to-pink-500/20 rounded-full animate-float blur-3xl" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-10 sm:bottom-20 left-1/4 w-40 sm:w-80 h-40 sm:h-80 bg-gradient-to-r from-emerald-400/20 to-teal-500/20 rounded-full animate-float blur-3xl" style={{ animationDelay: '4s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-80 sm:h-[600px] bg-gradient-to-r from-indigo-400/15 to-purple-400/15 rounded-full animate-pulse-gentle"></div>
-          
-          {/* Modern mesh gradient overlay */}
-          <div className="absolute inset-0 bg-mesh-1 opacity-30"></div>
-          
-          {/* Floating particles */}
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '5s' }}></div>
-        </div>
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center space-x-2 bg-glass px-4 py-2 rounded-full mb-8 animate-fade-in">
+              <Sparkles className="w-4 h-4 text-primary-400" />
+              <span className="text-sm font-medium text-primary-300">The Future of Career Development</span>
+            </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          {/* Modern Badge */}
-          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/90 backdrop-blur-md rounded-full border border-cyan-200/50 shadow-glass animate-fade-in-down">
-            <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-600 animate-pulse" />
-            <span className="text-xs sm:text-sm font-semibold text-slate-800">AI-Powered Career Guidance</span>
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full animate-pulse"></div>
+            {/* Main Heading */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-futuristic font-bold mb-6 animate-fade-in-up">
+              <span className="text-gradient">Build Your</span>
+              <br />
+              <span className="text-holographic">Tech Career</span>
+              <br />
+              <span className="text-neon">Future</span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-xl sm:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              Discover your ideal tech role, master in-demand skills, and accelerate your career with AI-powered guidance and expert mentorship.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <Link
+                to="/assessment"
+                className="capsule bg-gradient-to-r from-primary-500 to-secondary-500 px-8 py-4 text-white font-semibold text-lg hover:shadow-neon-lg transition-all duration-300 flex items-center space-x-2 group"
+              >
+                <span>Start Your Journey</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <button className="capsule bg-glass px-8 py-4 text-white font-semibold text-lg hover:bg-glass-dark transition-all duration-300 flex items-center space-x-2 group">
+                <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Watch Demo</span>
+              </button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <stat.icon className="w-6 h-6 text-primary-400" />
+                  </div>
+                  <div className="text-2xl font-bold text-gradient mb-1">{stat.number}</div>
+                  <div className="text-sm text-neutral-400">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-
-          {/* Modern Main Heading */}
-          <h1 className="mt-6 sm:mt-10 text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-slate-900 leading-tight" data-animate="slide-up" data-animate-delay="200">
-            Your Path to
-            <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient"> Tech Success</span>
-          </h1>
-
-          {/* Description */}
-          <p className="mt-6 sm:mt-8 text-lg sm:text-xl lg:text-2xl text-slate-700 max-w-4xl mx-auto leading-relaxed px-4" data-animate="slide-up" data-animate-delay="400">
-            Master in-demand tech skills with personalized learning paths, comprehensive roadmaps, and cutting-edge AI guidance designed for every career stage.
-          </p>
-
-          {/* Search Bar */}
-          <div className="mt-8 sm:mt-12 px-4" data-animate="scale" data-animate-delay="600">
-            <EnhancedSearchBar onSearch={handleSearch} />
-          </div>
-
-          {/* Modern CTA Buttons */}
-          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4" data-animate="slide-up" data-animate-delay="800">
-            <Link 
-              to="/career-assessment" 
-              className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 text-white font-semibold rounded-xl sm:rounded-2xl text-center overflow-hidden btn-modern"
-            >
-              <span className="flex items-center justify-center relative z-10">
-                Find Your Ideal Career
-                <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            </Link>
-            <Link 
-              to="/career-guide" 
-              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/95 backdrop-blur-md text-slate-800 font-semibold rounded-xl sm:rounded-2xl border-2 border-cyan-200/50 shadow-glass text-center btn-modern glass"
-            >
-              <span className="flex items-center justify-center">
-                Explore Career Paths
-                <TrendingUp className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
-              </span>
-            </Link>
-            <Link 
-              to="/style-demo" 
-              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/95 backdrop-blur-md text-slate-800 font-semibold rounded-xl sm:rounded-2xl border-2 border-purple-200/50 shadow-glass text-center btn-modern glass"
-            >
-              <span className="flex items-center justify-center">
-                View Style Demo
-                <Sparkles className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
-              </span>
-            </Link>
-          </div>
-
-          {/* Stats - Removed mock data, will be populated with real stats from backend */}
         </div>
       </section>
 
-      {/* Modern Features Section */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-gradient-to-br from-white via-cyan-50 to-purple-50 relative overflow-hidden" data-animate="fade" data-animate-delay="0">
-        {/* Modern background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full animate-float blur-3xl"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-pink-500/10 rounded-full animate-float blur-3xl" style={{ animationDelay: '3s' }}></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-md rounded-full border border-cyan-200/50 shadow-glass mb-4 sm:mb-6">
-              <Star className="h-4 w-4 text-amber-500 animate-pulse" />
-              <span className="text-sm font-semibold text-slate-800">Why Choose PathByte?</span>
+      {/* Features Section */}
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-glass px-4 py-2 rounded-full mb-6">
+              <Zap className="w-4 h-4 text-secondary-400" />
+              <span className="text-sm font-medium text-secondary-300">Powerful Features</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 sm:mb-6 px-4">
-              Everything You Need to
-              <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x"> Succeed</span>
+            <h2 className="text-4xl sm:text-5xl font-futuristic font-bold mb-6">
+              <span className="text-gradient">Everything You Need</span>
+              <br />
+              <span className="text-neon">To Succeed</span>
             </h2>
-            <p className="text-lg sm:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed px-4">
-              Our platform combines cutting-edge AI technology with proven learning methodologies to deliver exceptional results.
+            <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
+              Our comprehensive platform provides all the tools and resources you need to build a successful tech career.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {features.map((feature, index) => {
-              const Icon = feature.icon
-              return (
-                <div key={index} className={`group p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/80 backdrop-blur-md border border-white/50 shadow-card ${feature.bgGradient} card-modern glass`} data-animate="slide-up" data-animate-delay={`${index * 200}`}>
-                  <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${feature.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg ${feature.glow} icon-modern`}>
-                    <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4">{feature.title}</h3>
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">{feature.description}</p>
-                  <div className="mt-4 sm:mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className={`w-full h-1 bg-gradient-to-r ${feature.color} rounded-full shadow-lg`}></div>
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group relative bg-glass-dark backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-primary-500/50 transition-all duration-500 hover:shadow-neon-lg hover:-translate-y-2"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`} />
+                
+                {/* Icon */}
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-8 h-8 text-primary-400" />
                   </div>
                 </div>
-              )
-            })}
+
+                {/* Content */}
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-gradient transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-neutral-300 leading-relaxed">
+                  {feature.description}
+                </p>
+
+                {/* Hover Effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Modern How It Works Section */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-gradient-to-br from-slate-50 via-white to-cyan-50 relative overflow-hidden">
-        {/* Modern background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 left-1/3 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-500/10 rounded-full animate-float blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-emerald-400/10 to-teal-500/10 rounded-full animate-float blur-3xl" style={{ animationDelay: '4s' }}></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in-up">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 sm:mb-6 px-4">
-              How <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x">PathByte</span> Works
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-primary-950/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-glass px-4 py-2 rounded-full mb-6">
+              <Target className="w-4 h-4 text-primary-400" />
+              <span className="text-sm font-medium text-primary-300">Simple Process</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-futuristic font-bold mb-6">
+              <span className="text-gradient">Your Journey</span>
+              <br />
+              <span className="text-neon">In 3 Steps</span>
             </h2>
-            <p className="text-lg sm:text-xl text-slate-700 max-w-3xl mx-auto px-4">
-              Get started in minutes with our simple, effective approach to career development.
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Discover Your Path',
+                description: 'Take our AI-powered assessment to identify your ideal tech career and skills gaps.',
+                icon: Brain
+              },
+              {
+                step: '02',
+                title: 'Build Your Skills',
+                description: 'Follow personalized learning paths with hands-on projects and real-world applications.',
+                icon: Target
+              },
+              {
+                step: '03',
+                title: 'Launch Your Career',
+                description: 'Connect with opportunities, showcase your skills, and land your dream tech job.',
+                icon: Rocket
+              }
+            ].map((step, index) => (
+              <div key={index} className="relative text-center group">
+                {/* Step Number */}
+                <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white group-hover:scale-110 transition-transform duration-300">
+                  {step.step}
+                </div>
+
+                {/* Content */}
+                <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-8 border border-white/10 group-hover:border-primary-500/50 transition-all duration-500">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <step.icon className="w-6 h-6 text-primary-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-gradient transition-colors duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-neutral-300 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Connecting Line */}
+                {index < 2 && (
+                  <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary-500/50 to-transparent transform translate-x-4" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl p-12 border border-primary-500/20">
+            <h2 className="text-4xl sm:text-5xl font-futuristic font-bold mb-6">
+              <span className="text-gradient">Ready to Transform</span>
+              <br />
+              <span className="text-neon">Your Career?</span>
+            </h2>
+            <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
+              Join thousands of professionals who have already accelerated their tech careers with PathByte.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-            <div className="text-center group animate-fade-in-up">
-              <div className="relative mb-6 sm:mb-8">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                  <Target className="h-10 w-10 sm:h-12 sm:w-12 text-white" />
-                </div>
-                <div className="absolute -inset-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl sm:rounded-3xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-300"></div>
-                <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-lg">1</div>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">Assess Your Goals</h3>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed px-4">Take our AI-powered assessment to understand your current skills and career aspirations.</p>
-            </div>
-
-            <div className="text-center group animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="relative mb-6 sm:mb-8">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                  <BookOpen className="h-10 w-10 sm:h-12 sm:w-12 text-white" />
-                </div>
-                <div className="absolute -inset-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl sm:rounded-3xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-300"></div>
-                <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-lg">2</div>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">Get Your Path</h3>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed px-4">Receive a personalized learning roadmap tailored to your goals and timeline.</p>
-            </div>
-
-            <div className="text-center group animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <div className="relative mb-6 sm:mb-8">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                  <Rocket className="h-10 w-10 sm:h-12 sm:w-12 text-white" />
-                </div>
-                <div className="absolute -inset-2 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl sm:rounded-3xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-300"></div>
-                <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-lg">3</div>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">Learn & Grow</h3>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed px-4">Follow your path with interactive lessons, projects, and real-world applications.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <Link
+                to="/assessment"
+                className="capsule bg-gradient-to-r from-primary-500 to-secondary-500 px-8 py-4 text-white font-semibold text-lg hover:shadow-neon-lg transition-all duration-300 flex items-center space-x-2 group"
+              >
+                <span>Start Free Assessment</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/community"
+                className="capsule bg-glass px-8 py-4 text-white font-semibold text-lg hover:bg-glass-dark transition-all duration-300"
+              >
+                Join Community
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-             {/* Testimonials Section - Removed mock data, will be populated with real user testimonials */}
-
-      {/* Modern CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-gradient-to-br from-cyan-600 via-blue-600 to-purple-600 relative overflow-hidden">
-        {/* Modern background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 sm:top-20 left-4 sm:left-20 w-48 sm:w-96 h-48 sm:h-96 bg-white/10 rounded-full animate-float blur-3xl"></div>
-          <div className="absolute bottom-10 sm:bottom-20 right-4 sm:right-20 w-64 sm:w-[500px] h-64 sm:h-[500px] bg-white/10 rounded-full animate-float blur-3xl" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[600px] h-80 sm:h-[600px] bg-gradient-to-r from-white/5 to-white/10 rounded-full animate-pulse-gentle"></div>
-          
-          {/* Modern mesh gradient overlay */}
-          <div className="absolute inset-0 bg-mesh-2 opacity-20"></div>
-          
-          {/* Floating particles */}
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '5s' }}></div>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto text-center text-white animate-fade-in-up">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 px-4">
-            Ready to Transform Your Career?
-          </h2>
-          <p className="text-lg sm:text-xl mb-8 sm:mb-12 opacity-90 leading-relaxed px-4">
-            Start your journey with our comprehensive, AI-powered educational platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
-            <Link 
-              to="/onboarding" 
-              className="group relative w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white text-slate-900 font-semibold rounded-xl sm:rounded-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-2xl hover:shadow-white/25 flex items-center justify-center overflow-hidden"
-            >
-              <span className="flex items-center justify-center relative z-10">
-                <Play className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5" />
-                Get Started Now
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-            </Link>
-            <Link 
-              to="/career-guide" 
-              className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 border-2 border-white/80 text-white font-semibold rounded-xl sm:rounded-2xl hover:bg-white hover:text-slate-900 hover:border-white transition-all duration-300 hover:scale-105 hover:-translate-y-1 backdrop-blur-sm flex items-center justify-center"
-            >
-              <Globe className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5" />
-              Explore Paths
-            </Link>
-          </div>
-          
-          {/* Additional info */}
-          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-white/80 px-4">
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
-              <span>Start learning in minutes</span>
+      {/* Footer */}
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center space-x-2 mb-4 md:mb-0">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
+                <Rocket className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-futuristic font-bold text-gradient">PathByte</span>
             </div>
-            <div className="flex items-center gap-2">
-              <BarChart3 className="h-4 w-4" />
-              <span>Track your progress</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              <span>Join our community</span>
+            <div className="text-neutral-400 text-sm">
+              © 2024 PathByte. All rights reserved.
             </div>
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   )
 }

@@ -829,10 +829,10 @@ export default function CareerAssessmentPage() {
           
           <button
             onClick={nextQuestion}
-            disabled={!answers[question.id]}
+            disabled={answers[question.id] === undefined || answers[question.id] === null}
             className={cn(
               'flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200',
-              !answers[question.id]
+              answers[question.id] === undefined || answers[question.id] === null
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 : 'bg-blue-600 hover:bg-blue-700 text-white'
             )}
