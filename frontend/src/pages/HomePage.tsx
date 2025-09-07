@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import { 
   ArrowRight, 
   TrendingUp, 
@@ -17,12 +18,18 @@ import {
   BarChart3
 } from 'lucide-react'
 import EnhancedSearchBar from '../components/ui/EnhancedSearchBar'
+import { initAllScrollAnimations } from '../utils/scrollAnimations'
 
 export default function HomePage() {
   const handleSearch = (query: string) => {
     console.log('Search query:', query)
     // Handle search functionality
   }
+
+  useEffect(() => {
+    // Initialize scroll animations when component mounts
+    initAllScrollAnimations()
+  }, [])
 
   // Removed mock stats - will be populated with real data from backend
 
@@ -88,7 +95,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen page-transition">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50 to-purple-50 py-12 sm:py-16 lg:py-24 px-4">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50 to-purple-50 py-12 sm:py-16 lg:py-24 px-4" data-animate="fade" data-animate-delay="0">
         {/* Modern Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-10 sm:top-20 left-4 sm:left-10 w-48 sm:w-96 h-48 sm:h-96 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full animate-float blur-3xl"></div>
@@ -114,26 +121,26 @@ export default function HomePage() {
           </div>
 
           {/* Modern Main Heading */}
-          <h1 className="mt-6 sm:mt-10 text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-slate-900 animate-fade-in-up leading-tight">
+          <h1 className="mt-6 sm:mt-10 text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-slate-900 leading-tight" data-animate="slide-up" data-animate-delay="200">
             Your Path to
-            <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x"> Tech Success</span>
+            <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient"> Tech Success</span>
           </h1>
 
           {/* Description */}
-          <p className="mt-6 sm:mt-8 text-lg sm:text-xl lg:text-2xl text-slate-700 max-w-4xl mx-auto animate-fade-in-up leading-relaxed px-4" style={{ animationDelay: '0.2s' }}>
+          <p className="mt-6 sm:mt-8 text-lg sm:text-xl lg:text-2xl text-slate-700 max-w-4xl mx-auto leading-relaxed px-4" data-animate="slide-up" data-animate-delay="400">
             Master in-demand tech skills with personalized learning paths, comprehensive roadmaps, and cutting-edge AI guidance designed for every career stage.
           </p>
 
           {/* Search Bar */}
-          <div className="mt-8 sm:mt-12 animate-fade-in-up px-4" style={{ animationDelay: '0.4s' }}>
+          <div className="mt-8 sm:mt-12 px-4" data-animate="scale" data-animate-delay="600">
             <EnhancedSearchBar onSearch={handleSearch} />
           </div>
 
           {/* Modern CTA Buttons */}
-          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center animate-fade-in-up px-4" style={{ animationDelay: '0.6s' }}>
+          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4" data-animate="slide-up" data-animate-delay="800">
             <Link 
               to="/career-assessment" 
-              className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 text-white font-semibold rounded-xl sm:rounded-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-button hover:shadow-button-hover text-center overflow-hidden"
+              className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 text-white font-semibold rounded-xl sm:rounded-2xl text-center overflow-hidden btn-modern"
             >
               <span className="flex items-center justify-center relative z-10">
                 Find Your Ideal Career
@@ -143,7 +150,7 @@ export default function HomePage() {
             </Link>
             <Link 
               to="/career-guide" 
-              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/95 backdrop-blur-md text-slate-800 font-semibold rounded-xl sm:rounded-2xl hover:bg-white transition-all duration-300 border-2 border-cyan-200/50 hover:border-cyan-300 hover:scale-105 hover:-translate-y-1 shadow-glass hover:shadow-glass-lg text-center"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/95 backdrop-blur-md text-slate-800 font-semibold rounded-xl sm:rounded-2xl border-2 border-cyan-200/50 shadow-glass text-center btn-modern glass"
             >
               <span className="flex items-center justify-center">
                 Explore Career Paths
@@ -152,7 +159,7 @@ export default function HomePage() {
             </Link>
             <Link 
               to="/style-demo" 
-              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/95 backdrop-blur-md text-slate-800 font-semibold rounded-xl sm:rounded-2xl hover:bg-white transition-all duration-300 border-2 border-purple-200/50 hover:border-purple-300 hover:scale-105 hover:-translate-y-1 shadow-glass hover:shadow-glass-lg text-center"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/95 backdrop-blur-md text-slate-800 font-semibold rounded-xl sm:rounded-2xl border-2 border-purple-200/50 shadow-glass text-center btn-modern glass"
             >
               <span className="flex items-center justify-center">
                 View Style Demo
@@ -166,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* Modern Features Section */}
-      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-gradient-to-br from-white via-cyan-50 to-purple-50 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-gradient-to-br from-white via-cyan-50 to-purple-50 relative overflow-hidden" data-animate="fade" data-animate-delay="0">
         {/* Modern background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full animate-float blur-3xl"></div>
@@ -188,12 +195,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 stagger-animation">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon
               return (
-                <div key={index} className={`group p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/80 backdrop-blur-md border border-white/50 shadow-card hover:shadow-card-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-fade-in-up ${feature.bgGradient}`} style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${feature.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg ${feature.glow}`}>
+                <div key={index} className={`group p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/80 backdrop-blur-md border border-white/50 shadow-card ${feature.bgGradient} card-modern glass`} data-animate="slide-up" data-animate-delay={`${index * 200}`}>
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${feature.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg ${feature.glow} icon-modern`}>
                     <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4">{feature.title}</h3>
