@@ -66,10 +66,22 @@ export const initializeDatabase = async () => {
         throw migrationError
       }
       
-      // Run seeds if in development
+      // Run seeds if in development and seeds exist
       if (environment === 'development') {
-        await db.seed.run()
-        logger.info('✅ Database seeds completed')
+        try {
+          await db.seed.run()
+          logger.info('✅ Database seeds completed')
+        } catch (seedError: any) {
+          // If no seeds exist, that's okay - just log and continue
+          if (seedError.code === 'ENOENT' || seedError.message?.includes('scandir')) {
+            console.log('🔧 No seed files found, skipping seeds')
+            logger.info('🔧 No seed files found, skipping seeds')
+          } else {
+            console.error('❌ Seed error:', seedError)
+            logger.error('❌ Seed error:', seedError)
+            throw seedError
+          }
+        }
       }
     } else {
       console.log('🔧 Users table already exists, skipping migrations')

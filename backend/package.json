@@ -4,7 +4,7 @@
   "description": "Backend API for PathByte - Tech Stack Recommendation Engine",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "test": "jest",
