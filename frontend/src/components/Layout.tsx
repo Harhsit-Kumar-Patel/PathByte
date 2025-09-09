@@ -13,7 +13,6 @@ import {
   BarChart3,
   User,
   Sparkles,
-  Search
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
@@ -240,21 +239,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           >
             <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
-
-          {/* Separator */}
-          <div className="h-6 sm:h-8 w-px bg-slate-200 lg:hidden" />
-
-          {/* Search bar */}
-          <div className="flex-1 max-w-sm sm:max-w-md lg:max-w-lg">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search skills, careers..."
-                className="w-full pl-10 pr-3 py-2.5 bg-white border border-slate-200 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 shadow-sm"
-              />
-            </div>
-          </div>
 
           {/* Right side */}
           <div className="flex items-center justify-end gap-x-2 sm:gap-x-4">

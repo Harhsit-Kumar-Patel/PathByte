@@ -17,14 +17,9 @@ import {
   Clock,
   BarChart3
 } from 'lucide-react'
-import EnhancedSearchBar from '../components/ui/EnhancedSearchBar'
 import { initAllScrollAnimations } from '../utils/scrollAnimations'
 
 export default function HomePage() {
-  const handleSearch = (query: string) => {
-    console.log('Search query:', query)
-    // Handle search functionality
-  }
 
   useEffect(() => {
     // Initialize scroll animations when component mounts
@@ -131,13 +126,9 @@ export default function HomePage() {
             Master in-demand tech skills with personalized learning paths, comprehensive roadmaps, and cutting-edge AI guidance designed for every career stage.
           </p>
 
-          {/* Search Bar */}
-          <div className="mt-8 sm:mt-12 px-4" data-animate="scale" data-animate-delay="600">
-            <EnhancedSearchBar onSearch={handleSearch} />
-          </div>
 
           {/* Modern CTA Buttons */}
-          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4" data-animate="slide-up" data-animate-delay="800">
+          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4" data-animate="slide-up" data-animate-delay="600">
             <Link 
               to="/career-assessment" 
               className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 text-white font-semibold rounded-xl sm:rounded-2xl text-center overflow-hidden btn-modern"
