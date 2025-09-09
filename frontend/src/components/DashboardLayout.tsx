@@ -9,11 +9,9 @@ import {
   Clock,
   ArrowRight,
   Zap,
-  Brain,
-  Rocket
+  Brain
 } from 'lucide-react'
 import { cn } from '@/utils/cn'
-import FloatingNavigation from './FloatingNavigation'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -47,47 +45,42 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
   ]
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
-      {/* Animated Background */}
-      <div className="fixed inset-0 bg-career-mesh animate-gradient-shift opacity-10" />
-      
-      {/* Floating Navigation */}
-      <FloatingNavigation user={user} />
-
+    <div className="min-h-screen bg-gray-50">
       {/* Main Content */}
-      <main className="pt-16">
+      <main>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Dashboard Header */}
           <div className="mb-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <h1 className="text-3xl sm:text-4xl font-futuristic font-bold mb-2">
-                  <span className="text-gradient">Welcome back,</span>
+                <h1 className="text-3xl sm:text-4xl font-bold mb-2">
+                  <span className="text-gray-900">Welcome back,</span>
                   <br />
-                  <span className="text-neon">{user?.name || 'Explorer'}</span>
+                  <span className="text-gradient">{user?.name || 'Explorer'}</span>
+                  <span className="text-2xl">👋</span>
                 </h1>
-                <p className="text-neutral-300 text-lg">
-                  Ready to continue your tech career journey?
+                <p className="text-gray-600 text-lg">
+                  Here's what's happening with your learning journey
                 </p>
               </div>
               
               {/* Quick Stats */}
               <div className="mt-6 lg:mt-0 grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-glass-dark backdrop-blur-xl rounded-xl p-4 border border-white/10">
-                  <div className="text-2xl font-bold text-gradient">85%</div>
-                  <div className="text-sm text-neutral-400">Progress</div>
+                <div className="card p-4">
+                  <div className="text-2xl font-bold text-gray-900">85%</div>
+                  <div className="text-sm text-gray-600">Progress</div>
                 </div>
-                <div className="bg-glass-dark backdrop-blur-xl rounded-xl p-4 border border-white/10">
-                  <div className="text-2xl font-bold text-gradient">12</div>
-                  <div className="text-sm text-neutral-400">Skills</div>
+                <div className="card p-4">
+                  <div className="text-2xl font-bold text-gray-900">12</div>
+                  <div className="text-sm text-gray-600">Skills</div>
                 </div>
-                <div className="bg-glass-dark backdrop-blur-xl rounded-xl p-4 border border-white/10">
-                  <div className="text-2xl font-bold text-gradient">5</div>
-                  <div className="text-sm text-neutral-400">Badges</div>
+                <div className="card p-4">
+                  <div className="text-2xl font-bold text-gray-900">5</div>
+                  <div className="text-sm text-gray-600">Badges</div>
                 </div>
-                <div className="bg-glass-dark backdrop-blur-xl rounded-xl p-4 border border-white/10">
-                  <div className="text-2xl font-bold text-gradient">3</div>
-                  <div className="text-sm text-neutral-400">Roadmaps</div>
+                <div className="card p-4">
+                  <div className="text-2xl font-bold text-gray-900">3</div>
+                  <div className="text-sm text-gray-600">Roadmaps</div>
                 </div>
               </div>
             </div>
@@ -97,170 +90,202 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Content Area */}
             <div className="lg:col-span-2 space-y-8">
-              {/* Quick Actions */}
-              <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+              {/* Your Learning Roadmap */}
+              <div className="card-gradient p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Quick Actions</h2>
-                  <Zap className="w-5 h-5 text-primary-400" />
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                      <Target className="w-4 h-4 text-white" />
+                    </div>
+                    <h2 className="text-xl font-semibold text-gray-900">Your Learning Roadmap</h2>
+                  </div>
+                  <Link
+                    to="/roadmap"
+                    className="btn-primary flex items-center space-x-2"
+                  >
+                    <span>View Roadmap</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  {quickActions.map((action, index) => (
-                    <Link
-                      key={index}
-                      to={action.href}
-                      className="group bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/10 hover:border-primary-500/50 transition-all duration-300 hover:-translate-y-1"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className={cn(
-                          'w-10 h-10 rounded-lg flex items-center justify-center',
-                          action.color === 'primary' && 'bg-primary-500/20',
-                          action.color === 'secondary' && 'bg-secondary-500/20',
-                          action.color === 'accent' && 'bg-accent-500/20',
-                          action.color === 'success' && 'bg-success-500/20'
-                        )}>
-                          <action.icon className={cn(
-                            'w-5 h-5',
-                            action.color === 'primary' && 'text-primary-400',
-                            action.color === 'secondary' && 'text-secondary-400',
-                            action.color === 'accent' && 'text-accent-400',
-                            action.color === 'success' && 'text-success-400'
-                          )} />
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-medium text-white group-hover:text-gradient transition-colors duration-300">
-                            {action.name}
-                          </div>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-primary-400 group-hover:translate-x-1 transition-all duration-300" />
-                      </div>
-                    </Link>
-                  ))}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Target className="w-5 h-5 text-primary-600" />
+                    <div>
+                      <div className="font-medium text-gray-900">Target Role</div>
+                      <div className="text-sm text-gray-600">Frontend Developer</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <TrendingUp className="w-5 h-5 text-primary-600" />
+                    <div>
+                      <div className="font-medium text-gray-900">Experience Level</div>
+                      <div className="text-sm text-gray-600">Beginner</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">
+                    Ready to follow your roadmap? Get detailed learning paths, resources, and milestone projects for your Frontend Developer journey.
+                  </p>
                 </div>
               </div>
 
-              {/* Recent Activity */}
-              <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+              {/* Your Learning Progress */}
+              <div className="card p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Recent Activity</h2>
-                  <Clock className="w-5 h-5 text-primary-400" />
+                  <h2 className="text-xl font-semibold text-gray-900">Your Learning Progress</h2>
+                  <button className="btn-secondary text-sm">
+                    Track your journey
+                  </button>
                 </div>
-                <div className="space-y-4">
-                  {recentActivity.map((activity, index) => (
-                    <div key={index} className="flex items-center space-x-4 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300">
-                      <div className="w-8 h-8 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-lg flex items-center justify-center">
-                        {activity.type === 'course' && <BookOpen className="w-4 h-4 text-primary-400" />}
-                        {activity.type === 'achievement' && <Award className="w-4 h-4 text-secondary-400" />}
-                        {activity.type === 'community' && <Users className="w-4 h-4 text-accent-400" />}
-                        {activity.type === 'roadmap' && <Target className="w-4 h-4 text-success-400" />}
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-white font-medium">{activity.action}</div>
-                        <div className="text-sm text-neutral-400">{activity.time}</div>
+                <div className="space-y-6">
+                  {/* Overall Progress */}
+                  <div className="text-center">
+                    <div className="relative w-24 h-24 mx-auto mb-4">
+                      <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="40"
+                          stroke="#e5e7eb"
+                          strokeWidth="8"
+                          fill="none"
+                        />
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="40"
+                          stroke="#8b5cf6"
+                          strokeWidth="8"
+                          fill="none"
+                          strokeDasharray={`${2 * Math.PI * 40}`}
+                          strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.05)}`}
+                          className="transition-all duration-1000"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-lg font-bold text-gray-900">5%</span>
                       </div>
                     </div>
-                  ))}
+                    <div className="text-sm text-gray-600">Overall Progress Across all levels</div>
+                  </div>
+
+                  {/* Current Level Progress */}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-gray-900">Current Level</span>
+                      <span className="text-sm text-gray-600">5%</span>
+                    </div>
+                    <div className="progress-bar">
+                      <div className="progress-fill" style={{ width: '5%' }}></div>
+                    </div>
+                    <div className="text-xs text-gray-500 mt-1">Year 0-1 (Beginner)</div>
+                  </div>
+
+                  {/* Skills and Projects */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center space-x-3">
+                      <Target className="w-5 h-5 text-primary-600" />
+                      <div>
+                        <div className="font-medium text-gray-900">Skills Mastered</div>
+                        <div className="text-sm text-gray-600">1 skills</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Award className="w-5 h-5 text-primary-600" />
+                      <div>
+                        <div className="font-medium text-gray-900">Projects Done</div>
+                        <div className="text-sm text-gray-600">0 projects</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Main Content */}
-              <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+              <div className="card p-6">
                 {children}
               </div>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-8">
-              {/* Upcoming Events */}
-              <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+              {/* Quick Actions */}
+              <div className="card p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Upcoming</h2>
-                  <Calendar className="w-5 h-5 text-primary-400" />
+                  <h2 className="text-xl font-semibold text-gray-900">Quick Actions</h2>
+                  <Zap className="w-5 h-5 text-primary-600" />
+                </div>
+                <div className="space-y-3">
+                  {quickActions.map((action, index) => (
+                    <Link
+                      key={index}
+                      to={action.href}
+                      className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-all duration-300"
+                    >
+                      <div className={cn(
+                        'w-10 h-10 rounded-lg flex items-center justify-center',
+                        action.color === 'primary' && 'bg-primary-100',
+                        action.color === 'secondary' && 'bg-blue-100',
+                        action.color === 'accent' && 'bg-green-100',
+                        action.color === 'success' && 'bg-purple-100'
+                      )}>
+                        <action.icon className={cn(
+                          'w-5 h-5',
+                          action.color === 'primary' && 'text-primary-600',
+                          action.color === 'secondary' && 'text-blue-600',
+                          action.color === 'accent' && 'text-green-600',
+                          action.color === 'success' && 'text-purple-600'
+                        )} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-medium text-gray-900 group-hover:text-primary-700 transition-colors duration-300">
+                          {action.name}
+                        </div>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-300" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recent Activity */}
+              <div className="card p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-semibold text-gray-900">Recent Activity</h2>
+                  <Clock className="w-5 h-5 text-primary-600" />
+                </div>
+                <div className="space-y-4">
+                  {recentActivity.map((activity, index) => (
+                    <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300">
+                      <div className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                        {activity.type === 'course' && <BookOpen className="w-4 h-4 text-primary-600" />}
+                        {activity.type === 'achievement' && <Award className="w-4 h-4 text-primary-600" />}
+                        {activity.type === 'community' && <Users className="w-4 h-4 text-primary-600" />}
+                        {activity.type === 'roadmap' && <Target className="w-4 h-4 text-primary-600" />}
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-gray-900 font-medium">{activity.action}</div>
+                        <div className="text-sm text-gray-600">{activity.time}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Upcoming Events */}
+              <div className="card p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-semibold text-gray-900">Upcoming</h2>
+                  <Calendar className="w-5 h-5 text-primary-600" />
                 </div>
                 <div className="space-y-4">
                   {upcomingEvents.map((event, index) => (
-                    <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div key={index} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                       <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-primary-400 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
                         <div className="flex-1">
-                          <div className="text-white font-medium mb-1">{event.title}</div>
-                          <div className="text-sm text-neutral-400">{event.date}</div>
+                          <div className="text-gray-900 font-medium mb-1">{event.title}</div>
+                          <div className="text-sm text-gray-600">{event.date}</div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Progress Overview */}
-              <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-6 border border-white/10">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Progress</h2>
-                  <TrendingUp className="w-5 h-5 text-primary-400" />
-                </div>
-                <div className="space-y-4">
-                  {[
-                    { skill: 'JavaScript', progress: 85, color: 'primary' },
-                    { skill: 'React', progress: 70, color: 'secondary' },
-                    { skill: 'Node.js', progress: 60, color: 'accent' },
-                    { skill: 'TypeScript', progress: 45, color: 'success' },
-                  ].map((item, index) => (
-                    <div key={index} className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-medium">{item.skill}</span>
-                        <span className="text-sm text-neutral-400">{item.progress}%</span>
-                      </div>
-                      <div className="w-full bg-white/10 rounded-full h-2">
-                        <div 
-                          className={cn(
-                            'h-2 rounded-full transition-all duration-1000',
-                            item.color === 'primary' && 'bg-gradient-to-r from-primary-500 to-primary-400',
-                            item.color === 'secondary' && 'bg-gradient-to-r from-secondary-500 to-secondary-400',
-                            item.color === 'accent' && 'bg-gradient-to-r from-accent-500 to-accent-400',
-                            item.color === 'success' && 'bg-gradient-to-r from-success-500 to-success-400'
-                          )}
-                          style={{ width: `${item.progress}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Achievements */}
-              <div className="bg-glass-dark backdrop-blur-xl rounded-2xl p-6 border border-white/10">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-white">Achievements</h2>
-                  <Award className="w-5 h-5 text-primary-400" />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { name: 'First Steps', icon: Rocket, earned: true },
-                    { name: 'Code Master', icon: Brain, earned: true },
-                    { name: 'Community Star', icon: Users, earned: false },
-                    { name: 'Speed Learner', icon: Zap, earned: false },
-                  ].map((achievement, index) => (
-                    <div key={index} className={cn(
-                      'p-4 rounded-lg border text-center transition-all duration-300',
-                      achievement.earned 
-                        ? 'bg-gradient-to-br from-primary-500/20 to-secondary-500/20 border-primary-500/50' 
-                        : 'bg-white/5 border-white/10'
-                    )}>
-                      <div className={cn(
-                        'w-8 h-8 mx-auto mb-2 rounded-lg flex items-center justify-center',
-                        achievement.earned 
-                          ? 'bg-gradient-to-br from-primary-500 to-secondary-500' 
-                          : 'bg-white/10'
-                      )}>
-                        <achievement.icon className={cn(
-                          'w-4 h-4',
-                          achievement.earned ? 'text-white' : 'text-neutral-400'
-                        )} />
-                      </div>
-                      <div className={cn(
-                        'text-sm font-medium',
-                        achievement.earned ? 'text-white' : 'text-neutral-400'
-                      )}>
-                        {achievement.name}
                       </div>
                     </div>
                   ))}
