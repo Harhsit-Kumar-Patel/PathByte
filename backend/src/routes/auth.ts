@@ -289,13 +289,13 @@ router.get('/me', authenticateToken, async (req, res): Promise<any> => {
       updatedAt: user.updated_at
     }
 
-    res.json({
+    return res.json({
       success: true,
       data: transformedUser
     })
   } catch (error) {
     logger.error('Get user profile error:', error)
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: 'Internal server error'
     })
@@ -368,13 +368,13 @@ router.put('/profile', authenticateToken, async (req, res): Promise<any> => {
       updatedAt: new Date()
     }
 
-    res.json({
+    return res.json({
       success: true,
       data: transformedUser
     })
   } catch (error) {
     logger.error('Update profile error:', error)
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: 'Internal server error'
     })
