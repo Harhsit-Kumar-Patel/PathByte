@@ -20,12 +20,15 @@ import {
   Twitter,
   Github,
   Youtube,
-  Instagram
+  Instagram,
+  ClipboardCheck,
+  Map,
+  MessageSquare
 } from 'lucide-react'
 import { initAllScrollAnimations } from '../utils/scrollAnimations'
 
 export default function HomePage() {
-  const [testimonials, setTestimonials] = useState([]);
+  const [testimonials] = useState([]);
 
   useEffect(() => {
     // Initialize scroll animations when component mounts
@@ -269,35 +272,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      {testimonials.length > 0 && (
-        <section className="py-12 sm:py-16 lg:py-24 px-4 bg-white relative overflow-hidden" data-animate="fade">
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-fade-in-up">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 sm:mb-6 px-4">
-                Loved by <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x">Developers</span> Worldwide
-              </h2>
-              <p className="text-lg sm:text-xl text-slate-700 max-w-3xl mx-auto px-4">
-                Don't just take our word for it - here's what our users have to say.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {testimonials.map((testimonial: any, index) => (
-                <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100" data-animate="slide-up" data-animate-delay={`${index * 200}`}>
-                  <p className="text-slate-700 mb-6">"{testimonial.quote}"</p>
-                  <div className="flex items-center">
-                    <img className="w-12 h-12 rounded-full mr-4" src={testimonial.image} alt={testimonial.name} />
-                    <div>
-                      <p className="font-semibold text-slate-900">{testimonial.name}</p>
-                      <p className="text-slate-500 text-sm">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* Quick Access Section */}
+      <section className="py-12 sm:py-16 lg:py-24 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">Quick Access</h2>
+            <p className="mt-4 text-lg text-slate-600">Jump right into the action with these direct links.</p>
           </div>
-        </section>
-      )}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Link to="/career-assessment" className="group block p-6 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <ClipboardCheck className="w-10 h-10 text-cyan-500" />
+              <h3 className="mt-4 text-xl font-semibold text-slate-800">Career Assessment</h3>
+              <p className="mt-2 text-slate-600">Find the perfect tech role for you.</p>
+            </Link>
+            <Link to="/career-guide" className="group block p-6 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <Map className="w-10 h-10 text-purple-500" />
+              <h3 className="mt-4 text-xl font-semibold text-slate-800">View Roadmaps</h3>
+              <p className="mt-2 text-slate-600">Explore our expert-curated career paths.</p>
+            </Link>
+            <Link to="/community" className="group block p-6 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <MessageSquare className="w-10 h-10 text-emerald-500" />
+              <h3 className="mt-4 text-xl font-semibold text-slate-800">Explore Community</h3>
+              <p className="mt-2 text-slate-600">Connect with fellow learners and mentors.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Modern CTA Section */}
       <section className="py-12 sm:py-16 lg:py-24 px-4 bg-gradient-to-br from-cyan-600 via-blue-600 to-purple-600 relative overflow-hidden">
