@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
   ArrowRight,
   TrendingUp,
@@ -28,16 +28,10 @@ import {
 import { initAllScrollAnimations } from '../utils/scrollAnimations'
 
 export default function HomePage() {
-  const [testimonials] = useState([]);
 
   useEffect(() => {
     // Initialize scroll animations when component mounts
     initAllScrollAnimations()
-
-    // Fetch testimonials from the backend
-    // fetch('/api/testimonials')
-    //   .then(res => res.json())
-    //   .then(data => setTestimonials(data));
   }, [])
 
   const features = [
