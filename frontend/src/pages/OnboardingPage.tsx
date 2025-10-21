@@ -56,7 +56,9 @@ export default function OnboardingPage() {
       console.error('Connection test failed:', error)
       let statusMessage = '❌ Connection failed'
       
-      if (error.code === 'ECONNREFUSED') {
+      // The original code uses error.code for fetch errors, which is often undefined in browsers. 
+      // I'll keep the structure but note that message matching is more reliable.
+      if (error.code === 'ECONNREFUSED' || error.message.includes('Failed to fetch')) {
         statusMessage = '❌ Cannot connect to backend server. Please ensure it is running on http://localhost:5000'
       } else if (error.message?.includes('404')) {
         statusMessage = '❌ Backend is running but health endpoint not found'
@@ -104,10 +106,8 @@ export default function OnboardingPage() {
         errorMessage = err.response.data.error
       } else if (err.message) {
         errorMessage = err.message
-      } else if (err.code === 'NETWORK_ERROR') {
-        errorMessage = 'Network error. Please check your connection and try again.'
-      } else if (err.code === 'ECONNREFUSED') {
-        errorMessage = 'Cannot connect to server. Please ensure the backend is running.'
+      } else if (err.code === 'NETWORK_ERROR' || err.code === 'ECONNREFUSED') {
+        errorMessage = 'Network error. Cannot connect to server. Please ensure the backend is running.'
       }
       
       setError(errorMessage)
@@ -491,6 +491,20 @@ export default function OnboardingPage() {
               )}
             </div>
           </form>
+        </div>
+
+        {/* Login Link Added Here */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-600">
+            Already have an account? {' '}
+            <button 
+              type="button" 
+              onClick={() => navigate('/login')} 
+              className="text-primary-600 hover:text-primary-800 font-medium transition-colors duration-200"
+            >
+              Sign In
+            </button>
+          </p>
         </div>
       </div>
     </div>
