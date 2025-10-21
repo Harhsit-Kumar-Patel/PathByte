@@ -120,17 +120,19 @@ export function LoadingInline({ text = 'Loading...', color = 'primary' }: { text
 }
 
 // Button loading state
-export function LoadingButton({ children, loading, ...rest }: { // <-- FIX: Added ...rest to capture extra props
+export function LoadingButton({ children, loading, ...rest }: { 
   children: React.ReactNode; 
-  loading: boolean; 
-  className?: string; // FIX: Added explicit definition
-  size?: 'sm' | 'md' | 'lg' | 'xl'; // FIX: Added explicit definition
-  [key: string]: any; // FIX: Added catch-all index signature for other standard props
+  loading: boolean;
+  // These properties are added to accept props like className, onClick, etc.
+  className?: string; 
+  size?: 'sm' | 'md' | 'lg' | 'xl'; 
+  [key: string]: any; 
 }) {
   if (!loading) return <>{children}</>
   
   return (
-    <div className="inline-flex items-center space-x-2">
+    // FIX: Spread the rest props here to resolve TS6133
+    <div className="inline-flex items-center space-x-2" {...rest}> 
       <LoadingSpinner size="sm" color="white" variant="dots" />
       <span>Loading...</span>
     </div>

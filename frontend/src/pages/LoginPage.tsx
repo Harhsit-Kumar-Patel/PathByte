@@ -1,353 +1,322 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
-import { Eye, EyeOff, Lock, Mail, ArrowRight, User, Sparkles, LogIn, UserPlus } from 'lucide-react';
-import { LoadingButton } from '@/components/ui/LoadingSpinner'; // Assuming LoadingButton exists
-import { cn } from '@/utils/cn'; // Assuming cn utility exists
-import { motion, AnimatePresence } from 'framer-motion'; // For animations
-
-// Feature interface for clarity
-interface Feature {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  color: string; // Added color for icon background
-}
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import { useAuth } from '@/context/AuthContext'
+import { Eye, EyeOff, Lock, Mail, ArrowRight, User, Sparkles, Shield, Zap, Users } from 'lucide-react'
+import { LoadingButton } from '@/components/ui/LoadingSpinner'
 
 export default function LoginPage() {
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [showPasswordReset, setShowPasswordReset] = useState(false);
-  const [resetEmail, setResetEmail] = useState('');
-  const [resetLoading, setResetLoading] = useState(false);
-  const [resetMessage, setResetMessage] = useState<string | null>(null);
+  const { login } = useAuth()
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false)
+  const [showPasswordReset, setShowPasswordReset] = useState(false)
+  const [resetEmail, setResetEmail] = useState('')
+  const [resetLoading, setResetLoading] = useState(false)
+  const [resetMessage, setResetMessage] = useState<string | null>(null)
 
   const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
+    e.preventDefault()
+    setError(null)
+    setLoading(true)
     try {
-      await login(email, password);
-      navigate('/dashboard');
+      await login(email, password)
+      navigate('/dashboard')
     } catch (err: any) {
-      setError(err?.response?.data?.error || 'Login failed. Please check your credentials.');
+      setError(err?.response?.data?.error || 'Login failed')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const handlePasswordReset = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setResetMessage(null);
-    setResetLoading(true);
+    e.preventDefault()
+    setResetMessage(null)
+    setResetLoading(true)
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Password reset requested for:', resetEmail);
-      setResetMessage('If an account exists for this email, a reset link has been sent.');
+      // In a real app, you would send a reset link to the user's email
+      // For demonstration, we'll just simulate success
+      setResetMessage('Password reset link sent to your email (simulated).')
+      // In a real app, you would redirect to a new page or show a success message
+      // For now, we'll just close the modal
+      setShowPasswordReset(false)
     } catch (err: any) {
-      setResetMessage('Failed to send reset link. Please try again.');
+      setResetMessage(err?.response?.data?.error || 'Failed to send reset link')
     } finally {
-      setResetLoading(false);
+      setResetLoading(false)
     }
-  };
+  }
 
-  const features: Feature[] = [
-    { icon: Sparkles, title: 'AI-Powered Guidance', description: 'Personalized career roadmaps', color: 'bg-indigo-100 text-indigo-600' },
-    { icon: UserPlus, title: 'Skill Tracking', description: 'Monitor your learning progress', color: 'bg-purple-100 text-purple-600' },
-    { icon: ArrowRight, title: 'Clear Next Steps', description: 'Always know what to learn next', color: 'bg-blue-100 text-blue-600' }
-  ];
+
+  const features = [
+    { icon: Zap, title: 'AI-Powered Learning', description: 'Personalized career guidance' },
+    { icon: Shield, title: 'Industry-Validated', description: 'Proven career paths' },
+    { icon: Users, title: 'Community Support', description: 'Connect with peers' }
+  ]
 
   return (
-    <div className="min-h-screen flex bg-white"> {/* Simple white background */}
-      {/* Left Side - Branding & Info */}
-      <div className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 relative overflow-hidden">
-         {/* Subtle Geometric Pattern or Illustration (using gradients as placeholder) */}
-         <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-200 to-transparent rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-purple-200 to-transparent rounded-full translate-x-1/2 translate-y-1/2 blur-2xl"></div>
-         </div>
-
-        <div className="relative z-10">
-          {/* Logo */}
-           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center space-x-3 mb-24" // Increased bottom margin
-          >
-             <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-               <Sparkles className="h-6 w-6 text-white" />
-             </div>
-             <div>
-               <h1 className="text-2xl font-bold text-gray-800">PathByte</h1>
-               <p className="text-sm text-gray-600">Your AI Career Co-Pilot</p>
-             </div>
-           </motion.div>
-
-           {/* Features Section */}
-           <motion.div
-             initial={{ opacity: 0, x: -20 }}
-             animate={{ opacity: 1, x: 0 }}
-             transition={{ duration: 0.5, delay: 0.2, staggerChildren: 0.15 }} // Add stagger effect
-             className="space-y-8 max-w-md"
-           >
-             <h2 className="text-3xl font-bold text-gray-800 leading-tight">
-               Navigate Your Tech Career with Confidence
-             </h2>
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="flex items-start space-x-4"
-                  >
-                     <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1 shadow-sm", feature.color)}>
-                       <Icon className="h-5 w-5" />
-                     </div>
-                     <div>
-                       <h3 className="text-lg font-semibold text-gray-800">{feature.title}</h3>
-                       <p className="text-gray-600 text-sm">{feature.description}</p>
-                     </div>
-                  </motion.div>
-                )
-              })}
-           </motion.div>
+    <div className="min-h-screen page-transition bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 flex">
+      {/* Left Side - Features */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-indigo-200/30 rounded-full animate-float blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-purple-200/30 rounded-full animate-float blur-3xl" style={{ animationDelay: '3s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-200/20 to-purple-200/20 rounded-full animate-pulse-gentle"></div>
         </div>
 
-        {/* Footer Info */}
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="relative z-10 text-xs text-gray-500 space-x-4" // Smaller text
-        >
-          <span>© {new Date().getFullYear()} PathByte. All rights reserved.</span>
-          <Link to="/privacy" className="hover:text-indigo-600 transition-colors">Privacy</Link>
-          <Link to="/terms" className="hover:text-indigo-600 transition-colors">Terms</Link>
-        </motion.div>
+        <div className="relative z-10 flex flex-col justify-center px-16 py-12 text-slate-800">
+          {/* Logo */}
+          <div className="mb-16">
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-3xl flex items-center justify-center shadow-soft-xl">
+                  <Sparkles className="h-8 w-8 text-white" />
+                </div>
+                <div className="absolute -inset-2 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-3xl opacity-20 blur-lg"></div>
+              </div>
+              <div>
+                                 <h1 className="text-3xl font-bold">PathByte</h1>
+                 <p className="text-slate-700 text-sm">AI Career Platform</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Features */}
+          <div className="space-y-8">
+            <h2 className="text-4xl font-bold mb-8">
+              Transform Your Career with
+              <span className="block bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                AI-Powered Learning
+              </span>
+            </h2>
+            
+            <div className="space-y-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon
+                return (
+                  <div key={index} className="flex items-center space-x-4 group animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
+                    <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/20">
+                      <Icon className="h-6 w-6 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
+                      <p className="text-blue-200 text-sm">{feature.description}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+                         {/* Stats - Removed mock data, will be populated with real stats from backend */}
+          </div>
+        </div>
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-16 bg-white"> {/* Ensure white background */}
-        <motion.div
-            initial={{ opacity: 0, y: 20 }} // Slide up effect
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-full max-w-sm" // Slightly smaller max-width
-        >
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-8 py-12">
+        <div className="w-full max-w-md space-y-8 animate-fade-in-up">
           {/* Mobile Logo */}
-           <div className="text-center lg:hidden mb-8">
-             <div className="flex items-center justify-center space-x-3">
-               <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center shadow-md">
-                 <Sparkles className="h-5 w-5 text-white" />
-               </div>
-               <div>
-                 <h1 className="text-xl font-bold text-gray-800">PathByte</h1>
-               </div>
-             </div>
-           </div>
-
-          {/* Form */}
-          <div className="bg-white rounded-lg p-0"> {/* Removed card styles here */}
-            <div className="text-left mb-8"> {/* Left aligned text */}
-              <h2 className="text-3xl font-bold text-gray-900 mb-1">Sign In</h2>
-              <p className="text-gray-500">Enter your credentials to access your account.</p>
+          <div className="text-center lg:hidden">
+            <div className="flex items-center justify-center space-x-3 mb-6">
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl opacity-20 blur-sm"></div>
+              </div>
+              <div>
+                                 <h1 className="text-2xl font-bold text-white">PathByte</h1>
+                 <p className="text-blue-100 text-sm">AI Career Platform</p>
+              </div>
             </div>
+          </div>
 
-            {error && (
-               <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-md text-sm text-red-700 flex items-center gap-2"
-              >
-                 <User className="h-4 w-4 flex-shrink-0"/> {/* Example icon */}
+                     {/* Login Form */}
+           <div className="bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-slate-300 shadow-2xl p-8">
+                         <div className="text-center mb-8">
+               <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h2>
+               <p className="text-slate-600">Sign in to continue your journey</p>
+             </div>
+
+                         {error && (
+               <div className="mb-6 p-4 bg-red-50 backdrop-blur-sm border-2 border-red-300 rounded-2xl text-sm text-red-700 animate-shake">
                  {error}
-               </motion.div>
+               </div>
              )}
             
-            <form onSubmit={onSubmit} className="space-y-5"> {/* Adjusted spacing */}
-              {/* Email Input */}
-              <div className="relative">
-                 <label htmlFor="email" className="sr-only">Email Address</label>
-                 <Mail className="absolute left-3.5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                 <input
-                  id="email"
-                  type="email"
-                  className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all duration-200"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="Email Address"
-                  autoComplete="email"
-                />
-              </div>
-            
-              {/* Password Input */}
-               <div className="relative">
-                 <label htmlFor="password" className="sr-only">Password</label>
-                 <Lock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                 <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  className="w-full pl-11 pr-12 py-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all duration-200"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  placeholder="Password"
-                  autoComplete="current-password"
-                />
-                <button
+            <form onSubmit={onSubmit} className="space-y-6">
+                             <div className="space-y-2">
+                 <label className="block text-sm font-medium text-slate-800 mb-2 flex items-center">
+                   <Mail className="h-4 w-4 mr-2 text-slate-600" />
+                   Email Address
+                 </label>
+                 <div className="relative">
+                   <input 
+                     type="email" 
+                     className="w-full px-4 py-3 bg-white border-2 border-slate-300 rounded-2xl text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-300" 
+                     value={email} 
+                     onChange={(e) => setEmail(e.target.value)} 
+                     required 
+                     placeholder="Enter your email"
+                     autoComplete="email"
+                   />
+                 </div>
+               </div>
+              
+                             <div className="space-y-2">
+                 <label className="block text-sm font-medium text-slate-800 mb-2 flex items-center">
+                   <Lock className="h-4 w-4 mr-2 text-slate-600" />
+                   Password
+                 </label>
+                 <div className="relative">
+                   <input 
+                     type={showPassword ? 'text' : 'password'} 
+                     className="w-full px-4 py-3 pr-12 bg-white border-2 border-slate-300 rounded-2xl text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-300" 
+                     value={password} 
+                     onChange={(e) => setPassword(e.target.value)} 
+                     required 
+                     placeholder="Enter your password"
+                     autoComplete="current-password"
+                   />
+                   <button
+                     type="button"
+                     onClick={() => setShowPassword(!showPassword)}
+                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-slate-700 transition-colors duration-200 p-1 rounded"
+                   >
+                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                   </button>
+                 </div>
+               </div>
+
+                             <div className="flex items-center justify-between">
+                 <label className="flex items-center cursor-pointer group">
+                   <input 
+                     type="checkbox" 
+                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded transition-colors duration-200 bg-white" 
+                     checked={rememberMe}
+                     onChange={(e) => setRememberMe(e.target.checked)}
+                   />
+                   <span className="ml-2 text-sm text-slate-700 group-hover:text-slate-900 transition-colors duration-200">Remember me</span>
+                 </label>
+                 <button 
                    type="button"
-                   onClick={() => setShowPassword(!showPassword)}
-                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-200 p-1 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                   aria-label={showPassword ? "Hide password" : "Show password"}
-                >
-                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                   onClick={() => setShowPasswordReset(true)}
+                   className="text-sm text-blue-600 hover:text-blue-700 hover:underline transition-colors duration-200 font-medium"
+                 >
+                   Forgot password?
                  </button>
-              </div>
+               </div>
 
-              <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center cursor-pointer group">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded transition-colors duration-200 bg-white focus:ring-offset-0"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                  />
-                  <span className="ml-2 text-gray-600 group-hover:text-gray-800 transition-colors duration-200">Remember me</span>
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setShowPasswordReset(true)}
-                  className="text-indigo-600 hover:text-indigo-700 hover:underline transition-colors duration-200 font-medium focus:outline-none focus:underline"
-                >
-                  Forgot password?
-                </button>
-              </div>
-
-              {/* Submit Button */}
-              <motion.button
-                whileHover={{ scale: 1.02, y: -1 }} // Subtle hover effect
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full group relative px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-md hover:shadow-lg transition-all duration-300 shadow-md disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+              <button 
+                type="submit" 
+                className="w-full group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed" 
                 disabled={loading}
               >
                 {loading ? (
-                   <LoadingButton loading={loading} className="text-white">Signing in...</LoadingButton>
-                 ) : (
-                   <span className="flex items-center justify-center">
-                     Sign In
-                     <LogIn className="ml-2 h-5 w-5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                   </span>
-                 )}
-               </motion.button>
+                  <LoadingButton loading={loading}>
+                    Signing in...
+                  </LoadingButton>
+                ) : (
+                  <span className="flex items-center justify-center">
+                    Sign In
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                )}
+              </button>
             </form>
 
-            {/* Sign Up Link */}
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-center text-sm text-gray-500"> {/* Slightly lighter text */}
-                Don't have an account?{' '}
-                <Link
-                  to="/onboarding"
-                  className="text-indigo-600 hover:text-indigo-700 font-semibold hover:underline transition-colors duration-200 group inline-flex items-center focus:outline-none focus:underline"
-                >
-                  Sign Up
-                  <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </Link>
-              </p>
-            </div>
+                         <div className="mt-8 pt-6 border-t border-slate-300">
+               <p className="text-center text-sm text-slate-600">
+                 New to PathByte?{' '}
+                 <Link 
+                   to="/onboarding" 
+                   className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors duration-200 group inline-flex items-center"
+                 >
+                   Create an account
+                   <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                 </Link>
+               </p>
+             </div>
           </div>
-        </motion.div>
-      </div>
 
-      {/* Password Reset Modal (remains largely the same, minor style tweaks) */}
-      <AnimatePresence>
-        {showPasswordReset && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-white rounded-xl border border-gray-200 p-8 max-w-md w-full shadow-xl" // Slightly adjusted rounding/padding
-            >
-              <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Reset Password</h2>
-                <p className="text-gray-600 text-sm">Enter your email to receive a password reset link.</p>
-              </div>
-            
+
+                     {/* Additional features */}
+           <div className="text-center">
+             <div className="flex items-center justify-center space-x-6 text-sm text-slate-600">
+               <Link to="/help" className="hover:text-slate-800 transition-colors duration-200 flex items-center">
+                 <User className="h-4 w-4 mr-1" />
+                 Help Center
+               </Link>
+               <Link to="/privacy" className="hover:text-slate-800 transition-colors duration-200">
+                 Privacy Policy
+               </Link>
+               <Link to="/terms" className="hover:text-slate-800 transition-colors duration-200">
+                 Terms of Service
+               </Link>
+             </div>
+           </div>
+        </div>
+
+                 {/* Password Reset Form */}
+         {showPasswordReset && (
+           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+             <div className="bg-white/95 backdrop-blur-xl rounded-3xl border-2 border-slate-300 p-8 max-w-md w-full mx-4 shadow-2xl animate-fade-in-up">
+               <div className="text-center mb-6">
+                 <h2 className="text-2xl font-bold text-slate-900 mb-2">Reset Password</h2>
+                 <p className="text-slate-600">Enter your email to reset your password</p>
+               </div>
+              
               <form onSubmit={handlePasswordReset} className="space-y-4">
-                 <div className="relative">
-                    <label htmlFor="reset-email" className="sr-only">Email Address</label>
-                    <Mail className="absolute left-3.5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                    <input
-                     id="reset-email"
+                                 <div>
+                   <label className="block text-sm font-medium text-slate-800 mb-2">
+                     Email Address
+                   </label>
+                   <input
                      type="email"
-                     className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition-all duration-200"
+                     name="resetEmail"
                      value={resetEmail}
                      onChange={(e) => setResetEmail(e.target.value)}
+                     className="w-full px-4 py-3 bg-white border-2 border-slate-300 rounded-2xl text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-300"
+                     placeholder="Enter your email"
                      required
-                     placeholder="Email Address"
                    />
                  </div>
                 
-                 {resetMessage && (
-                   <div className={cn(
-                    "p-3 rounded-md text-sm text-center border", // Use rounded-md
-                    resetMessage.includes('sent') ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200' 
-                   )}>
-                     {resetMessage}
-                   </div>
-                 )}
-
-                 <div className="flex space-x-3 pt-4">
-                   <motion.button
-                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                 <div className="flex space-x-3 pt-4">
+                   <button
                      type="button"
                      onClick={() => setShowPasswordReset(false)}
-                     className="flex-1 px-4 py-2.5 bg-white border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 text-sm" // Adjusted padding/size
+                     className="flex-1 px-4 py-3 bg-white border-2 border-slate-300 rounded-2xl text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-all duration-300"
                    >
                      Cancel
-                   </motion.button>
-                  <motion.button
-                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                     type="submit"
-                     className="flex-1 px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-md hover:shadow-md transition-all duration-300 shadow disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 text-sm" // Adjusted padding/size
-                     disabled={resetLoading}
-                   >
-                     {resetLoading ? (
-                       <LoadingButton loading={resetLoading} size="small" className="text-white">Sending...</LoadingButton>
-                     ) : 'Send Reset Link'}
-                   </motion.button>
+                   </button>
+                  <button
+                    type="submit"
+                    className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg"
+                    disabled={resetLoading}
+                  >
+                    {resetLoading ? 'Sending...' : 'Send Reset Link'}
+                  </button>
+                </div>
+              </form>
+              
+                             {resetMessage && (
+                 <div className={`mt-4 p-3 rounded-2xl text-sm backdrop-blur-sm ${
+                   resetMessage.includes('sent') 
+                     ? 'bg-green-50 text-green-700 border-2 border-green-300' 
+                     : 'bg-red-50 text-red-700 border-2 border-red-300'
+                 }`}>
+                   {resetMessage}
                  </div>
-               </form>
-            </motion.div>
-          </motion.div>
+               )}
+            </div>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </div>
-  );
+  )
 }
-
-// --- Placeholder LoadingButton ---
-// Ensure this matches your actual component
-const _LoadingButton = ({ loading, children, className = '', size = 'default' }: {loading: boolean, children: React.ReactNode, className?: string, size?: string}) => (
-  <span className={cn("inline-flex items-center justify-center", className)}>
-    {loading && <svg className={cn("animate-spin -ml-1 mr-2", size === 'small' ? 'h-4 w-4' : 'h-5 w-5')} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>}
-    {children}
-  </span>
-);
