@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { 
   ArrowRight, 
   ArrowLeft, 
   CheckCircle, 
-  Brain
+  Brain,
+  Check,
+  Bot, 
+  User,
+  Sparkles // Using Sparkles as a refined Bot icon
 } from 'lucide-react'
 import { cn } from '@/utils/cn'
+import { motion, AnimatePresence } from 'framer-motion' 
+// import AnimatedBackground from '@/components/ui/AnimatedBackground' // Keep commented unless you have a light version
 
+// Interfaces (Question, AssessmentResult) remain the same
 interface Question {
   id: string
   type: 'single' | 'multiple' | 'scale' | 'text'
@@ -26,7 +33,8 @@ interface AssessmentResult {
   reasoning: string[]
 }
 
-// Role mapping for display names and descriptions
+
+// Role mapping (roleInfo) remains the same
 const roleInfo: { [key: string]: { title: string; description: string } } = {
   frontend: { title: 'Frontend Developer', description: 'Build beautiful user interfaces and web experiences' },
   backend: { title: 'Backend Developer', description: 'Create server-side logic and database systems' },
@@ -64,15 +72,19 @@ const roleInfo: { [key: string]: { title: string; description: string } } = {
   databaseadmin: { title: 'Database Administrator', description: 'Manage and optimize database systems' }
 }
 
+
 export default function CareerAssessmentPage() {
   const navigate = useNavigate()
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0) 
   const [answers, setAnswers] = useState<{ [key: string]: any }>({})
   const [isComplete, setIsComplete] = useState(false)
   const [results, setResults] = useState<AssessmentResult[]>([])
+  const chatEndRef = useRef<HTMLDivElement>(null) 
+  const [isBotTyping, setIsBotTyping] = useState(true); 
 
   const questions: Question[] = [
-    {
+      // ... (Your questions array is perfect, no changes) ...
+       {
       id: 'q1',
       type: 'single',
       question: 'What excites you the most?',
@@ -256,34 +268,52 @@ export default function CareerAssessmentPage() {
     }
   ]
 
+  // Scroll effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100); 
+    return () => clearTimeout(timer);
+  }, [currentQuestionIndex, answers, isBotTyping]);
+
+  // Typing simulation effect
+  useEffect(() => {
+    if (currentQuestionIndex >= 0 && answers[questions[currentQuestionIndex].id] === undefined && !isComplete) {
+      setIsBotTyping(true);
+      const timer = setTimeout(() => {
+        setIsBotTyping(false);
+      }, 600 + Math.random() * 400); 
+      return () => clearTimeout(timer);
+    } else {
+      setIsBotTyping(false); 
+    }
+  }, [currentQuestionIndex, isComplete]); 
+
   const handleAnswer = (questionId: string, answer: any) => {
+    if (questionId !== questions[currentQuestionIndex].id || isBotTyping || answers[questionId] !== undefined) return; 
+
     setAnswers(prev => ({
       ...prev,
       [questionId]: answer
     }))
-  }
 
-  const nextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(prev => prev + 1)
-    } else {
-      // Check if all questions are answered
-      const unansweredQuestions = questions.filter(q => typeof answers[q.id] === 'undefined' || answers[q.id] === null)
-      if (unansweredQuestions.length > 0) {
-        alert('Please answer all questions before getting results.')
-        return
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+
+    if (!isLastQuestion) {
+        setIsBotTyping(true); // Start typing for next question immediately
+    }
+
+    setTimeout(() => {
+      if (!isLastQuestion) {
+        setCurrentQuestionIndex(prev => prev + 1)
+      } else {
+        calculateResults() 
       }
-      calculateResults()
-    }
+    }, isLastQuestion ? 400 : 800); 
   }
 
-  const prevQuestion = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(prev => prev - 1)
-    }
-  }
-
-  const calculateResults = () => {
+  // calculateResults, restartAssessment (no changes needed)
+   const calculateResults = () => {
     // Initialize scores for all roles
     const roleScores: { [key: string]: number } = {}
     const roleReasons: { [key: string]: string[] } = {}
@@ -294,7 +324,7 @@ export default function CareerAssessmentPage() {
       roleReasons[role] = []
     })
 
-    // Question scoring logic based on the mapping you provided
+    // Question scoring logic (no changes, this is good)
     const scoringRules = [
       // Q1: What excites you the most?
       {
@@ -464,6 +494,7 @@ export default function CareerAssessmentPage() {
       }
     ]
 
+
     // Apply scoring rules
     scoringRules.forEach(rule => {
       const answer = answers[rule.question]
@@ -514,334 +545,342 @@ export default function CareerAssessmentPage() {
   }
 
   const restartAssessment = () => {
-    setCurrentQuestion(0)
+    setCurrentQuestionIndex(0)
     setAnswers({})
     setIsComplete(false)
     setResults([])
   }
 
+  // Results Page (Using the refined version from previous step)
   if (isComplete) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-full mb-4">
+     return (
+       <div className="min-h-screen bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 py-12"> {/* Light theme background */}
+        {/* <AnimatedBackground /> */} {/* Optional: Add light theme background animation */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-10">
+             <motion.div 
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+              className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mb-4 shadow-lg ring-4 ring-white/50"
+            >
               <CheckCircle className="h-8 w-8 text-white" />
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Assessment Complete!</h1>
-            <p className="text-xl text-gray-600">Here are your personalized career recommendations</p>
+            </motion.div>
+            <motion.h1 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl font-bold text-gray-900 mb-4"
+            >
+              Assessment Complete!
+            </motion.h1>
+            <motion.p 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-xl text-gray-700"
+            >
+              Here are your personalized career recommendations.
+            </motion.p>
           </div>
 
-          <div className="space-y-6">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, staggerChildren: 0.1 }}
+            className="space-y-6"
+          >
             {results.map((result, index) => {
               const roleData = roleInfo[result.role]
-              const matchColor = result.percentage >= 80 ? 'text-green-600' : 
-                                result.percentage >= 60 ? 'text-blue-600' : 'text-yellow-600'
-              const bgColor = result.percentage >= 80 ? 'bg-green-50 border-green-200' : 
-                             result.percentage >= 60 ? 'bg-blue-50 border-blue-200' : 'bg-yellow-50 border-yellow-200'
+              const matchColor = result.percentage >= 80 ? 'text-green-700' : 
+                                result.percentage >= 60 ? 'text-blue-700' : 'text-yellow-700'
+              const bgColor = result.percentage >= 80 ? 'bg-green-100/70 border-green-300' : 
+                             result.percentage >= 60 ? 'bg-blue-100/70 border-blue-300' : 'bg-yellow-100/70 border-yellow-300'
               
               return (
-                <div
+                 <motion.div
                   key={result.role}
-                  className={`rounded-xl shadow-lg border-2 p-6 transition-all duration-200 hover:shadow-xl ${bgColor}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }} 
+                  className={`rounded-xl backdrop-blur-sm shadow-xl border p-6 transition-all duration-300 ${bgColor}`} 
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                        #{index + 1}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900">
-                          {roleData?.title || result.role}
-                        </h3>
-                        <p className="text-gray-600 text-sm">
-                          {roleData?.description || 'Tech career opportunity'}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-3xl font-bold ${matchColor}`}>{result.percentage}%</span>
-                      </div>
-                      <span className="text-gray-500 text-sm">compatibility</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                      Why this matches you:
-                    </h4>
-                    <div className="grid grid-cols-1 gap-2">
-                      {result.reasoning.map((reason, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-gray-700 text-sm">{reason}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
+                     <div className="flex items-center gap-4">
+                       <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md flex-shrink-0 ring-2 ring-white/30">
+                         #{index + 1}
+                       </div>
+                       <div>
+                         <h3 className="text-2xl font-semibold text-gray-900">
+                           {roleData?.title || result.role}
+                         </h3>
+                         <p className="text-gray-700 text-base">
+                           {roleData?.description || 'Tech career opportunity'}
+                         </p>
+                       </div>
+                     </div>
+                     <div className="text-left sm:text-right mt-4 sm:mt-0 flex-shrink-0">
+                       <div className="flex items-center gap-2 mb-1">
+                         <span className={`text-5xl font-bold ${matchColor}`}>{result.percentage}%</span>
+                       </div>
+                       <span className="text-gray-600 text-sm uppercase tracking-wider font-medium">Compatibility</span>
+                     </div>
+                   </div>
+                   
+                   <div className="mb-6 border-t border-gray-300/50 pt-4">
+                     <h4 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wide">
+                       Why this matches you:
+                     </h4>
+                     <ul className="space-y-2">
+                       {result.reasoning.map((reason, idx) => (
+                         <li key={idx} className="flex items-start gap-3">
+                           <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                           <span className="text-gray-700 text-sm">{reason}</span>
+                         </li>
+                       ))}
+                     </ul>
+                   </div>
 
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => navigate(`/roadmap/${result.role}`)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
-                    >
-                      View Learning Roadmap
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-                    <button
-                      onClick={() => navigate('/career-guide')}
-                      className="px-6 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-lg font-medium transition-colors duration-200"
-                    >
-                      Compare Roles
-                    </button>
-                  </div>
-                </div>
+                   <div className="flex flex-col sm:flex-row gap-3">
+                     <motion.button
+                      whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                       onClick={() => navigate(`/roadmap/${result.role}`)}
+                       className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                     >
+                       View Learning Roadmap
+                       <ArrowRight className="h-4 w-4" />
+                     </motion.button>
+                     <motion.button
+                       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                       onClick={() => navigate('/career-guide')}
+                       className="flex-1 sm:flex-none bg-white px-6 py-3 border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 text-gray-800 rounded-lg font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+                     >
+                       Compare Roles
+                     </motion.button>
+                   </div>
+                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
 
-          <div className="text-center mt-8">
-            <button
-              onClick={restartAssessment}
-              className="px-6 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-lg font-medium transition-colors duration-200 mr-4"
-            >
-              Retake Assessment
-            </button>
-            <button
-              onClick={() => navigate('/career-guide')}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
-            >
-              Explore All Careers
-            </button>
-          </div>
+          <motion.div 
+             initial={{ y: 20, opacity: 0 }}
+             animate={{ y: 0, opacity: 1 }}
+             transition={{ delay: 0.5 + results.length * 0.1 }}
+             className="text-center mt-12" 
+          >
+             <motion.button
+              whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+               onClick={restartAssessment}
+               className="px-6 py-3 bg-white border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 text-gray-800 rounded-lg font-semibold transition-colors duration-200 mr-4 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+             >
+               Retake Assessment
+             </motion.button>
+             <motion.button
+               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+               onClick={() => navigate('/career-guide')}
+               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+             >
+               Explore All Careers
+             </motion.button>
+          </motion.div>
         </div>
       </div>
     )
   }
 
-  const question = questions[currentQuestion]
-  const progress = ((currentQuestion + 1) / questions.length) * 100
+  // --- Assessment UI ---
+  const progress = (currentQuestionIndex / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4">
-            <Brain className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Career Assessment</h1>
-          <p className="text-xl text-gray-600">
-            Discover your ideal tech career path through our comprehensive assessment
-          </p>
-          
-          {/* Test buttons for debugging */}
-          <div className="flex gap-2 justify-center mt-4">
-            <button
-              onClick={() => {
-                const testAnswers = {
-                  q1: 0, q2: 0, q3: 0, q4: 0, q5: 0,
-                  q6: 0, q7: 0, q8: 0, q9: 0, q10: 0,
-                  q11: 0, q12: 0, q13: 0, q14: 0, q15: 0
-                }
-                setAnswers(testAnswers)
-              }}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm"
-            >
-              Test: Set All Frontend Answers
-            </button>
-            
-            <button
-              onClick={() => {
-                if (Object.keys(answers).length === 15) {
-                  calculateResults()
-                } else {
-                  alert('Please answer all questions first or use the test button above')
-                }
-              }}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm"
-            >
-              Test: Calculate Results
-            </button>
-          </div>
-        </div>
+    // --- Light theme background ---
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-50 flex flex-col pt-8 text-gray-900"> 
+       {/* <AnimatedBackground /> */} {/* Optional: Light background animation */}
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
-              Question {currentQuestion + 1} of {questions.length}
-            </span>
-            <span className="text-sm font-medium text-gray-700">
-              {Math.round(progress)}% Complete
-            </span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
-            <div 
-              className="bg-blue-500 h-3 rounded-full transition-all duration-300 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
+      {/* Header */}
+      <div className="max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex-shrink-0 sticky top-0 z-10 pt-4 pb-2 bg-white/80 backdrop-blur-md border-b border-gray-200/50"> {/* Light sticky header */}
+        <div className="flex items-center justify-between mb-3 text-sm font-medium text-gray-600">
+           <span className="flex items-center gap-2 font-semibold text-gray-800"> {/* Darker text */}
+             <Sparkles className="h-5 w-5 text-indigo-500" /> {/* Adjusted color */}
+             Pathbyte Career Assistant
+           </span>
+           <span className="font-mono text-gray-700"> {/* Darker text */}
+             {currentQuestionIndex + 1} / {questions.length}
+           </span>
+         </div>
+         <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden"> {/* Light progress bar bg */}
+           <motion.div 
+             className="bg-gradient-to-r from-indigo-500 to-purple-500 h-1.5 rounded-full"
+             initial={{ width: `${((currentQuestionIndex) / questions.length) * 100}%` }}
+             animate={{ width: `${progress}%` }}
+             transition={{ duration: 0.5, ease: "easeInOut" }}
+           />
+         </div>
+      </div>
 
-        {/* Question Card */}
-        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">
-              {question.question}
-            </h2>
-            {question.description && (
-              <p className="text-gray-600">{question.description}</p>
-            )}
-          </div>
+      {/* Chat Area */}
+      <div className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 pb-24 relative pt-4"> 
+        <div className="max-w-3xl mx-auto space-y-8"> 
+          <AnimatePresence initial={false}>
+            {questions.slice(0, currentQuestionIndex + 1).map((q, index) => {
+              const currentAnswer = answers[q.id];
+              const isCurrentActiveQuestion = index === currentQuestionIndex;
+              const hasAnsweredThis = currentAnswer !== undefined;
 
-          {/* Question Content */}
-          <div className="space-y-4">
-            {question.type === 'single' && question.options && (
-              <div className="space-y-3">
-                {question.options.map((option, index) => (
-                  <label
-                    key={index}
-                    className={cn(
-                      'flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all duration-200',
-                      answers[question.id] === index
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    )}
-                  >
-                    <input
-                      type="radio"
-                      name={question.id}
-                      value={index}
-                      checked={answers[question.id] === index}
-                      onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
-                      className="sr-only"
-                    />
-                    <div className={cn(
-                      'w-4 h-4 rounded-full border-2 mr-3',
-                      answers[question.id] === index
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-gray-300'
-                    )}>
-                      {answers[question.id] === index && (
-                        <div className="w-2 h-2 bg-white rounded-full m-0.5" />
+              return (
+                <motion.div 
+                  key={q.id}
+                  layout 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }} 
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} 
+                  className="space-y-5" 
+                >
+                  {/* Bot Question Bubble */}
+                  <div className="flex items-end gap-3 justify-start group">
+                    <motion.div 
+                      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.1, type: 'spring', stiffness: 300, damping: 20 }}
+                      className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white group-hover:scale-110 transition-transform duration-200"
+                    >
+                      <Sparkles className="w-5 h-5 text-white" />
+                    </motion.div>
+                    <motion.div 
+                      initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.4 }}
+                      className="bg-white p-4 rounded-xl rounded-bl-sm shadow-xl border border-gray-200 max-w-[85%] sm:max-w-[75%]" // Light bubble
+                    >
+                       <p className="text-xs text-indigo-600 mb-1 font-semibold">Pathbyte Career Assistant</p> {/* Name */}
+                       <p className="text-gray-800 font-medium text-base leading-relaxed">{q.question}</p> {/* Darker text */}
+                       {q.description && <p className="text-sm text-gray-500 mt-2">{q.description}</p>}
+                    </motion.div>
+                  </div>
+
+                  {/* User Answer Bubble */}
+                  {hasAnsweredThis && ( 
+                     <motion.div 
+                       initial={{ opacity: 0, y: 10 }}
+                       animate={{ opacity: 1, y: 0 }}
+                       transition={{ delay: 0.1 }}
+                       className="flex justify-end items-end gap-3 group"
+                      >
+                       <motion.div 
+                          initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.4 }}
+                          className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-3 rounded-xl rounded-br-sm shadow-xl max-w-[85%] sm:max-w-[75%]"
+                        >
+                          <p className="text-xs text-blue-200 mb-0.5 font-semibold">User</p> {/* Name */}
+                          <p className="font-medium text-base">{q.options?.[currentAnswer] || currentAnswer}</p> 
+                       </motion.div>
+                        <motion.div 
+                          initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.1, type: 'spring', stiffness: 300, damping: 20 }}
+                          className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-400 to-gray-500 rounded-full flex items-center justify-center shadow-lg border-2 border-white group-hover:scale-110 transition-transform duration-200"
+                        >
+                           <User className="w-5 h-5 text-white" />
+                        </motion.div>
+                     </motion.div>
+                  )}
+
+                  {/* Options/Typing for the current question */}
+                  {isCurrentActiveQuestion && (
+                    <>
+                      {isBotTyping ? (
+                        <TypingIndicator isLight={true} /> // Pass light prop
+                      ) : (
+                        q.type === 'single' && q.options && (
+                          <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, staggerChildren: 0.07 }} 
+                            className="flex flex-wrap gap-3 justify-center pt-3 pb-2" 
+                          >
+                            {q.options.map((option, idx) => (
+                              <motion.button
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                onClick={() => handleAnswer(q.id, idx)}
+                                className={cn(
+                                  "px-5 py-3 rounded-lg border text-base font-medium transition-all duration-200 transform focus:outline-none focus:ring-2 focus:ring-offset-2",
+                                  hasAnsweredThis && answers[q.id] === idx 
+                                    ? "bg-blue-600 border-blue-600 text-white shadow-lg scale-105 cursor-default ring-blue-400" // Selected style
+                                    : hasAnsweredThis 
+                                    ? "bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed opacity-70" // Disabled style
+                                    : "bg-white border-gray-300 text-blue-700 hover:bg-blue-50 hover:border-blue-400 ring-blue-300" // Default style
+                                )}
+                                whileHover={!hasAnsweredThis ? { scale: 1.05, y: -2, transition: { duration: 0.15 } } : {}}
+                                whileTap={!hasAnsweredThis ? { scale: 0.95 } : {}}
+                                disabled={hasAnsweredThis} // Disable button after answer
+                              >
+                                {option}
+                              </motion.button>
+                            ))}
+                          </motion.div>
+                        )
+                        // Add handlers for 'multiple', 'scale' if needed
                       )}
-                    </div>
-                    <span className="text-gray-900">{option}</span>
-                  </label>
-                ))}
-              </div>
-            )}
-
-            {question.type === 'multiple' && question.options && (
-              <div className="space-y-3">
-                {question.options.map((option, index) => (
-                  <label
-                    key={index}
-                    className={cn(
-                      'flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all duration-200',
-                      answers[question.id]?.includes(option)
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    )}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={answers[question.id]?.includes(option) || false}
-                      onChange={(e) => {
-                        const currentAnswers = answers[question.id] || []
-                        if (e.target.checked) {
-                          handleAnswer(question.id, [...currentAnswers, option])
-                        } else {
-                          handleAnswer(question.id, currentAnswers.filter((a: string) => a !== option))
-                        }
-                      }}
-                      className="sr-only"
-                    />
-                    <div className={cn(
-                      'w-4 h-4 rounded border-2 mr-3 flex items-center justify-center',
-                      answers[question.id]?.includes(option)
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-gray-300'
-                    )}>
-                      {answers[question.id]?.includes(option) && (
-                        <CheckCircle className="w-3 h-3 text-white" />
-                      )}
-                    </div>
-                    <span className="text-gray-900">{option}</span>
-                  </label>
-                ))}
-              </div>
-            )}
-
-            {question.type === 'scale' && (
-              <div className="space-y-4">
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>{question.scaleLabels?.min}</span>
-                  <span>{question.scaleLabels?.max}</span>
-                </div>
-                <div className="flex justify-between">
-                  {Array.from({ length: question.scaleMax! - question.scaleMin! + 1 }, (_, i) => {
-                    const value = question.scaleMin! + i
-                    return (
-                      <label key={value} className="flex flex-col items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name={question.id}
-                          value={value}
-                          checked={answers[question.id] === value}
-                          onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
-                          className="sr-only"
-                        />
-                        <div className={cn(
-                          'w-8 h-8 rounded-full border-2 flex items-center justify-center mb-2',
-                          answers[question.id] === value
-                            ? 'border-blue-500 bg-blue-500 text-white'
-                            : 'border-gray-300 text-gray-600'
-                        )}>
-                          {value}
-                        </div>
-                      </label>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={prevQuestion}
-            disabled={currentQuestion === 0}
-            className={cn(
-              'flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200',
-              currentQuestion === 0
-                ? 'text-gray-400 cursor-not-allowed'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-            )}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Previous
-          </button>
-          
-          <button
-            onClick={nextQuestion}
-            disabled={typeof answers[question.id] === 'undefined' || answers[question.id] === null}
-            className={cn(
-              'flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200',
-              typeof answers[question.id] === 'undefined' || answers[question.id] === null
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 text-white'
-            )}
-          >
-            {currentQuestion === questions.length - 1 ? 'Get Results' : 'Next'}
-            <ArrowRight className="h-4 w-4" />
-          </button>
+                    </>
+                  )}
+                </motion.div>
+              )
+            })}
+          </AnimatePresence>
+          <div ref={chatEndRef} className="h-1"/> 
         </div>
       </div>
+       
+       {/* Back Button - Light Theme */}
+        {currentQuestionIndex > 0 && !isComplete && (
+         <div className="fixed bottom-6 left-6 z-10">
+           <motion.button
+             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+             onClick={() => setCurrentQuestionIndex(prev => prev - 1)} 
+             className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md text-gray-700 hover:bg-white border border-gray-300 shadow-md text-sm font-medium transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300" // Light theme styles
+           >
+             <ArrowLeft className="h-4 w-4" />
+             Back
+           </motion.button>
+         </div>
+       )}
     </div>
   )
 }
+
+// Typing Indicator Component - Updated for Light/Dark
+const TypingIndicator = ({ isLight = false }: { isLight?: boolean }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.4 }}
+    className="flex items-end gap-3 justify-start"
+  >
+    <motion.div 
+      initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.1, type: 'spring', stiffness: 300, damping: 20 }}
+      className={cn(
+        "flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2",
+        isLight ? "bg-gradient-to-br from-indigo-500 to-purple-600 border-white" : "bg-gradient-to-br from-indigo-500 to-purple-600 border-gray-700"
+      )}
+    >
+      <Sparkles className="w-5 h-5 text-white" />
+    </motion.div>
+    <div className={cn(
+      "p-4 rounded-xl rounded-bl-sm shadow-xl border inline-flex space-x-1.5",
+      isLight ? "bg-white border-gray-200" : "bg-gray-700 border-gray-600"
+    )}>
+       <motion.div 
+        className={cn("w-2.5 h-2.5 rounded-full", isLight ? "bg-indigo-400" : "bg-indigo-300")}
+        animate={{ y: [0, -3, 0] }}
+        transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+      />
+      <motion.div 
+        className={cn("w-2.5 h-2.5 rounded-full", isLight ? "bg-indigo-400" : "bg-indigo-300")}
+        animate={{ y: [0, -3, 0] }}
+        transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+      />
+      <motion.div 
+        className={cn("w-2.5 h-2.5 rounded-full", isLight ? "bg-indigo-400" : "bg-indigo-300")}
+        animate={{ y: [0, -3, 0] }}
+        transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+      />
+    </div>
+  </motion.div>
+);

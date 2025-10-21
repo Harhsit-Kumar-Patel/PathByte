@@ -20,7 +20,8 @@ import {
   Star,
   Building,
   Eye,
-  Database
+  Database,
+  ChevronRight // Import for the list item
 } from 'lucide-react'
 
 export default function CareerGuidePage() {
@@ -30,24 +31,25 @@ export default function CareerGuidePage() {
   const [selectedExperience, setSelectedExperience] = useState('all')
 
   const categories = [
-    { key: 'all', label: 'All Categories', icon: BookOpen, color: 'from-gray-500 to-gray-600' },
-    { key: 'software', label: 'Software Development', icon: Code, color: 'from-blue-500 to-indigo-500' },
+    { key: 'all', label: 'All', icon: BookOpen, color: 'from-gray-500 to-gray-600' },
+    { key: 'software', label: 'Software', icon: Code, color: 'from-blue-500 to-indigo-500' },
     { key: 'data', label: 'Data & AI', icon: Brain, color: 'from-purple-500 to-pink-500' },
-    { key: 'infra', label: 'Infrastructure & Operations', icon: Server, color: 'from-green-500 to-emerald-500' },
-    { key: 'specialized', label: 'Specialized & Related', icon: Palette, color: 'from-orange-500 to-red-500' },
-    { key: 'emerging', label: 'Emerging Tech', icon: Zap, color: 'from-yellow-500 to-amber-500' },
-    { key: 'industry', label: 'Industry-Specific', icon: Building, color: 'from-indigo-500 to-purple-500' },
-    { key: 'management', label: 'Tech Management', icon: Users, color: 'from-teal-500 to-cyan-500' }
+    { key: 'infra', label: 'Infrastructure', icon: Server, color: 'from-green-500 to-emerald-500' },
+    { key: 'specialized', label: 'Specialized', icon: Palette, color: 'from-orange-500 to-red-500' },
+    { key: 'emerging', label: 'Emerging', icon: Zap, color: 'from-yellow-500 to-amber-500' },
+    { key: 'industry', label: 'Industry', icon: Building, color: 'from-indigo-500 to-purple-500' },
+    { key: 'management', label: 'Management', icon: Users, color: 'from-teal-500 to-cyan-500' }
   ]
 
   const experienceLevels = [
-    { key: 'all', label: 'All Levels', icon: Target },
-    { key: '0-1', label: '0-1 Years (Beginner)', icon: BookOpen, color: 'from-green-500 to-emerald-500' },
-    { key: '1-3', label: '1-3 Years (Intermediate)', icon: TrendingUp, color: 'from-blue-500 to-indigo-500' },
-    { key: '3-5', label: '3-5 Years (Advanced)', icon: Users, color: 'from-purple-500 to-pink-500' },
-    { key: '5+', label: '5+ Years (Expert)', icon: Award, color: 'from-red-500 to-orange-500' }
+    { key: 'all', label: 'All Levels' },
+    { key: '0-1', label: 'Beginner (0-1yr)' },
+    { key: '1-3', label: 'Intermediate (1-3yr)' },
+    { key: '3-5', label: 'Advanced (3-5yr)' },
+    { key: '5+', label: 'Expert (5+yr)' }
   ]
 
+  // ... (Your allRoadmaps array is perfect, no changes needed) ...
   const allRoadmaps = [
     // Software Development
     {
@@ -786,17 +788,18 @@ export default function CareerGuidePage() {
 
   const filteredRoadmaps = allRoadmaps.filter(roadmap => {
     const matchesSearch = roadmap.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         roadmap.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         roadmap.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()))
+                          roadmap.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          roadmap.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()))
     
     const matchesCategory = selectedCategory === 'all' || roadmap.category === selectedCategory
     
     const matchesExperience = selectedExperience === 'all' || 
-                             Object.keys(roadmap.roadmap).includes(selectedExperience)
+                              Object.keys(roadmap.roadmap).includes(selectedExperience)
     
     return matchesSearch && matchesCategory && matchesExperience
   })
 
+  // --- Helper Functions for Tag Colors ---
   const getDifficultyColor = (difficulty: string) => {
     const colors = {
       beginner: 'bg-green-100 text-green-800',
@@ -826,213 +829,177 @@ export default function CareerGuidePage() {
     }
     return colors[salary as keyof typeof colors] || colors.medium
   }
+  
+  // --- Helper Component for Tags ---
+  const InfoTag = ({ text, color, icon: Icon }: { text: string, color: string, icon?: any }) => (
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${color}`}>
+      {Icon && <Icon className="h-3.5 w-3.5" />}
+      {text}
+    </span>
+  )
+
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               🚀 Complete Tech Career Roadmap Guide
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore 35+ comprehensive career paths in technology, from beginner to expert level. 
+              Explore 35+ comprehensive career paths in technology.
               Find your perfect tech career and get a structured learning roadmap.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Filters and Search */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search roadmaps, skills, or tools..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* Category Filter */}
-            <div>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {categories.map(category => (
-                  <option key={category.key} value={category.key}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Experience Level Filter */}
-            <div>
-              <select
-                value={selectedExperience}
-                onChange={(e) => setSelectedExperience(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {experienceLevels.map(level => (
-                  <option key={level.key} value={level.key}>
-                    {level.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+      {/* --- Filters and Search --- */}
+      <div className="px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+        
+        {/* Search Bar */}
+        <div className="relative max-w-3xl mx-auto">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search roadmaps, e.g., 'Frontend', 'Python', 'AI'..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+          />
         </div>
 
-        {/* Roadmap Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredRoadmaps.map((roadmap) => (
-            <div
-              key={roadmap.key}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
-              onClick={() => navigate(`/roadmap?role=${roadmap.key}`)}
-            >
-              {/* Header */}
-              <div className={`bg-gradient-to-r ${roadmap.color} px-4 sm:px-6 py-3 sm:py-4 rounded-t-xl`}>
-                <div className="flex items-center justify-between">
-                  <roadmap.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                  <div className="flex gap-1 sm:gap-2">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(roadmap.difficulty)}`}>
-                      {roadmap.difficulty.charAt(0).toUpperCase() + roadmap.difficulty.slice(1)}
-                    </span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDemandColor(roadmap.demand)}`}>
-                      {roadmap.demand === 'very-high' ? 'Very High' : roadmap.demand.charAt(0).toUpperCase() + roadmap.demand.slice(1)} Demand
-                    </span>
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {categories.map(category => {
+            const isActive = selectedCategory === category.key
+            const Icon = category.icon
+            return (
+              <button
+                key={category.key}
+                onClick={() => setSelectedCategory(category.key)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 border
+                  ${isActive
+                    ? `bg-gradient-to-r ${category.color} text-white border-transparent shadow-md`
+                    : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                  }
+                `}
+              >
+                <Icon className={`h-4 w-4 ${isActive ? 'text-white' : 'text-gray-500'}`} />
+                {category.label}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Experience Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {experienceLevels.map(level => {
+            const isActive = selectedExperience === level.key
+            return (
+              <button
+                key={level.key}
+                onClick={() => setSelectedExperience(level.key)}
+                className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all duration-200
+                  ${isActive
+                    ? 'bg-blue-600 text-white shadow'
+                    : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
+                  }
+                `}
+              >
+                {level.label}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* --- UPDATED Roadmap List Layout --- */}
+      <div className="px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-5xl mx-auto flex flex-col gap-4">
+          {filteredRoadmaps.map((roadmap) => {
+            const Icon = roadmap.icon
+            return (
+              <div
+                key={roadmap.key}
+                className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 flex flex-col sm:flex-row p-4 sm:p-5 gap-4"
+              >
+                {/* Left Side: Icon, Info, and Skills */}
+                <div className="flex-shrink-0 sm:w-16 flex sm:flex-col items-center">
+                  <div className={`p-3 rounded-lg bg-gradient-to-r ${roadmap.color}`}>
+                    <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mt-2 sm:mt-3">{roadmap.title}</h3>
-                <p className="text-white/90 text-xs sm:text-sm mt-1">{roadmap.description}</p>
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-lg font-bold text-gray-900">{roadmap.title}</h3>
+                  <p className="text-gray-600 text-sm mt-1">
+                    {roadmap.description}
+                  </p>
+                  
+                  {/* --- NEW: Key Skills Section --- */}
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                      {roadmap.skills.slice(0, 3).map((skill, index) => (
+                        <span key={index} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium">
+                          {skill}
+                        </span>
+                      ))}
+                      {roadmap.skills.length > 3 && (
+                        <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full font-medium">
+                          +{roadmap.skills.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {/* --- End of New Section --- */}
+
+                </div>
+
+                {/* Right Side: Tags and Button */}
+                <div className="flex-shrink-0 flex flex-col items-center sm:items-end gap-3 sm:w-48">
+                  {/* Key Tags */}
+                  <div className="flex flex-wrap gap-2 justify-center sm:justify-end">
+                    <InfoTag
+                      text={roadmap.difficulty.charAt(0).toUpperCase() + roadmap.difficulty.slice(1)}
+                      color={getDifficultyColor(roadmap.difficulty)}
+                    />
+                    <InfoTag
+                      text={`${roadmap.demand === 'very-high' ? 'Very High' : roadmap.demand.charAt(0).toUpperCase() + roadmap.demand.slice(1)}`}
+                      color={getDemandColor(roadmap.demand)}
+                    />
+                     <InfoTag
+                      text={`${roadmap.salary === 'very-high' ? 'Very High' : roadmap.salary.charAt(0).toUpperCase() + roadmap.salary.slice(1)}`}
+                      color={getSalaryColor(roadmap.salary)}
+                    />
+                  </div>
+                  
+                  {/* Action Button */}
+                  <button 
+                    onClick={() => navigate(`/roadmap/${roadmap.key}`)} // Use navigate for SPA
+                    className="w-full sm:w-auto bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-200 flex items-center justify-center gap-2 text-sm"
+                  >
+                    View Roadmap
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
-
-              {/* Content */}
-              <div className="p-4 sm:p-6">
-                {/* Key Skills */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
-                    Key Skills
-                  </h4>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {roadmap.skills.slice(0, 3).map((skill, index) => (
-                      <span key={index} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full">
-                        {skill}
-                      </span>
-                    ))}
-                    {roadmap.skills.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full">
-                        +{roadmap.skills.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Tools */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Code className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
-                    Tools & Technologies
-                  </h4>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {roadmap.tools.slice(0, 3).map((tool, index) => (
-                      <span key={index} className="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
-                        {tool}
-                      </span>
-                    ))}
-                    {roadmap.tools.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full">
-                        +{roadmap.tools.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Companies */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Users className="h-3 w-3 sm:h-4 sm:w-4 text-purple-500" />
-                    Top Companies
-                  </h4>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {roadmap.companies.slice(0, 3).map((company, index) => (
-                      <span key={index} className="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full">
-                        {company}
-                      </span>
-                    ))}
-                    {roadmap.companies.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full">
-                        +{roadmap.companies.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Salary */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500" />
-                    Salary Range
-                  </h4>
-                  <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getSalaryColor(roadmap.salary)}`}>
-                    {roadmap.salary === 'very-high' ? 'Very High' : roadmap.salary.charAt(0).toUpperCase() + roadmap.salary.slice(1)} Salary
-                  </span>
-                </div>
-
-                {/* Roadmap Preview */}
-                <div className="border-t border-gray-200 pt-3 sm:pt-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
-                    <Target className="h-3 w-3 sm:h-4 sm:w-4 text-indigo-500" />
-                    Learning Roadmap
-                  </h4>
-                  <div className="space-y-1 sm:space-y-2">
-                    {Object.entries(roadmap.roadmap).map(([year, data]) => (
-                      <div key={year} className="flex items-center gap-2 sm:gap-3">
-                        <div className="flex items-center gap-1 sm:gap-2">
-                          <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
-                          <span className="text-xs sm:text-sm font-medium text-gray-600">{year} Years</span>
-                        </div>
-                        <span className="text-xs sm:text-sm text-gray-500">{data.focus}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <button 
-                  onClick={() => window.location.href = `/roadmap/${roadmap.key}`}
-                  className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold py-2.5 sm:py-3 px-4 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
-                >
-                  <BookOpen className="h-3 w-3 sm:h-4 sm:w-4" />
-                  View Full Roadmap
-                </button>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* No Results */}
         {filteredRoadmaps.length === 0 && (
-          <div className="text-center py-12">
-            <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+          <div className="text-center py-12 max-w-5xl mx-auto">
+            <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">No roadmaps found</h3>
             <p className="text-gray-500">Try adjusting your search terms or filters to find the perfect career path.</p>
           </div>
         )}
 
         {/* Summary Stats */}
-        <div className="mt-12 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="mt-12 bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             📊 Career Roadmap Summary
           </h2>
