@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { 
   ArrowRight, 
   ArrowLeft, 
-  CheckCircle, 
-  Brain,
-  Check,
-  Bot, 
+  CheckCircle,  
   User,
   Sparkles // Using Sparkles as a refined Bot icon
 } from 'lucide-react'

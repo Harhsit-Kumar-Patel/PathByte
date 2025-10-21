@@ -120,9 +120,12 @@ export function LoadingInline({ text = 'Loading...', color = 'primary' }: { text
 }
 
 // Button loading state
-export function LoadingButton({ children, loading }: { 
+export function LoadingButton({ children, loading, ...rest }: { // <-- FIX: Added ...rest to capture extra props
   children: React.ReactNode; 
   loading: boolean; 
+  className?: string; // FIX: Added explicit definition
+  size?: 'sm' | 'md' | 'lg' | 'xl'; // FIX: Added explicit definition
+  [key: string]: any; // FIX: Added catch-all index signature for other standard props
 }) {
   if (!loading) return <>{children}</>
   
