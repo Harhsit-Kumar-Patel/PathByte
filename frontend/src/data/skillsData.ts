@@ -179,12 +179,28 @@ export const skillsData: { [key: string]: SkillData } = {
           'Accessibility Audit & Implementation',
           'Technical Blog/Content Creation'
         ],
-        freeResources: [],
+        freeResources: [
+          {
+            title: 'React Patterns Guide',
+            url: 'https://www.patterns.dev/',
+            description: 'A collection of React design patterns and best practices'
+          },
+          {
+            title: 'WebAssembly Docs',
+            url: 'https://developer.mozilla.org/en-US/docs/WebAssembly',
+            description: 'Mozilla Developer Network documentation on WebAssembly'
+          }
+        ],
         paidResources: [
           {
             title: 'Advanced React Patterns',
             url: 'https://kentcdodds.com/',
             description: 'Advanced React patterns and best practices'
+          },
+          {
+            title: 'Design Systems Course',
+            url: 'https://www.designsystems.com/',
+            description: 'Professional course on building and scaling design systems'
           }
         ],
         certifications: [],
@@ -212,12 +228,28 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Conference Talks',
           'Open Source Project Leadership'
         ],
-        freeResources: [],
+        freeResources: [
+          {
+            title: 'Google Web Vitals',
+            url: 'https://web.dev/vitals/',
+            description: 'Official Google guide on web performance and Core Web Vitals'
+          },
+          {
+            title: 'V8 Engine Blog',
+            url: 'https://v8.dev/',
+            description: 'Technical deep-dives into the Chrome V8 JavaScript engine'
+          }
+        ],
         paidResources: [
           {
             title: 'Frontend Architecture for Design Systems',
             url: 'https://www.oreilly.com/',
             description: 'Advanced frontend architecture patterns'
+          },
+          {
+            title: 'Staff Engineer Archetypes',
+            url: 'https://staffeng.com/',
+            description: 'Book and resources on the Staff Engineer career path'
           }
         ],
         certifications: [],
@@ -309,6 +341,11 @@ export const skillsData: { [key: string]: SkillData } = {
             title: 'Docker Documentation',
             url: 'https://docs.docker.com/',
             description: 'Containerization platform documentation'
+          },
+          {
+            title: 'PostgreSQL Documentation',
+            url: 'https://www.postgresql.org/docs/',
+            description: 'Advanced relational database documentation'
           }
         ],
         paidResources: [
@@ -316,6 +353,11 @@ export const skillsData: { [key: string]: SkillData } = {
             title: 'Microservices Architecture',
             url: 'https://www.udemy.com/',
             description: 'Building scalable microservices systems'
+          },
+          {
+            title: 'AWS Certified Developer - Associate Course',
+            url: 'https://www.acloudguru.com/',
+            description: 'Preparation course for AWS developer certification'
           }
         ],
         certifications: [],
@@ -343,12 +385,28 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Audit & Implementation',
           'Team Mentoring Program'
         ],
-        freeResources: [],
+        freeResources: [
+          {
+            title: 'Kubernetes Documentation',
+            url: 'https://kubernetes.io/docs/',
+            description: 'Official Kubernetes documentation for orchestration'
+          },
+          {
+            title: 'Event-Driven Architecture Guide',
+            url: 'https://microservices.io/patterns/data/event-driven-architecture.html',
+            description: 'Patterns and principles for Event-Driven Architecture'
+          }
+        ],
         paidResources: [
           {
             title: 'System Design Interview',
             url: 'https://www.educative.io/',
             description: 'System design patterns and best practices'
+          },
+          {
+            title: 'Advanced Distributed Systems Course',
+            url: 'https://www.coursera.org/specializations/distributed-system-design',
+            description: 'Specialization on designing modern distributed systems'
           }
         ],
         certifications: [],
@@ -376,12 +434,28 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Framework Development',
           'Technical Leadership Program'
         ],
-        freeResources: [],
+        freeResources: [
+          {
+            title: 'ThoughtWorks Technology Radar',
+            url: 'https://www.thoughtworks.com/radar',
+            description: 'A guide to the technologies, tools, and platforms shaping enterprise IT'
+          },
+          {
+            title: 'Architecture Decision Records (ADR)',
+            url: 'https://adr.github.io/',
+            description: 'Documentation for recording architectural decisions'
+          }
+        ],
         paidResources: [
           {
             title: 'Enterprise Architecture Patterns',
             url: 'https://www.oreilly.com/',
             description: 'Advanced enterprise architecture strategies'
+          },
+          {
+            title: 'Certified Technical Architect (CTA) Prep',
+            url: 'https://www.salesforce.com/certifications/technical-architect/',
+            description: 'Executive-level certification preparation'
           }
         ],
         certifications: [],
@@ -461,8 +535,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'API Gateway Implementation',
           'Multi-tenant SaaS Application'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'OWASP Top 10',
+            url: 'https://owasp.org/www-project-top-ten/',
+            description: 'Guide to the most critical web application security risks'
+          },
+          {
+            title: 'TypeScript Documentation',
+            url: 'https://www.typescriptlang.org/docs/',
+            description: 'Official documentation for advanced TypeScript features'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced React and Node Course',
+            url: 'https://www.udemy.com/',
+            description: 'Comprehensive course focusing on production-grade full-stack apps'
+          },
+          {
+            title: 'Full-Stack Testing Masterclass',
+            url: 'https://testingjavascript.com/',
+            description: 'In-depth course on testing techniques for modern applications'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -488,8 +584,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Implementation',
           'Team Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'System Design Primer',
+            url: 'https://github.com/donnemartin/system-design-primer',
+            description: 'Collection of resources for learning how to design scalable systems'
+          },
+          {
+            title: 'Google Cloud Architecture Center',
+            url: 'https://cloud.google.com/architecture',
+            description: 'Reference architectures and best practices for cloud deployments'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'System Design Interview - An Insider\'s Guide',
+            url: 'https://www.designgurus.org/course/grokking-the-system-design-interview',
+            description: 'In-depth preparation for system design interviews'
+          },
+          {
+            title: 'Cloud Architecture Certification Prep',
+            url: 'https://acloudguru.com/cloud-certifications',
+            description: 'Preparation for professional cloud architect certifications'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -515,8 +633,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Framework Development',
           'Technical Leadership Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Martin Fowler\'s Blog',
+            url: 'https://martinfowler.com/',
+            description: 'Essays on software architecture, design patterns, and agile development'
+          },
+          {
+            title: 'ThoughtWorks Tech Radar',
+            url: 'https://www.thoughtworks.com/radar',
+            description: 'A bi-annual report on the current trends in software development'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Enterprise Architecture Patterns Book',
+            url: 'https://www.oreilly.com/',
+            description: 'Advanced patterns and strategies for large-scale application design'
+          },
+          {
+            title: 'CTO/VP Engineering Executive Program',
+            url: 'https://executive.mit.edu/programs/technology-strategy-digital-transformation',
+            description: 'Executive education focused on technology strategy and leadership'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -588,8 +728,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Fitness Tracking App (Advanced)',
           'Cross-platform App'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Flutter Advanced Docs',
+            url: 'https://docs.flutter.dev/perf/rendering',
+            description: 'Advanced topics in Flutter performance and rendering'
+          },
+          {
+            title: 'Android Developers Guide',
+            url: 'https://developer.android.com/guide/background/workmanager',
+            description: 'Guides on efficient background processing for Android'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Mobile Performance Optimization',
+            url: 'https://www.pluralsight.com/',
+            description: 'Course on profiling and optimizing mobile application performance'
+          },
+          {
+            title: 'Mobile CI/CD Masterclass',
+            url: 'https://www.udemy.com/course/mobile-devops-cicd-jenkins-fastlane/',
+            description: 'Course on setting up continuous integration and delivery for mobile apps'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -615,8 +777,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Implementation',
           'Team Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Awesome Mobile Architecture',
+            url: 'https://github.com/futurice/android-best-practices/wiki/Architecture',
+            description: 'Collection of best practices and patterns for mobile architecture'
+          },
+          {
+            title: 'OWASP Mobile Security Testing Guide',
+            url: 'https://owasp.org/www-project-mobile-security-testing-guide/',
+            description: 'Guide for mobile application security testing and reverse engineering'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Mobile Architecture Design Course',
+            url: 'https://www.coursera.org/learn/mobile-application-development',
+            description: 'Advanced course on designing scalable and maintainable mobile systems'
+          },
+          {
+            title: 'Leading Mobile Engineering Teams',
+            url: 'https://www.udemy.com/',
+            description: 'Course on leadership and project management for mobile teams'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -642,8 +826,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Framework',
           'Technical Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Apple Human Interface Guidelines',
+            url: 'https://developer.apple.com/design/human-interface-guidelines/',
+            description: 'Deep dive into Apple\'s design philosophy for principal-level work'
+          },
+          {
+            title: 'Google I/O & WWDC Videos',
+            url: 'https://www.youtube.com/@GoogleDevelopers/playlists?view=50&sort=dd&shelf_id=1',
+            description: 'Technical deep dives from annual developer conferences for future planning'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Mobile Platform Engineering Program',
+            url: 'https://oreilly.com/',
+            description: 'Training and resources on building and managing mobile platforms at scale'
+          },
+          {
+            title: 'Executive Program on Innovation Strategy',
+            url: 'https://executive.mit.edu/',
+            description: 'Program focused on driving innovation and strategy in technology'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -715,8 +921,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'A/B Testing Framework',
           'Data Pipeline Project'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Deep Learning Book',
+            url: 'https://www.deeplearningbook.org/',
+            description: 'Free, comprehensive textbook on deep learning fundamentals'
+          },
+          {
+            title: 'PyTorch Documentation',
+            url: 'https://pytorch.org/docs/stable/index.html',
+            description: 'Official documentation and tutorials for the PyTorch framework'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Deep Learning Specialization',
+            url: 'https://www.coursera.org/specializations/deep-learning',
+            description: 'Five-course specialization by Andrew Ng on deep learning'
+          },
+          {
+            title: 'MLOps: Machine Learning Operations Course',
+            url: 'https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t',
+            description: 'Training program focused on deploying and managing ML in production'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -742,8 +970,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Research Project',
           'Technical Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Google AI Research Blog',
+            url: 'https://ai.googleblog.com/',
+            description: 'Latest research and technical articles from Google AI'
+          },
+          {
+            title: 'Advanced Statistics Textbooks',
+            url: 'https://statweb.stanford.edu/~tibs/ElemStatLearn/',
+            description: 'Free PDF for "The Elements of Statistical Learning"'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Machine Learning Engineering for Production (MLOps)',
+            url: 'https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops',
+            description: 'Coursera specialization on building and managing production-ready ML systems'
+          },
+          {
+            title: 'Advanced Business Analytics Course',
+            url: 'https://hbr.org/topics/business-analytics',
+            description: 'Program focusing on linking data science to business outcomes'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -769,8 +1019,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'arXiv.org - Machine Learning',
+            url: 'https://arxiv.org/list/cs.LG/recent',
+            description: 'Source for cutting-edge machine learning research papers'
+          },
+          {
+            title: 'The Turing Way Guide',
+            url: 'https://the-turing-way.netlify.app/welcome.html',
+            description: 'Community-driven guide to reproducible, ethical, and collaborative data science'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in AI & Data Strategy',
+            url: 'https://executive.mit.edu/programs/artificial-intelligence-and-business-strategy',
+            description: 'Program for senior leaders focusing on integrating AI into business strategy'
+          },
+          {
+            title: 'Principal Data Scientist Career Guide',
+            url: 'https://www.oreilly.com/',
+            description: 'Advanced resources and books on data leadership and architecture'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -842,8 +1114,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Performance Optimization',
           'Disaster Recovery Plan'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Kubernetes Documentation',
+            url: 'https://kubernetes.io/docs/',
+            description: 'Official documentation for Kubernetes orchestration'
+          },
+          {
+            title: 'Prometheus Monitoring Docs',
+            url: 'https://prometheus.io/docs/introduction/overview/',
+            description: 'Documentation for the open-source monitoring system'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Kubernetes Administrator (CKA) Course',
+            url: 'https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/',
+            description: 'Preparation course for the industry-standard Kubernetes certification'
+          },
+          {
+            title: 'Terraform and Infrastructure as Code Course',
+            url: 'https://www.hashicorp.com/certification/terraform-associate',
+            description: 'Training for HashiCorp Certified: Terraform Associate'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -869,8 +1163,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Framework',
           'Technical Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'AWS Well-Architected Framework',
+            url: 'https://aws.amazon.com/architecture/well-architected/',
+            description: 'Best practices for designing and operating reliable, secure, and efficient systems'
+          },
+          {
+            title: 'The Site Reliability Engineering Workbook',
+            url: 'https://sre.google/workbook/table-of-contents/',
+            description: 'A practical guide to implementing SRE principles at scale'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AWS Certified DevOps Engineer - Professional',
+            url: 'https://aws.amazon.com/certification/certified-devops-engineer-professional/',
+            description: 'Professional-level course for advanced DevOps practices on AWS'
+          },
+          {
+            title: 'Advanced Cloud Security Course',
+            url: 'https://www.isc2.org/Certifications/CCSP',
+            description: 'Training for the Certified Cloud Security Professional (CCSP) certification'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -896,8 +1212,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'CNCF Whitepapers',
+            url: 'https://www.cncf.io/reports/cncf-cloud-native-survey-2023/',
+            description: 'Reports and technical papers on cloud native and platform engineering'
+          },
+          {
+            title: 'InfoQ Architecture & Design Articles',
+            url: 'https://www.infoq.com/software-architecture-and-design/',
+            description: 'Articles covering enterprise and distributed system architecture patterns'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Platform Engineering Course',
+            url: 'https://www.oreilly.com/',
+            description: 'Specialized course on designing and building internal developer platforms'
+          },
+          {
+            title: 'Executive IT Strategy & Leadership Program',
+            url: 'https://executive.mit.edu/',
+            description: 'Program focused on technical leadership and IT strategy'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -969,8 +1307,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'A/B Testing Framework',
           'Feature Store Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'MLOps Community Resources',
+            url: 'https://mlops.community/',
+            description: 'Guides, articles, and talks on MLOps best practices'
+          },
+          {
+            title: 'TensorFlow Extended (TFX) Docs',
+            url: 'https://www.tensorflow.org/tfx',
+            description: 'Google\'s framework for production ML pipelines'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Machine Learning Engineering for Production (MLOps)',
+            url: 'https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops',
+            description: 'Specialization on building and managing production-ready ML systems'
+          },
+          {
+            title: 'Advanced Cloud ML Platform Course',
+            url: 'https://cloud.google.com/certification/cloud-machine-learning-engineer',
+            description: 'Preparation for the Google Cloud Professional Machine Learning Engineer certification'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -996,8 +1356,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Team Mentoring Program',
           'Technical Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Designing Data-Intensive Applications',
+            url: 'https://dataintensive.net/',
+            description: 'Book on distributed systems and data storage (free chapters/resources)'
+          },
+          {
+            title: 'Kubeflow Documentation',
+            url: 'https://www.kubeflow.org/',
+            description: 'Platform for developing, deploying, and managing portable ML workloads on Kubernetes'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Distributed Systems for ML Course',
+            url: 'https://www.udemy.com/',
+            description: 'Specialized course on building high-performance, distributed ML systems'
+          },
+          {
+            title: 'Certified Machine Learning Architect',
+            url: 'https://www.certifiedmlarchitect.com/',
+            description: 'Advanced certification prep focusing on system architecture'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1023,8 +1405,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Distributed Systems',
+            url: 'https://arxiv.org/list/cs.DC/recent',
+            description: 'Latest research on distributed computing relevant to large-scale ML'
+          },
+          {
+            title: 'Google Research: ML Best Practices',
+            url: 'https://research.google/pubs/',
+            description: 'Technical papers on best practices in ML engineering from Google Research'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AI Strategy and Executive Leadership Program',
+            url: 'https://executive.mit.edu/',
+            description: 'Program focused on leading AI transformation at the executive level'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1096,8 +1500,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'A/B Testing Project',
           'Cross-platform Design'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Nielsen Norman Group Articles',
+            url: 'https://www.nngroup.com/articles/',
+            description: 'Expert articles on user experience research and usability'
+          },
+          {
+            title: 'Google Material Design Guidelines',
+            url: 'https://m3.material.io/',
+            description: 'Comprehensive guide to building beautiful, usable products'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Interaction Design Specialization',
+            url: 'https://www.coursera.org/specializations/interaction-design',
+            description: 'Specialization on designing effective user interactions'
+          },
+          {
+            title: 'Advanced Prototyping with Figma Course',
+            url: 'https://www.skillshare.com/',
+            description: 'Course on advanced techniques in high-fidelity prototyping and animation'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1123,8 +1549,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Advanced Research Project',
           'Technical Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Design System Handbook',
+            url: 'https://www.designsystemshub.com/handbook/',
+            description: 'Guide on how to plan, build, and maintain design systems'
+          },
+          {
+            title: 'Web Content Accessibility Guidelines (WCAG)',
+            url: 'https://www.w3.org/WAI/standards-guidelines/wcag/',
+            description: 'Official accessibility standards documentation'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Design Leadership Program',
+            url: 'https://www.designlab.com/design-leadership/',
+            description: 'Course focused on leading design teams and strategy'
+          },
+          {
+            title: 'Advanced User Research Methods Course',
+            url: 'https://www.udemy.com/course/advanced-user-experience-research/',
+            description: 'In-depth training on mixed-methods and strategic research'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1150,8 +1598,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Design Systems Community',
+            url: 'https://design.systems.community/',
+            description: 'Platform for advanced discussions on design systems and governance'
+          },
+          {
+            title: 'Harvard Business Review - Design Articles',
+            url: 'https://hbr.org/topic/design-thinking',
+            description: 'Articles linking design to business strategy and organizational change'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Strategic Design Thinking Certificate',
+            url: 'https://www.edx.org/professional-certificate/rits-strategic-design-thinking',
+            description: 'Program focused on applying design thinking to high-level business problems'
+          },
+          {
+            title: 'Chief Design Officer Executive Course',
+            url: 'https://www.mit.edu/executive-education/digital-business-strategy',
+            description: 'Executive education for defining design and product vision at scale'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1223,8 +1693,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Monitoring Setup',
           'Incident Response Automation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'OWASP Testing Guide',
+            url: 'https://owasp.org/www-project-web-security-testing-guide/',
+            description: 'Comprehensive guide for testing web application security'
+          },
+          {
+            title: 'NIST Cybersecurity Framework',
+            url: 'https://www.nist.gov/cyberframework',
+            description: 'Framework for managing cybersecurity risk'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'CompTIA Security+ Certification Course',
+            url: 'https://www.comptia.org/certifications/security',
+            description: 'Vendor-neutral course for fundamental IT security'
+          },
+          {
+            title: 'Certified Ethical Hacker (CEH) Training',
+            url: 'https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/',
+            description: 'Training program on hacking techniques and preventative countermeasures'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1250,8 +1742,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Risk Management Framework',
           'Technical Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'CIS Critical Security Controls',
+            url: 'https://www.cisecurity.org/controls/v8',
+            description: 'Prioritized set of actions to defend against common cyberattacks'
+          },
+          {
+            title: 'Cloud Security Alliance (CSA) Guides',
+            url: 'https://cloudsecurityalliance.org/',
+            description: 'Resources and research on cloud computing security'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Information Systems Security Professional (CISSP)',
+            url: 'https://www.isc2.org/Certifications/CISSP',
+            description: 'Advanced certification for security practitioners and managers'
+          },
+          {
+            title: 'Cloud Security Professional (CCSP) Course',
+            url: 'https://www.isc2.org/Certifications/CCSP',
+            description: 'Specialized course on cloud security architecture, design, and operations'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1277,8 +1791,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Security Architecture Patterns',
+            url: 'https://martinfowler.com/architecture/security.html',
+            description: 'Architectural patterns for building secure software systems'
+          },
+          {
+            title: 'Advanced Threat Analysis Papers',
+            url: 'https://www.fireeye.com/blog/threat-research.html',
+            description: 'Cutting-edge research and analysis of APTs and emerging threats'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Information Security Manager (CISM)',
+            url: 'https://www.isaca.org/credentialing/cism',
+            description: 'Executive-level certification for managing, designing, and overseeing enterprise information security'
+          },
+          {
+            title: 'Chief Information Security Officer (CISO) Program',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on security governance and strategic leadership'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1350,8 +1886,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'VR/AR Game',
           'Indie Game Release'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Unreal Engine Documentation',
+            url: 'https://docs.unrealengine.com/',
+            description: 'In-depth technical documentation for Unreal Engine'
+          },
+          {
+            title: 'Game Programming Patterns',
+            url: 'https://gameprogrammingpatterns.com/',
+            description: 'Free online book of reusable patterns for game programming'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced C++ Game Development Course',
+            url: 'https://www.udemy.com/course/game-development-advanced-c-and-cpp/',
+            description: 'Course focusing on deep C++ programming for high-performance games'
+          },
+          {
+            title: 'Multiplayer Game Development Masterclass',
+            url: 'https://www.coursera.org/',
+            description: 'Specialized course on network and server-side logic for multiplayer games'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1377,8 +1935,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'Game Studio Setup'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'GDC Vault Free Talks',
+            url: 'https://www.youtube.com/user/GDCvault',
+            description: 'A selection of free technical talks from the Game Developers Conference'
+          },
+          {
+            title: 'Advanced Graphics Papers',
+            url: 'https://www.realtimerendering.com/resources.html',
+            description: 'Collection of resources on advanced real-time rendering techniques'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Game Architecture Design Course',
+            url: 'https://www.pluralsight.com/courses/game-architecture-fundamentals',
+            description: 'Course on designing scalable and maintainable game codebases'
+          },
+          {
+            title: 'Advanced Shading and Rendering Course',
+            url: 'https://www.edx.org/',
+            description: 'University-level course on advanced graphics programming and algorithms'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1404,8 +1984,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Art of Game Design: A Book of Lenses',
+            url: 'https://www.artofgamedesign.com/',
+            description: 'Resources and insights from a foundational book on game design theory'
+          },
+          {
+            title: 'SIGGRAPH Technical Papers',
+            url: 'https://www.siggraph.org/learn/publications/',
+            description: 'Access to the most cutting-edge research in computer graphics and interactive techniques'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Innovation in Entertainment Tech',
+            url: 'https://executive.usc.edu/',
+            description: 'Executive education focused on the business and strategy of entertainment technology'
+          },
+          {
+            title: 'Game Studio Leadership & Finance Course',
+            url: 'https://www.gamasutra.com/',
+            description: 'Training on the management, finance, and strategy of running a game studio'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1477,8 +2079,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Data Orchestration Platform',
           'Multi-cloud Data Architecture'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Apache Kafka Documentation',
+            url: 'https://kafka.apache.org/documentation/',
+            description: 'Official documentation for the distributed streaming platform'
+          },
+          {
+            title: 'Data Engineering Weekly',
+            url: 'https://dataengineeringweekly.com/',
+            description: 'A newsletter and resource hub for data engineering topics'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Google Cloud Professional Data Engineer Course',
+            url: 'https://cloud.google.com/certification/data-engineer',
+            description: 'Preparation course for Google Cloud\'s professional data engineer certification'
+          },
+          {
+            title: 'Data Pipelining with Apache Airflow',
+            url: 'https://www.udemy.com/course/apache-airflow/',
+            description: 'Comprehensive course on data pipeline orchestration with Airflow'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1504,8 +2128,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'Data Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Designing Data-Intensive Applications',
+            url: 'https://dataintensive.net/',
+            description: 'Book on distributed systems, data storage, and processing (free chapters/resources)'
+          },
+          {
+            title: 'Data Governance & Quality Guides',
+            url: 'https://www.dataversity.net/',
+            description: 'Articles and resources on data governance, quality, and compliance'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Data Architecture Certification Prep',
+            url: 'https://www.theopengroup.org/certifications/certified-data-architect',
+            description: 'Training for Certified Data Architect certifications'
+          },
+          {
+            title: 'Advanced Data Modeling and Warehouse Design',
+            url: 'https://www.oreilly.com/',
+            description: 'Books and courses on advanced data modeling techniques (e.g., Data Vault, Dimensional)'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1531,8 +2177,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Data Engineering Handbook',
+            url: 'https://www.dataengineeringhandbook.com/',
+            description: 'Community-driven guide on the entire data engineering landscape at scale'
+          },
+          {
+            title: 'InfoQ Data and Architecture Articles',
+            url: 'https://www.infoq.com/software-architecture-and-design/',
+            description: 'Articles covering high-level data strategy and system architecture'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in Big Data and Data Science Strategy',
+            url: 'https://executive.mit.edu/programs/big-data-and-data-science-strategy',
+            description: 'Program for senior leaders focused on data-driven business strategy'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1604,8 +2272,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Cost Optimization Project',
           'Disaster Recovery Plan'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Kubernetes Documentation',
+            url: 'https://kubernetes.io/docs/',
+            description: 'Official documentation for Kubernetes orchestration'
+          },
+          {
+            title: 'Serverless Framework Documentation',
+            url: 'https://www.serverless.com/framework/docs/',
+            description: 'Guide to building and deploying serverless applications'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AWS Certified Solutions Architect - Associate Course',
+            url: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/',
+            description: 'Preparation course for the fundamental cloud architect certification'
+          },
+          {
+            title: 'Azure Administrator (AZ-104) Training',
+            url: 'https://learn.microsoft.com/en-us/certifications/azure-administrator/',
+            description: 'Official training for managing cloud resources in Azure'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1631,8 +2321,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'Cloud Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'AWS Well-Architected Framework',
+            url: 'https://aws.amazon.com/architecture/well-architected/',
+            description: 'Best practices for designing and operating reliable, secure, and efficient systems'
+          },
+          {
+            title: 'Cloud Security Alliance (CSA) Guides',
+            url: 'https://cloudsecurityalliance.org/',
+            description: 'Resources and research on cloud computing security, compliance, and governance'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Google Cloud Professional Cloud Architect Course',
+            url: 'https://cloud.google.com/certification/cloud-architect',
+            description: 'Professional-level certification prep focusing on enterprise cloud architecture'
+          },
+          {
+            title: 'Certified Cloud Security Professional (CCSP) Course',
+            url: 'https://www.isc2.org/Certifications/CCSP',
+            description: 'Specialized course on advanced cloud security architecture and operations'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1658,8 +2370,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ThoughtWorks Technology Radar',
+            url: 'https://www.thoughtworks.com/radar',
+            description: 'Analysis of the current trends and technologies in cloud infrastructure'
+          },
+          {
+            title: 'CNCF Whitepapers & Reports',
+            url: 'https://www.cncf.io/reports/',
+            description: 'Technical papers on cloud native and platform engineering'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Digital Transformation',
+            url: 'https://executive.mit.edu/programs/digital-transformation',
+            description: 'Executive education focused on leading large-scale technology transformation'
+          },
+          {
+            title: 'Advanced Cloud Economics and FinOps Course',
+            url: 'https://www.finops.org/framework/training/',
+            description: 'Training on financial accountability for cloud spending and governance'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1731,8 +2465,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'CI/CD Pipeline Integration',
           'Test Framework Development'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'JMeter User Manual',
+            url: 'https://jmeter.apache.org/usermanual/index.html',
+            description: 'Official user manual for Apache JMeter for performance testing'
+          },
+          {
+            title: 'Cypress Documentation',
+            url: 'https://docs.cypress.io/',
+            description: 'Guides and tutorials for modern end-to-end testing with Cypress'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Test Automation with Playwright',
+            url: 'https://www.udemy.com/',
+            description: 'Comprehensive course on building resilient test automation with Playwright'
+          },
+          {
+            title: 'ISTQB Advanced Level - Test Automation Engineer',
+            url: 'https://www.istqb.org/certifications/test-automation-engineer',
+            description: 'Preparation course for advanced test automation certification'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1758,8 +2514,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'Quality Framework Development'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Test Automation University',
+            url: 'https://testautomationu.applitools.com/',
+            description: 'Free courses on various test automation and quality engineering topics'
+          },
+          {
+            title: 'Test Architecture Patterns',
+            url: 'https://martinfowler.com/articles/mocksArentStubs.html',
+            description: 'Technical articles on design patterns for testing and quality'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'ISTQB Expert Level - Improving the Test Process',
+            url: 'https://www.istqb.org/certifications/improving-the-test-process-expert-level',
+            description: 'Expert-level course focused on quality process improvement'
+          },
+          {
+            title: 'Leading Quality: Leadership for Software Testers',
+            url: 'https://www.leadingquality.com/',
+            description: 'Training focused on quality leadership and strategy'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1785,8 +2563,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Agile Testing: A Practical Guide for Testers and Agile Teams',
+            url: 'https://www.oreilly.com/',
+            description: 'Resources and insights from a key book on quality in an Agile context'
+          },
+          {
+            title: 'Black Box Software Testing Courses',
+            url: 'https://www.satisfice.com/bbst-courses',
+            description: 'Free resources from advanced testing courses'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Software Quality and Reliability Executive Program',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive course on system reliability and quality strategy'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1858,8 +2658,25 @@ export const skillsData: { [key: string]: SkillData } = {
           'DAO Implementation',
           'Advanced DApp'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'OpenZeppelin Contracts',
+            url: 'https://openzeppelin.com/contracts/',
+            description: 'Secure smart contract library'
+          },
+          {
+            title: 'ConsenSys Academy',
+            url: 'https://consensys.net/academy/',
+            description: 'Free blockchain education resources'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'DeFi and the Future of Finance',
+            url: 'https://www.coursera.org/learn/defi',
+            description: 'Coursera course on decentralized finance'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1885,8 +2702,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'Blockchain Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Ethereum Research',
+            url: 'https://ethresear.ch/',
+            description: 'Ethereum research and development discussions'
+          },
+          {
+            title: 'Vitalik Buterin\'s Blog',
+            url: 'https://vitalik.ca/',
+            description: 'Ethereum founder\'s technical writings on crypto-economics and protocol design'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Blockchain Development',
+            url: 'https://www.pluralsight.com/courses/advanced-blockchain-development',
+            description: 'Advanced blockchain development course'
+          },
+          {
+            title: 'Certified Blockchain Architect (CBA) Prep',
+            url: 'https://www.blockchain-council.org/certifications/certified-blockchain-architect/',
+            description: 'Training for advanced blockchain architecture certification'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -1912,8 +2751,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Ethereum Improvement Proposals (EIPs)',
+            url: 'https://eips.ethereum.org/',
+            description: 'Ethereum protocol improvement proposals and technical specifications'
+          },
+          {
+            title: 'Web3 Foundation Research',
+            url: 'https://research.web3.foundation/',
+            description: 'Cutting-edge Web3 research and innovation'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Blockchain Executive Program',
+            url: 'https://www.mit.edu/executive-education/blockchain',
+            description: 'MIT executive program on blockchain business and technology strategy'
+          },
+          {
+            title: 'Cryptoeconomics and Protocol Design Course',
+            url: 'https://www.coursera.org/',
+            description: 'Advanced course on the economic incentives and design of decentralized protocols'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -1985,8 +2846,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Competitive Analysis',
           'Product Innovation Project'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Product School Blog',
+            url: 'https://productschool.com/blog/',
+            description: 'Articles and resources on product strategy, development, and growth'
+          },
+          {
+            title: 'Mind the Product Newsletter',
+            url: 'https://www.mindtheproduct.com/',
+            description: 'Weekly newsletter with curated articles on all things product'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Scrum Product Owner (CSPO) Training',
+            url: 'https://www.scrumalliance.org/certifications/product-owner-certifications/cspo',
+            description: 'Official course for Scrum Product Owner certification'
+          },
+          {
+            title: 'Product Analytics Course (e.g., Mixpanel/Amplitude)',
+            url: 'https://www.product-analytics.com/',
+            description: 'Training on leveraging product data for insights and decision-making'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2012,8 +2895,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'Business Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Silicon Valley Product Group (SVPG) Insights',
+            url: 'https://www.svpg.com/insights/',
+            description: 'Articles by Marty Cagan on how top technology companies build products'
+          },
+          {
+            title: 'Inspired: How to Create Tech Products Customers Love (Book)',
+            url: 'https://www.svpg.com/inspired-how-to-create-tech-products-customers-love/',
+            description: 'Resources and content related to Marty Cagan\'s seminal book on product management'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Product Management Certification (e.g., AIPMM)',
+            url: 'https://www.aipmm.com/product-management-certifications',
+            description: 'Advanced-level certification focusing on strategy and portfolio management'
+          },
+          {
+            title: 'Technical Product Management Course',
+            url: 'https://www.pragmaticinstitute.com/training/product-management/',
+            description: 'Training focused on the technical depth required for senior product managers'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2039,8 +2944,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Reforge Courses & Artifacts',
+            url: 'https://www.reforge.com/',
+            description: 'Advanced growth and retention loops knowledge base (some free content)'
+          },
+          {
+            title: 'Scaling Product Teams Articles',
+            url: 'https://www.kenshirriff.com/blog/',
+            description: 'Technical and leadership articles on scaling product organizations'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Chief Product Officer (CPO) Executive Program',
+            url: 'https://www.insead.edu/executive-education/strategy-programmes/chief-product-officer',
+            description: 'Executive education focused on defining product strategy at the C-level'
+          },
+          {
+            title: 'Advanced Business Strategy Program',
+            url: 'https://online.hbs.edu/courses/business-strategy/',
+            description: 'Advanced strategic thinking and leadership course'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2112,8 +3039,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Quality Assurance Program',
           'Analytics Dashboard'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Writerside Documentation',
+            url: 'https://www.jetbrains.com/writerside/',
+            description: 'Modern, feature-rich documentation tool from JetBrains'
+          },
+          {
+            title: 'Information Architecture Basics',
+            url: 'https://www.uxmatters.com/articles/ia-basics/',
+            description: 'Guides on organizing and structuring content for documentation'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Professional Technical Communicator (CPTC) Prep',
+            url: 'https://www.stc.org/certification/',
+            description: 'Preparation course for the professional technical communication certification'
+          },
+          {
+            title: 'DITA or XML Authoring Course',
+            url: 'https://www.techwriter-training.com/',
+            description: 'Specialized training on structured authoring and content management'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2139,8 +3088,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Innovation Project'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Content Strategy for the Web (Book Resources)',
+            url: 'https://abookapart.com/products/content-strategy-for-the-web',
+            description: 'Resources related to Kristina Halvorson\'s foundational book on content strategy'
+          },
+          {
+            title: 'Write the Docs Community Guides',
+            url: 'https://www.writethedocs.org/guide/',
+            description: 'Community guides on best practices for technical documentation'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Content Strategy Course',
+            url: 'https://www.northwestern.edu/continuingstudies/program-areas/integrated-marketing/content-strategy.html',
+            description: 'University-level course focusing on enterprise content strategy'
+          },
+          {
+            title: 'Managing Technical Documentation Teams',
+            url: 'https://www.linkedin.com/learning/topics/technical-writing',
+            description: 'Management-focused training for leading documentation teams and projects'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2166,8 +3137,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Knowledge Gap: The Tech Writer\'s Role in Bridging It',
+            url: 'https://www.writethedocs.org/conf/portland/2023/videos/the-knowledge-gap.html',
+            description: 'Conference talks and resources on the strategic role of technical content'
+          },
+          {
+            title: 'AI/LLM Documentation Trends',
+            url: 'https://openai.com/blog/technical-writing-best-practices',
+            description: 'Articles on the impact of AI and LLMs on technical documentation workflows'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Digital Strategy',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on content and knowledge as a strategic business asset'
+          },
+          {
+            title: 'Content Operations (ContentOps) Certification',
+            url: 'https://contentops.com/',
+            description: 'Advanced training on operationalizing content strategy at scale'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2239,8 +3232,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'AI-powered Web App',
           'Research Paper Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Stanford CS224N: NLP with Deep Learning',
+            url: 'http://web.stanford.edu/class/cs224n/',
+            description: 'Free course materials on Natural Language Processing'
+          },
+          {
+            title: 'Deep Learning Book',
+            url: 'https://www.deeplearningbook.org/',
+            description: 'Free, comprehensive textbook on deep learning fundamentals'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Deep Learning Specialization',
+            url: 'https://www.coursera.org/specializations/deep-learning',
+            description: 'Specialization on advanced deep learning models and applications'
+          },
+          {
+            title: 'Reinforcement Learning Course',
+            url: 'https://www.edx.org/course/reinforcement-learning',
+            description: 'Advanced course on Reinforcement Learning principles and algorithms'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2266,8 +3281,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'AI Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Google AI Research Blog',
+            url: 'https://ai.googleblog.com/',
+            description: 'Latest research and technical articles on AI/ML innovations'
+          },
+          {
+            title: 'AI Ethics and Governance Guides',
+            url: 'https://www.weforum.org/platforms/artificial-intelligence-and-machine-learning/',
+            description: 'Resources on responsible AI, governance, and ethical frameworks'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AI Product Management Course',
+            url: 'https://ai-product-management.com/',
+            description: 'Training focused on leading AI-powered products and defining AI strategy'
+          },
+          {
+            title: 'Advanced MLOps and Deployment Course',
+            url: 'https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t',
+            description: 'In-depth program on building and maintaining production-grade ML systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2293,8 +3330,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - AI',
+            url: 'https://arxiv.org/list/cs.AI/recent',
+            description: 'Source for cutting-edge artificial intelligence research papers'
+          },
+          {
+            title: 'DeepMind Technical Blog',
+            url: 'https://deepmind.com/blog',
+            description: 'Technical deep-dives into advanced AI systems and research breakthroughs'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AI Executive Leadership Program',
+            url: 'https://executive.mit.edu/programs/artificial-intelligence-and-business-strategy',
+            description: 'Executive education focused on defining AI strategy and driving innovation at the organizational level'
+          },
+          {
+            title: 'Advanced AI Architecture and System Design Course',
+            url: 'https://www.oreilly.com/',
+            description: 'Resources on designing and scaling highly complex AI systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2366,8 +3425,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Production AI Service',
           'Research Experiment'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Pinecone Learning Center',
+            url: 'https://www.pinecone.io/learn/',
+            description: 'Resources on vector databases and RAG system implementation'
+          },
+          {
+            title: 'Stanford CS329S: Machine Learning Systems Design',
+            url: 'https://stanford-cs329s.github.io/syllabus.html',
+            description: 'Course materials on designing and deploying ML systems (incl. Generative AI)'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Generative AI with Transformers Course',
+            url: 'https://www.coursera.org/specializations/generative-ai-with-transformers',
+            description: 'Specialization on building and fine-tuning large language models'
+          },
+          {
+            title: 'Advanced Prompt Engineering Course',
+            url: 'https://www.deeplearning.ai/short-courses/',
+            description: 'Short courses on advanced prompt engineering and LLM customization'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2393,8 +3474,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'AI Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Generative Models',
+            url: 'https://arxiv.org/list/cs.LG/recent',
+            description: 'Latest research papers on Diffusion Models, GANs, and Transformers'
+          },
+          {
+            title: 'MLOps for LLMs Guides',
+            url: 'https://www.datacamp.com/blog/mlops-for-llms-what-it-is-and-why-you-need-it',
+            description: 'Articles on the specialized deployment, monitoring, and security for LLMs'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Designing Large-Scale Generative AI Systems',
+            url: 'https://www.oreilly.com/',
+            description: 'Advanced course on the architecture and scaling of generative AI platforms'
+          },
+          {
+            title: 'AI Ethics and Governance for Product Leaders',
+            url: 'https://executive.mit.edu/',
+            description: 'Training focusing on the ethical and strategic oversight of AI products'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2420,8 +3523,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'AI/ML Whitepapers from Google/Meta/OpenAI',
+            url: 'https://openai.com/research',
+            description: 'Deep dives into the fundamental research underlying state-of-the-art models'
+          },
+          {
+            title: 'AI Alignment and Safety Research',
+            url: 'https://alignmentforum.org/',
+            description: 'Discussions and papers on the long-term safety and alignment of advanced AI'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AI Executive Leadership Program',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining AI strategy and leading technical vision'
+          },
+          {
+            title: 'Venture Capital and AI Startup Strategy',
+            url: 'https://online.stanford.edu/programs/stanford-executive-program-for-growing-companies',
+            description: 'Program for driving business and innovation strategy in the AI sector'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2493,8 +3618,30 @@ export const skillsData: { [key: string]: SkillData } = {
           '3D Vision Application',
           'Production CV Service'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Stanford CS231N: Convolutional Neural Networks for Visual Recognition',
+            url: 'http://cs231n.stanford.edu/',
+            description: 'Free course materials on advanced CNNs and visual recognition'
+          },
+          {
+            title: 'PyTorch/TensorFlow Model Hubs',
+            url: 'https://pytorch.org/hub/',
+            description: 'Access to state-of-the-art pre-trained CV models for fine-tuning'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Computer Vision with Deep Learning',
+            url: 'https://www.udemy.com/course/advanced-computer-vision-deep-learning/',
+            description: 'Course covering object segmentation, tracking, and advanced architectures'
+          },
+          {
+            title: 'Real-Time Computer Vision Systems Course',
+            url: 'https://www.coursera.org/',
+            description: 'Specialized course on optimizing CV models for real-time and embedded deployment'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2520,8 +3667,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'CV Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Papers',
+            url: 'https://openaccess.thecvf.com/CVPR2024.py',
+            description: 'Access to the latest research in the top CV conference'
+          },
+          {
+            title: 'MLOps for Computer Vision Guides',
+            url: 'https://www.v7labs.com/blog/mlops-for-computer-vision-a-complete-guide',
+            description: 'Resources on deploying, monitoring, and maintaining CV models in production'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Computer Vision System Architecture Course',
+            url: 'https://www.oreilly.com/',
+            description: 'Advanced training on designing scalable, distributed CV platforms'
+          },
+          {
+            title: 'Applied Deep Learning in Autonomous Vehicles',
+            url: 'https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd0013',
+            description: 'Specialized program focused on CV applications in self-driving cars'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2547,8 +3716,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Handbook of Computer Vision and Applications (Book)',
+            url: 'https://link.springer.com/book/10.1007/978-3-540-31120-7',
+            description: 'Advanced and foundational concepts for expert-level knowledge'
+          },
+          {
+            title: 'Industry Research Blogs (e.g., Meta AI, Google AI)',
+            url: 'https://ai.meta.com/blog/',
+            description: 'Technical insights from industry leaders driving CV innovation'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on AI Strategy',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining AI/CV strategy and technical vision'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2620,8 +3811,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Text Generation Service',
           'Production NLP Pipeline'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Hugging Face Course',
+            url: 'https://huggingface.co/course',
+            description: 'Free course on transformers and advanced NLP'
+          },
+          {
+            title: 'Stanford CS224N: NLP with Deep Learning',
+            url: 'http://web.stanford.edu/class/cs224n/',
+            description: 'Course materials on Natural Language Processing with Deep Learning'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced NLP Specialization (e.g., Coursera DeepLearning.AI)',
+            url: 'https://www.coursera.org/specializations/natural-language-processing',
+            description: 'Specialization on advanced NLP topics including sequence models and attention'
+          },
+          {
+            title: 'Prompt Engineering and LLM Fine-tuning Course',
+            url: 'https://www.deeplearning.ai/',
+            description: 'Training on practical techniques for optimizing and customizing large language models'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2647,8 +3860,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Technical Leadership',
           'NLP Strategy Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Natural Language Processing',
+            url: 'https://arxiv.org/list/cs.CL/recent',
+            description: 'Latest research papers on all sub-fields of NLP'
+          },
+          {
+            title: 'NLP Architectures and System Design Guides',
+            url: 'https://www.oreilly.com/',
+            description: 'Technical articles and excerpts on designing production NLP systems'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced MLOps for NLP Systems Course',
+            url: 'https://www.udacity.com/',
+            description: 'Specialized course on deploying and monitoring large-scale NLP models'
+          },
+          {
+            title: 'AI/NLP Product Management Course',
+            url: 'https://ai-product-management.com/',
+            description: 'Training focused on leading NLP product strategy and development'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2674,8 +3909,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Stanford Handbook of NLP (Online)',
+            url: 'https://stanfordnlp.github.io/CoreNLP/index.html',
+            description: 'Advanced technical reference for fundamental and modern NLP techniques'
+          },
+          {
+            title: 'Technical Blogs of Leading AI Labs (e.g., Anthropic, OpenAI)',
+            url: 'https://www.anthropic.com/news',
+            description: 'Insights into the cutting-edge research and systems of top AI companies'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'AI Executive Leadership Program',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining AI/NLP strategy and technical vision'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2747,8 +4004,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Process Standardization',
           'Cross-team Project'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Engineering Manager Handbook',
+            url: 'https://www.leading-tech-manager.com/',
+            description: 'Guides and resources for aspiring and current engineering managers'
+          },
+          {
+            title: 'Agile Alliance Resources',
+            url: 'https://www.agilealliance.org/resources/',
+            description: 'Articles and guides on advanced Agile and Scrum practices'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified ScrumMaster (CSM) Training',
+            url: 'https://www.scrumalliance.org/certifications/practitioners/csm-certification',
+            description: 'Official course for Scrum Master certification'
+          },
+          {
+            title: 'Financial Management for Tech Managers Course',
+            url: 'https://online.stanford.edu/programs/financial-management-program',
+            description: 'Training focused on budgeting, forecasting, and financial decision-making in tech'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2774,8 +4053,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Executive Leadership',
           'Industry Leadership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'High Output Management by Andy Grove (Resources)',
+            url: 'https://www.oreilly.com/',
+            description: 'Resources and insights from a foundational book on management and scaling'
+          },
+          {
+            title: 'First Round Review Articles',
+            url: 'https://firstround.com/review/',
+            description: 'In-depth articles and advice from technology leaders on scaling and strategy'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in Technology Management',
+            url: 'https://executive.mit.edu/programs/technology-and-innovation-strategy',
+            description: 'Program focusing on technology and innovation strategy for senior leaders'
+          },
+          {
+            title: 'Advanced Organizational Change Management Certification',
+            url: 'https://www.prosci.com/change-management/certification/advanced-certified',
+            description: 'Training on leading complex organizational transformations'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2801,8 +4102,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Mentoring Program',
           'Technical Vision'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'CTO / VP Engineering Peer Groups',
+            url: 'https://www.cto.academy/',
+            description: 'Resources and community for executive-level technical leaders'
+          },
+          {
+            title: 'The Great CEO Toolkit',
+            url: 'https://github.com/skylinesp/the-great-ceo-toolkit',
+            description: 'Collection of resources on strategic planning, leadership, and governance'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Chief Technology Officer (CTO) Program',
+            url: 'https://executive.mit.edu/programs/chief-technology-officer',
+            description: 'The highest-level executive education focused on technology strategy and leadership'
+          },
+          {
+            title: 'Board-Level Communications and Governance Course',
+            url: 'https://online.stanford.edu/programs/stanford-executive-program',
+            description: 'Training on effective communication and governance for executive roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -2874,8 +4197,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Disaster Recovery Plan',
           'Advanced Automation System'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Site Reliability Engineering Workbook',
+            url: 'https://sre.google/workbook/table-of-contents/',
+            description: 'A practical guide to implementing SRE principles at scale'
+          },
+          {
+            title: 'Chaos Engineering Tutorials (e.g., Gremlin)',
+            url: 'https://www.gremlin.com/community/tutorials/',
+            description: 'Guides and tutorials on practicing Chaos Engineering'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Kubernetes Administrator (CKA) Course',
+            url: 'https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/',
+            description: 'Preparation course for the industry-standard Kubernetes certification'
+          },
+          {
+            title: 'Practical Observability Course (e.g., Honeycomb)',
+            url: 'https://www.honeycomb.io/observability-for-beginners',
+            description: 'Training on advanced observability practices and distributed tracing'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2901,8 +4246,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'AWS Well-Architected Framework',
+            url: 'https://aws.amazon.com/architecture/well-architected/',
+            description: 'Best practices for designing reliable and efficient systems on AWS'
+          },
+          {
+            title: 'Incident Command System (ICS) Resources',
+            url: 'https://www.fema.gov/emergency-managers/nims/incident-command-system',
+            description: 'Standardized framework for incident management (from FEMA)'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Reliability Engineer (CRE) Prep',
+            url: 'https://asq.org/cert/reliability-engineer',
+            description: 'Training for the ASQ Certified Reliability Engineer certification'
+          },
+          {
+            title: 'Advanced Distributed Systems Design Course',
+            url: 'https://www.coursera.org/specializations/distributed-system-design',
+            description: 'Specialization on designing complex, reliable distributed systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -2928,8 +4295,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'InfoQ Architecture & Reliability Articles',
+            url: 'https://www.infoq.com/software-architecture-and-design/',
+            description: 'Articles covering high-level architecture and reliability patterns'
+          },
+          {
+            title: 'CNCF Cloud Native Technical Papers',
+            url: 'https://www.cncf.io/reports/',
+            description: 'Resources on advanced cloud native technologies and platform strategy'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Digital Strategy and Operations',
+            url: 'https://executive.mit.edu/programs/digital-business-strategy',
+            description: 'Executive education focused on operations and reliability as a business driver'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3001,8 +4390,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Talent Development Initiative',
           'Strategic Partnership'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'First Round Review Articles',
+            url: 'https://firstround.com/review/',
+            description: 'In-depth articles from technology leaders on scaling and management'
+          },
+          {
+            title: 'The Technology Strategy Guide',
+            url: 'https://martinfowler.com/articles/technology-strategy.html',
+            description: 'Technical and business principles for defining technology strategy'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in Technology Management',
+            url: 'https://executive.mit.edu/programs/technology-and-innovation-strategy',
+            description: 'Program focusing on technology and innovation strategy for senior leaders'
+          },
+          {
+            title: 'Advanced Organizational Change Management Certification',
+            url: 'https://www.prosci.com/change-management/certification/advanced-certified',
+            description: 'Training on leading complex organizational transformations'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3028,8 +4439,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Leadership',
           'Crisis Management'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Harvard Business Review - Strategy Articles',
+            url: 'https://hbr.org/topic/strategy',
+            description: 'Executive-level articles on business strategy, competition, and growth'
+          },
+          {
+            title: 'The Great CEO Toolkit',
+            url: 'https://github.com/skylinesp/the-great-ceo-toolkit',
+            description: 'Collection of resources on strategic planning, leadership, and governance'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in Digital Business Strategy',
+            url: 'https://online.hbs.edu/courses/digital-business-strategy/',
+            description: 'Advanced strategic thinking course from a top business school'
+          },
+          {
+            title: 'Board Communication and Executive Presence Course',
+            url: 'https://www.executiveeducation.wharton.upenn.edu/executive-presence-and-influence/',
+            description: 'Training focused on high-stakes communication and influencing stakeholders'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3055,8 +4488,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Mentoring Program',
           'Technical Vision'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'MIT Sloan Management Review',
+            url: 'https://sloanreview.mit.edu/',
+            description: 'Executive-level research and articles on technology, leadership, and management'
+          },
+          {
+            title: 'The 7 Powers: The Foundations of Business Strategy (Book Resources)',
+            url: 'https://www.hamiltonhelmer.com/7powers',
+            description: 'Resources related to a foundational book on strategic power and competitive advantage'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Chief Technology Officer (CTO) Program',
+            url: 'https://executive.mit.edu/programs/chief-technology-officer',
+            description: 'The highest-level executive education focused on technology strategy and leadership'
+          },
+          {
+            title: 'Advanced Organizational Development Course',
+            url: 'https://www.cornell.edu/management/organizational-development/',
+            description: 'Training on organizational design, culture change, and scaling leadership'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3128,8 +4583,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Distributed System Component',
           'Security Tool'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Linux Kernel Documentation',
+            url: 'https://www.kernel.org/doc/html/latest/',
+            description: 'Official documentation for the Linux kernel'
+          },
+          {
+            title: 'Advanced C++ Concepts',
+            url: 'https://isocpp.org/',
+            description: 'Resources for modern and advanced C++ programming'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Operating Systems: Three Easy Pieces (Book)',
+            url: 'https://pages.cs.wisc.edu/~remzi/OSTEP/',
+            description: 'Book on operating systems design (some parts available online)'
+          },
+          {
+            title: 'Advanced Concurrent and Parallel Programming Course',
+            url: 'https://www.coursera.org/',
+            description: 'Specialized course on multi-threading, concurrency, and parallelism'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3155,8 +4632,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Designing Data-Intensive Applications',
+            url: 'https://dataintensive.net/',
+            description: 'Book on distributed systems and data storage (free chapters/resources)'
+          },
+          {
+            title: 'InfoQ Architecture & Design Articles',
+            url: 'https://www.infoq.com/software-architecture-and-design/',
+            description: 'Articles covering low-level system design and architecture'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Low-Latency Systems Course',
+            url: 'https://www.udemy.com/',
+            description: 'Training focused on extreme performance optimization for systems software'
+          },
+          {
+            title: 'Certified Systems Architect (CSA) Prep',
+            url: 'https://www.systemsarchitecture.org/',
+            description: 'Advanced certification prep focusing on complex systems architecture'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3182,8 +4681,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Systems',
+            url: 'https://arxiv.org/list/cs.OS/recent',
+            description: 'Latest research papers on operating systems and distributed systems'
+          },
+          {
+            title: 'ACM Queue Articles',
+            url: 'https://queue.acm.org/',
+            description: 'Technical articles on advanced computing and systems topics written by experts'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Advanced Computing',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on the strategic implications of advanced computing systems'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3255,8 +4776,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Network Automation Script',
           'Security Framework'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Juniper Networks Documentation',
+            url: 'https://www.juniper.net/documentation/',
+            description: 'Technical documentation for advanced routing and switching'
+          },
+          {
+            title: 'Cisco DevNet Resources',
+            url: 'https://developer.cisco.com/',
+            description: 'Resources on network automation and programmability'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Cisco Certified Network Professional (CCNP) Course',
+            url: 'https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/professional.html',
+            description: 'Advanced professional certification training in enterprise networking'
+          },
+          {
+            title: 'Cloud Networking Specialist Certification (e.g., AWS, Azure)',
+            url: 'https://aws.amazon.com/certification/certified-advanced-networking-specialty/',
+            description: 'Training for cloud networking specialization certifications'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3282,8 +4825,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Network Functions Virtualization (NFV) Guides',
+            url: 'https://www.etsi.org/technologies/nfv',
+            description: 'Technical standards and documentation on NFV and SDN architectures'
+          },
+          {
+            title: 'The Network Architecture Guide',
+            url: 'https://www.oreilly.com/',
+            description: 'Technical articles on designing high-availability and performant networks'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Cisco Certified Internetwork Expert (CCIE) Prep',
+            url: 'https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/expert.html',
+            description: 'Expert-level training for the top-tier CCIE certification'
+          },
+          {
+            title: 'Network Security Architecture Course',
+            url: 'https://www.isc2.org/Certifications/CCSP',
+            description: 'Specialized course on designing and implementing secure network architectures'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3309,8 +4874,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'IETF RFCs (Request for Comments)',
+            url: 'https://www.rfc-editor.org/',
+            description: 'Official documents defining Internet standards and protocols'
+          },
+          {
+            title: 'IEEE Communications Society Technical Papers',
+            url: 'https://www.comsoc.org/',
+            description: 'Research and technical articles on the future of communications and networking'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Digital Transformation and Networks',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining and leading network strategy for the organization'
+          },
+          {
+            title: 'Advanced Vendor Negotiation and Partnership Course',
+            url: 'https://www.udemy.com/',
+            description: 'Training focused on strategic vendor management and large-scale procurement'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3382,8 +4969,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'High Availability Implementation',
           'Compliance Framework'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'PostgreSQL Documentation (Advanced)',
+            url: 'https://www.postgresql.org/docs/',
+            description: 'In-depth documentation for administration and optimization'
+          },
+          {
+            title: 'Database Performance Tuning Guides',
+            url: 'https://www.percona.com/blog/',
+            description: 'Articles and guides on deep database performance tuning and scaling'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Oracle Certified Professional (OCP) Course',
+            url: 'https://education.oracle.com/oracle-database-administration-training/database-administration/pFamily_85',
+            description: 'Advanced training for Oracle Database certification'
+          },
+          {
+            title: 'Microsoft Azure Database Administrator (DP-300) Training',
+            url: 'https://learn.microsoft.com/en-us/certifications/azure-database-administrator-associate/',
+            description: 'Official training for cloud database administration on Azure'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3409,8 +5018,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Designing Data-Intensive Applications',
+            url: 'https://dataintensive.net/',
+            description: 'Book on distributed systems, data storage, and processing (free chapters/resources)'
+          },
+          {
+            title: 'Database Architecture Articles',
+            url: 'https://martinfowler.com/tags/data%20architecture.html',
+            description: 'Technical articles on database architectural patterns and distributed transactions'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Data Management Professional (CDMP) - Specialist',
+            url: 'https://www.dama.org/certification/cdmp',
+            description: 'Advanced certification in data management and governance'
+          },
+          {
+            title: 'Database Security and Compliance Course',
+            url: 'https://www.udemy.com/',
+            description: 'Specialized training on advanced database security, encryption, and regulatory compliance'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3436,8 +5067,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'AWS Database Blog',
+            url: 'https://aws.amazon.com/blogs/database/',
+            description: 'Technical deep-dives into cloud database strategy and emerging technologies (e.g., serverless, NewSQL)'
+          },
+          {
+            title: 'InfoQ Architecture & Reliability Articles',
+            url: 'https://www.infoq.com/software-architecture-and-design/',
+            description: 'Articles covering high-level data strategy and system architecture'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Data and Analytics Strategy',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining and leading data strategy for the organization'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3509,8 +5162,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Security Framework',
           'Testing Suite'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'FreeRTOS Documentation',
+            url: 'https://www.freertos.org/Documentation/RTOS_book.html',
+            description: 'Official book and documentation for the FreeRTOS kernel'
+          },
+          {
+            title: 'Zephyr RTOS Guides',
+            url: 'https://docs.zephyrproject.org/latest/index.html',
+            description: 'Comprehensive guides for the Zephyr Real-Time Operating System'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Embedded C++ Course',
+            url: 'https://www.udemy.com/course/advanced-embedded-c-and-cpp/',
+            description: 'Specialized training on advanced C++ features for constrained embedded environments'
+          },
+          {
+            title: 'Embedded Linux and Device Driver Development Course',
+            url: 'https://www.udemy.com/course/linux-device-driver-development/',
+            description: 'Training on kernel-level programming and driver development for Linux embedded systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3536,8 +5211,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Embedded Systems Handbook',
+            url: 'https://www.oreilly.com/',
+            description: 'Resources and content from the comprehensive handbook on embedded systems design'
+          },
+          {
+            title: 'ARM Architecture Reference Manuals',
+            url: 'https://developer.arm.com/documentation/default/',
+            description: 'Technical documentation for the ARM processor architecture'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Functional Safety Engineer (CFSE) Prep',
+            url: 'https://www.exida.com/certifications/cfse-certification',
+            description: 'Advanced certification training on safety-critical embedded systems'
+          },
+          {
+            title: 'Embedded Software Architecture Course',
+            url: 'https://www.embeddedartistry.com/community/courses/embedded-software-architect/',
+            description: 'Training focused on designing robust and scalable embedded software architectures'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3563,8 +5260,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'IEEE Embedded Systems Technical Committee',
+            url: 'https://embedded.computer.org/',
+            description: 'Research and technical articles on the future of embedded systems and IoT'
+          },
+          {
+            title: 'ACM Transactions on Embedded Computing Systems (TECS)',
+            url: 'https://dl.acm.org/journal/tecs',
+            description: 'Access to high-quality, peer-reviewed research papers on embedded computing'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on IoT and Digital Transformation',
+            url: 'https://executive.mit.edu/programs/internet-of-things-and-business-strategy',
+            description: 'Executive education focused on the strategy and innovation of connected devices and embedded systems'
+          },
+          {
+            title: 'Advanced Hardware/Software Co-Design Course',
+            url: 'https://www.edx.org/',
+            description: 'Training focused on the strategic intersection of hardware and software development'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3636,8 +5355,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Big Data Visualization',
           'Accessibility Framework'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'D3.js Documentation',
+            url: 'https://d3js.org/',
+            description: 'Official documentation and examples for D3.js (Data-Driven Documents)'
+          },
+          {
+            title: 'Data Visualization Best Practices (e.g., Edward Tufte)',
+            url: 'https://www.edwardtufte.com/tufte/books_vdqi',
+            description: 'Resources and insights on principles of visual design and integrity'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Interactive Data Visualization with D3.js Course',
+            url: 'https://www.coursera.org/learn/interactive-data-visualization',
+            description: 'Course focused on building custom, complex web visualizations'
+          },
+          {
+            title: 'Tableau/Power BI Certified Professional Training',
+            url: 'https://www.tableau.com/learn/certification',
+            description: 'Advanced training for professional certification in a major visualization tool'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3663,8 +5404,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Information Visualization: Perception for Design (Book Resources)',
+            url: 'https://www.elsevier.com/books/information-visualization/ware/978-0-12-381464-7',
+            description: 'Resources related to the book on human perception and visualization design'
+          },
+          {
+            title: 'Interactive Data Visualization Papers',
+            url: 'https://ieeexplore.ieee.org/Xplore/home.jsp',
+            description: 'Research papers on the state-of-the-art in interactive visualization'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Data Storytelling and Executive Communication Course',
+            url: 'https://www.duarte.com/presentation-training/',
+            description: 'Training focused on creating compelling, strategic data presentations for leadership'
+          },
+          {
+            title: 'Visualization Architecture and Platform Design Course',
+            url: 'https://www.oreilly.com/',
+            description: 'Advanced training on scaling visualization platforms across an enterprise'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3690,8 +5453,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Tamara Munzner\'s Visualization Analysis and Design (Book Resources)',
+            url: 'http://www.cs.ubc.ca/~tmm/vadbook/',
+            description: 'Resources related to a foundational book on visualization theory and design'
+          },
+          {
+            title: 'IEEE VIS Conference Papers',
+            url: 'https://ieeevis.org/',
+            description: 'Access to the most cutting-edge research in visualization science'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Data and Analytics Strategy',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining and leading data and visualization strategy'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3763,8 +5548,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Optimization Problem Solving',
           'Hardware Integration'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Qiskit Documentation (Advanced)',
+            url: 'https://qiskit.org/documentation/tutorials/index.html',
+            description: 'Advanced tutorials on quantum circuits, algorithms, and applications'
+          },
+          {
+            title: 'Microsoft Quantum Development Kit (QDK) Documentation',
+            url: 'https://learn.microsoft.com/en-us/azure/quantum/user-guides/',
+            description: 'Guides and tutorials for the Q# language and quantum services'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Quantum Machine Learning Course (e.g., MIT, Caltech)',
+            url: 'https://www.edx.org/course/quantum-machine-learning',
+            description: 'Advanced course on integrating quantum computing with machine learning'
+          },
+          {
+            title: 'Quantum Computing Fundamentals Professional Certificate',
+            url: 'https://www.coursera.org/professional-certificates/quantum-computing-fundamentals',
+            description: 'Specialized training for applying quantum principles to algorithms'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3790,8 +5597,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Quantum Physics',
+            url: 'https://arxiv.org/list/quant-ph/recent',
+            description: 'Latest research papers on quantum physics and quantum computing'
+          },
+          {
+            title: 'Quantum Algorithm Zoo',
+            url: 'https://quantumalgorithmzoo.org/',
+            description: 'A comprehensive list of quantum algorithms and their applications'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Quantum Computing Systems Engineering Course',
+            url: 'https://www.oreilly.com/',
+            description: 'Training focused on the engineering challenges and architecture of quantum systems'
+          },
+          {
+            title: 'Certified Quantum Computing Analyst (CQCA)',
+            url: 'https://www.quantum-council.org/certifications/',
+            description: 'Advanced certification prep focusing on quantum business applications and strategy'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3817,8 +5646,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'National Quantum Initiative (NQI) Resources',
+            url: 'https://www.quantum.gov/',
+            description: 'Information on US national strategy and research in quantum computing'
+          },
+          {
+            title: 'IBM Quantum Papers',
+            url: 'https://research.ibm.com/quantum/publications',
+            description: 'Access to IBM\'s technical and research papers on quantum hardware and software'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Quantum Technology Strategy',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining and leading quantum technology strategy'
+          },
+          {
+            title: 'Advanced Scientific Leadership and Research Management Course',
+            url: 'https://www.edx.org/',
+            description: 'Training focused on leading deep-tech research teams and innovation'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -3890,8 +5741,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Compliance Automation',
           'Financial Analytics'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'FinTech Revolution Course (e.g., Coursera)',
+            url: 'https://www.coursera.org/learn/fintech-revolution',
+            description: 'Free course covering the landscape of financial technology'
+          },
+          {
+            title: 'Open Banking API Documentation',
+            url: 'https://openbankinguk.org/customer-experience/api-documentation/',
+            description: 'Technical standards and documentation for open banking APIs'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Fraud Examiner (CFE) Training',
+            url: 'https://www.acfe.com/certifications/certified-fraud-examiner',
+            description: 'Training focused on fraud detection, deterrence, and investigation'
+          },
+          {
+            title: 'Risk Management in FinTech Course',
+            url: 'https://www.edx.org/',
+            description: 'Advanced course on financial risk, compliance, and regulatory frameworks'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3917,8 +5790,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Federal Reserve Financial Services Research',
+            url: 'https://www.frbservices.org/resources/financial-services-research',
+            description: 'Publications and research on payment systems and financial innovation'
+          },
+          {
+            title: 'FinTech Architecture Guides',
+            url: 'https://martinfowler.com/tags/fintech.html',
+            description: 'Technical articles on designing secure and scalable financial systems'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified FinTech Professional (CFP) Training',
+            url: 'https://www.fintechprofessionals.org/',
+            description: 'Advanced certification focusing on the FinTech ecosystem and strategy'
+          },
+          {
+            title: 'Advanced Financial Modeling Course',
+            url: 'https://www.wallstreetprep.com/',
+            description: 'Training on complex financial modeling, valuation, and analysis'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -3944,8 +5839,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'BIS (Bank for International Settlements) Papers',
+            url: 'https://www.bis.org/publ/index.htm',
+            description: 'Research and papers on central banking, financial markets, and technology'
+          },
+          {
+            title: 'FinTech Innovation Articles (e.g., TechCrunch, CB Insights)',
+            url: 'https://www.cbinsights.com/research/category/fintech/',
+            description: 'Analysis and insights on emerging FinTech trends and market strategy'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in FinTech and Future of Finance',
+            url: 'https://executive.mit.edu/programs/fintech-and-future-of-finance',
+            description: 'Executive education focused on defining and leading FinTech strategy and innovation'
+          },
+          {
+            title: 'Advanced Regulatory Compliance and Governance Course',
+            url: 'https://www.edx.org/',
+            description: 'Training focused on high-level regulatory strategy and compliance for global financial systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -4017,8 +5934,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Parallel Compiler',
           'Performance Profiler'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'LLVM Documentation',
+            url: 'https://llvm.org/docs/',
+            description: 'Official documentation for the LLVM compiler infrastructure'
+          },
+          {
+            title: 'Modern Compiler Implementation in Java/C/ML (Book Resources)',
+            url: 'https://www.cambridge.org/core/books/modern-compiler-implementation/C3E1B93026ED7761001E8585D963F465',
+            description: 'Resources related to Andrew Appel\'s advanced compiler books'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Compiler Design and Optimization Course',
+            url: 'https://www.edx.org/course/compilers-algorithms-and-techniques',
+            description: 'University-level course on advanced compilation techniques and optimization'
+          },
+          {
+            title: 'JIT Compilers and Virtual Machines Course',
+            url: 'https://www.udemy.com/',
+            description: 'Specialized training on Just-In-Time compilation and runtime systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4044,8 +5983,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ACM SIGPLAN Notices',
+            url: 'https://www.sigplan.org/notices/',
+            description: 'Research papers and articles on programming languages and compilers'
+          },
+          {
+            title: 'Compiler Design and Architecture Articles',
+            url: 'https://martinfowler.com/tags/compiler.html',
+            description: 'Technical articles on the architecture of compiler systems'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Parallel and Distributed Compilation Course',
+            url: 'https://www.coursera.org/',
+            description: 'Training focused on compiler techniques for parallel hardware and distributed systems'
+          },
+          {
+            title: 'Technical Leadership and Project Management for Compiler Teams',
+            url: 'https://www.udemy.com/',
+            description: 'Course focused on leading highly specialized technical engineering teams'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4071,8 +6032,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Programming Languages',
+            url: 'https://arxiv.org/list/cs.PL/recent',
+            description: 'Latest research papers on programming languages and compiler theory'
+          },
+          {
+            title: 'Google and Intel Research Papers on Compiler Optimization',
+            url: 'https://research.google/pubs/',
+            description: 'Technical publications on cutting-edge hardware-specific compiler optimizations'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Advanced Computing Systems',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on the strategic importance of programming language and compiler design'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -4144,8 +6127,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Performance Optimization',
           'Security Monitoring'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Datadog MLOps Guides',
+            url: 'https://www.datadoghq.com/blog/tag/aiops/',
+            description: 'Technical articles on applying ML to observability and IT operations'
+          },
+          {
+            title: 'Time Series Analysis Documentation (e.g., Prophet, ARIMA)',
+            url: 'https://facebook.github.io/prophet/',
+            description: 'Guides and tutorials for time series forecasting and anomaly detection'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Machine Learning for IT Operations Course',
+            url: 'https://www.coursera.org/specializations/ai-for-operations',
+            description: 'Specialized training on building ML models for operational intelligence'
+          },
+          {
+            title: 'Splunk Certified Architect Course',
+            url: 'https://www.splunk.com/en_us/training/certification.html',
+            description: 'Advanced training on designing and managing Splunk-based monitoring and analytics systems'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4171,8 +6176,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'The Site Reliability Engineering Workbook',
+            url: 'https://sre.google/workbook/table-of-contents/',
+            description: 'A practical guide to implementing SRE principles (essential for AIOps leaders)'
+          },
+          {
+            title: 'DevOps and AIOps Architecture Guides',
+            url: 'https://martinfowler.com/tags/devops.html',
+            description: 'Technical articles on advanced operational architectures'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Analytics Professional (CAP) Prep',
+            url: 'https://www.informs.org/certification/cap',
+            description: 'Advanced certification focusing on applying analytics to business problems'
+          },
+          {
+            title: 'AIOps Implementation and Strategy Course',
+            url: 'https://www.udemy.com/',
+            description: 'Training focused on the strategic planning and large-scale implementation of AIOps platforms'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4198,8 +6225,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ArXiv.org - Machine Learning for Systems',
+            url: 'https://arxiv.org/list/cs.LG/recent',
+            description: 'Research papers on advanced ML applied to systems and operations'
+          },
+          {
+            title: 'Gartner Research on AIOps Platforms',
+            url: 'https://www.gartner.com/en/information-technology/topics/aiops',
+            description: 'Analyst reports and industry trend analysis for executive planning'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Digital Strategy and Operations',
+            url: 'https://executive.mit.edu/programs/digital-business-strategy',
+            description: 'Executive education focused on operations, reliability, and technology strategy'
+          },
+          {
+            title: 'Staff Engineer/Principal Engineer Guide',
+            url: 'https://staffeng.com/',
+            description: 'Resources for achieving and excelling in expert-level technical leadership roles'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -4271,8 +6320,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Clinical Workflow System',
           'Quality Assurance Framework'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Health Level Seven International (HL7) Guides',
+            url: 'https://www.hl7.org/implement/standards/product_brief.cfm?product_id=535',
+            description: 'Advanced guides on implementing healthcare standards'
+          },
+          {
+            title: 'HIPAA and HITECH Act Resources',
+            url: 'https://www.hhs.gov/hipaa/for-professionals/index.html',
+            description: 'Official resources for understanding healthcare privacy and security regulations'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Health Information Systems Security Professional (CHISSP) Training',
+            url: 'https://www.hia.org/chissp-certification/',
+            description: 'Training focused on security in healthcare IT systems'
+          },
+          {
+            title: 'Medical Imaging and AI Course (e.g., Coursera)',
+            url: 'https://www.coursera.org/specializations/introduction-to-digital-image-processing',
+            description: 'Specialized course on processing and applying AI to medical image data'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4298,8 +6369,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ONC Health IT Playbook',
+            url: 'https://www.healthit.gov/playbook/',
+            description: 'Guides and resources for implementing and optimizing health IT systems'
+          },
+          {
+            title: 'Interoperability Standards Advisory (ISA)',
+            url: 'https://www.healthit.gov/isa/',
+            description: 'Guidance on the current state of health IT interoperability standards'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Certified Professional in Health Information and Management Systems (CPHIMS)',
+            url: 'https://www.himss.org/certification/cphims',
+            description: 'Advanced certification for health IT professionals'
+          },
+          {
+            title: 'Healthcare Architecture and System Design Course',
+            url: 'https://www.oreilly.com/',
+            description: 'Training focused on designing secure, compliant, and scalable healthcare platforms'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4325,8 +6418,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Cochrane Reviews',
+            url: 'https://www.cochranelibrary.com/cochrane-database-of-systematic-reviews/index.html',
+            description: 'Systematic reviews of research to inform evidence-based healthcare technology decisions'
+          },
+          {
+            title: 'The Future of Health IT Strategy Reports',
+            url: 'https://www.himss.org/resources-and-tools/himss-reports',
+            description: 'Industry reports and strategic planning guides from HIMSS'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program in Health Information Technology',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining and leading healthcare technology strategy'
+          },
+          {
+            title: 'Advanced Healthcare Compliance and Regulatory Strategy Course',
+            url: 'https://online.stanford.edu/programs/health-information-management-graduate-certificate',
+            description: 'Training focused on high-level strategy for global healthcare regulations'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -4398,8 +6513,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Multiplayer System',
           'AI Implementation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Unreal Engine Documentation',
+            url: 'https://docs.unrealengine.com/',
+            description: 'In-depth technical documentation for Unreal Engine'
+          },
+          {
+            title: 'Game Programming Patterns',
+            url: 'https://gameprogrammingpatterns.com/',
+            description: 'Free online book of reusable patterns for game programming'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced C++ Game Development Course',
+            url: 'https://www.udemy.com/course/game-development-advanced-c-and-cpp/',
+            description: 'Course focusing on deep C++ programming for high-performance games'
+          },
+          {
+            title: 'Multiplayer Game Development Masterclass',
+            url: 'https://www.coursera.org/',
+            description: 'Specialized course on network and server-side logic for multiplayer games'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4425,8 +6562,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'GDC Vault Free Talks',
+            url: 'https://www.youtube.com/user/GDCvault',
+            description: 'A selection of free technical talks from the Game Developers Conference'
+          },
+          {
+            title: 'Advanced Graphics Papers',
+            url: 'https://www.realtimerendering.com/resources.html',
+            description: 'Collection of resources on advanced real-time rendering techniques'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Game Architecture Design Course',
+            url: 'https://www.pluralsight.com/courses/game-architecture-fundamentals',
+            description: 'Course on designing scalable and maintainable game codebases'
+          },
+          {
+            title: 'Advanced Shading and Rendering Course',
+            url: 'https://www.edx.org/',
+            description: 'University-level course on advanced graphics programming and algorithms'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4452,8 +6611,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'SIGGRAPH Technical Papers',
+            url: 'https://www.siggraph.org/learn/publications/',
+            description: 'Access to the most cutting-edge research in computer graphics and interactive techniques'
+          },
+          {
+            title: 'Industry Technology Standards and Console Specs',
+            url: 'https://developer.sony.com/develop/playstation',
+            description: 'Technical deep-dives into console and platform requirements for advanced strategy'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Innovation in Entertainment Tech',
+            url: 'https://executive.usc.edu/',
+            description: 'Executive education focused on the business and strategy of entertainment technology'
+          },
+          {
+            title: 'Advanced Game Studio Leadership & Finance Course',
+            url: 'https://www.gamasutra.com/',
+            description: 'Training on the management, finance, and strategy of running a game studio'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
@@ -4525,8 +6706,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Virtual Classroom',
           'Engagement Analytics'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'ADL SCORM and xAPI Standards',
+            url: 'https://adlnet.gov/adl-research-design/xapi/',
+            description: 'Documentation for advanced learning and tracking standards'
+          },
+          {
+            title: 'Learning Analytics Review',
+            url: 'https://www.learntechlib.org/la/',
+            description: 'Journals and papers on applied learning analytics techniques'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced Learning Analytics Course (e.g., Columbia University)',
+            url: 'https://www.edx.org/course/learning-analytics',
+            description: 'University-level course on implementing and interpreting learning data'
+          },
+          {
+            title: 'Gamification Design and Implementation Course',
+            url: 'https://www.coursera.org/specializations/gamification',
+            description: 'Specialized training on applying game design principles to learning'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4552,8 +6755,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Business Strategy Implementation',
           'Industry Innovation'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'UNESCO Technology in Education Reports',
+            url: 'https://www.unesco.org/en/education/tech',
+            description: 'Global reports and recommendations on technology\'s role in education policy'
+          },
+          {
+            title: 'Advanced LMS Architecture Guides',
+            url: 'https://www.edtechmagazine.com/',
+            description: 'Articles on scaling and integrating complex Learning Management Systems'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Advanced EdTech Leadership Program (e.g., ISTE)',
+            url: 'https://www.iste.org/professional-development',
+            description: 'Leadership training focused on driving technology initiatives in education'
+          },
+          {
+            title: 'Data Privacy and FERPA/GDPR Compliance Course',
+            url: 'https://www.edx.org/course/data-privacy-and-governance',
+            description: 'Specialized training on legal and ethical considerations in educational data'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       },
@@ -4579,8 +6804,30 @@ export const skillsData: { [key: string]: SkillData } = {
           'Industry Innovation',
           'Mentoring Program'
         ],
-        freeResources: [],
-        paidResources: [],
+        freeResources: [
+          {
+            title: 'Journal of Learning Analytics',
+            url: 'https://learning-analytics.info/',
+            description: 'Access to peer-reviewed research on advanced analytics in learning'
+          },
+          {
+            title: 'Digital Learning Innovation Reports',
+            url: 'https://www.onlinelearningsurvey.com/',
+            description: 'Annual reports and research on the state and future of online learning'
+          }
+        ],
+        paidResources: [
+          {
+            title: 'Executive Program on Digital Strategy and Innovation',
+            url: 'https://executive.mit.edu/',
+            description: 'Executive education focused on defining and leading digital strategy and innovation'
+          },
+          {
+            title: 'Advanced Pedagogical Technology Strategy Course',
+            url: 'https://online.stanford.edu/programs/advanced-digital-learning-and-instruction-certificate',
+            description: 'Training focused on the strategic intersection of education theory and technology'
+          }
+        ],
         certifications: [],
         youtubePlaylists: []
       }
