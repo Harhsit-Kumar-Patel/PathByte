@@ -122,4 +122,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Market insights dashboard
 - [ ] Community features
 - [ ] Premium features
-- [ ] Deployment and CI/CD
+- [ ] Deployment and CI/CD 
+
+## 👥 Contributors
+
+This project was collaboratively developed by:
+
+- **Harhsit Kumar Patel** – Backend architecture, database design, API development. 
+- **Naveen Kumar Sinha** – Frontend development, UI improvements, feature integration. 
+
+Both contributors equally worked on the design, implementation, and overall development of the PathByte platform.
