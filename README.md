@@ -129,6 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 This project was collaboratively developed by:
 
 - **Harhsit Kumar Patel** – Backend architecture, database design, API development. 
-- **Naveen Kumar** – Frontend development, UI improvements, feature integration. 
+- **Naveen Kumar** – Frontend development, UI improvements, feature integration.
+- **Ishan Bag** - Authentication, Login, IT services
 
 Both contributors equally worked on the design, implementation, and overall development of the PathByte platform.
