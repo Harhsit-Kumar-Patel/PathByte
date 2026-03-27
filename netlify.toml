@@ -1,11 +1,13 @@
 [build]
-  base = "frontend"
-  # This command fixes the Vite/React version conflict
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = "dist"
+  # Navigate to frontend, install with the fix flag, then build
+  command = "cd frontend && npm install --legacy-peer-deps && npm run build"
+  publish = "frontend/dist"
+  base = "/"
 
 [build.environment]
   NODE_VERSION = "18"
+  # This environment variable also helps npm handle the conflict globally
+  NPM_FLAGS = "--legacy-peer-deps"
 
 [[redirects]]
   from = "/*"
