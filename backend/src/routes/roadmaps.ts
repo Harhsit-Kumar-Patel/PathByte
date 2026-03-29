@@ -96,7 +96,7 @@ router.get('/:roadmapId', async (req, res): Promise<any> => {
           skills: ['Advanced concepts', 'Frameworks', 'Testing'],
           projects: ['Portfolio project', 'Real-world application'],
           freeResources: [
-            { title: 'Community Tutorials', description: 'Learn from the community' }
+            { title: 'Practice Tutorials', description: 'Guided walkthroughs for hands-on learning' }
           ],
           paidResources: [
             { title: 'Professional Course', description: 'Industry-level training' }

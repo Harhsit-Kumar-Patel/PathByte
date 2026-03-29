@@ -13,6 +13,7 @@ import {
 import { cn } from '@/utils/cn'
 import { useAuth } from '@/context/AuthContext'
 import { skillsData } from '@/data/skillsData'
+import { normalizeRoleKey } from '@/data/roleCatalog'
 
 export default function RoleSelectionPage() {
   const navigate = useNavigate()
@@ -371,7 +372,7 @@ export default function RoleSelectionPage() {
   }
 
   const getCurrentUserRole = () => {
-    return roleOptions.find(role => role.key === user?.targetRole)
+    return roleOptions.find(role => role.key === normalizeRoleKey(user?.targetRole))
   }
 
   return (
@@ -473,7 +474,7 @@ export default function RoleSelectionPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {sortedRoles.map((role) => {
             const roleData = (skillsData as any)[role.key]
-            const isCurrentRole = role.key === user?.targetRole
+            const isCurrentRole = role.key === normalizeRoleKey(user?.targetRole)
             
             return (
               <div

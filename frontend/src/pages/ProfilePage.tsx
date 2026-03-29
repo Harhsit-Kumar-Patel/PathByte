@@ -1,62 +1,70 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '@/context/AuthContext'
 import { useProgress } from '@/context/ProgressContext'
-import { 
-  User, 
-  Mail, 
-  MapPin, 
-  Target, 
-  Calendar,
-  Edit3,
-  Save,
-  X,
-  BarChart3,
-  BookOpen,
-  TrendingUp,
-  Download,
-  Upload,
-  Trash2,
-  Shield,
-  Globe,
-  Smartphone,
-  Palette,
+import {
   Brain,
+  Calendar,
   Cloud,
+  Code,
+  Download,
+  Edit3,
+  Globe,
+  Mail,
+  MapPin,
+  Palette,
+  Save,
   Server,
-  Code
+  Shield,
+  Smartphone,
+  Sparkles,
+  Target,
+  Trash2,
+  Upload,
+  User,
+  X,
 } from 'lucide-react'
-import { cn } from '@/utils/cn'
-import { ProgressBar, ProgressStats } from '@/components/ui/ProgressComponents'
+import { ProgressBar } from '@/components/ui/ProgressComponents'
+import { getRoleLabel, normalizeRoleKey, roleCatalog } from '@/data/roleCatalog'
+
+type ProfileFormState = {
+  firstName: string
+  lastName: string
+  email: string
+  locationCity: string
+  locationState: string
+  targetRole: string
+  experienceLevel: string
+}
+
+const createEditForm = (user: ReturnType<typeof useAuth>['user']): ProfileFormState => ({
+  firstName: user?.firstName || '',
+  lastName: user?.lastName || '',
+  email: user?.email || '',
+  locationCity: user?.locationCity || '',
+  locationState: user?.locationState || '',
+  targetRole: normalizeRoleKey(user?.targetRole),
+  experienceLevel: user?.experienceLevel || '',
+})
+
+const roleOptions = roleCatalog
+
+const experienceLabels: Record<string, string> = {
+  beginner: 'Beginner (0-1 years)',
+  intermediate: 'Intermediate (1-3 years)',
+  advanced: 'Advanced (3-5 years)',
+  expert: 'Expert (5+ years)',
+}
 
 export default function ProfilePage() {
   const { user, updateProfile } = useAuth()
   const { userProgress, exportProgress, importProgress, resetProgress } = useProgress()
   const [isEditing, setIsEditing] = useState(false)
-  const [editForm, setEditForm] = useState({
-    firstName: user?.firstName || '',
-    lastName: user?.lastName || '',
-    email: user?.email || '',
-    locationCity: user?.locationCity || '',
-    locationState: user?.locationState || '',
-    targetRole: user?.targetRole || '',
-    experienceLevel: user?.experienceLevel || ''
-  })
-  const [activeTab, setActiveTab] = useState('overview')
   const [showImportModal, setShowImportModal] = useState(false)
   const [importData, setImportData] = useState('')
+  const [editForm, setEditForm] = useState<ProfileFormState>(createEditForm(user))
 
   useEffect(() => {
-    if (user) {
-      setEditForm({
-        firstName: user.firstName || '',
-        lastName: user.lastName || '',
-        email: user.email || '',
-        locationCity: user.locationCity || '',
-        locationState: user.locationState || '',
-        targetRole: user.targetRole || '',
-        experienceLevel: user.experienceLevel || ''
-      })
-    }
+    setEditForm(createEditForm(user))
   }, [user])
 
   const handleSave = async () => {
@@ -69,16 +77,19 @@ export default function ProfilePage() {
   }
 
   const handleCancel = () => {
-    setEditForm({
-      firstName: user?.firstName || '',
-      lastName: user?.lastName || '',
-      email: user?.email || '',
-      locationCity: user?.locationCity || '',
-      locationState: user?.locationState || '',
-      targetRole: user?.targetRole || '',
-      experienceLevel: user?.experienceLevel || ''
-    })
+    setEditForm(createEditForm(user))
     setIsEditing(false)
+  }
+
+  const handleExport = () => {
+    const data = exportProgress()
+    const blob = new Blob([data], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = 'pathbyte-progress.json'
+    anchor.click()
+    URL.revokeObjectURL(url)
   }
 
   const handleImport = () => {
@@ -91,19 +102,8 @@ export default function ProfilePage() {
     }
   }
 
-  const handleExport = () => {
-    const data = exportProgress()
-    const blob = new Blob([data], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'pathbyte-progress.json'
-    a.click()
-    URL.revokeObjectURL(url)
-  }
-
   const getRoleIcon = (role: string) => {
-    const icons: { [key: string]: any } = {
+    const icons: Record<string, React.ComponentType<{ className?: string }>> = {
       frontend: Code,
       backend: Server,
       fullstack: Globe,
@@ -111,419 +111,370 @@ export default function ProfilePage() {
       game: Palette,
       datascientist: Brain,
       dataengineer: Brain,
+      mlengineer: Brain,
       mle: Brain,
       aispecialist: Brain,
       cloudengineer: Cloud,
       devops: Server,
+      devopsengineer: Server,
       sre: Server,
       uidesigner: Palette,
-      cybersecurity: Shield
+      uiuxdesigner: Palette,
+      cybersecurity: Shield,
+      cybersecurityengineer: Shield,
     }
-    return icons[role] || Code
+
+    return icons[normalizeRoleKey(role)] || User
   }
 
-  const getTotalProgress = () => {
-    if (!userProgress.length) return 0
-    const total = userProgress.reduce((sum, role) => sum + role.overallProgress, 0)
-    return total / userProgress.length
-  }
+  const totalProgress = userProgress.length
+    ? userProgress.reduce((sum, role) => sum + role.overallProgress, 0) / userProgress.length
+    : 0
 
-  const getTotalSkillsCompleted = () => {
-    return userProgress.reduce((total, role) => {
-      return total + Object.values(role.yearProgress).reduce((yearTotal, year) => {
-        return yearTotal + (year.skills?.filter(Boolean).length || 0)
-      }, 0)
-    }, 0)
-  }
+  const totalSkillsCompleted = userProgress.reduce((total, role) => (
+    total +
+    Object.values(role.yearProgress).reduce((yearTotal, year) => yearTotal + (year.skills?.filter(Boolean).length || 0), 0)
+  ), 0)
 
-  const getTotalProjectsCompleted = () => {
-    return userProgress.reduce((total, role) => {
-      return total + Object.values(role.yearProgress).reduce((yearTotal, year) => {
-        return yearTotal + (year.projects?.filter(Boolean).length || 0)
-      }, 0)
-    }, 0)
-  }
+  const totalProjectsCompleted = userProgress.reduce((total, role) => (
+    total +
+    Object.values(role.yearProgress).reduce((yearTotal, year) => yearTotal + (year.projects?.filter(Boolean).length || 0), 0)
+  ), 0)
 
-  const getTotalResourcesCompleted = () => {
-    return userProgress.reduce((total, role) => {
-      return total + Object.values(role.yearProgress).reduce((yearTotal, year) => {
-        return yearTotal + (year.freeResources?.filter(Boolean).length || 0) + (year.paidResources?.filter(Boolean).length || 0)
-      }, 0)
-    }, 0)
-  }
+  const totalResourcesCompleted = userProgress.reduce((total, role) => (
+    total +
+    Object.values(role.yearProgress).reduce((yearTotal, year) => (
+      yearTotal +
+      (year.freeResources?.filter(Boolean).length || 0) +
+      (year.paidResources?.filter(Boolean).length || 0)
+    ), 0)
+  ), 0)
 
-  const tabs = [
-    { id: 'overview', label: 'Overview', icon: BarChart3 },
-    { id: 'progress', label: 'Progress', icon: TrendingUp }
+  const profileFacts = [
+    { icon: Mail, label: 'Email', value: user?.email || 'Add your email address' },
+    {
+      icon: MapPin,
+      label: 'Location',
+      value:
+        user?.locationCity && user?.locationState
+          ? `${user.locationCity}, ${user.locationState}`
+          : user?.locationCity || 'Add your location',
+    },
+    { icon: Target, label: 'Target role', value: user?.targetRole ? getRoleLabel(user.targetRole) : 'Set your focus area' },
+    {
+      icon: Calendar,
+      label: 'Experience level',
+      value: experienceLabels[user?.experienceLevel || ''] || 'Add your experience level',
+    },
   ]
 
+  const displayName = `${user?.firstName || ''} ${user?.lastName || ''}`.trim() || 'Your profile'
+  const initials = `${user?.firstName?.[0] || ''}${user?.lastName?.[0] || ''}`.toUpperCase() || 'PB'
+  const HeroIcon = getRoleIcon(normalizeRoleKey(user?.targetRole))
+
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900">Profile</h1>
-        <p className="text-gray-600">Manage your account and track your learning journey</p>
-      </div>
+    <div className="page-shell overflow-hidden px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+      <div className="hero-orb left-[-4rem] top-8 h-40 w-40 bg-sky-300/25" />
+      <div className="hero-orb right-[-6rem] top-24 h-60 w-60 bg-blue-300/20" style={{ animationDelay: '1.5s' }} />
 
-      {/* Profile Card */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-        <div className="bg-gradient-to-r from-primary-500 to-accent-500 p-6 text-white">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="h-20 w-20 bg-white/20 rounded-full flex items-center justify-center">
-                <User className="h-10 w-10" />
+      <div className="mx-auto max-w-6xl space-y-6">
+        <section className="surface-panel-strong rounded-[2.2rem] px-6 py-8 sm:px-8">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <div className="section-kicker">
+                <Sparkles className="h-3.5 w-3.5 text-blue-600" />
+                Profile
               </div>
-              <div>
-                <h2 className="text-2xl font-bold">
-                  {user?.firstName} {user?.lastName}
-                </h2>
-                <p className="text-white/90">{user?.email}</p>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsEditing(!isEditing)}
-              className="bg-white/20 hover:bg-white/30 transition-colors duration-200 p-2 rounded-lg"
-            >
-              {isEditing ? <X className="h-5 w-5" /> : <Edit3 className="h-5 w-5" />}
-            </button>
-          </div>
-        </div>
 
-        <div className="p-6">
-          {isEditing ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                <input
-                  type="text"
-                  value={editForm.firstName}
-                  onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                <input
-                  type="text"
-                  value={editForm.lastName}
-                  onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input
-                  type="email"
-                  value={editForm.email}
-                  onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Target Role</label>
-                <select
-                  value={editForm.targetRole}
-                  onChange={(e) => setEditForm({ ...editForm, targetRole: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                >
-                  <option value="">Select a role</option>
-                  <option value="Frontend Developer">Frontend Developer</option>
-                  <option value="Backend Developer">Backend Developer</option>
-                  <option value="Full Stack Developer">Full Stack Developer</option>
-                  <option value="Mobile Developer">Mobile Developer</option>
-                  <option value="Game Developer">Game Developer</option>
-                  <option value="Data Scientist">Data Scientist</option>
-                  <option value="Data Engineer">Data Engineer</option>
-                  <option value="ML Engineer">ML Engineer</option>
-                  <option value="AI Specialist">AI Specialist</option>
-                  <option value="Cloud Engineer">Cloud Engineer</option>
-                  <option value="DevOps Engineer">DevOps Engineer</option>
-                  <option value="SRE">SRE</option>
-                  <option value="UI/UX Designer">UI/UX Designer</option>
-                  <option value="Cybersecurity Engineer">Cybersecurity Engineer</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Experience Level</label>
-                <select
-                  value={editForm.experienceLevel}
-                  onChange={(e) => setEditForm({ ...editForm, experienceLevel: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                >
-                  <option value="">Select level</option>
-                  <option value="beginner">Beginner (0-1 years)</option>
-                  <option value="intermediate">Intermediate (1-3 years)</option>
-                  <option value="advanced">Advanced (3-5 years)</option>
-                  <option value="expert">Expert (5+ years)</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-                <input
-                  type="text"
-                  value={editForm.locationCity}
-                  onChange={(e) => setEditForm({ ...editForm, locationCity: e.target.value })}
-                  placeholder="City"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-              <div className="flex gap-4">
-                <button
-                  onClick={handleSave}
-                  className="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2"
-                >
-                  <Save className="h-4 w-4" />
-                  Save Changes
-                </button>
-                <button
-                  onClick={handleCancel}
-                  className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2"
-                >
-                  <X className="h-4 w-4" />
-                  Cancel
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                  <span className="text-gray-700">{user?.email}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-gray-400" />
-                  <span className="text-gray-700">
-                    {user?.locationCity && user?.locationState 
-                      ? `${user.locationCity}, ${user.locationState}` 
-                      : 'Location not set'
-                    }
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Target className="h-5 w-5 text-gray-400" />
-                  <span className="text-gray-700">
-                    {user?.targetRole || 'Target role not set'}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Calendar className="h-5 w-5 text-gray-400" />
-                  <span className="text-gray-700">
-                    {user?.experienceLevel ? 
-                      user.experienceLevel.charAt(0).toUpperCase() + user.experienceLevel.slice(1) : 
-                      'Experience level not set'
-                    }
-                  </span>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4">
-                  <h3 className="font-semibold text-blue-900 mb-2">Learning Stats</h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-blue-700">Total Skills:</span>
-                      <span className="font-medium text-blue-900">{getTotalSkillsCompleted()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-blue-700">Projects Done:</span>
-                      <span className="font-medium text-blue-900">{getTotalProjectsCompleted()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-blue-700">Resources:</span>
-                      <span className="font-medium text-blue-900">{getTotalResourcesCompleted()}</span>
-                    </div>
+              <div className="mt-6 flex items-center gap-5">
+                <div className="relative flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-[1.8rem] bg-slate-950 text-xl font-semibold text-white">
+                  {initials}
+                  <div className="absolute -bottom-2 -right-2 flex h-9 w-9 items-center justify-center rounded-2xl border border-white/70 bg-white text-slate-950 shadow-soft">
+                    <HeroIcon className="h-4 w-4" />
                   </div>
                 </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
 
-      {/* Tabs */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-        <div className="border-b border-gray-200">
-          <nav className="flex space-x-8 px-6">
-            {tabs.map((tab) => {
-              const Icon = tab.icon
-              return (
+                <div>
+                  <h1 className="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">{displayName}</h1>
+                  <p className="mt-2 text-lg leading-8 text-slate-600">
+                    Keep your account details and learning direction tidy in one place.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={cn(
-                    'flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200',
-                    activeTab === tab.id
-                      ? 'border-primary-500 text-primary-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                  )}
+                  onClick={() => setIsEditing((current) => !current)}
+                  className="btn-modern inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white"
                 >
-                  <Icon className="h-4 w-4" />
-                  {tab.label}
+                  {isEditing ? <X className="mr-2 h-4 w-4" /> : <Edit3 className="mr-2 h-4 w-4" />}
+                  {isEditing ? 'Close editor' : 'Edit profile'}
                 </button>
-              )
-            })}
-          </nav>
-        </div>
-
-        <div className="p-6">
-          {/* Overview Tab */}
-          {activeTab === 'overview' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <ProgressStats
-                  totalItems={userProgress.reduce((total, role) => 
-                    total + Object.values(role.yearProgress).reduce((yearTotal, year) => 
-                      yearTotal + (year.skills?.length || 0), 0
-                    ), 0
-                  )}
-                  completedItems={getTotalSkillsCompleted()}
-                  title="Total Skills"
-                  icon={Target}
-                />
-                <ProgressStats
-                  totalItems={userProgress.reduce((total, role) => 
-                    total + Object.values(role.yearProgress).reduce((yearTotal, year) => 
-                      yearTotal + (year.projects?.length || 0), 0
-                    ), 0
-                  )}
-                  completedItems={getTotalProjectsCompleted()}
-                  title="Total Projects"
-                  icon={BookOpen}
-                />
-                <ProgressStats
-                  totalItems={userProgress.reduce((total, role) => 
-                    total + Object.values(role.yearProgress).reduce((yearTotal, year) => 
-                      yearTotal + (year.freeResources?.length || 0) + (year.paidResources?.length || 0), 0
-                    ), 0
-                  )}
-                  completedItems={getTotalResourcesCompleted()}
-                  title="Total Resources"
-                  icon={BookOpen}
-                />
+                <button
+                  onClick={handleExport}
+                  className="btn-modern inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Export progress
+                </button>
               </div>
-
-              <div className="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-xl p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-emerald-900">Overall Learning Progress</h3>
-                  <div className="text-2xl font-bold text-emerald-700">{Math.round(getTotalProgress())}%</div>
-                </div>
-                <ProgressBar progress={getTotalProgress()} color="emerald" size="lg" />
-              </div>
-
-              {userProgress.length > 0 && (
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900">Role Progress</h3>
-                  {userProgress.map((role) => (
-                    <div key={role.roleId} className="bg-white border border-gray-200 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          {React.createElement(getRoleIcon(role.roleId), { className: "h-5 w-5 text-primary-600" })}
-                          <span className="font-medium text-gray-900 capitalize">{role.roleId}</span>
-                        </div>
-                        <span className="text-sm font-medium text-gray-600">{Math.round(role.overallProgress)}%</span>
-                      </div>
-                      <ProgressBar progress={role.overallProgress} color="primary" />
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
-          )}
 
-          {/* Progress Tab */}
-          {activeTab === 'progress' && (
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-900">Progress Management</h3>
-                <div className="flex gap-2">
+            <div className="rounded-[1.8rem] border border-slate-200 bg-white/88 p-6 shadow-soft">
+              <p className="text-sm font-semibold text-slate-500">Learning progress</p>
+              <p className="mt-2 text-5xl font-semibold tracking-tight text-slate-950">{Math.round(totalProgress)}%</p>
+              <div className="mt-5">
+                <ProgressBar progress={totalProgress} color="blue" size="lg" />
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Skills</p>
+                  <p className="mt-2 text-sm font-medium text-slate-800">{totalSkillsCompleted}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Projects</p>
+                  <p className="mt-2 text-sm font-medium text-slate-800">{totalProjectsCompleted}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Resources</p>
+                  <p className="mt-2 text-sm font-medium text-slate-800">{totalResourcesCompleted}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="surface-panel-strong rounded-[2rem] p-6">
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Details</h2>
+            <div className="mt-6 space-y-4">
+              {profileFacts.map((item) => {
+                const Icon = item.icon
+                return (
+                  <div key={item.label} className="rounded-[1.4rem] border border-slate-200 bg-white/90 p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 text-slate-900">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{item.label}</p>
+                        <p className="mt-1 text-sm leading-6 text-slate-700">{item.value}</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {isEditing ? (
+              <div className="surface-panel-strong rounded-[2rem] p-6 sm:p-8">
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Edit profile</h2>
+
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700">First name</label>
+                    <input
+                      type="text"
+                      value={editForm.firstName}
+                      onChange={(event) => setEditForm({ ...editForm, firstName: event.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700">Last name</label>
+                    <input
+                      type="text"
+                      value={editForm.lastName}
+                      onChange={(event) => setEditForm({ ...editForm, lastName: event.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700">Email</label>
+                    <input
+                      type="email"
+                      value={editForm.email}
+                      onChange={(event) => setEditForm({ ...editForm, email: event.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700">Target role</label>
+                    <select
+                      value={editForm.targetRole}
+                      onChange={(event) => setEditForm({ ...editForm, targetRole: event.target.value })}
+                    >
+                      <option value="">Select a role</option>
+                      {roleOptions.map((option) => (
+                        <option key={option.key} value={option.key}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700">Experience level</label>
+                    <select
+                      value={editForm.experienceLevel}
+                      onChange={(event) => setEditForm({ ...editForm, experienceLevel: event.target.value })}
+                    >
+                      <option value="">Select level</option>
+                      <option value="beginner">Beginner (0-1 years)</option>
+                      <option value="intermediate">Intermediate (1-3 years)</option>
+                      <option value="advanced">Advanced (3-5 years)</option>
+                      <option value="expert">Expert (5+ years)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700">City</label>
+                    <input
+                      type="text"
+                      value={editForm.locationCity}
+                      onChange={(event) => setEditForm({ ...editForm, locationCity: event.target.value })}
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="mb-2 block text-sm font-medium text-slate-700">State</label>
+                    <input
+                      type="text"
+                      value={editForm.locationState}
+                      onChange={(event) => setEditForm({ ...editForm, locationState: event.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <button
-                    onClick={handleExport}
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2"
+                    onClick={handleSave}
+                    className="btn-modern inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white"
                   >
-                    <Download className="h-4 w-4" />
-                    Export Progress
+                    <Save className="mr-2 h-4 w-4" />
+                    Save changes
                   </button>
                   <button
-                    onClick={() => setShowImportModal(true)}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2"
+                    onClick={handleCancel}
+                    className="btn-modern inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800"
                   >
-                    <Upload className="h-4 w-4" />
-                    Import Progress
+                    <X className="mr-2 h-4 w-4" />
+                    Cancel
                   </button>
                 </div>
               </div>
+            ) : (
+              <div className="surface-panel-strong rounded-[2rem] p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Roadmaps</h2>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">A light summary of your active progress.</p>
+                  </div>
+                </div>
 
-              {userProgress.length > 0 ? (
-                <div className="space-y-4">
-                  {userProgress.map((role) => (
-                    <div key={role.roleId} className="bg-white border border-gray-200 rounded-lg p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          {React.createElement(getRoleIcon(role.roleId), { className: "h-6 w-6 text-primary-600" })}
-                          <h4 className="text-lg font-semibold text-gray-900 capitalize">{role.roleId}</h4>
-                        </div>
-                        <button
-                          onClick={() => resetProgress(role.roleId)}
-                          className="text-red-600 hover:text-red-700 text-sm font-medium flex items-center gap-1"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                          Reset
-                        </button>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {Object.entries(role.yearProgress).map(([yearId, yearData]) => (
-                          <div key={yearId} className="bg-gray-50 rounded-lg p-4">
-                            <div className="flex items-center justify-between mb-2">
-                              <span className="text-sm font-medium text-gray-700">{yearId}</span>
-                              <span className="text-xs text-gray-500">{Math.round(yearData.completionPercentage)}%</span>
+                <div className="mt-6 space-y-3">
+                  {userProgress.length > 0 ? (
+                    userProgress.map((role) => {
+                      const Icon = getRoleIcon(role.roleId)
+                      return (
+                        <div key={role.roleId} className="rounded-[1.4rem] border border-slate-200 bg-white/90 p-4">
+                          <div className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-3">
+                              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                                <Icon className="h-4 w-4" />
+                              </div>
+                              <div>
+                                <p className="font-medium capitalize text-slate-900">{role.roleId}</p>
+                                <p className="text-sm text-slate-500">{Object.keys(role.yearProgress).length} stages tracked</p>
+                              </div>
                             </div>
-                            <ProgressBar progress={yearData.completionPercentage} size="sm" />
-                            <div className="mt-2 text-xs text-gray-600">
-                              <div>Skills: {yearData.skills?.filter(Boolean).length || 0}/{yearData.skills?.length || 0}</div>
-                              <div>Projects: {yearData.projects?.filter(Boolean).length || 0}/{yearData.projects?.length || 0}</div>
+                            <div className="w-28">
+                              <ProgressBar progress={role.overallProgress} color="blue" size="sm" />
                             </div>
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )
+                    })
+                  ) : (
+                    <div className="rounded-[1.4rem] border border-slate-200 bg-white/90 p-4">
+                      <p className="font-medium text-slate-900">No roadmap activity yet</p>
+                      <p className="mt-1 text-sm text-slate-500">Start a learning path and your progress summary will appear here.</p>
                     </div>
-                  ))}
+                  )}
                 </div>
-              ) : (
-                <div className="text-center py-12">
-                  <BookOpen className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">No Progress Yet</h3>
-                  <p className="text-gray-600">Start learning to see your progress here!</p>
-                </div>
-              )}
+              </div>
+            )}
+
+            <div className="surface-panel-strong rounded-[2rem] p-6">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Progress tools</h2>
+              <div className="mt-6 grid gap-3">
+                <button
+                  onClick={handleExport}
+                  className="btn-modern inline-flex items-center justify-center rounded-[1.3rem] bg-slate-950 px-5 py-4 text-sm font-semibold text-white"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Export progress
+                </button>
+                <button
+                  onClick={() => setShowImportModal(true)}
+                  className="btn-modern inline-flex items-center justify-center rounded-[1.3rem] border border-slate-200 bg-white px-5 py-4 text-sm font-semibold text-slate-800"
+                >
+                  <Upload className="mr-2 h-4 w-4" />
+                  Import progress
+                </button>
+                {userProgress.length > 0 && (
+                  <div className="grid gap-3">
+                    {userProgress.map((role) => (
+                      <button
+                        key={role.roleId}
+                        onClick={() => resetProgress(role.roleId)}
+                        className="inline-flex items-center justify-between rounded-[1.3rem] border border-red-200 bg-red-50 px-5 py-4 text-sm font-semibold text-red-700"
+                      >
+                        Reset {role.roleId}
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          )}
-
-
-        </div>
+          </div>
+        </section>
       </div>
 
-      {/* Import Modal */}
       {showImportModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 max-w-md w-full mx-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Import Progress Data</h3>
-            <textarea
-              value={importData}
-              onChange={(e) => setImportData(e.target.value)}
-              placeholder="Paste your progress data here..."
-              className="w-full h-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent mb-4"
-            />
-            <div className="flex gap-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4 backdrop-blur-sm">
+          <div className="surface-panel-strong w-full max-w-xl rounded-[2rem] p-6 sm:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="text-2xl font-semibold tracking-tight text-slate-950">Import progress</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Paste a previously exported PathByte progress JSON payload.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowImportModal(false)}
+                className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition hover:text-slate-900"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <div className="mt-6">
+              <textarea
+                value={importData}
+                onChange={(event) => setImportData(event.target.value)}
+                placeholder="Paste your progress data here..."
+                className="min-h-[12rem]"
+              />
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={handleImport}
-                className="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex-1"
+                className="btn-modern inline-flex flex-1 items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white"
               >
-                Import
+                Import progress
               </button>
               <button
                 onClick={() => setShowImportModal(false)}
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex-1"
+                className="btn-modern inline-flex flex-1 items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800"
               >
                 Cancel
               </button>

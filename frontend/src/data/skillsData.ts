@@ -5,6 +5,12 @@ import {
   Brain
 } from 'lucide-react'
 import { industryCertifications, youtubePlaylists } from './certificationsData'
+import {
+  learningResourceProfiles,
+  roleResourceProfileAliases,
+  type RoadmapLearningResource,
+  type RoadmapYearKey
+} from './roadmapResourceCatalog'
 
 export interface Certification {
   name: string
@@ -55,7 +61,157 @@ export interface SkillData {
   }
 }
 
-export const skillsData: { [key: string]: SkillData } = {
+const roleResourceAliases: Record<string, string> = {
+  web3developer: 'web3'
+}
+
+const roadmapDifficultyByYear: Record<RoadmapYearKey, Certification['difficulty'][]> = {
+  '0-1': ['beginner'],
+  '1-3': ['beginner', 'intermediate'],
+  '3-5': ['intermediate', 'advanced'],
+  '5+': ['advanced']
+}
+
+const roadmapAudienceByYear: Record<RoadmapYearKey, YouTubePlaylist['targetAudience'][]> = {
+  '0-1': ['Indian', 'Both'],
+  '1-3': ['Indian', 'International', 'Both'],
+  '3-5': ['International', 'Both'],
+  '5+': ['International', 'Both']
+}
+
+const resolveRoleResourceKey = (roleKey: string) => roleResourceAliases[roleKey] || roleKey
+
+const getRoleCertifications = (roleKey: string): Certification[] =>
+  industryCertifications[resolveRoleResourceKey(roleKey)] || []
+
+const getRoleYouTubePlaylists = (roleKey: string): YouTubePlaylist[] =>
+  youtubePlaylists[resolveRoleResourceKey(roleKey)] || []
+
+const certificationFallbackOrderByYear: Record<RoadmapYearKey, Certification['difficulty'][]> = {
+  '0-1': ['beginner', 'intermediate', 'advanced'],
+  '1-3': ['intermediate', 'beginner', 'advanced'],
+  '3-5': ['advanced', 'intermediate', 'beginner'],
+  '5+': ['advanced', 'intermediate', 'beginner']
+}
+
+const youtubeAudienceFallbackOrderByYear: Record<RoadmapYearKey, YouTubePlaylist['targetAudience'][]> = {
+  '0-1': ['Indian', 'Both', 'International'],
+  '1-3': ['Both', 'Indian', 'International'],
+  '3-5': ['International', 'Both', 'Indian'],
+  '5+': ['International', 'Both', 'Indian']
+}
+
+const dedupeCertifications = (certifications: Certification[]) =>
+  certifications.filter((certification, index, array) =>
+    array.findIndex((entry) => entry.name === certification.name) === index
+  )
+
+const dedupeYouTubePlaylists = (playlists: YouTubePlaylist[]) =>
+  playlists.filter((playlist, index, array) =>
+    array.findIndex((entry) => entry.title === playlist.title && entry.channel === playlist.channel) === index
+  )
+
+const dedupeLearningResources = (
+  resources: Array<{ title: string; url: string; description: string }>
+) =>
+  resources.filter((resource, index, array) =>
+    array.findIndex((entry) => entry.title === resource.title && entry.url === resource.url) === index
+  )
+
+const getStageCertifications = (roleCertifications: Certification[], yearKey: RoadmapYearKey): Certification[] => {
+  const orderedMatches = certificationFallbackOrderByYear[yearKey].flatMap((difficulty) =>
+    roleCertifications.filter((certification) => certification.difficulty === difficulty)
+  )
+
+  return dedupeCertifications(orderedMatches)
+}
+
+const getStageYouTubePlaylists = (rolePlaylists: YouTubePlaylist[], yearKey: RoadmapYearKey): YouTubePlaylist[] => {
+  const orderedMatches = youtubeAudienceFallbackOrderByYear[yearKey].flatMap((targetAudience) =>
+    rolePlaylists.filter((playlist) => playlist.targetAudience === targetAudience)
+  )
+
+  return dedupeYouTubePlaylists(orderedMatches)
+}
+
+const getStageLearningResources = (
+  roleKey: string,
+  resourceType: 'free' | 'paid',
+  yearKey: RoadmapYearKey
+) => {
+  const profileKey = roleResourceProfileAliases[roleKey]
+  const profile = profileKey ? learningResourceProfiles[profileKey] : undefined
+  const stagedResources = profile?.[resourceType] || []
+
+  return stagedResources
+    .filter((resource) => resource.stages.includes(yearKey))
+    .map(({ stages: _stages, ...resource }: RoadmapLearningResource) => resource)
+}
+
+const enrichSkillsData = (data: Record<string, SkillData>): Record<string, SkillData> =>
+  Object.fromEntries(
+    Object.entries(data).map(([roleKey, roleData]) => {
+      const roleCertifications = roleData.certifications.length > 0 ? roleData.certifications : getRoleCertifications(roleKey)
+      const roleYoutubePlaylists = roleData.youtubePlaylists.length > 0 ? roleData.youtubePlaylists : getRoleYouTubePlaylists(roleKey)
+
+      const roadmap = Object.fromEntries(
+        Object.entries(roleData.roadmap).map(([yearKey, yearData]) => {
+          const currentYearKey = yearKey as RoadmapYearKey
+          const difficultyMatches = roadmapDifficultyByYear[currentYearKey] || ['beginner', 'intermediate', 'advanced']
+          const audienceMatches = roadmapAudienceByYear[currentYearKey] || ['Indian', 'International', 'Both']
+
+          const certifications =
+            yearData.certifications.length > 0
+              ? dedupeCertifications([
+                  ...yearData.certifications,
+                  ...roleCertifications.filter((cert) => difficultyMatches.includes(cert.difficulty))
+                ])
+              : getStageCertifications(roleCertifications, currentYearKey)
+
+          const yearYoutubePlaylists =
+            yearData.youtubePlaylists.length > 0
+              ? dedupeYouTubePlaylists([
+                  ...yearData.youtubePlaylists,
+                  ...roleYoutubePlaylists.filter((playlist) => audienceMatches.includes(playlist.targetAudience))
+                ])
+              : getStageYouTubePlaylists(roleYoutubePlaylists, currentYearKey)
+
+          const freeResources = dedupeLearningResources([
+            ...yearData.freeResources,
+            ...getStageLearningResources(roleKey, 'free', currentYearKey)
+          ])
+
+          const paidResources = dedupeLearningResources([
+            ...yearData.paidResources,
+            ...getStageLearningResources(roleKey, 'paid', currentYearKey)
+          ])
+
+          return [
+            yearKey,
+            {
+              ...yearData,
+              freeResources,
+              paidResources,
+              certifications,
+              youtubePlaylists: yearYoutubePlaylists
+            }
+          ]
+        })
+      ) as SkillData['roadmap']
+
+      return [
+        roleKey,
+        {
+          ...roleData,
+          certifications: roleCertifications,
+          youtubePlaylists: roleYoutubePlaylists,
+          roadmap
+        }
+      ]
+    })
+  )
+
+const rawSkillsData: { [key: string]: SkillData } = {
   frontend: {
     title: 'Frontend Developer',
     icon: Code,
@@ -4782,3 +4938,5 @@ export const skillsData: { [key: string]: SkillData } = {
     }
   }
 }
+
+export const skillsData: { [key: string]: SkillData } = enrichSkillsData(rawSkillsData)

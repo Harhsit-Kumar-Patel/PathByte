@@ -550,8 +550,8 @@ export default function RoadmapPage() {
 
         <section>
           <CertificationResources
-            certifications={skillsData[activeRole]?.certifications || []}
-            youtubePlaylists={skillsData[activeRole]?.youtubePlaylists || []}
+            certifications={currentData?.certifications || skillsData[activeRole]?.certifications || []}
+            youtubePlaylists={currentData?.youtubePlaylists || skillsData[activeRole]?.youtubePlaylists || []}
             currency={currency}
           />
         </section>

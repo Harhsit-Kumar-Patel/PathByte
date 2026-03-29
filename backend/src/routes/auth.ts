@@ -27,6 +27,21 @@ const loginSchema = Joi.object({
   password: Joi.string().required()
 })
 
+const serializeUser = (user: any) => ({
+  id: user.id,
+  email: user.email,
+  firstName: user.first_name,
+  lastName: user.last_name,
+  experienceLevel: user.experience_level,
+  targetRole: user.target_role,
+  locationCity: user.location_city,
+  locationState: user.location_state,
+  locationCountry: user.location_country,
+  subscriptionTier: user.subscription_tier,
+  createdAt: user.created_at,
+  updatedAt: user.updated_at
+})
+
 // Register new user
 router.post('/register', async (req, res) => {
   try {
@@ -77,7 +92,20 @@ router.post('/register', async (req, res) => {
       location_country: locationCountry,
       experience_level: experienceLevel,
       target_role: targetRole
-    }).returning(['id', 'email', 'first_name', 'last_name', 'experience_level', 'target_role'])
+    }).returning([
+      'id',
+      'email',
+      'first_name',
+      'last_name',
+      'experience_level',
+      'target_role',
+      'location_city',
+      'location_state',
+      'location_country',
+      'subscription_tier',
+      'created_at',
+      'updated_at'
+    ])
 
     // Generate JWT token
     const token = jwt.sign(
@@ -92,7 +120,7 @@ router.post('/register', async (req, res) => {
       success: true,
       message: 'User registered successfully',
       data: {
-        user,
+        user: serializeUser(user),
         token
       }
     })
@@ -155,15 +183,7 @@ router.post('/login', async (req, res) => {
       success: true,
       message: 'Login successful',
       data: {
-        user: {
-          id: user.id,
-          email: user.email,
-          firstName: user.first_name,
-          lastName: user.last_name,
-          experienceLevel: user.experience_level,
-          targetRole: user.target_role,
-          subscriptionTier: user.subscription_tier
-        },
+        user: serializeUser(user),
         token
       }
     })
@@ -313,9 +333,9 @@ router.put('/profile', authenticateToken, async (req, res): Promise<any> => {
       })
     }
 
-    const { firstName, lastName, experienceLevel, targetRole, locationCity, locationState, locationCountry } = req.body
+    const { firstName, lastName, email, experienceLevel, targetRole, locationCity, locationState, locationCountry } = req.body
 
-    logger.info(`Profile update request for user ${userId}:`, { firstName, lastName, experienceLevel, targetRole, locationCity, locationState, locationCountry })
+    logger.info(`Profile update request for user ${userId}:`, { firstName, lastName, email, experienceLevel, targetRole, locationCity, locationState, locationCountry })
     logger.info(`Full request body:`, req.body)
 
     // Validate required fields
@@ -326,10 +346,25 @@ router.put('/profile', authenticateToken, async (req, res): Promise<any> => {
       })
     }
 
+    if (email) {
+      const existingUser = await db('users')
+        .where('email', email)
+        .whereNot('id', userId)
+        .first()
+
+      if (existingUser) {
+        return res.status(400).json({
+          success: false,
+          error: 'User with this email already exists'
+        })
+      }
+    }
+
     // Update user profile with correct column names
     const updateData: any = {
       first_name: firstName,
       last_name: lastName,
+      email,
       experience_level: experienceLevel,
       target_role: targetRole,
       location_city: locationCity,
@@ -354,23 +389,12 @@ router.put('/profile', authenticateToken, async (req, res): Promise<any> => {
     logger.info(`Profile updated successfully for user ${userId}`)
 
     // Transform the response to match frontend expectations
-    const transformedUser = {
-      id: updatedUser[0].id,
-      email: updatedUser[0].email,
-      firstName: updatedUser[0].first_name,
-      lastName: updatedUser[0].last_name,
-      experienceLevel: updatedUser[0].experience_level,
-      targetRole: updatedUser[0].target_role,
-      locationCity: updatedUser[0].location_city,
-      locationState: updatedUser[0].location_state,
-      locationCountry: updatedUser[0].location_country,
-      createdAt: updatedUser[0].created_at,
-      updatedAt: new Date()
-    }
-
     res.json({
       success: true,
-      data: transformedUser
+      data: serializeUser({
+        ...updatedUser[0],
+        updated_at: new Date()
+      })
     })
   } catch (error) {
     logger.error('Update profile error:', error)

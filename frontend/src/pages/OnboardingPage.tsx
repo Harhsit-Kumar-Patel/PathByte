@@ -258,44 +258,44 @@ export default function OnboardingPage() {
                     <select name="targetRole" value={formData.targetRole} onChange={handleInputChange} required>
                       <option value="">Select your target role</option>
                       <optgroup label="Software Development">
-                        <option value="Frontend Developer">Frontend Developer</option>
-                        <option value="Backend Developer">Backend Developer</option>
-                        <option value="Full-Stack Developer">Full-Stack Developer</option>
-                        <option value="Mobile App Developer">Mobile App Developer</option>
-                        <option value="Game Developer">Game Developer</option>
-                        <option value="Embedded Systems Engineer">Embedded Systems Engineer</option>
-                        <option value="Systems Programmer">Systems Programmer</option>
-                        <option value="Compiler Engineer">Compiler Engineer</option>
+                        <option value="frontend">Frontend Developer</option>
+                        <option value="backend">Backend Developer</option>
+                        <option value="fullstack">Full-Stack Developer</option>
+                        <option value="mobile">Mobile App Developer</option>
+                        <option value="game">Game Developer</option>
+                        <option value="embeddedengineer">Embedded Systems Engineer</option>
+                        <option value="systemprogrammer">Systems Programmer</option>
+                        <option value="compilerengineer">Compiler Engineer</option>
                       </optgroup>
                       <optgroup label="Data & AI">
-                        <option value="Data Scientist">Data Scientist</option>
-                        <option value="Data Engineer">Data Engineer</option>
-                        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
-                        <option value="AI Specialist">AI Specialist</option>
-                        <option value="Data Visualization Engineer">Data Visualization Engineer</option>
-                        <option value="NLP Engineer">NLP Engineer</option>
-                        <option value="Computer Vision Engineer">Computer Vision Engineer</option>
+                        <option value="datascientist">Data Scientist</option>
+                        <option value="dataengineer">Data Engineer</option>
+                        <option value="mle">Machine Learning Engineer</option>
+                        <option value="aispecialist">AI Specialist</option>
+                        <option value="datavisualization">Data Visualization Engineer</option>
+                        <option value="nlpengineer">NLP Engineer</option>
+                        <option value="computervision">Computer Vision Engineer</option>
                       </optgroup>
                       <optgroup label="Infrastructure & Operations">
-                        <option value="DevOps Engineer">DevOps Engineer</option>
-                        <option value="Cloud Engineer">Cloud Engineer</option>
-                        <option value="Site Reliability Engineer">Site Reliability Engineer</option>
-                        <option value="Network Engineer">Network Engineer</option>
-                        <option value="Database Administrator">Database Administrator</option>
-                        <option value="Cybersecurity Engineer">Cybersecurity Engineer</option>
+                        <option value="devops">DevOps Engineer</option>
+                        <option value="cloudengineer">Cloud Engineer</option>
+                        <option value="sre">Site Reliability Engineer</option>
+                        <option value="networkengineer">Network Engineer</option>
+                        <option value="databaseadmin">Database Administrator</option>
+                        <option value="cybersecurity">Cybersecurity Engineer</option>
                       </optgroup>
                       <optgroup label="Emerging Tech">
-                        <option value="Blockchain Developer">Blockchain Developer</option>
-                        <option value="Web3 Developer">Web3 Developer</option>
-                        <option value="AI Operations Engineer">AI Operations Engineer</option>
-                        <option value="Quantum Computing Engineer">Quantum Computing Engineer</option>
-                        <option value="Generative AI Engineer">Generative AI Engineer</option>
+                        <option value="blockchain">Blockchain Developer</option>
+                        <option value="web3developer">Web3 Developer</option>
+                        <option value="aiops">AI Operations Engineer</option>
+                        <option value="quantumcomputing">Quantum Computing Engineer</option>
+                        <option value="generativeai">Generative AI Engineer</option>
                       </optgroup>
                       <optgroup label="Specialized & Related Roles">
-                        <option value="UI/UX Designer">UI/UX Designer</option>
-                        <option value="Product Manager">Product Manager</option>
-                        <option value="QA Engineer">QA Engineer</option>
-                        <option value="Technical Writer">Technical Writer</option>
+                        <option value="uidesigner">UI/UX Designer</option>
+                        <option value="productmanager">Product Manager</option>
+                        <option value="qaengineer">QA Engineer</option>
+                        <option value="technicalwriter">Technical Writer</option>
                       </optgroup>
                     </select>
                   </div>

@@ -1,12 +1,31 @@
 import express from 'express'
 import { db } from '../config/database'
+import { authenticateToken } from '../middleware/auth'
 
 const router = express.Router()
 
+const ensureAuthorizedUser = (authenticatedUserId: string | undefined, requestedUserId: string, res: express.Response) => {
+  if (!authenticatedUserId) {
+    res.status(401).json({ success: false, error: 'User not authenticated' })
+    return false
+  }
+
+  if (authenticatedUserId !== requestedUserId) {
+    res.status(403).json({ success: false, error: 'Forbidden' })
+    return false
+  }
+
+  return true
+}
+
 // Get all progress for a user
-router.get('/:userId', async (req, res) => {
+router.get('/:userId', authenticateToken, async (req, res) => {
   try {
     const { userId } = req.params
+
+    if (!userId || !ensureAuthorizedUser(req.user?.id, userId, res)) {
+      return
+    }
     
     // Get individual skill progress
     const individualSkills = await db('individual_skill_progress')
@@ -35,9 +54,13 @@ router.get('/:userId', async (req, res) => {
 })
 
 // Get progress for a specific role and year
-router.get('/:userId/:roleId/:yearId', async (req, res) => {
+router.get('/:userId/:roleId/:yearId', authenticateToken, async (req, res) => {
   try {
     const { userId, roleId, yearId } = req.params
+
+    if (!userId || !ensureAuthorizedUser(req.user?.id, userId, res)) {
+      return
+    }
     
     const individualSkills = await db('individual_skill_progress')
       .where({
@@ -68,10 +91,14 @@ router.get('/:userId/:roleId/:yearId', async (req, res) => {
 })
 
 // Update sub-skill progress
-router.put('/:userId/:roleId/:yearId/:skillName/:subSkillName', async (req, res) => {
+router.put('/:userId/:roleId/:yearId/:skillName/:subSkillName', authenticateToken, async (req, res) => {
   try {
     const { userId, roleId, yearId, skillName, subSkillName } = req.params
     const { completed, notes } = req.body
+
+    if (!userId || !ensureAuthorizedUser(req.user?.id, userId, res)) {
+      return
+    }
     
     // Start a transaction
     const trx = await db.transaction()
@@ -142,9 +169,13 @@ router.put('/:userId/:roleId/:yearId/:skillName/:subSkillName', async (req, res)
 })
 
 // Get sub-skill progress
-router.get('/:userId/:roleId/:yearId/:skillName/:subSkillName', async (req, res) => {
+router.get('/:userId/:roleId/:yearId/:skillName/:subSkillName', authenticateToken, async (req, res) => {
   try {
     const { userId, roleId, yearId, skillName, subSkillName } = req.params
+
+    if (!userId || !ensureAuthorizedUser(req.user?.id, userId, res)) {
+      return
+    }
     
     const individualSkill = await db('individual_skill_progress')
       .where({
@@ -178,9 +209,13 @@ router.get('/:userId/:roleId/:yearId/:skillName/:subSkillName', async (req, res)
 })
 
 // Reset progress for a role
-router.delete('/:userId/:roleId', async (req, res) => {
+router.delete('/:userId/:roleId', authenticateToken, async (req, res) => {
   try {
     const { userId, roleId } = req.params
+
+    if (!userId || !ensureAuthorizedUser(req.user?.id, userId, res)) {
+      return
+    }
     
     // Get all individual skill progress for this role
     const individualSkills = await db('individual_skill_progress')

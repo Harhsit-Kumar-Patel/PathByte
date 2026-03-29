@@ -15,8 +15,6 @@ import { testConnection, initializeDatabase } from './config/database'
 import authRoutes from './routes/auth'
 import userRoutes from './routes/users'
 import roadmapRoutes from './routes/roadmaps'
-import marketRoutes from './routes/market'
-import communityRoutes from './routes/community'
 import progressRoutes from './routes/progress'
 import roadmapProgressRoutes from './routes/roadmapProgress'
 
@@ -44,24 +42,51 @@ console.log('🌐 Environment variables:', {
   DATABASE_URL: process.env.DATABASE_URL ? 'Set' : 'Not set'
 })
 
+const configuredOrigins = (process.env['CORS_ORIGIN'] || process.env['FRONTEND_URL'] || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean)
+
+const defaultDevelopmentOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173'
+]
+
+const allowedOrigins = configuredOrigins.length > 0
+  ? configuredOrigins
+  : (process.env['NODE_ENV'] === 'production' ? [] : defaultDevelopmentOrigins)
+
 // Security middleware
 app.use(helmet())
 
 // CORS configuration
 app.use(cors({
-  origin: true, // Allow all origins for now to fix the connection issue
+  origin: (origin, callback) => {
+    if (!origin) {
+      callback(null, true)
+      return
+    }
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true)
+      return
+    }
+
+    callback(new Error('Origin not allowed by CORS'))
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
-// Rate limiting - temporarily disabled for debugging
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: 100, // limit each IP to 100 requests per windowMs
-//   message: 'Too many requests from this IP, please try again later.'
-// })
-// app.use('/api/', limiter)
-console.log('🔧 Rate limiting temporarily disabled for debugging')
+
+const limiter = rateLimit({
+  windowMs: parseInt(process.env['RATE_LIMIT_WINDOW_MS'] || '900000', 10),
+  max: parseInt(process.env['RATE_LIMIT_MAX_REQUESTS'] || '100', 10),
+  message: 'Too many requests from this IP, please try again later.'
+})
+app.use('/api/', limiter)
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }))
@@ -105,8 +130,6 @@ app.get('/health', (_, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/roadmaps', roadmapRoutes)
-app.use('/api/market', marketRoutes)
-app.use('/api/community', communityRoutes)
 app.use('/api/progress', progressRoutes)
 app.use('/api/roadmap-progress', roadmapProgressRoutes)
 

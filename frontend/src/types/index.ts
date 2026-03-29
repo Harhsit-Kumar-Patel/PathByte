@@ -42,7 +42,6 @@ export interface Skill {
   category: SkillCategory
   proficiency: number // 0-100
   isTargetSkill: boolean
-  marketDemand: number // 0-100
   averageSalary: number
   learningTime: number // in hours
 }
@@ -60,43 +59,6 @@ export type SkillCategory =
   | 'tools'
 
 export type SubscriptionTier = 'free' | 'premium' | 'pro'
-
-// Job Market Types
-export interface JobMarket {
-  location: Location
-  totalJobs: number
-  averageSalary: number
-  trendingSkills: TrendingSkill[]
-  topCompanies: Company[]
-  jobGrowth: JobGrowthData
-  lastUpdated: Date
-}
-
-export interface TrendingSkill {
-  skill: Skill
-  demandGrowth: number // percentage
-  salaryIncrease: number // percentage
-  jobCount: number
-}
-
-export interface Company {
-  id: string
-  name: string
-  logo?: string
-  industry: string
-  size: string
-  techStack: string[]
-  averageSalary: number
-  jobCount: number
-  rating: number
-}
-
-export interface JobGrowthData {
-  monthlyGrowth: number
-  quarterlyGrowth: number
-  yearlyGrowth: number
-  projectedGrowth: number
-}
 
 // Roadmap Types
 export interface LearningRoadmap {
@@ -146,36 +108,6 @@ export interface LearningResource {
   rating: number
   cost: number
   isFree: boolean
-}
-
-// Community Types
-export interface CommunityMember {
-  user: User
-  currentRoadmap?: LearningRoadmap
-  skills: Skill[]
-  location: Location
-  experience: ExperienceLevel
-  isOnline: boolean
-  lastActive: Date
-}
-
-export interface StudyGroup {
-  id: string
-  name: string
-  description: string
-  members: CommunityMember[]
-  focusArea: SkillCategory
-  meetingSchedule: MeetingSchedule[]
-  maxMembers: number
-  isPublic: boolean
-  createdAt: Date
-}
-
-export interface MeetingSchedule {
-  day: string
-  time: string
-  timezone: string
-  frequency: 'weekly' | 'bi-weekly' | 'monthly'
 }
 
 // Progress Tracking Types

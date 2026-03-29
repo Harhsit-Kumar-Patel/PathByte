@@ -12,7 +12,6 @@ import {
   Settings,
   Sparkles,
   User,
-  Users,
   X,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
@@ -22,7 +21,6 @@ const navigation = [
   { name: 'Roadmaps', href: '/roadmap', icon: Rocket, subtitle: 'Build your next move' },
   { name: 'Career Guide', href: '/career-guide', icon: Compass, subtitle: 'Explore paths' },
   { name: 'Assessment', href: '/career-assessment', icon: Brain, subtitle: 'Find your fit' },
-  { name: 'Community', href: '/community', icon: Users, subtitle: 'Learn together' },
   { name: 'Profile', href: '/profile', icon: User, subtitle: 'Preferences and progress' },
 ]
 
@@ -40,8 +38,6 @@ const pageMeta: Record<string, { title: string; description: string }> = {
   '/onboarding': { title: 'Get Started', description: 'Create your account and shape your path.' },
   '/dashboard': { title: 'Dashboard', description: 'See progress, milestones, and what to do next.' },
   '/roadmap': { title: 'Roadmap', description: 'Follow a structured learning plan with confidence.' },
-  '/community': { title: 'Community', description: 'Stay connected with builders on the same journey.' },
-  '/market-insights': { title: 'Market Insights', description: 'Understand what skills matter right now.' },
   '/profile': { title: 'Profile', description: 'Manage your account, goals, and exported progress.' },
   '/roles': { title: 'Role Selection', description: 'Choose the track you want to commit to next.' },
 }
