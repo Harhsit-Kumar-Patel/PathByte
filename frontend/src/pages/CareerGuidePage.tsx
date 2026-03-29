@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { cn } from '@/utils/cn'
 import { 
+  ArrowRight,
   Code, 
   Shield, 
   Globe, 
@@ -16,8 +18,6 @@ import {
   Award,
   Zap,
   Target,
-  Clock,
-  Star,
   Building,
   Eye,
   Database
@@ -827,241 +827,247 @@ export default function CareerGuidePage() {
     return colors[salary as keyof typeof colors] || colors.medium
   }
 
+  const getCategoryLabel = (categoryKey: string) =>
+    categories.find((category) => category.key === categoryKey)?.label || 'All Categories'
+
+  const highDemandCount = allRoadmaps.filter((roadmap) => roadmap.demand === 'very-high' || roadmap.demand === 'high').length
+  const highSalaryCount = allRoadmaps.filter((roadmap) => roadmap.salary === 'very-high' || roadmap.salary === 'high').length
+  const beginnerCount = allRoadmaps.filter((roadmap) => roadmap.difficulty === 'beginner').length
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              🚀 Complete Tech Career Roadmap Guide
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore 35+ comprehensive career paths in technology, from beginner to expert level. 
-              Find your perfect tech career and get a structured learning roadmap.
-            </p>
+    <div className="overflow-hidden">
+      <section className="relative px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+        <div className="hero-orb left-[-5rem] top-8 h-56 w-56 bg-sky-300/35" />
+        <div className="hero-orb right-[-4rem] top-10 h-72 w-72 bg-blue-300/25" style={{ animationDelay: '2s' }} />
+
+        <div className="mx-auto max-w-7xl">
+          <div className="surface-panel-strong rounded-[2.4rem] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+            <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+              <div>
+                <div className="section-kicker">
+                  <BookOpen className="h-3.5 w-3.5 text-blue-600" />
+                  Career discovery hub
+                </div>
+                <h1 className="mt-5 max-w-4xl text-balance text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+                  Explore tech roles through a guide with stronger <span className="gradient-text">hierarchy and clarity.</span>
+                </h1>
+                <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+                  Browse career paths, compare demand and difficulty, and jump into structured roadmaps that keep the visual rhythm consistent across the product.
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+                <div className="card-modern p-5">
+                  <p className="text-sm font-semibold text-slate-500">Total paths</p>
+                  <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">{allRoadmaps.length}</p>
+                  <p className="mt-2 text-sm text-slate-600">Structured roles across software, AI, infra, design, and leadership.</p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+                  <div className="card-modern p-5">
+                    <p className="text-sm font-semibold text-slate-500">High demand</p>
+                    <p className="mt-2 text-2xl font-semibold text-slate-950">{highDemandCount}</p>
+                  </div>
+                  <div className="card-modern p-5">
+                    <p className="text-sm font-semibold text-slate-500">Beginner friendly</p>
+                    <p className="mt-2 text-2xl font-semibold text-slate-950">{beginnerCount}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Filters and Search */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search roadmaps, skills, or tools..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+      <section className="px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl space-y-6">
+          <div className="surface-panel-strong rounded-[2rem] p-4 sm:p-5">
+            <div className="grid gap-4 xl:grid-cols-[minmax(0,1.3fr)_220px_220px_160px_160px]">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search roles, skills, or tools"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-11"
+                />
+              </div>
 
-            {/* Category Filter */}
-            <div>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {categories.map(category => (
+              <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                {categories.map((category) => (
                   <option key={category.key} value={category.key}>
                     {category.label}
                   </option>
                 ))}
               </select>
-            </div>
 
-            {/* Experience Level Filter */}
-            <div>
-              <select
-                value={selectedExperience}
-                onChange={(e) => setSelectedExperience(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {experienceLevels.map(level => (
+              <select value={selectedExperience} onChange={(e) => setSelectedExperience(e.target.value)}>
+                {experienceLevels.map((level) => (
                   <option key={level.key} value={level.key}>
                     {level.label}
                   </option>
                 ))}
               </select>
-            </div>
-          </div>
-        </div>
 
-        {/* Roadmap Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredRoadmaps.map((roadmap) => (
-            <div
-              key={roadmap.key}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
-              onClick={() => navigate(`/roadmap?role=${roadmap.key}`)}
-            >
-              {/* Header */}
-              <div className={`bg-gradient-to-r ${roadmap.color} px-4 sm:px-6 py-3 sm:py-4 rounded-t-xl`}>
-                <div className="flex items-center justify-between">
-                  <roadmap.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                  <div className="flex gap-1 sm:gap-2">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(roadmap.difficulty)}`}>
-                      {roadmap.difficulty.charAt(0).toUpperCase() + roadmap.difficulty.slice(1)}
-                    </span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDemandColor(roadmap.demand)}`}>
-                      {roadmap.demand === 'very-high' ? 'Very High' : roadmap.demand.charAt(0).toUpperCase() + roadmap.demand.slice(1)} Demand
-                    </span>
-                  </div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mt-2 sm:mt-3">{roadmap.title}</h3>
-                <p className="text-white/90 text-xs sm:text-sm mt-1">{roadmap.description}</p>
+              <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-3 text-center">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Demand</p>
+                <p className="mt-1 text-lg font-semibold text-slate-950">{highDemandCount}</p>
               </div>
 
-              {/* Content */}
-              <div className="p-4 sm:p-6">
-                {/* Key Skills */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-blue-500" />
-                    Key Skills
-                  </h4>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {roadmap.skills.slice(0, 3).map((skill, index) => (
-                      <span key={index} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full">
-                        {skill}
-                      </span>
-                    ))}
-                    {roadmap.skills.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full">
-                        +{roadmap.skills.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
+              <div className="rounded-[1.4rem] border border-slate-200 bg-slate-50 px-4 py-3 text-center">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Results</p>
+                <p className="mt-1 text-lg font-semibold text-slate-950">{filteredRoadmaps.length}</p>
+              </div>
+            </div>
+          </div>
 
-                {/* Tools */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Code className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
-                    Tools & Technologies
-                  </h4>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {roadmap.tools.slice(0, 3).map((tool, index) => (
-                      <span key={index} className="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full">
-                        {tool}
-                      </span>
-                    ))}
-                    {roadmap.tools.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full">
-                        +{roadmap.tools.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Career paths</h2>
+                <p className="mt-1 text-sm text-slate-600">Balanced cards with quick signals, key skills, and a direct route into the roadmap.</p>
+              </div>
+              <div className="hidden rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 sm:block">
+                {getCategoryLabel(selectedCategory)} · {selectedExperience === 'all' ? 'All levels' : selectedExperience}
+              </div>
+            </div>
 
-                {/* Companies */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Users className="h-3 w-3 sm:h-4 sm:w-4 text-purple-500" />
-                    Top Companies
-                  </h4>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {roadmap.companies.slice(0, 3).map((company, index) => (
-                      <span key={index} className="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full">
-                        {company}
-                      </span>
-                    ))}
-                    {roadmap.companies.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-full">
-                        +{roadmap.companies.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Salary */}
-                <div className="mb-3 sm:mb-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
-                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500" />
-                    Salary Range
-                  </h4>
-                  <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getSalaryColor(roadmap.salary)}`}>
-                    {roadmap.salary === 'very-high' ? 'Very High' : roadmap.salary.charAt(0).toUpperCase() + roadmap.salary.slice(1)} Salary
-                  </span>
-                </div>
-
-                {/* Roadmap Preview */}
-                <div className="border-t border-gray-200 pt-3 sm:pt-4">
-                  <h4 className="font-semibold text-gray-900 mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
-                    <Target className="h-3 w-3 sm:h-4 sm:w-4 text-indigo-500" />
-                    Learning Roadmap
-                  </h4>
-                  <div className="space-y-1 sm:space-y-2">
-                    {Object.entries(roadmap.roadmap).map(([year, data]) => (
-                      <div key={year} className="flex items-center gap-2 sm:gap-3">
-                        <div className="flex items-center gap-1 sm:gap-2">
-                          <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
-                          <span className="text-xs sm:text-sm font-medium text-gray-600">{year} Years</span>
-                        </div>
-                        <span className="text-xs sm:text-sm text-gray-500">{data.focus}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <button 
-                  onClick={() => window.location.href = `/roadmap/${roadmap.key}`}
-                  className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold py-2.5 sm:py-3 px-4 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {filteredRoadmaps.map((roadmap) => (
+                <article
+                  key={roadmap.key}
+                  className="card-modern group flex h-full flex-col overflow-hidden"
                 >
-                  <BookOpen className="h-3 w-3 sm:h-4 sm:w-4" />
-                  View Full Roadmap
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <div className={cn('relative bg-gradient-to-br px-6 py-6', roadmap.color)}>
+                    <div className="absolute right-4 top-4 rounded-full bg-white/16 px-3 py-1 text-xs font-semibold text-white">
+                      {getCategoryLabel(roadmap.category)}
+                    </div>
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/18 text-white">
+                      <roadmap.icon className="h-7 w-7" />
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold text-white">{roadmap.title}</h3>
+                    <p className="mt-2 min-h-[3.5rem] text-sm leading-6 text-white/90">{roadmap.description}</p>
+                  </div>
 
-        {/* No Results */}
-        {filteredRoadmaps.length === 0 && (
-          <div className="text-center py-12">
-            <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No roadmaps found</h3>
-            <p className="text-gray-500">Try adjusting your search terms or filters to find the perfect career path.</p>
-          </div>
-        )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="rounded-2xl bg-slate-50 p-3 text-center">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Level</p>
+                        <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${getDifficultyColor(roadmap.difficulty)}`}>
+                          {roadmap.difficulty}
+                        </span>
+                      </div>
+                      <div className="rounded-2xl bg-slate-50 p-3 text-center">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Demand</p>
+                        <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${getDemandColor(roadmap.demand)}`}>
+                          {roadmap.demand}
+                        </span>
+                      </div>
+                      <div className="rounded-2xl bg-slate-50 p-3 text-center">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Salary</p>
+                        <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${getSalaryColor(roadmap.salary)}`}>
+                          {roadmap.salary}
+                        </span>
+                      </div>
+                    </div>
 
-        {/* Summary Stats */}
-        <div className="mt-12 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            📊 Career Roadmap Summary
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{allRoadmaps.length}</div>
-              <div className="text-gray-600">Total Career Paths</div>
+                    <div className="mt-6 flex flex-1 flex-col gap-5">
+                      <div className="min-h-[5.5rem]">
+                        <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900">
+                          <Zap className="h-4 w-4 text-blue-600" />
+                          Core skills
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {roadmap.skills.slice(0, 4).map((skill, index) => (
+                            <span key={index} className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="min-h-[5.5rem]">
+                        <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900">
+                          <Code className="h-4 w-4 text-emerald-600" />
+                          Tools
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {roadmap.tools.slice(0, 4).map((tool, index) => (
+                            <span key={index} className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="min-h-[15rem] rounded-[1.4rem] border border-slate-200 bg-slate-50 p-4">
+                        <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-900">
+                          <Target className="h-4 w-4 text-slate-700" />
+                          Roadmap preview
+                        </div>
+                        <div className="space-y-2">
+                          {Object.entries(roadmap.roadmap).slice(0, 3).map(([year, data]) => (
+                            <div key={year} className="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-3 rounded-2xl bg-white px-3 py-2">
+                              <span className="text-sm font-semibold text-slate-900">{year} yrs</span>
+                              <span className="text-xs leading-5 text-slate-500">{data.focus}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 grid grid-cols-[minmax(0,1fr)_180px] gap-3">
+                      <button
+                        onClick={() => navigate(`/roadmap?role=${roadmap.key}`)}
+                        className="btn-modern inline-flex flex-1 items-center justify-center rounded-full bg-slate-950 px-4 py-3 text-sm font-semibold text-white"
+                      >
+                        Open roadmap
+                      </button>
+                      <button
+                        onClick={() => navigate(`/roadmap/${roadmap.key}`)}
+                        className="btn-modern inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800"
+                      >
+                        Full page
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">
-                {allRoadmaps.filter(r => r.demand === 'very-high' || r.demand === 'high').length}
+
+            {filteredRoadmaps.length === 0 && (
+              <div className="surface-panel-strong rounded-[2rem] px-6 py-12 text-center">
+                <BookOpen className="mx-auto h-12 w-12 text-slate-300" />
+                <h3 className="mt-4 text-xl font-semibold text-slate-950">No roadmaps matched this view</h3>
+                <p className="mt-2 text-sm text-slate-600">Try broadening your search or switching the category and experience filters.</p>
               </div>
-              <div className="text-gray-600">High Demand Roles</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">
-                {allRoadmaps.filter(r => r.salary === 'very-high' || r.salary === 'high').length}
+            )}
+
+            <div className="surface-panel-strong rounded-[2rem] px-6 py-8">
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">Guide summary</h3>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="card-modern p-5 text-center">
+                  <p className="text-sm text-slate-500">Career paths</p>
+                  <p className="mt-2 text-3xl font-semibold text-slate-950">{allRoadmaps.length}</p>
+                </div>
+                <div className="card-modern p-5 text-center">
+                  <p className="text-sm text-slate-500">High demand</p>
+                  <p className="mt-2 text-3xl font-semibold text-slate-950">{highDemandCount}</p>
+                </div>
+                <div className="card-modern p-5 text-center">
+                  <p className="text-sm text-slate-500">High salary</p>
+                  <p className="mt-2 text-3xl font-semibold text-slate-950">{highSalaryCount}</p>
+                </div>
+                <div className="card-modern p-5 text-center">
+                  <p className="text-sm text-slate-500">Beginner friendly</p>
+                  <p className="mt-2 text-3xl font-semibold text-slate-950">{beginnerCount}</p>
+                </div>
               </div>
-              <div className="text-gray-600">High Salary Roles</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">
-                {allRoadmaps.filter(r => r.difficulty === 'beginner').length}
-              </div>
-              <div className="text-gray-600">Beginner Friendly</div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

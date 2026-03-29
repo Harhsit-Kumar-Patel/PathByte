@@ -1,29 +1,69 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { 
-  Menu, 
-  X, 
-  LogOut, 
-  Settings, 
-  ChevronDown,
-  Home,
-  Map,
-  Brain,
-  Rocket,
+import {
   BarChart3,
-  User,
+  BookOpen,
+  Brain,
+  ChevronDown,
+  Compass,
+  LogOut,
+  Menu,
+  Rocket,
+  Settings,
   Sparkles,
+  User,
+  Users,
+  X,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 const navigation = [
-  { name: 'Home', href: '/', icon: Home, color: 'from-blue-500 to-cyan-500' },
-  { name: 'Career Guide', href: '/career-guide', icon: Map, color: 'from-purple-500 to-pink-500' },
-  { name: 'Career Assessment', href: '/career-assessment', icon: Brain, color: 'from-emerald-500 to-teal-500' },
-  { name: 'Roadmap', href: '/roadmap', icon: Rocket, color: 'from-orange-500 to-red-500' },
-  { name: 'Dashboard', href: '/dashboard', icon: BarChart3, color: 'from-indigo-500 to-blue-500' },
-  { name: 'Profile', href: '/profile', icon: User, color: 'from-violet-500 to-purple-500' }
+  { name: 'Dashboard', href: '/dashboard', icon: BarChart3, subtitle: 'Track momentum' },
+  { name: 'Roadmaps', href: '/roadmap', icon: Rocket, subtitle: 'Build your next move' },
+  { name: 'Career Guide', href: '/career-guide', icon: Compass, subtitle: 'Explore paths' },
+  { name: 'Assessment', href: '/career-assessment', icon: Brain, subtitle: 'Find your fit' },
+  { name: 'Community', href: '/community', icon: Users, subtitle: 'Learn together' },
+  { name: 'Profile', href: '/profile', icon: User, subtitle: 'Preferences and progress' },
 ]
+
+const publicNav = [
+  { name: 'Home', href: '/' },
+  { name: 'Career Guide', href: '/career-guide' },
+  { name: 'Assessment', href: '/career-assessment' },
+]
+
+const pageMeta: Record<string, { title: string; description: string }> = {
+  '/': { title: 'PathByte', description: 'A calmer way to plan your tech growth.' },
+  '/career-guide': { title: 'Career Guide', description: 'Browse roles, skill paths, and direction.' },
+  '/career-assessment': { title: 'Career Assessment', description: 'Discover a role that matches your strengths.' },
+  '/login': { title: 'Welcome Back', description: 'Access your roadmap, progress, and learning hub.' },
+  '/onboarding': { title: 'Get Started', description: 'Create your account and shape your path.' },
+  '/dashboard': { title: 'Dashboard', description: 'See progress, milestones, and what to do next.' },
+  '/roadmap': { title: 'Roadmap', description: 'Follow a structured learning plan with confidence.' },
+  '/community': { title: 'Community', description: 'Stay connected with builders on the same journey.' },
+  '/market-insights': { title: 'Market Insights', description: 'Understand what skills matter right now.' },
+  '/profile': { title: 'Profile', description: 'Manage your account, goals, and exported progress.' },
+  '/roles': { title: 'Role Selection', description: 'Choose the track you want to commit to next.' },
+}
+
+function getPageMeta(pathname: string) {
+  const directMatch = pageMeta[pathname]
+  if (directMatch) {
+    return directMatch
+  }
+
+  if (pathname.startsWith('/roadmap/')) {
+    return {
+      title: 'Skill Roadmap',
+      description: 'A more detailed view of the path you selected.',
+    }
+  }
+
+  return {
+    title: 'PathByte',
+    description: 'Modern career planning for ambitious builders.',
+  }
+}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -32,10 +72,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // Close sidebar when route changes
+  const isPublicRoute = useMemo(
+    () =>
+      ['/', '/login', '/onboarding', '/career-guide', '/career-assessment'].includes(location.pathname),
+    [location.pathname],
+  )
+  const meta = useMemo(() => getPageMeta(location.pathname), [location.pathname])
+
   useEffect(() => {
     setSidebarOpen(false)
-  }, [location])
+    setUserDropdownOpen(false)
+  }, [location.pathname])
 
   const handleLogout = async () => {
     try {
@@ -46,261 +93,241 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }
   }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-indigo-50">
-      {/* Mobile sidebar */}
-      <div className={`fixed inset-0 z-50 lg:hidden transition-all duration-500 ease-in-out ${
-        sidebarOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-      }`}>
-        {/* Backdrop */}
-        <div 
-          className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
-          onClick={() => setSidebarOpen(false)}
-        />
-        
-        {/* Sidebar */}
-        <div className={`absolute left-0 top-0 h-full w-72 sm:w-80 max-w-[90vw] bg-white/95 backdrop-blur-xl shadow-2xl transition-transform duration-500 ease-out transform ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}>
-          <div className="flex h-full flex-col">
-            {/* Header */}
-            <div className="flex h-16 sm:h-20 items-center justify-between px-4 sm:px-6 border-b border-slate-200/50">
-              <Link 
-                to="/" 
-                className="flex items-center space-x-2 sm:space-x-3 group transition-all duration-300"
-              >
-                <div className="relative">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-soft">
-                    <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                  </div>
-                  <div className="absolute -inset-1 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-600 rounded-2xl opacity-20 blur-sm group-hover:opacity-30 transition-opacity duration-300"></div>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">PathByte</span>
-                  <span className="text-xs text-slate-600 font-medium hidden sm:block">AI Career Platform</span>
-                </div>
-              </Link>
-              <button
-                onClick={() => setSidebarOpen(false)}
-                className="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all duration-300 hover:scale-110"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Navigation */}
-            <nav className="flex-1 px-4 sm:px-6 py-6 sm:py-8 space-y-2 sm:space-y-3">
-              {navigation.map((item) => {
-                const Icon = item.icon
-                const isActive = location.pathname === item.href
-                return (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`group flex items-center px-3 sm:px-4 py-3 sm:py-4 text-sm font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
-                      isActive
-                        ? `bg-gradient-to-r ${item.color} text-white shadow-lg shadow-${item.color.split('-')[1]}/25`
-                        : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900 hover:shadow-md'
-                    }`}
-                  >
-                    <div className={`mr-3 sm:mr-4 p-2 rounded-xl transition-all duration-300 ${
-                      isActive 
-                        ? 'bg-white/20 text-white' 
-                        : `bg-gradient-to-br ${item.color} text-white opacity-80 group-hover:opacity-100`
-                    }`}>
-                      <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-                    </div>
-                    <span className="truncate">{item.name}</span>
-                    {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse flex-shrink-0"></div>
-                    )}
-                  </Link>
-                )
-              })}
-            </nav>
-
-            {/* User section */}
-            {user && (
-              <div className="border-t border-slate-200/50 p-4 sm:p-6">
-                <div className="flex items-center space-x-3 p-3 rounded-2xl hover:bg-slate-50 transition-all duration-300">
-                  <div className="relative">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white font-semibold text-sm sm:text-lg hover:scale-110 transition-transform duration-300 shadow-lg">
-                      {user.email?.charAt(0).toUpperCase()}
-                    </div>
-                    <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl opacity-20 blur-sm"></div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-slate-900 truncate">{user.email}</p>
-                    <p className="text-xs text-slate-600 hidden sm:block">Premium Member</p>
-                  </div>
-                </div>
-                <button
-                  onClick={handleLogout}
-                  className="mt-4 w-full flex items-center justify-center px-4 py-3 text-sm font-medium text-red-700 bg-red-50 rounded-xl hover:bg-red-100 transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-red-300"
-                >
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Sign out
-                </button>
+  if (isPublicRoute) {
+    return (
+      <div className="app-shell">
+        <header className="sticky top-0 z-40 border-b border-white/60 bg-white/72 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+            <Link to="/" className="flex items-center gap-3">
+              <div className="interactive-outline surface-panel flex h-12 w-12 items-center justify-center rounded-2xl">
+                <Sparkles className="h-5 w-5 text-blue-600" />
               </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop sidebar */}
-      <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-80 lg:flex-col">
-        <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white/95 backdrop-blur-xl px-8 pb-6 border-r border-slate-200/50 shadow-2xl">
-          {/* Logo */}
-          <div className="flex h-24 shrink-0 items-center">
-            <Link 
-              to="/" 
-              className="flex items-center space-x-4 group transition-all duration-300"
-            >
-              <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 shadow-xl">
-                  <Sparkles className="h-8 w-8 text-white" />
-                </div>
-                <div className="absolute -inset-2 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl opacity-20 blur-lg group-hover:opacity-30 transition-opacity duration-300"></div>
-              </div>
-              <div className="flex flex-col">
-                                 <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">PathByte</span>
-                 <span className="text-sm text-slate-600 font-medium">AI Career Platform</span>
+              <div>
+                <div className="text-base font-semibold tracking-tight text-slate-950">PathByte</div>
+                <div className="text-xs text-slate-500">Guided tech career design</div>
               </div>
             </Link>
-          </div>
 
-          {/* Navigation */}
-          <nav className="flex flex-1 flex-col space-y-3 stagger-animation">
-            {navigation.map((item, index) => {
-              const Icon = item.icon
-              const isActive = location.pathname === item.href
-              return (
+            <nav className="hidden items-center gap-8 md:flex">
+              {publicNav.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   to={item.href}
-                                     className={`group flex items-center px-5 py-4 text-sm font-medium rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg animate-fade-in-up ${
-                     isActive
-                       ? `bg-gradient-to-r ${item.color} text-white shadow-xl shadow-${item.color.split('-')[1]}/25`
-                       : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
-                   }`}
-                   style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === item.href ? 'text-slate-950' : 'text-slate-600 hover:text-slate-950'
+                  }`}
                 >
-                  <div className={`mr-4 p-2.5 rounded-xl transition-all duration-300 ${
-                    isActive 
-                      ? 'bg-white/20 text-white' 
-                      : `bg-gradient-to-br ${item.color} text-white opacity-80 group-hover:opacity-100`
-                  }`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
                   {item.name}
-                  {isActive && (
-                    <div className="ml-auto w-2.5 h-2.5 bg-white rounded-full animate-pulse"></div>
-                  )}
                 </Link>
-              )
-            })}
-          </nav>
+              ))}
+            </nav>
 
-          {/* User section */}
-          {user && (
-            <div className="border-t border-slate-200/50 pt-6">
-              <div className="flex items-center space-x-4 p-4 rounded-2xl hover:bg-slate-50 transition-all duration-300 hover:scale-105">
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-lg font-semibold hover:scale-110 transition-transform duration-300 shadow-lg">
-                    {user.email?.charAt(0).toUpperCase()}
-                  </div>
-                  <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-2xl opacity-20 blur-sm"></div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-slate-900 truncate">{user.email}</p>
-                  <p className="text-xs text-slate-600">Premium Member</p>
-                </div>
-                <button
-                  onClick={handleLogout}
-                  className="p-2 text-slate-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all duration-300 hover:scale-110"
+            <div className="flex items-center gap-3">
+              {user ? (
+                <Link
+                  to="/dashboard"
+                  className="btn-modern rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900"
                 >
-                  <LogOut className="h-4 w-4" />
-                </button>
-              </div>
+                  Open Dashboard
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="hidden rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:text-slate-950 sm:inline-flex"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    to="/onboarding"
+                    className="btn-modern rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
+                  >
+                    Start now
+                  </Link>
+                </>
+              )}
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </header>
 
-      {/* Main content */}
-      <div className="lg:pl-80">
-        {/* Top bar */}
-        <div className="sticky top-0 z-40 flex h-16 sm:h-20 shrink-0 items-center gap-x-2 sm:gap-x-4 border-b border-slate-200/50 bg-white/80 backdrop-blur-xl px-4 sm:px-6 shadow-sm">
-          {/* Mobile menu button */}
+        <main>{children}</main>
+      </div>
+    )
+  }
+
+  return (
+    <div className="app-shell lg:flex">
+      <div
+        className={`fixed inset-0 z-50 bg-slate-950/30 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          sidebarOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
+      <aside
+        className={`app-sidebar surface-panel-strong fixed inset-y-0 left-0 z-50 flex flex-col rounded-r-[2rem] p-4 transition-transform duration-500 ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-[105%]'
+        } lg:translate-x-0`}
+      >
+        <div className="flex items-center justify-between px-2 pb-4">
+          <Link to="/" className="flex items-center gap-3">
+            <div className="interactive-outline surface-panel flex h-12 w-12 items-center justify-center rounded-2xl">
+              <Sparkles className="h-5 w-5 text-blue-600" />
+            </div>
+            <div>
+              <div className="text-base font-semibold tracking-tight text-slate-950">PathByte</div>
+              <div className="text-xs text-slate-500">Learning command center</div>
+            </div>
+          </Link>
+
           <button
             type="button"
-            className="-m-2.5 p-2.5 text-slate-700 lg:hidden hover:bg-slate-100 rounded-xl transition-all duration-300 hover:scale-105"
-            onClick={() => setSidebarOpen(true)}
+            onClick={() => setSidebarOpen(false)}
+            className="rounded-2xl p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 lg:hidden"
           >
-            <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+            <X className="h-5 w-5" />
           </button>
+        </div>
 
-          {/* Right side */}
-          <div className="flex items-center justify-end gap-x-2 sm:gap-x-4">
-            {/* User dropdown */}
-            {user && (
-              <div className="relative">
-                <button
-                  type="button"
-                  className="flex items-center space-x-2 sm:space-x-3 p-2 rounded-xl hover:bg-slate-100 transition-all duration-300 hover:scale-105 group"
-                  onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+        <div className="rounded-[1.5rem] border border-slate-200/80 bg-slate-950 px-5 py-5 text-white shadow-[0_24px_60px_rgba(15,23,42,0.35)]">
+          <div className="section-kicker border-white/10 bg-white/10 text-slate-100">
+            <Sparkles className="h-3.5 w-3.5" />
+            Daily focus
+          </div>
+          <h2 className="mt-4 text-xl font-semibold leading-tight">Build one meaningful step at a time.</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-300">
+            Clear structure, visible momentum, and smoother context switching across your learning flow.
+          </p>
+        </div>
+
+        <nav className="mt-6 flex-1 space-y-2">
+          {navigation.map((item) => {
+            const Icon = item.icon
+            const active =
+              location.pathname === item.href || (item.href !== '/' && location.pathname.startsWith(item.href))
+
+            return (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={`group flex items-center gap-3 rounded-[1.4rem] border px-4 py-3.5 transition-all duration-300 ${
+                  active
+                    ? 'border-blue-200 bg-blue-50 text-slate-950 shadow-[0_18px_32px_rgba(20,93,255,0.10)]'
+                    : 'border-transparent text-slate-600 hover:border-slate-200 hover:bg-white hover:text-slate-950'
+                }`}
+              >
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-2xl transition-colors ${
+                    active ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-slate-950 group-hover:text-white'
+                  }`}
                 >
-                  <div className="relative">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-xs sm:text-sm font-semibold group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <Icon className="h-4.5 w-4.5" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold">{item.name}</div>
+                  <div className="truncate text-xs text-slate-500">{item.subtitle}</div>
+                </div>
+              </Link>
+            )
+          })}
+        </nav>
+
+        {user && (
+          <div className="surface-panel rounded-[1.6rem] p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold text-white">
+                {user.email?.charAt(0).toUpperCase()}
+              </div>
+              <div className="min-w-0">
+                <div className="truncate text-sm font-semibold text-slate-950">{user.email}</div>
+                <div className="text-xs text-slate-500">Profile synced</div>
+              </div>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign out
+            </button>
+          </div>
+        )}
+      </aside>
+
+      <div className="min-h-screen flex-1 lg:pl-[calc(var(--shell-sidebar)+1rem)]">
+        <header className="sticky top-0 z-40 border-b border-white/60 bg-white/72 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => setSidebarOpen(true)}
+                className="surface-panel flex h-11 w-11 items-center justify-center rounded-2xl text-slate-700 lg:hidden"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Workspace</div>
+                <h1 className="text-xl font-semibold tracking-tight text-slate-950">{meta.title}</h1>
+                <p className="hidden text-sm text-slate-500 sm:block">{meta.description}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                to="/career-guide"
+                className="hidden items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-slate-950 md:inline-flex"
+              >
+                <BookOpen className="h-4 w-4" />
+                Explore roles
+              </Link>
+
+              {user && (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setUserDropdownOpen((prev) => !prev)}
+                    className="surface-panel flex items-center gap-3 rounded-full px-3 py-2"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-white">
                       {user.email?.charAt(0).toUpperCase()}
                     </div>
-                    <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-500 rounded-xl sm:rounded-2xl opacity-20 blur-sm"></div>
-                  </div>
-                  <span className="hidden md:block text-sm font-medium text-slate-900 group-hover:text-blue-700 transition-colors duration-300 truncate max-w-32">
-                    {user.email}
-                  </span>
-                  <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform duration-300 hidden sm:block ${
-                    userDropdownOpen ? 'rotate-180' : ''
-                  }`} />
-                </button>
-
-                {/* Dropdown menu */}
-                {userDropdownOpen && (
-                  <div className="absolute right-0 mt-3 w-56 sm:w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/50 py-3 animate-fade-in-up z-50">
-                    <div className="px-4 py-3 border-b border-slate-100">
-                      <p className="text-sm font-semibold text-slate-900 truncate">{user.email}</p>
-                      <p className="text-xs text-slate-500 mt-1">Premium Member</p>
+                    <div className="hidden text-left md:block">
+                      <div className="max-w-40 truncate text-sm font-semibold text-slate-950">{user.email}</div>
+                      <div className="text-xs text-slate-500">Active learner</div>
                     </div>
-                    <div className="py-2">
+                    <ChevronDown
+                      className={`hidden h-4 w-4 text-slate-500 transition-transform md:block ${
+                        userDropdownOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  {userDropdownOpen && (
+                    <div className="surface-panel-strong absolute right-0 top-[calc(100%+0.75rem)] z-50 w-64 rounded-[1.4rem] p-2">
                       <Link
                         to="/profile"
-                        className="flex items-center px-4 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-blue-700 transition-all duration-300 hover:translate-x-1"
-                        onClick={() => setUserDropdownOpen(false)}
+                        className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-950"
                       >
-                        <Settings className="h-4 w-4 mr-3" />
-                        Settings
+                        <Settings className="h-4 w-4" />
+                        Account settings
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="flex w-full items-center px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-all duration-300 hover:translate-x-1"
+                        className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-medium text-red-600 transition-colors hover:bg-red-50"
                       >
-                        <LogOut className="h-4 w-4 mr-3" />
+                        <LogOut className="h-4 w-4" />
                         Sign out
                       </button>
                     </div>
-                  </div>
-                )}
-              </div>
-            )}
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </header>
 
-        {/* Page content */}
-        <main className="py-4 sm:py-6 lg:py-8">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
-        </main>
+        <main className="page-shell mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">{children}</main>
       </div>
     </div>
   )

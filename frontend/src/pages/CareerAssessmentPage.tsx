@@ -4,7 +4,11 @@ import {
   ArrowRight, 
   ArrowLeft, 
   CheckCircle, 
-  Brain
+  Brain,
+  Sparkles,
+  Target,
+  RotateCcw,
+  X,
 } from 'lucide-react'
 import { cn } from '@/utils/cn'
 
@@ -283,6 +287,14 @@ export default function CareerAssessmentPage() {
     }
   }
 
+  const clearCurrentSelection = () => {
+    setAnswers((prev) => {
+      const nextAnswers = { ...prev }
+      delete nextAnswers[question.id]
+      return nextAnswers
+    })
+  }
+
   const calculateResults = () => {
     // Initialize scores for all roles
     const roleScores: { [key: string]: number } = {}
@@ -522,98 +534,105 @@ export default function CareerAssessmentPage() {
 
   if (isComplete) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-full mb-4">
-              <CheckCircle className="h-8 w-8 text-white" />
+      <div className="overflow-hidden px-4 py-8 sm:px-6 lg:px-8">
+        <div className="hero-orb left-[-5rem] top-14 h-56 w-56 bg-sky-300/30" />
+        <div className="hero-orb right-[-4rem] top-24 h-72 w-72 bg-blue-300/22" style={{ animationDelay: '1.8s' }} />
+
+        <div className="mx-auto max-w-5xl">
+          <div className="surface-panel-strong rounded-[2.4rem] px-6 py-8 sm:px-8 sm:py-10">
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="section-kicker">
+                <CheckCircle className="h-3.5 w-3.5 text-emerald-600" />
+                Assessment complete
+              </div>
+              <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500 text-white shadow-soft-xl">
+                <CheckCircle className="h-8 w-8 text-white" />
+              </div>
+              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Your strongest career matches</h1>
+              <p className="mt-4 text-lg leading-8 text-slate-600">
+                These recommendations are based on how you prefer to think, build, collaborate, and solve problems.
+              </p>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Assessment Complete!</h1>
-            <p className="text-xl text-gray-600">Here are your personalized career recommendations</p>
-          </div>
 
-          <div className="space-y-6">
-            {results.map((result, index) => {
-              const roleData = roleInfo[result.role]
-              const matchColor = result.percentage >= 80 ? 'text-green-600' : 
-                                result.percentage >= 60 ? 'text-blue-600' : 'text-yellow-600'
-              const bgColor = result.percentage >= 80 ? 'bg-green-50 border-green-200' : 
-                             result.percentage >= 60 ? 'bg-blue-50 border-blue-200' : 'bg-yellow-50 border-yellow-200'
-              
-              return (
-                <div
-                  key={result.role}
-                  className={`rounded-xl shadow-lg border-2 p-6 transition-all duration-200 hover:shadow-xl ${bgColor}`}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                        #{index + 1}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900">
-                          {roleData?.title || result.role}
-                        </h3>
-                        <p className="text-gray-600 text-sm">
-                          {roleData?.description || 'Tech career opportunity'}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-3xl font-bold ${matchColor}`}>{result.percentage}%</span>
-                      </div>
-                      <span className="text-gray-500 text-sm">compatibility</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                      Why this matches you:
-                    </h4>
-                    <div className="grid grid-cols-1 gap-2">
-                      {result.reasoning.map((reason, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-gray-700 text-sm">{reason}</span>
+            <div className="mt-10 space-y-5">
+              {results.map((result, index) => {
+                const roleData = roleInfo[result.role]
+                const matchTone =
+                  result.percentage >= 80
+                    ? 'border-emerald-200 bg-emerald-50'
+                    : result.percentage >= 60
+                      ? 'border-blue-200 bg-blue-50'
+                      : 'border-amber-200 bg-amber-50'
+
+                return (
+                  <div key={result.role} className={`rounded-[1.8rem] border p-6 ${matchTone}`}>
+                    <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-lg font-semibold text-white">
+                          #{index + 1}
                         </div>
-                      ))}
+                        <div>
+                          <h3 className="text-2xl font-semibold text-slate-950">{roleData?.title || result.role}</h3>
+                          <p className="mt-1 text-sm leading-6 text-slate-600">
+                            {roleData?.description || 'Tech career opportunity'}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="rounded-[1.4rem] bg-white px-5 py-4 text-center shadow-soft">
+                        <div className="text-3xl font-semibold text-slate-950">{result.percentage}%</div>
+                        <div className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">compatibility</div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 rounded-[1.4rem] bg-white/80 p-5">
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Why this matches
+                      </h4>
+                      <div className="mt-4 grid gap-3">
+                        {result.reasoning.map((reason, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                            <div className="mt-2 h-2 w-2 rounded-full bg-blue-500" />
+                            <span className="text-sm leading-6 text-slate-700">{reason}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-6 grid gap-3 sm:grid-cols-[minmax(0,1fr)_220px]">
+                      <button
+                        onClick={() => navigate(`/roadmap/${result.role}`)}
+                        className="btn-modern inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white"
+                      >
+                        View learning roadmap
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => navigate('/career-guide')}
+                        className="btn-modern inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800"
+                      >
+                        Compare roles
+                      </button>
                     </div>
                   </div>
+                )
+              })}
+            </div>
 
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => navigate(`/roadmap/${result.role}`)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
-                    >
-                      View Learning Roadmap
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-                    <button
-                      onClick={() => navigate('/career-guide')}
-                      className="px-6 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-lg font-medium transition-colors duration-200"
-                    >
-                      Compare Roles
-                    </button>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-
-          <div className="text-center mt-8">
-            <button
-              onClick={restartAssessment}
-              className="px-6 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-lg font-medium transition-colors duration-200 mr-4"
-            >
-              Retake Assessment
-            </button>
-            <button
-              onClick={() => navigate('/career-guide')}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
-            >
-              Explore All Careers
-            </button>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <button
+                onClick={restartAssessment}
+                className="btn-modern inline-flex min-w-[12rem] items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800"
+              >
+                Retake assessment
+              </button>
+              <button
+                onClick={() => navigate('/career-guide')}
+                className="btn-modern inline-flex min-w-[12rem] items-center justify-center rounded-full bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white"
+              >
+                Explore all careers
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -621,225 +640,230 @@ export default function CareerAssessmentPage() {
   }
 
   const question = questions[currentQuestion]
-  const progress = ((currentQuestion + 1) / questions.length) * 100
+  const answeredCount = questions.filter((item) => answers[item.id] !== undefined && answers[item.id] !== null).length
+  const progress = (answeredCount / questions.length) * 100
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4">
-            <Brain className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Career Assessment</h1>
-          <p className="text-xl text-gray-600">
-            Discover your ideal tech career path through our comprehensive assessment
-          </p>
-          
-          {/* Test buttons for debugging */}
-          <div className="flex gap-2 justify-center mt-4">
-            <button
-              onClick={() => {
-                const testAnswers = {
-                  q1: 0, q2: 0, q3: 0, q4: 0, q5: 0,
-                  q6: 0, q7: 0, q8: 0, q9: 0, q10: 0,
-                  q11: 0, q12: 0, q13: 0, q14: 0, q15: 0
-                }
-                setAnswers(testAnswers)
-              }}
-              className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm"
-            >
-              Test: Set All Frontend Answers
-            </button>
-            
-            <button
-              onClick={() => {
-                if (Object.keys(answers).length === 15) {
-                  calculateResults()
-                } else {
-                  alert('Please answer all questions first or use the test button above')
-                }
-              }}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm"
-            >
-              Test: Calculate Results
-            </button>
-          </div>
-        </div>
+    <div className="overflow-hidden px-4 py-8 sm:px-6 lg:px-8">
+      <div className="hero-orb left-[-5rem] top-14 h-56 w-56 bg-sky-300/30" />
+      <div className="hero-orb right-[-4rem] top-24 h-72 w-72 bg-blue-300/22" style={{ animationDelay: '1.8s' }} />
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
-              Question {currentQuestion + 1} of {questions.length}
-            </span>
-            <span className="text-sm font-medium text-gray-700">
-              {Math.round(progress)}% Complete
-            </span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
-            <div 
-              className="bg-blue-500 h-3 rounded-full transition-all duration-300 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Question Card */}
-        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">
-              {question.question}
-            </h2>
-            {question.description && (
-              <p className="text-gray-600">{question.description}</p>
-            )}
+      <div className="mx-auto max-w-4xl">
+        <div className="surface-panel-strong rounded-[2.4rem] px-6 py-8 sm:px-8 sm:py-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="section-kicker">
+              <Sparkles className="h-3.5 w-3.5 text-blue-600" />
+              Guided role discovery
+            </div>
+            <div className="mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-full bg-slate-950 text-white shadow-soft-xl">
+              <Brain className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Career assessment</h1>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              Discover which tech roles align best with your interests, problem-solving style, and preferred way of working.
+            </p>
           </div>
 
-          {/* Question Content */}
-          <div className="space-y-4">
-            {question.type === 'single' && question.options && (
-              <div className="space-y-3">
-                {question.options.map((option, index) => (
-                  <label
-                    key={index}
-                    className={cn(
-                      'flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all duration-200',
-                      answers[question.id] === index
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    )}
-                  >
-                    <input
-                      type="radio"
-                      name={question.id}
-                      value={index}
-                      checked={answers[question.id] === index}
-                      onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
-                      className="sr-only"
-                    />
-                    <div className={cn(
-                      'w-4 h-4 rounded-full border-2 mr-3',
-                      answers[question.id] === index
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-gray-300'
-                    )}>
-                      {answers[question.id] === index && (
-                        <div className="w-2 h-2 bg-white rounded-full m-0.5" />
+          <div className="mt-8 rounded-[1.8rem] border border-slate-200 bg-white/80 p-5">
+            <div className="mb-3 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-slate-950">Question {currentQuestion + 1} of {questions.length}</p>
+                <p className="text-sm text-slate-500">{Math.round(progress)}% complete</p>
+              </div>
+              <div className="rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                Assessment flow
+              </div>
+            </div>
+            <div className="h-3 w-full rounded-full bg-slate-100">
+              <div
+                className="h-3 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 transition-all duration-300 ease-out"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm text-slate-500">
+                You can clear this answer or restart the full assessment at any time.
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={clearCurrentSelection}
+                  disabled={answers[question.id] === undefined || answers[question.id] === null}
+                  className={cn(
+                    'btn-modern inline-flex items-center rounded-full px-4 py-2.5 text-sm font-semibold',
+                    answers[question.id] === undefined || answers[question.id] === null
+                      ? 'cursor-not-allowed border border-slate-200 bg-slate-100 text-slate-400'
+                      : 'border border-slate-200 bg-white text-slate-700',
+                  )}
+                >
+                  <X className="mr-2 h-4 w-4" />
+                  Clear selection
+                </button>
+                <button
+                  onClick={restartAssessment}
+                  className="btn-modern inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700"
+                >
+                  <RotateCcw className="mr-2 h-4 w-4" />
+                  Restart assessment
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+            <div className="mb-8">
+              <div className="section-kicker">
+                <Target className="h-3.5 w-3.5 text-blue-600" />
+                Current prompt
+              </div>
+              <h2 className="mt-5 text-2xl font-semibold text-slate-950 sm:text-3xl">
+                {question.question}
+              </h2>
+              {question.description && (
+                <p className="mt-3 text-slate-600">{question.description}</p>
+              )}
+            </div>
+
+            <div className="space-y-4">
+              {question.type === 'single' && question.options && (
+                <div className="space-y-3">
+                  {question.options.map((option, index) => (
+                    <label
+                      key={index}
+                      className={cn(
+                        'flex items-start gap-4 rounded-[1.35rem] border p-4 transition-all duration-200 cursor-pointer',
+                        answers[question.id] === index
+                          ? 'border-blue-300 bg-blue-50 shadow-[0_12px_28px_rgba(20,93,255,0.08)]'
+                          : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50',
                       )}
-                    </div>
-                    <span className="text-gray-900">{option}</span>
-                  </label>
-                ))}
-              </div>
-            )}
+                    >
+                      <input
+                        type="radio"
+                        name={question.id}
+                        value={index}
+                        checked={answers[question.id] === index}
+                        onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
+                        className="sr-only"
+                      />
+                      <div
+                        className={cn(
+                          'mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2',
+                          answers[question.id] === index ? 'border-blue-500 bg-blue-500' : 'border-slate-300 bg-white',
+                        )}
+                      >
+                        {answers[question.id] === index && <div className="h-2.5 w-2.5 rounded-full bg-white" />}
+                      </div>
+                      <span className="text-sm leading-6 text-slate-900">{option}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
 
-            {question.type === 'multiple' && question.options && (
-              <div className="space-y-3">
-                {question.options.map((option, index) => (
-                  <label
-                    key={index}
-                    className={cn(
-                      'flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all duration-200',
-                      answers[question.id]?.includes(option)
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    )}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={answers[question.id]?.includes(option) || false}
-                      onChange={(e) => {
-                        const currentAnswers = answers[question.id] || []
-                        if (e.target.checked) {
-                          handleAnswer(question.id, [...currentAnswers, option])
-                        } else {
-                          handleAnswer(question.id, currentAnswers.filter((a: string) => a !== option))
-                        }
-                      }}
-                      className="sr-only"
-                    />
-                    <div className={cn(
-                      'w-4 h-4 rounded border-2 mr-3 flex items-center justify-center',
-                      answers[question.id]?.includes(option)
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-gray-300'
-                    )}>
-                      {answers[question.id]?.includes(option) && (
-                        <CheckCircle className="w-3 h-3 text-white" />
+              {question.type === 'multiple' && question.options && (
+                <div className="space-y-3">
+                  {question.options.map((option, index) => (
+                    <label
+                      key={index}
+                      className={cn(
+                        'flex items-start gap-4 rounded-[1.35rem] border p-4 transition-all duration-200 cursor-pointer',
+                        answers[question.id]?.includes(option)
+                          ? 'border-blue-300 bg-blue-50 shadow-[0_12px_28px_rgba(20,93,255,0.08)]'
+                          : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50',
                       )}
-                    </div>
-                    <span className="text-gray-900">{option}</span>
-                  </label>
-                ))}
-              </div>
-            )}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={answers[question.id]?.includes(option) || false}
+                        onChange={(e) => {
+                          const currentAnswers = answers[question.id] || []
+                          if (e.target.checked) {
+                            handleAnswer(question.id, [...currentAnswers, option])
+                          } else {
+                            handleAnswer(question.id, currentAnswers.filter((a: string) => a !== option))
+                          }
+                        }}
+                        className="sr-only"
+                      />
+                      <div
+                        className={cn(
+                          'mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2',
+                          answers[question.id]?.includes(option) ? 'border-blue-500 bg-blue-500' : 'border-slate-300 bg-white',
+                        )}
+                      >
+                        {answers[question.id]?.includes(option) && <CheckCircle className="h-4 w-4 text-white" />}
+                      </div>
+                      <span className="text-sm leading-6 text-slate-900">{option}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
 
-            {question.type === 'scale' && (
-              <div className="space-y-4">
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>{question.scaleLabels?.min}</span>
-                  <span>{question.scaleLabels?.max}</span>
+              {question.type === 'scale' && (
+                <div className="space-y-4">
+                  <div className="flex justify-between text-sm text-slate-500">
+                    <span>{question.scaleLabels?.min}</span>
+                    <span>{question.scaleLabels?.max}</span>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    {Array.from({ length: question.scaleMax! - question.scaleMin! + 1 }, (_, i) => {
+                      const value = question.scaleMin! + i
+                      return (
+                        <label key={value} className="flex flex-1 flex-col items-center cursor-pointer">
+                          <input
+                            type="radio"
+                            name={question.id}
+                            value={value}
+                            checked={answers[question.id] === value}
+                            onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
+                            className="sr-only"
+                          />
+                          <div
+                            className={cn(
+                              'flex h-10 w-10 items-center justify-center rounded-full border-2',
+                              answers[question.id] === value
+                                ? 'border-blue-500 bg-blue-500 text-white'
+                                : 'border-slate-300 text-slate-600',
+                            )}
+                          >
+                            {value}
+                          </div>
+                        </label>
+                      )
+                    })}
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  {Array.from({ length: question.scaleMax! - question.scaleMin! + 1 }, (_, i) => {
-                    const value = question.scaleMin! + i
-                    return (
-                      <label key={value} className="flex flex-col items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name={question.id}
-                          value={value}
-                          checked={answers[question.id] === value}
-                          onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
-                          className="sr-only"
-                        />
-                        <div className={cn(
-                          'w-8 h-8 rounded-full border-2 flex items-center justify-center mb-2',
-                          answers[question.id] === value
-                            ? 'border-blue-500 bg-blue-500 text-white'
-                            : 'border-gray-300 text-gray-600'
-                        )}>
-                          {value}
-                        </div>
-                      </label>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
+              )}
+            </div>
+
+            <div className="mt-8 flex items-center justify-between gap-4 border-t border-slate-200 pt-6">
+              <button
+                onClick={prevQuestion}
+                disabled={currentQuestion === 0}
+                className={cn(
+                  'btn-modern inline-flex items-center rounded-full px-5 py-3 text-sm font-semibold',
+                  currentQuestion === 0
+                    ? 'cursor-not-allowed text-slate-300'
+                    : 'border border-slate-200 bg-white text-slate-800',
+                )}
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Previous
+              </button>
+
+              <button
+                onClick={nextQuestion}
+                disabled={answers[question.id] === undefined || answers[question.id] === null}
+                className={cn(
+                  'btn-modern inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold',
+                  answers[question.id] === undefined || answers[question.id] === null
+                    ? 'cursor-not-allowed bg-slate-200 text-slate-400'
+                    : 'bg-slate-950 text-white',
+                )}
+              >
+                {currentQuestion === questions.length - 1 ? 'Get results' : 'Next'}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </button>
+            </div>
           </div>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={prevQuestion}
-            disabled={currentQuestion === 0}
-            className={cn(
-              'flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200',
-              currentQuestion === 0
-                ? 'text-gray-400 cursor-not-allowed'
-                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-            )}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Previous
-          </button>
-          
-          <button
-            onClick={nextQuestion}
-            disabled={!answers[question.id]}
-            className={cn(
-              'flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200',
-              !answers[question.id]
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 text-white'
-            )}
-          >
-            {currentQuestion === questions.length - 1 ? 'Get Results' : 'Next'}
-            <ArrowRight className="h-4 w-4" />
-          </button>
         </div>
       </div>
     </div>

@@ -357,249 +357,226 @@ export default function RoadmapPage() {
   ]
 
   const currentData = skillsData[activeRole]?.roadmap[activeYear]
+  const activeRoleMeta = roleOptions.find((role) => role.key === activeRole)
+  const ActiveRoleIcon = skillsData[activeRole]?.icon || activeRoleMeta?.icon || Code
+  const completedSkills = currentData?.skills?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'skills', index)).length || 0
+  const completedProjects = currentData?.projects?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'projects', index)).length || 0
+  const completedResources =
+    (currentData?.freeResources?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'freeResources', index)).length || 0) +
+    (currentData?.paidResources?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'paidResources', index)).length || 0)
+  const yearProgress = getYearProgress(activeRole, activeYear)
+
+  const normalizeResource = (resource: any) => ({
+    title: typeof resource === 'string' ? resource : resource.title || 'Resource',
+    url: typeof resource === 'string' ? '#' : resource.url || '#',
+    description:
+      typeof resource === 'string'
+        ? 'Learning resource for skill development'
+        : resource.description || 'Learning resource for skill development',
+    price: typeof resource === 'object' ? resource.price : undefined,
+  })
 
   if (!currentData) {
     return <div className="text-center py-20 text-gray-600">Roadmap data not found for selected role and year.</div>
   }
 
   return (
-    <div className="min-h-screen page-transition bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12 animate-fade-in-up">
-          <div className="mx-auto h-20 w-20 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-xl mb-6 transform hover:scale-105 transition-all duration-300 animate-bounce-gentle">
-            {activeRole === 'frontend' ? (
-              <Code className="h-10 w-10 text-white" />
-            ) : activeRole === 'backend' ? (
-              <Code className="h-10 w-10 text-white" />
-            ) : activeRole === 'datascientist' ? (
-              <BarChart3 className="h-10 w-10 text-white" />
-            ) : activeRole === 'mle' || activeRole === 'aispecialist' ? (
-              <Brain className="h-10 w-10 text-white" />
-            ) : activeRole === 'productmanager' || activeRole === 'techmanager' || activeRole === 'cto' ? (
-              <Users className="h-10 w-10 text-white" />
-            ) : activeRole === 'qaengineer' ? (
-              <CheckCircle className="h-10 w-10 text-white" />
-            ) : activeRole === 'technicalwriter' ? (
-              <BookOpen className="h-10 w-10 text-white" />
-            ) : activeRole === 'cloudengineer' || activeRole === 'devops' || activeRole === 'sre' || activeRole === 'networkengineer' ? (
-              <Globe className="h-10 w-10 text-white" />
-            ) : (
-              <Code className="h-10 w-10 text-white" />
-            )}
-          </div>
-          <h1 className="text-5xl font-bold text-gray-900 mb-4 animate-slide-in">
-            Career Roadmap
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Your personalized learning journey to becoming a professional developer
-          </p>
-        </div>
+    <div className="overflow-hidden px-4 pb-16 pt-4 sm:px-6 lg:px-8">
+      <div className="hero-orb left-[-5rem] top-14 h-56 w-56 bg-sky-300/30" />
+      <div className="hero-orb right-[-4rem] top-24 h-72 w-72 bg-blue-300/24" style={{ animationDelay: '1.8s' }} />
 
-        {/* Current Role Display */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-slate-800">Current Role</h3>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-slate-600">Currency:</span>
-              <button
-                onClick={() => setCurrency('USD')}
-                className={cn(
-                  "px-3 py-1 rounded text-sm font-medium transition-colors",
-                  currency === 'USD' ? "bg-blue-100 text-blue-800" : "text-gray-600 hover:text-blue-600"
-                )}
-              >
-                USD
-              </button>
-              <button
-                onClick={() => setCurrency('INR')}
-                className={cn(
-                  "px-3 py-1 rounded text-sm font-medium transition-colors",
-                  currency === 'INR' ? "bg-blue-100 text-blue-800" : "text-gray-600 hover:text-blue-600"
-                )}
-              >
-                INR
-              </button>
-            </div>
-          </div>
-          
-          {/* Current Role Card */}
-          <div className="flex items-center justify-between p-4 rounded-xl border-2 border-primary-500 bg-primary-50 shadow-lg">
-            <div className="flex items-center gap-4">
-              <div className="h-12 w-12 rounded-lg bg-primary-500 flex items-center justify-center">
-                {activeRole === 'frontend' ? (
-                  <Code className="h-6 w-6 text-white" />
-                ) : activeRole === 'backend' ? (
-                  <Code className="h-6 w-6 text-white" />
-                ) : activeRole === 'datascientist' ? (
-                  <BarChart3 className="h-6 w-6 text-white" />
-                ) : activeRole === 'mle' || activeRole === 'aispecialist' ? (
-                  <Brain className="h-6 w-6 text-white" />
-                ) : activeRole === 'productmanager' || activeRole === 'techmanager' || activeRole === 'cto' ? (
-                  <Users className="h-6 w-6 text-white" />
-                ) : activeRole === 'qaengineer' ? (
-                  <CheckCircle className="h-6 w-6 text-white" />
-                ) : activeRole === 'technicalwriter' ? (
-                  <BookOpen className="h-6 w-6 text-white" />
-                ) : activeRole === 'cloudengineer' || activeRole === 'devops' || activeRole === 'sre' || activeRole === 'networkengineer' ? (
-                  <Globe className="h-6 w-6 text-white" />
-                ) : (
-                  <Code className="h-6 w-6 text-white" />
-                )}
+      <div className="mx-auto max-w-7xl space-y-8">
+        <section className="surface-panel-strong rounded-[2.4rem] px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
+          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div>
+              <div className="section-kicker">
+                <Target className="h-3.5 w-3.5 text-blue-600" />
+                Full roadmap workspace
               </div>
-              <div>
-                <h4 className="font-semibold text-primary-700 text-lg">
-                  {roleOptions.find(role => role.key === activeRole)?.label}
-                </h4>
-                <p className="text-sm text-primary-600">
-                  {roleOptions.find(role => role.key === activeRole)?.description}
-                </p>
-                {user?.targetRole && (
-                  <p className="text-xs text-gray-500 mt-1">
-                    Your selected role: {user.targetRole}
-                  </p>
-                )}
-              </div>
-            </div>
-            
-            <button
-              onClick={() => navigate('/roles')}
-              className="flex items-center gap-2 px-4 py-2 bg-white border border-primary-300 text-primary-700 rounded-lg hover:bg-primary-50 transition-colors"
-            >
-              <Settings className="h-4 w-4" />
-              <span>Change Job Role</span>
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Year Selection */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-3 sm:mb-4">Select Experience Level</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            {yearOptions.map((year) => (
-              <button
-                key={year.key}
-                onClick={() => setActiveYear(year.key)}
-                className={cn(
-                  "p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 text-center group",
-                  activeYear === year.key
-                    ? "border-primary-500 bg-primary-50 shadow-lg scale-105"
-                    : "border-gray-200 bg-white hover:border-primary-300 hover:shadow-md hover:scale-102"
-                )}
-              >
-                <div className="flex items-center justify-center mb-2">
-                  <div className={cn(
-                    "h-8 w-8 sm:h-10 sm:w-10 rounded-full flex items-center justify-center transition-colors",
-                    activeYear === year.key ? "bg-primary-500" : "bg-gray-100 group-hover:bg-primary-100"
-                  )}>
-                    <year.icon className={cn(
-                      "h-4 w-4 sm:h-5 sm:w-5 transition-colors",
-                      activeYear === year.key ? "text-white" : "text-gray-600 group-hover:text-primary-600"
-                    )} />
-                  </div>
+              <div className="mt-5 flex items-center gap-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-slate-950 text-white shadow-soft-xl">
+                  <ActiveRoleIcon className="h-8 w-8" />
                 </div>
-                <span className={cn(
-                  "font-medium text-xs sm:text-sm transition-colors",
-                  activeYear === year.key ? "text-primary-700" : "text-gray-900"
-                )}>
-                  {year.label}
-                </span>
-              </button>
-            ))}
+                <div>
+                  <h1 className="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+                    {activeRoleMeta?.label || 'Career Roadmap'}
+                  </h1>
+                  <p className="mt-2 max-w-3xl text-lg leading-8 text-slate-600">
+                    {activeRoleMeta?.description || 'A structured path with clearer hierarchy, calmer spacing, and balanced sections across the page.'}
+                  </p>
+                </div>
+              </div>
+              {user?.targetRole && (
+                <p className="mt-4 text-sm text-slate-500">Your selected role: {user.targetRole}</p>
+              )}
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="card-modern p-5">
+                <p className="text-sm font-semibold text-slate-500">Current stage</p>
+                <p className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{activeYear} years</p>
+                <p className="mt-2 text-sm text-slate-600">{currentData?.title}</p>
+              </div>
+              <div className="card-modern p-5">
+                <p className="text-sm font-semibold text-slate-500">Progress</p>
+                <p className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{Math.round(yearProgress)}%</p>
+                <p className="mt-2 text-sm text-slate-600">{currentData?.goal}</p>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
+        <section className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="surface-panel rounded-[2rem] p-5 sm:p-6">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-slate-950">Experience band</h2>
+                <p className="mt-1 text-sm text-slate-600">Switch across career stages without losing your place in the roadmap layout.</p>
+              </div>
+              <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1">
+                <button
+                  onClick={() => setCurrency('USD')}
+                  className={cn(
+                    'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+                    currency === 'USD' ? 'bg-slate-950 text-white' : 'text-slate-600 hover:text-slate-950',
+                  )}
+                >
+                  USD
+                </button>
+                <button
+                  onClick={() => setCurrency('INR')}
+                  className={cn(
+                    'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+                    currency === 'INR' ? 'bg-slate-950 text-white' : 'text-slate-600 hover:text-slate-950',
+                  )}
+                >
+                  INR
+                </button>
+              </div>
+            </div>
 
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {yearOptions.map((year) => (
+                <button
+                  key={year.key}
+                  onClick={() => setActiveYear(year.key)}
+                  className={cn(
+                    'rounded-[1.4rem] border px-4 py-4 text-left transition-all duration-300',
+                    activeYear === year.key
+                      ? 'border-blue-200 bg-blue-50 shadow-[0_16px_30px_rgba(20,93,255,0.10)]'
+                      : 'border-slate-200 bg-white hover:border-slate-300',
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className={cn('flex h-10 w-10 items-center justify-center rounded-2xl', activeYear === year.key ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-600')}>
+                      <year.icon className="h-4 w-4" />
+                    </div>
+                    <span className="text-xs font-semibold text-slate-400">{year.key}</span>
+                  </div>
+                  <p className="mt-3 text-sm font-semibold text-slate-950">{year.label}</p>
+                </button>
+              ))}
+            </div>
+          </div>
 
-        {/* Progress Overview */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+          <button
+            onClick={() => navigate('/roles')}
+            className="btn-modern inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-800"
+          >
+            <Settings className="mr-2 h-4 w-4" />
+            Change role
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </button>
+        </section>
+
+        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <ProgressStats
             totalItems={currentData?.skills?.length || 0}
-            completedItems={currentData?.skills?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'skills', index)).length || 0}
+            completedItems={completedSkills}
             title="Skills Mastered"
             icon={Target}
           />
           <ProgressStats
             totalItems={currentData?.projects?.length || 0}
-            completedItems={currentData?.projects?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'projects', index)).length || 0}
+            completedItems={completedProjects}
             title="Projects Completed"
             icon={Trophy}
           />
           <ProgressStats
             totalItems={(currentData?.freeResources?.length || 0) + (currentData?.paidResources?.length || 0)}
-            completedItems={
-              (currentData?.freeResources?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'freeResources', index)).length || 0) +
-              (currentData?.paidResources?.filter((_: any, index: number) => getItemProgress(activeRole, activeYear, 'paidResources', index)).length || 0)
-            }
+            completedItems={completedResources}
             title="Resources Completed"
             icon={BookOpen}
           />
-        </div>
+          <div className="card-modern p-5">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-slate-500">Overall progress</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950">{Math.round(yearProgress)}%</p>
+              </div>
+              <BarChart3 className="h-6 w-6 text-slate-400" />
+            </div>
+          </div>
+        </section>
 
-        {/* Year Progress Overview */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-6 mb-8 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-slate-800">Overall Progress</h3>
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+        <section className="surface-panel-strong rounded-[2rem] p-6">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-950">Progress overview</h3>
+              <p className="mt-1 text-sm text-slate-600">A single progress bar anchors the page and keeps the main roadmap blocks aligned underneath it.</p>
+            </div>
+            <div className="flex items-center gap-2 text-sm font-semibold text-slate-600">
               <BarChart3 className="h-4 w-4" />
-              {Math.round(getYearProgress(activeRole, activeYear))}% Complete
+              {Math.round(yearProgress)}% complete
             </div>
           </div>
           <ProgressBar
-            progress={getYearProgress(activeRole, activeYear)}
+            progress={yearProgress}
             color="emerald"
             size="lg"
             animated={true}
           />
-        </div>
+        </section>
 
-        {/* Individual Skill Progress Overview */}
         {skillsData[activeRole]?.detailedSkills && (
-          <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
+          <section>
             <SkillProgressOverview
               roleId={activeRole}
               yearId={activeYear}
               detailedSkills={skillsData[activeRole]?.detailedSkills}
             />
-          </div>
+          </section>
         )}
 
-        {/* Certification Resources */}
-        <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
+        <section>
           <CertificationResources
             certifications={skillsData[activeRole]?.certifications || []}
             youtubePlaylists={skillsData[activeRole]?.youtubePlaylists || []}
             currency={currency}
           />
-        </div>
+        </section>
 
-        {/* Main Content */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
-          {/* Header with gradient */}
-          <div className={cn('bg-gradient-to-r', skillsData[activeRole]?.color)}>
-            <div className="px-8 py-6">
+        <section className="overflow-hidden rounded-[2.4rem] border border-slate-200 bg-white shadow-medium">
+          <div className={cn('bg-gradient-to-r px-8 py-7', skillsData[activeRole]?.color)}>
+            <div className="grid gap-4 lg:grid-cols-[auto_1fr] lg:items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-[1.4rem] bg-white/16 text-white">
+                {React.createElement(ActiveRoleIcon, { className: "h-8 w-8" })}
+              </div>
               <div className="flex items-center gap-4 mb-4">
-                <div className="h-16 w-16 bg-white/20 rounded-xl flex items-center justify-center">
-                  {React.createElement(skillsData[activeRole]?.icon, { className: "h-8 w-8 text-white" })}
-                </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">{currentData?.title}</h2>
-                  <p className="text-white/90 text-lg">{currentData?.goal}</p>
+                  <h2 className="text-2xl font-semibold text-white">{currentData?.title}</h2>
+                  <p className="mt-1 text-base text-white/90">{currentData?.goal}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Content */}
-          <div className="p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Column */}
+          <div className="grid gap-8 p-6 lg:grid-cols-2 lg:p-8">
             <div className="space-y-8">
-              {/* Skills & Topics */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Target className="h-5 w-5 text-primary-600" />
-                  Skills & Topics
+              <div className="surface-panel rounded-[1.8rem] p-6">
+                <h3 className="mb-4 flex items-center gap-2 text-xl font-semibold text-slate-950">
+                  <Target className="h-5 w-5 text-blue-600" />
+                  Skills and topics
                 </h3>
                 <div className="space-y-3">
                   {currentData?.skills?.map((skill: string, index: number) => (
@@ -613,12 +590,11 @@ export default function RoadmapPage() {
                 </div>
               </div>
 
-              {/* Individual Skill Tracking */}
               {skillsData[activeRole]?.detailedSkills && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    <Target className="h-5 w-5 text-primary-600" />
-                    Detailed Skill Tracking
+                <div className="surface-panel rounded-[1.8rem] p-6">
+                  <h3 className="mb-4 flex items-center gap-2 text-xl font-semibold text-slate-950">
+                    <Target className="h-5 w-5 text-blue-600" />
+                    Detailed skill tracking
                   </h3>
                   <div className="space-y-4">
                     {Object.entries(skillsData[activeRole]?.detailedSkills || {}).map(([skillName, subSkills]) => (
@@ -635,11 +611,10 @@ export default function RoadmapPage() {
                 </div>
               )}
 
-              {/* Milestone Projects */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="surface-panel rounded-[1.8rem] p-6">
+                <h3 className="mb-4 flex items-center gap-2 text-xl font-semibold text-slate-950">
                   <Star className="h-5 w-5 text-amber-600" />
-                  Milestone Projects
+                  Milestone projects
                 </h3>
                 <div className="space-y-3">
                   {currentData?.projects?.map((project: string, index: number) => (
@@ -654,31 +629,25 @@ export default function RoadmapPage() {
               </div>
             </div>
 
-            {/* Right Column */}
             <div className="space-y-8">
-              {/* Free Resources */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-green-600" />
-                  Free Resources
+              <div className="surface-panel rounded-[1.8rem] p-6">
+                <h3 className="mb-4 flex items-center gap-2 text-xl font-semibold text-slate-950">
+                  <Globe className="h-5 w-5 text-emerald-600" />
+                  Free resources
                 </h3>
                 <div className="space-y-4">
                   {currentData?.freeResources?.map((resource: any, index: number) => {
-                    // Handle both string and object formats
-                    const title = typeof resource === 'string' ? resource : resource.title || 'Resource';
-                    const url = typeof resource === 'string' ? '#' : resource.url || '#';
-                    const description = typeof resource === 'string' ? 'Learning resource for skill development' : resource.description || 'Learning resource for skill development';
-                    
+                    const normalized = normalizeResource(resource)
                     return (
                       <div key={index} className={cn(
-                        "border rounded-lg p-4 transition-all duration-200",
+                        "rounded-[1.25rem] border p-4 transition-all duration-200",
                         getItemProgress(activeRole, activeYear, 'freeResources', index)
                           ? "bg-emerald-50 border-emerald-200"
                           : "bg-green-50 border-green-200"
                       )}>
                         <div className="flex items-center justify-between">
-                          <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-900 hover:text-primary-600 transition-colors flex-1">
-                            {title} <ExternalLink className="inline-block h-3 w-3 ml-1 text-gray-400" />
+                          <a href={normalized.url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-900 hover:text-primary-600 transition-colors flex-1">
+                            {normalized.title} <ExternalLink className="inline-block h-3 w-3 ml-1 text-gray-400" />
                           </a>
                           <ProgressCheckbox
                             checked={getItemProgress(activeRole, activeYear, 'freeResources', index)}
@@ -687,36 +656,31 @@ export default function RoadmapPage() {
                             disabled={false}
                           />
                         </div>
-                        <p className="text-xs text-gray-500 mt-1">{description}</p>
+                        <p className="text-xs text-gray-500 mt-1">{normalized.description}</p>
                       </div>
-                    );
+                    )
                   })}
                 </div>
               </div>
 
-              {/* Paid Resources */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="surface-panel rounded-[1.8rem] p-6">
+                <h3 className="mb-4 flex items-center gap-2 text-xl font-semibold text-slate-950">
                   <Zap className="h-5 w-5 text-orange-600" />
-                  Paid Resources
+                  Paid resources
                 </h3>
                 <div className="space-y-4">
                   {currentData?.paidResources?.map((resource: any, index: number) => {
-                    // Handle both string and object formats
-                    const title = typeof resource === 'string' ? resource : resource.title || 'Resource';
-                    const url = typeof resource === 'string' ? '#' : resource.url || '#';
-                    const description = typeof resource === 'string' ? 'Learning resource for skill development' : resource.description || 'Learning resource for skill development';
-                    
+                    const normalized = normalizeResource(resource)
                     return (
                       <div key={index} className={cn(
-                        "border rounded-lg p-4 transition-all duration-200",
+                        "rounded-[1.25rem] border p-4 transition-all duration-200",
                         getItemProgress(activeRole, activeYear, 'paidResources', index)
                           ? "bg-emerald-50 border-emerald-200"
                           : "bg-orange-50 border-orange-200"
                       )}>
                         <div className="flex items-center justify-between">
-                          <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-900 hover:text-primary-600 transition-colors flex-1">
-                            {title} <ExternalLink className="inline-block h-3 w-3 ml-1 text-gray-400" />
+                          <a href={normalized.url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-900 hover:text-primary-600 transition-colors flex-1">
+                            {normalized.title} <ExternalLink className="inline-block h-3 w-3 ml-1 text-gray-400" />
                           </a>
                           <ProgressCheckbox
                             checked={getItemProgress(activeRole, activeYear, 'paidResources', index)}
@@ -725,18 +689,18 @@ export default function RoadmapPage() {
                             disabled={false}
                           />
                         </div>
-                        <p className="text-xs text-gray-500 mt-1">{description}</p>
-                        {typeof resource === 'object' && resource.price && (
-                          <p className="text-xs text-gray-700 font-semibold mt-1">Price: {formatPrice(resource.price, currency)}</p>
+                        <p className="text-xs text-gray-500 mt-1">{normalized.description}</p>
+                        {normalized.price && (
+                          <p className="text-xs text-gray-700 font-semibold mt-1">Price: {formatPrice(normalized.price, currency)}</p>
                         )}
                       </div>
-                    );
+                    )
                   })}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   )
